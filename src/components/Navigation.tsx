@@ -716,9 +716,52 @@ export default function Navigation() {
                 )}
               </div>
 
-              <Link href="/platform" className="block py-3 text-gray-700 border-b border-gray-100" onClick={() => setMobileMenuOpen(false)}>
-                Platform
-              </Link>
+              {/* Platform Accordion */}
+              <div className="border-b border-gray-100">
+                <button
+                  type="button"
+                  className="w-full py-3 flex items-center justify-between text-gray-700 font-medium"
+                  onClick={() => toggleSubmenu('platform')}
+                >
+                  <span>Platform</span>
+                  <svg className={`w-5 h-5 transition-transform ${openSubmenu === 'platform' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {openSubmenu === 'platform' && (
+                  <div className="pb-4 pl-4 space-y-4 border-l-2 border-gray-200">
+                    <div>
+                      <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">☁️ Cloud Solutions</div>
+                      <Link href="/platform" className="block py-2 text-gray-600" onClick={() => setMobileMenuOpen(false)}>Platform Overview</Link>
+                      <Link href="/platform/cloud-migration" className="block py-2 text-gray-600" onClick={() => setMobileMenuOpen(false)}>Cloud Migration</Link>
+                      <Link href="/platform/disaster-recovery" className="block py-2 text-gray-600" onClick={() => setMobileMenuOpen(false)}>Disaster Recovery</Link>
+                      <Link href="/platform/backup-restore" className="block py-2 text-gray-600" onClick={() => setMobileMenuOpen(false)}>Backup & Restore</Link>
+                      <Link href="/platform/container-services" className="block py-2 text-gray-600" onClick={() => setMobileMenuOpen(false)}>Container Services</Link>
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">📊 Data Platform</div>
+                      <Link href="/platform/data-lakehouse" className="block py-2 text-gray-600" onClick={() => setMobileMenuOpen(false)}>Data Lakehouse</Link>
+                      <Link href="/platform/streaming" className="block py-2 text-gray-600" onClick={() => setMobileMenuOpen(false)}>Real-Time Streaming</Link>
+                      <Link href="/platform/data-warehouse" className="block py-2 text-gray-600" onClick={() => setMobileMenuOpen(false)}>Data Warehouse</Link>
+                      <Link href="/platform/data-governance" className="block py-2 text-gray-600" onClick={() => setMobileMenuOpen(false)}>Data Governance</Link>
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">🔒 Security & Compliance</div>
+                      <Link href="/platform/zero-trust-ai" className="block py-2 text-gray-600" onClick={() => setMobileMenuOpen(false)}>Zero-Trust AI</Link>
+                      <Link href="/platform/security/ahnlab" className="block py-2 text-gray-600" onClick={() => setMobileMenuOpen(false)}>Cybersecurity (AhnLab)</Link>
+                      <Link href="/platform/security/truewatch" className="block py-2 text-gray-600" onClick={() => setMobileMenuOpen(false)}>Security Monitoring</Link>
+                      <Link href="/platform/compliance" className="block py-2 text-gray-600" onClick={() => setMobileMenuOpen(false)}>Compliance</Link>
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">📈 Impact & ROI</div>
+                      <Link href="/platform/impact" className="block py-2 text-gray-600" onClick={() => setMobileMenuOpen(false)}>Business Impact</Link>
+                      <Link href="/platform/cost-optimization" className="block py-2 text-gray-600" onClick={() => setMobileMenuOpen(false)}>Cost Optimization</Link>
+                      <Link href="/platform/roi-metrics" className="block py-2 text-gray-600" onClick={() => setMobileMenuOpen(false)}>ROI Metrics</Link>
+                      <Link href="/case-studies" className="block py-2 text-gray-600" onClick={() => setMobileMenuOpen(false)}>Case Studies</Link>
+                    </div>
+                  </div>
+                )}
+              </div>
 
               <Link href="/webinar" className="block py-3 text-gray-700 border-b border-gray-100" onClick={() => setMobileMenuOpen(false)}>
                 Events
