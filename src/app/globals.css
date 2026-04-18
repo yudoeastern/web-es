@@ -1,26 +1,374 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* EasternStack Color Palette - Light Theme */
+  --primary-orange: #F97316;
+  --primary-orange-dark: #EA580C;
+  --primary-orange-light: #FB923C;
+  --accent-blue: #0066CC;
+  
+  /* Light Background Colors */
+  --bg-white: #FFFFFF;
+  --bg-light: #F8FAFC;
+  --bg-lighter: #F1F5F9;
+  --bg-card: #FFFFFF;
+  
+  /* Text Colors */
+  --text-dark: #0F172A;
+  --text-primary: #1E293B;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --text-light: #94A3B8;
+  
+  /* Other */
+  --border-color: #E2E8F0;
+  --gradient-start: #F97316;
+  --gradient-end: #EA580C;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary-orange: var(--primary-orange);
+  --color-primary-orange-dark: var(--primary-orange-dark);
+  --color-primary-orange-light: var(--primary-orange-light);
+  --color-accent-blue: var(--accent-blue);
+  --color-bg-white: var(--bg-white);
+  --color-bg-light: var(--bg-light);
+  --color-bg-lighter: var(--bg-lighter);
+  --color-bg-card: var(--bg-card);
+  --color-text-dark: var(--text-dark);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-light: var(--text-light);
+  --color-border-color: var(--border-color);
+  --color-gradient-start: var(--gradient-start);
+  --color-gradient-end: var(--gradient-end);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-white);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Gradient Text Utility */
+.gradient-text {
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient Background Utility */
+.gradient-bg {
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+}
+
+/* Button Styles */
+.btn-primary {
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  border: 2px solid var(--primary-orange);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--primary-orange);
+  color: white;
+}
+
+/* Card Styles */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.card:hover {
+  border-color: var(--primary-orange);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(249, 115, 22, 0.12);
+}
+
+/* Section Styles */
+.section-padding {
+  padding: 5rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 6rem 2rem;
+  }
+}
+
+/* Container */
+.container-custom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ===================================
+   INDUSTRIES MEGA MENU STYLES
+   =================================== */
+
+.industries-mega-menu {
+  left: 50% !important;
+  transform: translateX(-50%);
+  width: calc(100vw - 48px);
+  min-width: 800px;
+  max-width: 1200px;
+}
+
+.mega-menu-container {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  overflow: visible;
+}
+
+/* Grid Layout - 4 Columns */
+.mega-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding: 24px;
+}
+
+/* Column Styles */
+.mega-menu-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Heading Styles */
+.mega-menu-heading {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #0F172A;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #E2E8F0;
+  white-space: nowrap;
+}
+
+/* List Styles */
+.mega-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* List Item */
+.mega-menu-list li {
+  margin: 0;
+}
+
+/* Menu Item Link */
+.mega-menu-item {
+  display: block;
+  padding: 8px 0;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.mega-menu-item:hover {
+  transform: translateX(4px);
+}
+
+/* Text Styles */
+.mega-menu-text {
+  font-size: 14px;
+  color: #475569;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  line-height: 1.4;
+  display: block;
+}
+
+.mega-menu-item:hover .mega-menu-text {
+  color: #F97316;
+}
+
+/* Footer Section */
+.mega-menu-footer {
+  border-top: 1px solid #E2E8F0;
+  padding: 20px 24px;
+  background: #F8FAFC;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.footer-heading {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1E293B;
+  margin: 0 0 4px 0;
+}
+
+.footer-description {
+  font-size: 13px;
+  color: #64748B;
+  margin: 0;
+}
+
+.footer-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ===================================
+   RESPONSIVE STYLES
+   =================================== */
+
+/* Tablet: 2 columns */
+@media (max-width: 1024px) {
+  .industries-mega-menu {
+    min-width: 500px;
+    max-width: 600px;
+  }
+  
+  .mega-menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .mega-menu-heading {
+    font-size: 11px;
+  }
+  
+  .mega-menu-text {
+    font-size: 13px;
+  }
+}
+
+/* Mobile: 1 column (handled by hiding mega menu and showing mobile menu) */
+@media (max-width: 768px) {
+  .industries-mega-menu {
+    display: none;
+  }
+}
+
+/* ===================================
+   MOBILE MENU STYLES
+   =================================== */
+
+.mobile-menu-item {
+  display: block;
+  padding: 16px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1E293B;
+  text-decoration: none;
+  border-bottom: 1px solid #E2E8F0;
+  transition: color 0.2s ease;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-menu-item:hover {
+  color: #F97316;
+}
+
+.mobile-menu-item:active {
+  opacity: 0.7;
+}
+
+.mobile-menu-group {
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.mobile-menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1E293B;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-menu-button:hover {
+  color: #F97316;
+}
+
+.mobile-menu-button:active {
+  opacity: 0.7;
+}
+
+.mobile-submenu {
+  padding-bottom: 16px;
+}
+
+.mobile-submenu-item {
+  display: block;
+  padding: 12px 0 12px 16px;
+  font-size: 15px;
+  color: #64748B;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-submenu-item:hover {
+  color: #F97316;
+}
+
+.mobile-submenu-item:active {
+  opacity: 0.7;
+}
+
+.mobile-submenu-divider {
+  padding: 12px 0 8px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94A3B8;
+  pointer-events: none;
 }
