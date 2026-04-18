@@ -54,7 +54,7 @@ export default function WebinarPage() {
     },
     {
       status: "past",
-      title: "Enterprise Agentic AI: From Strategy to Implementation",
+      title: "Enterprise AI: From Strategy to Implementation",
       date: "December 10, 2025",
       time: "14:00 - 15:30 WIB",
       location: "Online via Zoom",

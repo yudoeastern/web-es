@@ -24,7 +24,7 @@ export default function AISolutionsPage() {
               <Link href="/contact" className="btn-primary text-lg px-8 py-4">
                 Book Consultation
               </Link>
-              <Link href="/solutions/ai/agentic-ai-assistant" className="btn-secondary text-lg px-8 py-4">
+              <Link href="/solutions/ai/ai-assistant" className="btn-secondary text-lg px-8 py-4">
                 Explore Solutions
               </Link>
             </div>
@@ -41,7 +41,7 @@ export default function AISolutionsPage() {
               operate more efficiently, make faster decisions, and scale without increasing complexity.
             </p>
             <p className="text-lg text-text-gray mb-8">
-              EasternStack delivers Agentic AI solutions that can understand context, execute tasks, and
+              EasternStack delivers AI solutions that can understand context, execute tasks, and
               orchestrate workflows across systems and teams. Our approach ensures every AI implementation is
               aligned with business goals, built on secure architecture, and designed for long term scalability.
             </p>
@@ -57,14 +57,14 @@ export default function AISolutionsPage() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Link href="/solutions/ai/agentic-ai-assistant" className="card group">
+            <Link href="/solutions/ai/ai-assistant" className="card group">
               <div className="w-16 h-16 bg-gradient-to-br from-primary-orange to-primary-orange-dark rounded-xl flex items-center justify-center mb-6">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                 </svg>
               </div>
               <h3 className="text-2xl font-semibold text-text-white mb-3 group-hover:text-primary-orange-light transition-colors">
-                Agentic AI Assistant
+                AI Assistant
               </h3>
               <p className="text-text-gray mb-4">
                 AI assistants that can interact, reason, and execute workflows across business operations.
@@ -247,10 +247,10 @@ export default function AISolutionsPage() {
           <div className="max-w-4xl mx-auto space-y-6">
             <div className="card">
               <h3 className="text-lg font-semibold text-text-white mb-3">
-                What is Agentic AI and how is it different from traditional AI?
+                What is AI and how is it different from traditional AI?
               </h3>
               <p className="text-text-gray">
-                Agentic AI refers to intelligent systems that can understand context, make decisions, and execute tasks across workflows, while traditional AI typically responds to prompts without taking action.
+                AI refers to intelligent systems that can understand context, make decisions, and execute tasks across workflows, while traditional AI typically responds to prompts without taking action.
               </p>
             </div>
 

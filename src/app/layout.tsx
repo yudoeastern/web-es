@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "EasternStack - Enterprise Agentic AI",
+  title: "EasternStack - Enterprise AI",
   description: "Deploy production-grade AI agents across your enterprise. Automate complex workflows in days, not months.",
 };
 

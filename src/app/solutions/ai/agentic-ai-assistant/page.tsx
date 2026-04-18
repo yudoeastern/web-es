@@ -9,7 +9,7 @@ export default function AgenticAIAssistantPage() {
           <div className="max-w-4xl">
             <div className="inline-block mb-6 px-4 py-2 bg-dark-bg-card border border-border-color rounded-full">
               <span className="text-primary-orange-light text-sm font-semibold">
-                Agentic AI Assistant
+                AI Assistant
               </span>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-text-white mb-6">
@@ -33,18 +33,280 @@ export default function AgenticAIAssistantPage() {
       </section>
 
       {/* Introduction */}
-      <section className="section-padding bg-dark-bg">
+      <section className="section-padding bg-bg-lighter">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
-            <p className="text-lg text-text-gray mb-8">
+            <p className="text-lg text-text-secondary mb-8">
               AI assistants are evolving into intelligent systems that actively participate in business operations.
-              EasternStack Agentic AI Assistants are designed to understand context, reason across data, and
+              EasternStack AI Assistants are designed to understand context, reason across data, and
               execute actions across systems.
             </p>
-            <p className="text-lg text-text-gray">
+            <p className="text-lg text-text-secondary">
               They enable organizations to automate workflows while maintaining full control, security, and scalability.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* AI Assistant Use Cases */}
+      <section className="section-padding bg-white">
+        <div className="container-custom">
+          <h2 className="text-3xl md:text-4xl font-bold text-text-dark mb-12 text-center">
+            AI ASSISTANT USE CASES
+          </h2>
+
+          {/* Customer Support Section */}
+          <div id="customer-support" className="mb-16 scroll-mt-20">
+            <div className="card">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-text-dark mb-4">Customer Service Agent</h3>
+              <p className="text-text-secondary mb-6">
+                AI-powered frontline support that handles customer inquiries 24/7, reducing human agent workload while delivering instant responses.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3">Use Cases</h4>
+                  <ul className="space-y-2">
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      Order tracking and status updates
+                    </li>
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      Refund and complaint handling
+                    </li>
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      Product FAQs and recommendations
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3">Business Value</h4>
+                  <ul className="space-y-2">
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      70% reduction in support workload
+                    </li>
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      Instant responses with zero wait time
+                    </li>
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      Handle thousands of concurrent users
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Sales Assistant Section */}
+          <div id="sales-assistant" className="mb-16 scroll-mt-20">
+            <div className="card">
+              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-text-dark mb-4">Sales & Revenue Agent</h3>
+              <p className="text-text-secondary mb-6">
+                AI that guides users through the entire purchase journey, from product discovery to checkout completion.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3">Capabilities</h4>
+                  <ul className="space-y-2">
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      Product recommendations based on needs
+                    </li>
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      Intelligent upselling and cross-selling
+                    </li>
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      Pre-checkout question resolution
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3">Business Value</h4>
+                  <ul className="space-y-2">
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      35% increase in conversion rates
+                    </li>
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      25% higher average order value
+                    </li>
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      Reduced cart abandonment
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Employee Copilot Section */}
+          <div id="work-assistant" className="mb-16 scroll-mt-20">
+            <div className="card">
+              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-text-dark mb-4">Employee Copilot</h3>
+              <p className="text-text-secondary mb-6">
+                Your AI productivity partner for professionals and teams. Automate routine tasks and focus on high-value work.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3">Functions</h4>
+                  <ul className="space-y-2">
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      Document and email summarization
+                    </li>
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      Idea generation and brainstorming
+                    </li>
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      Draft creation (proposals, reports)
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3">Business Value</h4>
+                  <ul className="space-y-2">
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      50% time savings on routine tasks
+                    </li>
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      Improved employee productivity
+                    </li>
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      Faster onboarding for new hires
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Learning & Development Section */}
+          <div id="ai-tutor">
+            <div className="card">
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-text-dark mb-4">Learning & Development</h3>
+              <p className="text-text-secondary mb-6">
+                Your private digital teacher that adapts to each learner's pace and style, making education accessible and interactive.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3">Applications</h4>
+                  <ul className="space-y-2">
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      School and university explanations
+                    </li>
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      Practice exercises with solutions
+                    </li>
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      Language learning and practice
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3">Business Value</h4>
+                  <ul className="space-y-2">
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      Personalized learning paths
+                    </li>
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      24/7 learning availability
+                    </li>
+                    <li className="flex items-start text-text-secondary">
+                      <svg className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      Reduced training costs
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 

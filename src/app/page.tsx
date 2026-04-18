@@ -114,14 +114,14 @@ export default function Home() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Link href="/solutions/ai/agentic-ai-assistant" className="card group">
+            <Link href="/solutions/ai/ai-assistant" className="card group">
               <div className="w-16 h-16 bg-gradient-to-br from-primary-orange to-primary-orange-dark rounded-xl flex items-center justify-center mb-6">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                 </svg>
               </div>
               <h3 className="text-2xl font-semibold text-text-dark mb-3 group-hover:text-primary-orange transition-colors">
-                Agentic AI Assistant
+                AI Assistant
               </h3>
               <p className="text-text-secondary mb-4">
                 AI assistants that can interact, reason, and execute workflows across business operations.
