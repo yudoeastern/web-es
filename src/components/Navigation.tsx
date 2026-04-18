@@ -465,7 +465,7 @@ export default function Navigation() {
               </div>
             </div>
 
-            {/* Platform - NEW WITH SUBMENU */}
+            {/* Platform - WITH ICONS LIKE AI SOLUTIONS */}
             <div className="relative group">
               <button className="px-4 py-2 text-gray-700 hover:text-orange-600 font-medium flex items-center gap-1">
                 Platform
@@ -474,50 +474,84 @@ export default function Navigation() {
                 </svg>
               </button>
               <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className="bg-white rounded-xl shadow-2xl border border-gray-200 p-8 w-[1000px]">
+                <div className="bg-white rounded-xl shadow-2xl border border-gray-200 p-8 w-[1100px]">
+                  {/* Header */}
+                  <div className="mb-6 pb-6 border-b border-gray-100">
+                    <h2 className="text-xl font-bold text-gray-900 mb-2">ENTERPRISE INFRASTRUCTURE</h2>
+                    <p className="text-gray-600 text-sm">Platform for AI at Scale - Cloud-native infrastructure powering reliable, scalable, and secure AI applications</p>
+                  </div>
+
                   <div className="grid grid-cols-4 gap-6">
                     {/* Column 1: Cloud Solutions */}
                     <div>
-                      <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Cloud Solutions</h3>
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                          </svg>
+                        </div>
+                        <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wider">Cloud Solutions</h3>
+                      </div>
                       <ul className="space-y-2">
-                        <li><Link href="/platform" className="text-gray-700 hover:text-orange-600 text-sm">Platform Overview</Link></li>
-                        <li><Link href="/platform/cloud-migration" className="text-gray-700 hover:text-orange-600 text-sm">Cloud Migration</Link></li>
-                        <li><Link href="/platform/disaster-recovery" className="text-gray-700 hover:text-orange-600 text-sm">Disaster Recovery</Link></li>
-                        <li><Link href="/platform/backup-restore" className="text-gray-700 hover:text-orange-600 text-sm">Backup & Restore</Link></li>
-                        <li><Link href="/platform/container-services" className="text-gray-700 hover:text-orange-600 text-sm">Container Services</Link></li>
+                        <li><Link href="/platform" className="text-gray-700 hover:text-orange-600 text-sm block">Platform Overview</Link></li>
+                        <li><Link href="/platform/cloud-migration" className="text-gray-700 hover:text-orange-600 text-sm block">Cloud Migration</Link></li>
+                        <li><Link href="/platform/disaster-recovery" className="text-gray-700 hover:text-orange-600 text-sm block">Disaster Recovery</Link></li>
+                        <li><Link href="/platform/backup-restore" className="text-gray-700 hover:text-orange-600 text-sm block">Backup & Restore</Link></li>
+                        <li><Link href="/platform/container-services" className="text-gray-700 hover:text-orange-600 text-sm block">Container Services</Link></li>
                       </ul>
                     </div>
 
                     {/* Column 2: Data Platform */}
                     <div>
-                      <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Data Platform</h3>
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">
+                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+                          </svg>
+                        </div>
+                        <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wider">Data Platform</h3>
+                      </div>
                       <ul className="space-y-2">
-                        <li><Link href="/platform/data-lakehouse" className="text-gray-700 hover:text-orange-600 text-sm">Data Lakehouse</Link></li>
-                        <li><Link href="/platform/streaming" className="text-gray-700 hover:text-orange-600 text-sm">Real-Time Streaming</Link></li>
-                        <li><Link href="/platform/data-warehouse" className="text-gray-700 hover:text-orange-600 text-sm">Data Warehouse</Link></li>
-                        <li><Link href="/platform/data-governance" className="text-gray-700 hover:text-orange-600 text-sm">Data Governance</Link></li>
+                        <li><Link href="/platform/data-lakehouse" className="text-gray-700 hover:text-orange-600 text-sm block">Data Lakehouse</Link></li>
+                        <li><Link href="/platform/streaming" className="text-gray-700 hover:text-orange-600 text-sm block">Real-Time Streaming</Link></li>
+                        <li><Link href="/platform/data-warehouse" className="text-gray-700 hover:text-orange-600 text-sm block">Data Warehouse</Link></li>
+                        <li><Link href="/platform/data-governance" className="text-gray-700 hover:text-orange-600 text-sm block">Data Governance</Link></li>
                       </ul>
                     </div>
 
                     {/* Column 3: Security & Compliance */}
                     <div>
-                      <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Security & Compliance</h3>
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center">
+                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        </div>
+                        <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wider">Security & Compliance</h3>
+                      </div>
                       <ul className="space-y-2">
-                        <li><Link href="/platform/zero-trust-ai" className="text-gray-700 hover:text-orange-600 text-sm">Zero-Trust AI</Link></li>
-                        <li><Link href="/platform/security/ahnlab" className="text-gray-700 hover:text-orange-600 text-sm">Cybersecurity (AhnLab)</Link></li>
-                        <li><Link href="/platform/security/truewatch" className="text-gray-700 hover:text-orange-600 text-sm">Security Monitoring</Link></li>
-                        <li><Link href="/platform/compliance" className="text-gray-700 hover:text-orange-600 text-sm">Compliance</Link></li>
+                        <li><Link href="/platform/zero-trust-ai" className="text-gray-700 hover:text-orange-600 text-sm block">Zero-Trust AI</Link></li>
+                        <li><Link href="/platform/security/ahnlab" className="text-gray-700 hover:text-orange-600 text-sm block">Cybersecurity (AhnLab)</Link></li>
+                        <li><Link href="/platform/security/truewatch" className="text-gray-700 hover:text-orange-600 text-sm block">Security Monitoring</Link></li>
+                        <li><Link href="/platform/compliance" className="text-gray-700 hover:text-orange-600 text-sm block">Compliance</Link></li>
                       </ul>
                     </div>
 
                     {/* Column 4: Impact & ROI */}
                     <div>
-                      <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Impact & ROI</h3>
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center">
+                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                          </svg>
+                        </div>
+                        <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wider">Impact & ROI</h3>
+                      </div>
                       <ul className="space-y-2">
-                        <li><Link href="/platform/impact" className="text-gray-700 hover:text-orange-600 text-sm">Business Impact</Link></li>
-                        <li><Link href="/platform/cost-optimization" className="text-gray-700 hover:text-orange-600 text-sm">Cost Optimization</Link></li>
-                        <li><Link href="/platform/roi-metrics" className="text-gray-700 hover:text-orange-600 text-sm">ROI Metrics</Link></li>
-                        <li><Link href="/case-studies" className="text-gray-700 hover:text-orange-600 text-sm">Case Studies</Link></li>
+                        <li><Link href="/platform/impact" className="text-gray-700 hover:text-orange-600 text-sm block">Business Impact</Link></li>
+                        <li><Link href="/platform/cost-optimization" className="text-gray-700 hover:text-orange-600 text-sm block">Cost Optimization</Link></li>
+                        <li><Link href="/platform/roi-metrics" className="text-gray-700 hover:text-orange-600 text-sm block">ROI Metrics</Link></li>
+                        <li><Link href="/case-studies" className="text-gray-700 hover:text-orange-600 text-sm block">Case Studies</Link></li>
                       </ul>
                     </div>
                   </div>
@@ -525,8 +559,15 @@ export default function Navigation() {
                   {/* Footer */}
                   <div className="mt-6 pt-6 border-t border-gray-100">
                     <div className="flex items-center justify-between">
-                      <div className="text-sm text-gray-600">
-                        <span className="font-semibold">Eastern Partners:</span> Alibaba Cloud · Huawei Cloud · Tencent Cloud · BytePlus · AhnLab · TrueWatch
+                      <div className="flex items-center gap-6 text-xs text-gray-500">
+                        <span className="flex items-center gap-1.5">
+                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+                          </svg>
+                          Eastern Partners
+                        </span>
+                        <span className="text-gray-400">·</span>
+                        <span>Alibaba Cloud · Huawei Cloud · Tencent Cloud</span>
                       </div>
                       <Link href="/contact" className="text-orange-600 hover:text-orange-700 text-sm font-semibold flex items-center gap-1">
                         Talk to Our Team
