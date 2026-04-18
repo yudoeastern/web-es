@@ -465,6 +465,81 @@ export default function Navigation() {
               </div>
             </div>
 
+            {/* Platform - NEW WITH SUBMENU */}
+            <div className="relative group">
+              <button className="px-4 py-2 text-gray-700 hover:text-orange-600 font-medium flex items-center gap-1">
+                Platform
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="bg-white rounded-xl shadow-2xl border border-gray-200 p-8 w-[1000px]">
+                  <div className="grid grid-cols-4 gap-6">
+                    {/* Column 1: Cloud Solutions */}
+                    <div>
+                      <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Cloud Solutions</h3>
+                      <ul className="space-y-2">
+                        <li><Link href="/platform" className="text-gray-700 hover:text-orange-600 text-sm">Platform Overview</Link></li>
+                        <li><Link href="/platform/cloud-migration" className="text-gray-700 hover:text-orange-600 text-sm">Cloud Migration</Link></li>
+                        <li><Link href="/platform/disaster-recovery" className="text-gray-700 hover:text-orange-600 text-sm">Disaster Recovery</Link></li>
+                        <li><Link href="/platform/backup-restore" className="text-gray-700 hover:text-orange-600 text-sm">Backup & Restore</Link></li>
+                        <li><Link href="/platform/container-services" className="text-gray-700 hover:text-orange-600 text-sm">Container Services</Link></li>
+                      </ul>
+                    </div>
+
+                    {/* Column 2: Data Platform */}
+                    <div>
+                      <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Data Platform</h3>
+                      <ul className="space-y-2">
+                        <li><Link href="/platform/data-lakehouse" className="text-gray-700 hover:text-orange-600 text-sm">Data Lakehouse</Link></li>
+                        <li><Link href="/platform/streaming" className="text-gray-700 hover:text-orange-600 text-sm">Real-Time Streaming</Link></li>
+                        <li><Link href="/platform/data-warehouse" className="text-gray-700 hover:text-orange-600 text-sm">Data Warehouse</Link></li>
+                        <li><Link href="/platform/data-governance" className="text-gray-700 hover:text-orange-600 text-sm">Data Governance</Link></li>
+                      </ul>
+                    </div>
+
+                    {/* Column 3: Security & Compliance */}
+                    <div>
+                      <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Security & Compliance</h3>
+                      <ul className="space-y-2">
+                        <li><Link href="/platform/zero-trust-ai" className="text-gray-700 hover:text-orange-600 text-sm">Zero-Trust AI</Link></li>
+                        <li><Link href="/platform/security/ahnlab" className="text-gray-700 hover:text-orange-600 text-sm">Cybersecurity (AhnLab)</Link></li>
+                        <li><Link href="/platform/security/truewatch" className="text-gray-700 hover:text-orange-600 text-sm">Security Monitoring</Link></li>
+                        <li><Link href="/platform/compliance" className="text-gray-700 hover:text-orange-600 text-sm">Compliance</Link></li>
+                      </ul>
+                    </div>
+
+                    {/* Column 4: Impact & ROI */}
+                    <div>
+                      <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Impact & ROI</h3>
+                      <ul className="space-y-2">
+                        <li><Link href="/platform/impact" className="text-gray-700 hover:text-orange-600 text-sm">Business Impact</Link></li>
+                        <li><Link href="/platform/cost-optimization" className="text-gray-700 hover:text-orange-600 text-sm">Cost Optimization</Link></li>
+                        <li><Link href="/platform/roi-metrics" className="text-gray-700 hover:text-orange-600 text-sm">ROI Metrics</Link></li>
+                        <li><Link href="/case-studies" className="text-gray-700 hover:text-orange-600 text-sm">Case Studies</Link></li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Footer */}
+                  <div className="mt-6 pt-6 border-t border-gray-100">
+                    <div className="flex items-center justify-between">
+                      <div className="text-sm text-gray-600">
+                        <span className="font-semibold">Eastern Partners:</span> Alibaba Cloud · Huawei Cloud · Tencent Cloud · BytePlus · AhnLab · TrueWatch
+                      </div>
+                      <Link href="/contact" className="text-orange-600 hover:text-orange-700 text-sm font-semibold flex items-center gap-1">
+                        Talk to Our Team
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <Link href="/webinar" className="px-4 py-2 text-gray-700 hover:text-orange-600 font-medium">
               Events
             </Link>
@@ -599,6 +674,10 @@ export default function Navigation() {
                   </div>
                 )}
               </div>
+
+              <Link href="/platform" className="block py-3 text-gray-700 border-b border-gray-100" onClick={() => setMobileMenuOpen(false)}>
+                Platform
+              </Link>
 
               <Link href="/webinar" className="block py-3 text-gray-700 border-b border-gray-100" onClick={() => setMobileMenuOpen(false)}>
                 Events
