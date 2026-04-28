@@ -1,48 +1,77 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
-  /* EasternStack Color Palette - Light Theme */
-  --primary-orange: #F97316;
-  --primary-orange-dark: #EA580C;
-  --primary-orange-light: #FB923C;
-  --accent-blue: #0066CC;
+  /* EasternStack Brand Color Palette */
+  --primary-red: #E31E24;
+  --primary-red-dark: #C4181E;
+  --primary-red-light: #F53840;
   
-  /* Light Background Colors */
+  --deep-black: #1A1A1A;
+  --deep-black-light: #2D2D2D;
+  
+  --accent-gold: #C5A059;
+  --accent-gold-light: #D4B06A;
+  --accent-gold-dark: #B08D4A;
+  
+  --clean-white: #FFFFFF;
+  
+  /* Background Colors */
   --bg-white: #FFFFFF;
-  --bg-light: #F8FAFC;
-  --bg-lighter: #F1F5F9;
+  --bg-light: #F9FAFB;
+  --bg-lighter: #F3F4F6;
   --bg-card: #FFFFFF;
-  
+  --bg-dark: #0F0F0F;
+
   /* Text Colors */
-  --text-dark: #0F172A;
-  --text-primary: #1E293B;
-  --text-secondary: #475569;
-  --text-muted: #64748B;
-  --text-light: #94A3B8;
-  
+  --text-dark: #1A1A1A;
+  --text-primary: #2D2D2D;
+  --text-secondary: #4B5563;
+  --text-muted: #6B7280;
+  --text-light: #9CA3AF;
+  --text-white: #FFFFFF;
+
   /* Other */
-  --border-color: #E2E8F0;
-  --gradient-start: #F97316;
-  --gradient-end: #EA580C;
+  --border-color: #E5E7EB;
+  --border-gold: #C5A059;
 }
 
 @theme inline {
-  --color-primary-orange: var(--primary-orange);
-  --color-primary-orange-dark: var(--primary-orange-dark);
-  --color-primary-orange-light: var(--primary-orange-light);
-  --color-accent-blue: var(--accent-blue);
+  /* EasternStack Brand Colors */
+  --color-primary-red: var(--primary-red);
+  --color-primary-red-dark: var(--primary-red-dark);
+  --color-primary-red-light: var(--primary-red-light);
+  
+  --color-deep-black: var(--deep-black);
+  --color-deep-black-light: var(--deep-black-light);
+  
+  --color-accent-gold: var(--accent-gold);
+  --color-accent-gold-light: var(--accent-gold-light);
+  --color-accent-gold-dark: var(--accent-gold-dark);
+  
+  --color-clean-white: var(--clean-white);
+  
+  /* Background Colors */
   --color-bg-white: var(--bg-white);
   --color-bg-light: var(--bg-light);
   --color-bg-lighter: var(--bg-lighter);
   --color-bg-card: var(--bg-card);
+  --color-bg-dark: var(--bg-dark);
+
+  /* Text Colors */
   --color-text-dark: var(--text-dark);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
   --color-text-light: var(--text-light);
+  --color-text-white: var(--text-white);
+
+  /* Other */
   --color-border-color: var(--border-color);
-  --color-gradient-start: var(--gradient-start);
-  --color-gradient-end: var(--gradient-end);
+  --color-border-gold: var(--border-gold);
 }
 
 body {
@@ -51,22 +80,50 @@ body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-/* Gradient Text Utility */
+/* Gradient Text Utility - Eastern Stack Red to Gold */
 .gradient-text {
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  background: linear-gradient(135deg, var(--primary-red), var(--accent-gold));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Gradient Background Utility */
+/* Gradient Background Utility - Eastern Stack Red */
 .gradient-bg {
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
 }
 
-/* Button Styles */
+/* Blob Animation */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Button Styles - Eastern Stack Red */
 .btn-primary {
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
   color: white;
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
@@ -78,26 +135,26 @@ body {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
+  box-shadow: 0 10px 30px rgba(227, 30, 36, 0.4);
 }
 
 .btn-secondary {
   background: transparent;
-  color: var(--text-primary);
+  color: var(--deep-black);
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   font-weight: 600;
-  border: 2px solid var(--primary-orange);
+  border: 2px solid var(--accent-gold);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .btn-secondary:hover {
-  background: var(--primary-orange);
-  color: white;
+  background: var(--accent-gold);
+  color: var(--deep-black);
 }
 
-/* Card Styles */
+/* Card Styles with Gold Accent */
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -108,9 +165,9 @@ body {
 }
 
 .card:hover {
-  border-color: var(--primary-orange);
+  border-color: var(--accent-gold);
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(249, 115, 22, 0.12);
+  box-shadow: 0 20px 40px rgba(197, 160, 89, 0.15);
 }
 
 /* Section Styles */

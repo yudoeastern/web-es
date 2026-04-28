@@ -1,5 +1,16 @@
 import Link from "next/link";
 
+const partnerLogos: Record<string, string> = {
+  "Alibaba Cloud": "/partner/Alibaba_Cloud_Logo.png",
+  "Huawei Cloud": "/partner/huawei.jpg",
+  "Tencent Cloud": "/partner/tencent.png",
+  "OnePro": "/partner/onepro.png",
+  "AhnLab": "/partner/ahnlab.jpg",
+  "TrueWatch": "/partner/true_watch_logo.svg",
+  "BytePlus": "/partner/onepro.png",
+  "MiiTel": "/partner/onepro.png",
+};
+
 export default function WebinarPage() {
   const webinars = [
     {
@@ -18,7 +29,7 @@ export default function WebinarPage() {
       date: "February 8, 2026",
       time: "14:00 - 15:30 WIB",
       location: "Online via Zoom",
-      partner: "BytePlus",
+      partner: "OnePro",
       description: "Learn how to design and visualize complex AI workflows with multi-agent orchestration.",
       image: "🔄",
     },
@@ -152,8 +163,14 @@ export default function WebinarPage() {
                   <div className="text-2xl">{webinar.image}</div>
                 </div>
 
-                {/* Partner */}
-                <div className="text-sm text-text-secondary mb-3">{webinar.partner}</div>
+                {/* Partner Logo */}
+                <div className="mb-4 h-12 flex items-center justify-center">
+                  <img 
+                    src={partnerLogos[webinar.partner] || "/partner/onepro.png"} 
+                    alt={webinar.partner} 
+                    className="h-10 w-auto object-contain" 
+                  />
+                </div>
 
                 {/* Title */}
                 <h3 className="text-lg font-semibold text-text-dark mb-4 line-clamp-2">

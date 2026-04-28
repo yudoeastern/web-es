@@ -28,48 +28,36 @@ export default function PlatformPage() {
           <h2 className="text-2xl md:text-3xl font-bold text-text-dark mb-12 text-center">
             OUR TECHNOLOGY PARTNERS
           </h2>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 max-w-5xl mx-auto">
             {/* Alibaba Cloud */}
-            <div className="card text-center py-6">
-              <div className="text-4xl mb-3">☁️</div>
-              <div className="text-text-dark font-semibold">Alibaba Cloud</div>
-              <div className="text-text-secondary text-xs mt-1">Cloud Infrastructure</div>
+            <div className="flex items-center justify-center p-4">
+              <img src="/partner/Alibaba_Cloud_Logo.png" alt="Alibaba Cloud" className="h-24 w-auto object-contain" />
             </div>
 
             {/* Huawei Cloud */}
-            <div className="card text-center py-6">
-              <div className="text-4xl mb-3">🌐</div>
-              <div className="text-text-dark font-semibold">Huawei Cloud</div>
-              <div className="text-text-secondary text-xs mt-1">Cloud Infrastructure</div>
+            <div className="flex items-center justify-center p-4">
+              <img src="/partner/huawei.jpg" alt="Huawei Cloud" className="h-16 w-auto object-contain" />
             </div>
 
             {/* Tencent Cloud */}
-            <div className="card text-center py-6">
-              <div className="text-4xl mb-3">🚀</div>
-              <div className="text-text-dark font-semibold">Tencent Cloud</div>
-              <div className="text-text-secondary text-xs mt-1">Cloud Infrastructure</div>
+            <div className="flex items-center justify-center p-4">
+              <img src="/partner/tencent.png" alt="Tencent Cloud" className="h-16 w-auto object-contain" />
             </div>
 
-            {/* BytePlus */}
-            <div className="card text-center py-6">
-              <div className="text-4xl mb-3">⚡</div>
-              <div className="text-text-dark font-semibold">BytePlus</div>
-              <div className="text-text-secondary text-xs mt-1">AI & Analytics</div>
+            {/* OnePro */}
+            <div className="flex items-center justify-center p-4">
+              <img src="/partner/onepro.png" alt="OnePro" className="h-16 w-auto object-contain" />
             </div>
 
             {/* AhnLab */}
-            <div className="card text-center py-6">
-              <div className="text-4xl mb-3">🛡️</div>
-              <div className="text-text-dark font-semibold">AhnLab</div>
-              <div className="text-text-secondary text-xs mt-1">Cybersecurity</div>
+            <div className="flex items-center justify-center p-4">
+              <img src="/partner/ahnlab.jpg" alt="AhnLab" className="h-16 w-auto object-contain" />
             </div>
 
             {/* TrueWatch */}
-            <div className="card text-center py-6">
-              <div className="text-4xl mb-3">👁️</div>
-              <div className="text-text-dark font-semibold">TrueWatch</div>
-              <div className="text-text-secondary text-xs mt-1">Security Monitoring</div>
+            <div className="flex items-center justify-center p-4">
+              <img src="/partner/true_watch_logo.svg" alt="TrueWatch" className="h-16 w-auto object-contain" />
             </div>
           </div>
         </div>
