@@ -402,7 +402,7 @@ export default function AutonomousAgentsPage() {
             Book Consultation
           </Link>
         </div>
-      </section> */}
+      </section> */} 
       <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
         <div className="container-custom text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
