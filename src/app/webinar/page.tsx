@@ -1,11 +1,11 @@
 import Link from "next/link";
 
 const webinarImages: Record<string, string> = {
-  "AI for Innovation - Navigating the AI Technology Landscape": "/events/AI for Innovation - Navigating the AI Technology Landscape.png",
-  "Visualize AI Workflows and Multi-Agent for Clarity & Collaboration": "/events/Visualize AI Workflows and Multi-Agent for Clarity & Collaboration.png",
-  "From Calls to Insight: Driving Growth with MiiTel & EasternStack": "/events/From Calls to Insight - Driving Growth with MiiTel & EasternStack.png",
-  "AI Assisted Cross-Domain Root Cause Analysis": "/events/AI Assisted Cross-Domain Root Cause Analysis.png",
-  "Improve Your Business Continuity Strategy using DR Solution with OnePro HyperBDR": "/events/Improve Your Business Continuity Strategy using DR Solution with OnePro HyperBDR.png",
+  "AI for Innovation - Navigating the AI Technology Landscape": "/events/ai-for-innovation-navigating-ai-technology-landscape.png",
+  "Visualize AI Workflows and Multi-Agent for Clarity & Collaboration": "/events/visualize-ai-workflows-multi-agent-clarity-collaboration.png",
+  "From Calls to Insight: Driving Growth with MiiTel & EasternStack": "/events/from-calls-to-insight-driving-growth-with-miitel-easternstack.png",
+  "AI Assisted Cross-Domain Root Cause Analysis": "/events/ai-assisted-cross-domain-root-cause-analysis.png",
+  "Improve Your Business Continuity Strategy using DR Solution with OnePro HyperBDR": "/events/improve-business-continuity-strategy-dr-onepro-hyperbdr.png",
 };
 
 export default function WebinarPage() {
