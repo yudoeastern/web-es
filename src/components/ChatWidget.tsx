@@ -310,6 +310,11 @@ export default function ChatWidget() {
       if (overlay) overlay.style.display = "none";
     };
 
+    // Listen for custom event to open chat from other pages
+    window.addEventListener('open-chat-widget', () => {
+      (window as any).openChat();
+    });
+
     (window as any).addBubble = function(html: string, cls: string) {
       if (!body) return;
       const div = document.createElement("div");

@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export default function ContactPage() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -14,10 +16,104 @@ export default function ContactPage() {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {};
+
+    // First Name validation
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = 'First name is required';
+    } else if (formData.firstName.trim().length < 2) {
+      newErrors.firstName = 'First name must be at least 2 characters';
+    }
+
+    // Last Name validation
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = 'Last name is required';
+    } else if (formData.lastName.trim().length < 2) {
+      newErrors.lastName = 'Last name must be at least 2 characters';
+    }
+
+    // Email validation
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+
+    // Phone validation
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+    } else if (!/^[\d\s\+\-\(\)]+$/.test(formData.phone)) {
+      newErrors.phone = 'Please enter a valid phone number';
+    }
+
+    // Company validation
+    if (!formData.company.trim()) {
+      newErrors.company = 'Company name is required';
+    }
+
+    // Job Title validation
+    if (!formData.jobTitle.trim()) {
+      newErrors.jobTitle = 'Job title is required';
+    }
+
+    // Message validation
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = 'Message must be at least 10 characters';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
+
+    if (!validateForm()) {
+      const errorMessages = Object.values(errors).join('\n');
+      alert(`Please fix the following errors:\n\n${errorMessages}`);
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        // Set flag in sessionStorage for thank you page validation
+        sessionStorage.setItem('formSubmitted', 'true');
+        // Redirect to thank you page
+        router.push('/thank-you');
+      } else {
+        // Handle API validation errors
+        if (result.errors) {
+          setErrors(result.errors);
+          const errorMessages = Object.values(result.errors).join('\n');
+          alert(`Please fix the following errors:\n\n${errorMessages}`);
+        } else {
+          alert('Failed to send message. Please try again.');
+        }
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert('An error occurred. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -54,10 +150,16 @@ export default function ContactPage() {
                       type="text"
                       required
                       value={formData.firstName}
-                      onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                      className="w-full px-4 py-3 bg-bg-light-card border border-border-color rounded-lg text-text-dark focus:outline-none focus:border-primary-orange-light transition-colors"
+                      onChange={(e) => {
+                        setFormData({...formData, firstName: e.target.value});
+                        if (errors.firstName) setErrors({...errors, firstName: ''});
+                      }}
+                      className={`w-full px-4 py-3 bg-bg-light-card border rounded-lg text-text-dark focus:outline-none transition-colors ${
+                        errors.firstName ? 'border-red-500 focus:border-red-500' : 'border-border-color focus:border-primary-orange-light'
+                      }`}
                       placeholder="John"
                     />
+                    {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
                   </div>
                   <div>
                     <label className="block text-text-secondary text-sm mb-2">Last Name *</label>
@@ -65,10 +167,16 @@ export default function ContactPage() {
                       type="text"
                       required
                       value={formData.lastName}
-                      onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                      className="w-full px-4 py-3 bg-bg-light-card border border-border-color rounded-lg text-text-dark focus:outline-none focus:border-primary-orange-light transition-colors"
+                      onChange={(e) => {
+                        setFormData({...formData, lastName: e.target.value});
+                        if (errors.lastName) setErrors({...errors, lastName: ''});
+                      }}
+                      className={`w-full px-4 py-3 bg-bg-light-card border rounded-lg text-text-dark focus:outline-none transition-colors ${
+                        errors.lastName ? 'border-red-500 focus:border-red-500' : 'border-border-color focus:border-primary-orange-light'
+                      }`}
                       placeholder="Doe"
                     />
+                    {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>}
                   </div>
                 </div>
 
@@ -79,10 +187,16 @@ export default function ContactPage() {
                       type="email"
                       required
                       value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      className="w-full px-4 py-3 bg-bg-light-card border border-border-color rounded-lg text-text-dark focus:outline-none focus:border-primary-orange-light transition-colors"
+                      onChange={(e) => {
+                        setFormData({...formData, email: e.target.value});
+                        if (errors.email) setErrors({...errors, email: ''});
+                      }}
+                      className={`w-full px-4 py-3 bg-bg-light-card border rounded-lg text-text-dark focus:outline-none transition-colors ${
+                        errors.email ? 'border-red-500 focus:border-red-500' : 'border-border-color focus:border-primary-orange-light'
+                      }`}
                       placeholder="john@company.com"
                     />
+                    {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                   </div>
                   <div>
                     <label className="block text-text-secondary text-sm mb-2">Phone *</label>
@@ -90,10 +204,16 @@ export default function ContactPage() {
                       type="tel"
                       required
                       value={formData.phone}
-                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                      className="w-full px-4 py-3 bg-bg-light-card border border-border-color rounded-lg text-text-dark focus:outline-none focus:border-primary-orange-light transition-colors"
+                      onChange={(e) => {
+                        setFormData({...formData, phone: e.target.value});
+                        if (errors.phone) setErrors({...errors, phone: ''});
+                      }}
+                      className={`w-full px-4 py-3 bg-bg-light-card border rounded-lg text-text-dark focus:outline-none transition-colors ${
+                        errors.phone ? 'border-red-500 focus:border-red-500' : 'border-border-color focus:border-primary-orange-light'
+                      }`}
                       placeholder="+62 812 3456 7890"
                     />
+                    {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
                   </div>
                 </div>
 
@@ -104,10 +224,16 @@ export default function ContactPage() {
                       type="text"
                       required
                       value={formData.company}
-                      onChange={(e) => setFormData({...formData, company: e.target.value})}
-                      className="w-full px-4 py-3 bg-bg-light-card border border-border-color rounded-lg text-text-dark focus:outline-none focus:border-primary-orange-light transition-colors"
+                      onChange={(e) => {
+                        setFormData({...formData, company: e.target.value});
+                        if (errors.company) setErrors({...errors, company: ''});
+                      }}
+                      className={`w-full px-4 py-3 bg-bg-light-card border rounded-lg text-text-dark focus:outline-none transition-colors ${
+                        errors.company ? 'border-red-500 focus:border-red-500' : 'border-border-color focus:border-primary-orange-light'
+                      }`}
                       placeholder="Your Company"
                     />
+                    {errors.company && <p className="text-red-500 text-xs mt-1">{errors.company}</p>}
                   </div>
                   <div>
                     <label className="block text-text-secondary text-sm mb-2">Job Title *</label>
@@ -115,10 +241,16 @@ export default function ContactPage() {
                       type="text"
                       required
                       value={formData.jobTitle}
-                      onChange={(e) => setFormData({...formData, jobTitle: e.target.value})}
-                      className="w-full px-4 py-3 bg-bg-light-card border border-border-color rounded-lg text-text-dark focus:outline-none focus:border-primary-orange-light transition-colors"
+                      onChange={(e) => {
+                        setFormData({...formData, jobTitle: e.target.value});
+                        if (errors.jobTitle) setErrors({...errors, jobTitle: ''});
+                      }}
+                      className={`w-full px-4 py-3 bg-bg-light-card border rounded-lg text-text-dark focus:outline-none transition-colors ${
+                        errors.jobTitle ? 'border-red-500 focus:border-red-500' : 'border-border-color focus:border-primary-orange-light'
+                      }`}
                       placeholder="CTO"
                     />
+                    {errors.jobTitle && <p className="text-red-500 text-xs mt-1">{errors.jobTitle}</p>}
                   </div>
                 </div>
 
@@ -127,15 +259,37 @@ export default function ContactPage() {
                   <textarea
                     required
                     value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    onChange={(e) => {
+                      setFormData({...formData, message: e.target.value});
+                      if (errors.message) setErrors({...errors, message: ''});
+                    }}
                     rows={5}
-                    className="w-full px-4 py-3 bg-bg-light-card border border-border-color rounded-lg text-text-dark focus:outline-none focus:border-primary-orange-light transition-colors resize-none"
+                    className={`w-full px-4 py-3 bg-bg-light-card border rounded-lg text-text-dark focus:outline-none transition-colors resize-none ${
+                      errors.message ? 'border-red-500 focus:border-red-500' : 'border-border-color focus:border-primary-orange-light'
+                    }`}
                     placeholder="Tell us about your project..."
                   />
+                  {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
                 </div>
 
-                <button type="submit" className="btn-primary w-full py-4 text-lg">
-                  Submit
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`btn-primary w-full py-4 text-lg ${
+                    isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+                  }`}
+                >
+                  {isSubmitting ? (
+                    <span className="flex items-center justify-center space-x-2">
+                      <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                      </svg>
+                      <span>Sending...</span>
+                    </span>
+                  ) : (
+                    'Submit'
+                  )}
                 </button>
               </form>
             </div>
@@ -165,7 +319,7 @@ export default function ContactPage() {
                       <svg className="w-5 h-5 text-primary-orange mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
-                      contact@easternstack.com
+                      sales@easternstack.com
                     </div>
                     <div className="flex items-center">
                       <svg className="w-5 h-5 text-primary-orange mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
