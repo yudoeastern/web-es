@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+  body { margin:0; font-family: Inter, Arial, sans-serif; }
+
+  :root {
+    --es-red: #E31E24;
+    --es-red-dark: #C4181E;
+    --es-dark: #1A1A1A;
+    --es-bg: #F9FAFB;
+    --es-border: #E5E7EB;
+  }
+
+  #chat-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    z-index: 9998;
+  }
+
+  #chat-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--es-red), var(--es-red-dark));
+    color: #fff;
+    font-size: 28px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(227, 30, 36, 0.4);
+    z-index: 9999;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #chat-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 32px rgba(227, 30, 36, 0.5);
+  }
+
+  #chat-widget {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 380px;
+    height: 580px;
+    max-height: calc(100vh - 120px);
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9999;
+    border: 1px solid var(--es-border);
+  }
+
+  #chat-header {
+    background: linear-gradient(135deg, var(--es-red), var(--es-red-dark));
+    color: white;
+    padding: 16px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #chat-header .title { font-weight: 700; font-size: 16px; }
+  #chat-header .subtitle { font-size: 12px; opacity: 0.9; margin-top: 2px; }
+  #chat-header span { cursor: pointer; font-size: 22px; transition: transform 0.2s; }
+  #chat-header span:hover { transform: scale(1.2); }
+
+  #chat-body {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    background: var(--es-bg);
+  }
+
+  .bubble {
+    max-width: 85%;
+    padding: 12px 16px;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+    animation: slideIn 0.3s ease;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .bot {
+    background: #fff;
+    border: 1px solid var(--es-border);
+    color: #111;
+    border-bottom-left-radius: 4px;
+  }
+
+  .user {
+    background: linear-gradient(135deg, var(--es-red), var(--es-red-dark));
+    color: #fff;
+    margin-left: auto;
+    border-bottom-right-radius: 4px;
+  }
+
+  #chat-input {
+    display: flex;
+    padding: 12px 16px;
+    border-top: 1px solid var(--es-border);
+    background: #fff;
+    gap: 8px;
+  }
+
+  #chat-input input {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: 24px;
+    border: 1px solid var(--es-border);
+    outline: none;
+    font-size: 14px;
+    transition: border-color 0.2s;
+  }
+
+  #chat-input input:focus {
+    border-color: var(--es-red);
+  }
+
+  #chat-input button {
+    padding: 12px 20px;
+    border-radius: 24px;
+    border: none;
+    background: linear-gradient(135deg, var(--es-red), var(--es-red-dark));
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  #chat-input button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(227, 30, 36, 0.3);
+  }
+
+  #chat-powered {
+    font-size: 11px;
+    text-align: center;
+    padding: 8px 0 12px;
+    background: #fff;
+    border-top: 1px solid var(--es-border);
+    color: #6b7280;
+  }
+
+  #chat-powered a {
+    color: var(--es-red);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  #chat-powered a:hover {
+    text-decoration: underline;
+  }
+
+  .typing::after {
+    content: "⠋";
+    animation: dots 1s infinite;
+  }
+
+  @keyframes dots {
+    0% { content:"⠋"; }
+    25% { content:"⠙"; }
+    50% { content:"⠹"; }
+    75% { content:"⠸"; }
+    100% { content:"⠋"; }
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 480px) {
+    #chat-toggle {
+      bottom: 16px;
+      right: 16px;
+      width: 56px;
+      height: 56px;
+      font-size: 24px;
+    }
+
+    #chat-widget {
+      bottom: 80px;
+      right: 16px;
+      left: 16px;
+      width: calc(100% - 32px);
+      height: calc(100vh - 120px);
+      max-height: none;
+      border-radius: 12px;
+    }
+
+    #chat-header {
+      padding: 14px 16px;
+    }
+
+    #chat-header .title {
+      font-size: 15px;
+    }
+
+    #chat-body {
+      padding: 12px;
+    }
+
+    .bubble {
+      max-width: 90%;
+      padding: 10px 14px;
+      font-size: 13px;
+    }
+
+    #chat-input {
+      padding: 10px 12px;
+    }
+
+    #chat-input input {
+      font-size: 13px;
+      padding: 10px 14px;
+    }
+
+    #chat-input button {
+      padding: 10px 16px;
+      font-size: 13px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div id="chat-overlay" onclick="closeChat()"></div>
+<button id="chat-toggle" onclick="openChat()">💬</button>
+
+<div id="chat-widget">
+  <div id="chat-header">
+    <div>
+      <div class="title">EasternStack</div>
+      <div class="subtitle">AI Customer Assistant</div>
+    </div>
+    <span onclick="closeChat()">×</span>
+  </div>
+
+  <div id="chat-body">
+    <div class="bubble bot">
+      <p><strong>Halo!</strong> 👋</p>
+      <p>Saya <strong>EasternStack Assistant</strong>.<br>
+      Ada yang bisa kami bantu terkait AI, Data, Cloud, atau Security?</p>
+    </div>
+  </div>
+
+  <div id="chat-input">
+    <input id="msg" placeholder="Tulis pertanyaan Anda..." />
+    <button onclick="send()">Kirim</button>
+  </div>
+
+  <div id="chat-powered">
+    Powered by <a href="https://easternstack.com" target="_blank">easternstack.com</a>
+  </div>
+</div>
+
+<script>
+const chat = document.getElementById("chat-widget");
+const body = document.getElementById("chat-body");
+const overlay = document.getElementById("chat-overlay");
+
+function openChat() {
+  chat.style.display = "flex";
+  overlay.style.display = "block";
+}
+
+function closeChat() {
+  chat.style.display = "none";
+  overlay.style.display = "none";
+}
+
+function addBubble(html, cls) {
+  const div = document.createElement("div");
+  div.className = bubble ${cls};
+  div.innerHTML = html;
+  body.appendChild(div);
+  body.scrollTop = body.scrollHeight;
+  return div;
+}
+
+function formatText(text) {
+  return text
+    .replace(/\\(.?)\\*/g, "<strong>$1</strong>")
+    .replace(/\n/g, "<br>");
+}
+
+async function send() {
+  const input = document.getElementById("msg");
+  const text = input.value.trim();
+  if (!text) return;
+
+  addBubble(text, "user");
+  input.value = "";
+
+  const typing = addBubble("EasternStack sedang mengetik<span class='typing'></span>", "bot");
+
+  try {
+    const res = await fetch("https://easternstack.trahlabs.my.id/v1/chat-messages", {
+      method: "POST",
+      headers: {
+        "Authorization": "Bearer app-iFQYhaXBySMNsYwL6svkxHba",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        inputs: {},
+        query: text,
+        response_mode: "streaming",
+        conversation_id: "",
+        user: "abc-123"
+      })
+    });
+
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+
+    let botBubble;
+    let buffer = "";
+
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) break;
+
+      decoder.decode(value).split("\n").forEach(line => {
+        if (!line.startsWith("data:")) return;
+        if (line.includes("[DONE]")) return;
+
+        try {
+          const j = JSON.parse(line.replace("data:", "").trim());
+          if (j.answer) {
+            if (!botBubble) {
+              typing.remove();
+              botBubble = addBubble("", "bot");
+            }
+            buffer += j.answer;
+            botBubble.innerHTML = formatText(buffer);
+          }
+        } catch {}
+      });
+    }
+  } catch (err) {
+    typing.remove();
+    addBubble("Terjadi kesalahan koneksi.", "bot");
+  }
+}
+</script>
+
+</body>
+</html>

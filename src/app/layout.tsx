@@ -4,6 +4,7 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import ChatWidget from "@/components/ChatWidget";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -13,6 +14,14 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "EasternStack - Enterprise AI",
   description: "Deploy production-grade AI agents across your enterprise. Automate complex workflows in days, not months.",
+  icons: {
+    icon: [
+      { url: '/favicon_io/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon_io/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: '/favicon_io/apple-touch-icon.png',
+    shortcut: '/favicon_io/favicon.ico',
+  },
 };
 
 export default function RootLayout({
@@ -22,6 +31,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon_io/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon_io/favicon-16x16.png" sizes="16x16" type="image/png" />
+        <link rel="icon" href="/favicon_io/favicon-32x32.png" sizes="32x32" type="image/png" />
+        <link rel="apple-touch-icon" href="/favicon_io/apple-touch-icon.png" />
+        <link rel="manifest" href="/favicon_io/site.webmanifest" />
+      </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <ScrollToTop />
         <Navigation />
@@ -29,6 +45,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <ChatWidget />
       </body>
     </html>
   );

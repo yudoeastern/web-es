@@ -1,107 +1,59 @@
 import Link from "next/link";
 
-const partnerLogos: Record<string, string> = {
-  "Alibaba Cloud": "/partner/Alibaba_Cloud_Logo.png",
-  "Huawei Cloud": "/partner/huawei.jpg",
-  "Tencent Cloud": "/partner/tencent.png",
-  "OnePro": "/partner/onepro.png",
-  "AhnLab": "/partner/ahnlab.jpg",
-  "TrueWatch": "/partner/true_watch_logo.svg",
-  "BytePlus": "/partner/onepro.png",
-  "MiiTel": "/partner/onepro.png",
+const webinarImages: Record<string, string> = {
+  "AI for Innovation - Navigating the AI Technology Landscape": "/events/AI for Innovation - Navigating the AI Technology Landscape.png",
+  "Visualize AI Workflows and Multi-Agent for Clarity & Collaboration": "/events/Visualize AI Workflows and Multi-Agent for Clarity & Collaboration.png",
+  "From Calls to Insight: Driving Growth with MiiTel & EasternStack": "/events/From Calls to Insight - Driving Growth with MiiTel & EasternStack.png",
+  "AI Assisted Cross-Domain Root Cause Analysis": "/events/AI Assisted Cross-Domain Root Cause Analysis.png",
+  "Improve Your Business Continuity Strategy using DR Solution with OnePro HyperBDR": "/events/Improve Your Business Continuity Strategy using DR Solution with OnePro HyperBDR.png",
 };
 
 export default function WebinarPage() {
   const webinars = [
     {
-      status: "upcoming",
+      status: "past",
       title: "AI for Innovation - Navigating the AI Technology Landscape",
-      date: "January 25, 2026",
+      date: "October 17, 2025",
       time: "14:00 - 15:30 WIB",
       location: "Online via Zoom",
       partner: "Alibaba Cloud",
       description: "Discover how to leverage AI technology for business innovation and stay competitive in the digital era.",
-      image: "🚀",
     },
     {
-      status: "upcoming",
+      status: "past",
       title: "Visualize AI Workflows and Multi-Agent for Clarity & Collaboration",
-      date: "February 8, 2026",
+      date: "October 8, 2025",
       time: "14:00 - 15:30 WIB",
       location: "Online via Zoom",
-      partner: "OnePro",
+      partner: "BytePlus",
       description: "Learn how to design and visualize complex AI workflows with multi-agent orchestration.",
-      image: "🔄",
     },
     {
-      status: "upcoming",
+      status: "past",
       title: "From Calls to Insight: Driving Growth with MiiTel & EasternStack",
-      date: "February 20, 2026",
+      date: "October 3, 2025",
       time: "14:00 - 15:30 WIB",
       location: "Online via Zoom",
       partner: "MiiTel",
       description: "Transform customer calls into actionable insights with AI-powered conversation intelligence.",
-      image: "📊",
     },
     {
       status: "past",
       title: "AI Assisted Cross-Domain Root Cause Analysis",
-      date: "December 25, 2025",
+      date: "September 25, 2025",
       time: "14:00 - 15:30 WIB",
       location: "Online via Zoom",
       partner: "TrueWatch",
       description: "Accelerate incident resolution with AI-powered cross-domain root cause analysis.",
-      image: "🔍",
     },
     {
       status: "past",
-      title: "Improve Your Business Continuity with OnePro HyperBDR",
-      date: "December 19, 2025",
+      title: "Improve Your Business Continuity Strategy using DR Solution with OnePro HyperBDR",
+      date: "September 19, 2025",
       time: "14:00 - 15:30 WIB",
       location: "Online via Zoom",
       partner: "OnePro",
       description: "Strengthen your business continuity strategy with advanced disaster recovery solutions.",
-      image: "🛡️",
-    },
-    {
-      status: "past",
-      title: "Enterprise AI: From Strategy to Implementation",
-      date: "December 10, 2025",
-      time: "14:00 - 15:30 WIB",
-      location: "Online via Zoom",
-      partner: "EasternStack",
-      description: "Learn how to plan and implement enterprise-grade Agentic AI solutions.",
-      image: "🎯",
-    },
-    {
-      status: "past",
-      title: "Intelligent Document Processing for Financial Services",
-      date: "November 28, 2025",
-      time: "14:00 - 15:30 WIB",
-      location: "Online via Zoom",
-      partner: "EasternStack",
-      description: "Automate document processing workflows in banking and financial institutions.",
-      image: "📄",
-    },
-    {
-      status: "past",
-      title: "Building Secure AI Systems for Enterprise",
-      date: "November 15, 2025",
-      time: "14:00 - 15:30 WIB",
-      location: "Online via Zoom",
-      partner: "EasternStack",
-      description: "Best practices for building secure, compliant AI systems for enterprise environments.",
-      image: "🔒",
-    },
-    {
-      status: "past",
-      title: "AI Copilots for HR: Transforming Talent Management",
-      date: "November 5, 2025",
-      time: "14:00 - 15:30 WIB",
-      location: "Online via Zoom",
-      partner: "EasternStack",
-      description: "Discover how AI copilots are revolutionizing HR operations and talent management.",
-      image: "👥",
     },
   ];
 
@@ -150,73 +102,79 @@ export default function WebinarPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {webinars.map((webinar, index) => (
-              <div key={index} className="card group">
-                {/* Status Badge */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                    webinar.status === "upcoming"
-                      ? "bg-primary-orange/20 text-primary-orange"
-                      : "bg-bg-light-card text-text-secondary border border-border-color"
-                  }`}>
-                    {webinar.status === "upcoming" ? "UPCOMING" : "PAST EVENT"}
-                  </span>
-                  <div className="text-2xl">{webinar.image}</div>
-                </div>
-
-                {/* Partner Logo */}
-                <div className="mb-4 h-12 flex items-center justify-center">
-                  <img 
-                    src={partnerLogos[webinar.partner] || "/partner/onepro.png"} 
-                    alt={webinar.partner} 
-                    className="h-10 w-auto object-contain" 
+              <div key={index} className="card group overflow-hidden p-0">
+                {/* Event Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={webinarImages[webinar.title] || "/events/AI for Innovation - Navigating the AI Technology Landscape.png"}
+                    alt={webinar.title}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                   />
-                </div>
-
-                {/* Title */}
-                <h3 className="text-lg font-semibold text-text-dark mb-4 line-clamp-2">
-                  {webinar.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-text-secondary text-sm mb-4 line-clamp-3">
-                  {webinar.description}
-                </p>
-
-                {/* Metadata */}
-                <div className="space-y-2 mb-6">
-                  <div className="flex items-center text-text-secondary text-sm">
-                    <svg className="w-4 h-4 text-primary-orange mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    {webinar.date}
-                  </div>
-                  <div className="flex items-center text-text-secondary text-sm">
-                    <svg className="w-4 h-4 text-primary-orange mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    {webinar.time}
-                  </div>
-                  <div className="flex items-center text-text-secondary text-sm">
-                    <svg className="w-4 h-4 text-primary-orange mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                    </svg>
-                    {webinar.location}
+                  {/* Status Badge Overlay */}
+                  <div className="absolute top-4 left-4">
+                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                      webinar.status === "upcoming"
+                        ? "bg-[#E31E24] text-white"
+                        : "bg-white/90 text-gray-700"
+                    }`}>
+                      {webinar.status === "upcoming" ? "UPCOMING" : "PAST EVENT"}
+                    </span>
                   </div>
                 </div>
 
-                {/* Action Button */}
-                {webinar.status === "upcoming" ? (
-                  <Link href="/contact" className="btn-primary w-full text-center block">
-                    Register Now
-                  </Link>
-                ) : (
-                  <Link href="#" className="text-primary-orange hover:text-primary-orange font-semibold transition-colors flex items-center">
-                    See More
-                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </Link>
-                )}
+                {/* Content */}
+                <div className="p-6">
+                  {/* Partner Logo */}
+                  <div className="mb-4 h-10 flex items-center">
+                    <span className="text-sm font-medium text-gray-600">Partner: {webinar.partner}</span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-lg font-semibold text-text-dark mb-4 line-clamp-2">
+                    {webinar.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-text-secondary text-sm mb-4 line-clamp-3">
+                    {webinar.description}
+                  </p>
+
+                  {/* Metadata */}
+                  <div className="space-y-2 mb-6">
+                    <div className="flex items-center text-text-secondary text-sm">
+                      <svg className="w-4 h-4 text-primary-orange mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      {webinar.date}
+                    </div>
+                    <div className="flex items-center text-text-secondary text-sm">
+                      <svg className="w-4 h-4 text-primary-orange mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      {webinar.time}
+                    </div>
+                    <div className="flex items-center text-text-secondary text-sm">
+                      <svg className="w-4 h-4 text-primary-orange mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                      </svg>
+                      {webinar.location}
+                    </div>
+                  </div>
+
+                  {/* Action Button */}
+                  {webinar.status === "upcoming" ? (
+                    <Link href="/contact" className="btn-primary w-full text-center block">
+                      Register Now
+                    </Link>
+                  ) : (
+                    <Link href="#" className="text-primary-orange hover:text-primary-orange font-semibold transition-colors flex items-center">
+                      See More
+                      <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </Link>
+                  )}
+                </div>
               </div>
             ))}
           </div>
