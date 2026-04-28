@@ -195,7 +195,7 @@ export default function AhnLabPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
+      {/* <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
         <div className="container-custom text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
             PROTECT YOUR ENTERPRISE
@@ -208,6 +208,21 @@ export default function AhnLabPage() {
           </Link>
         </div>
       </section>
+       */}
+
+      <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
+        <div className="container-custom text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            PROTECT YOUR ENTERPRISE
+          </h2>
+          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+            Deploy enterprise-grade cybersecurity with AhnLab's award-winning solutions.
+          </p>
+          <Link href="/contact" className="btn-primary bg-white text-[#E31E24] hover:bg-white">
+            Get Security Demo
+          </Link>
+        </div>
+      </section>        
     </div>
   );
 }

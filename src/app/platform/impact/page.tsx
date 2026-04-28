@@ -196,6 +196,20 @@ export default function ImpactPage() {
       </section>
 
       {/* CTA Section */}
+      {/* <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
+        <div className="container-custom text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            READY TO TRANSFORM YOUR ENTERPRISE?
+          </h2>
+          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+            Join industry leaders leveraging cloud and AI to achieve unprecedented operational efficiency and competitive advantage.
+          </p>
+          <Link href="/contact" className="btn-primary bg-white text-[#E31E24] hover:bg-white">
+            Start Your AI Journey
+          </Link>
+        </div>
+      </section> */}
+
       <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
         <div className="container-custom text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
@@ -208,7 +222,7 @@ export default function ImpactPage() {
             Start Your AI Journey
           </Link>
         </div>
-      </section>
+      </section>       
     </div>
   );
 }

@@ -295,7 +295,7 @@ export default function PlatformPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-primary-orange-dark to-bg-light">
+      {/* <section className="section-padding bg-gradient-to-br from-primary-orange-dark to-bg-light">
         <div className="container-custom text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
             READY TO SCALE YOUR AI INFRASTRUCTURE?
@@ -307,7 +307,21 @@ export default function PlatformPage() {
             Talk to Our Team
           </Link>
         </div>
-      </section>
+      </section> */}
+
+      <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
+        <div className="container-custom text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            READY TO SCALE YOUR AI INFRASTRUCTURE?
+          </h2>
+          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+            Build on a platform designed for enterprise AI at scale.
+          </p>
+          <Link href="/contact" className="btn-primary bg-white text-[#E31E24] hover:bg-white">
+            Book Consultation
+          </Link>
+        </div>
+      </section> 
     </div>
   );
 }

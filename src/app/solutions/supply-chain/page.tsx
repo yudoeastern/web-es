@@ -201,19 +201,33 @@ export default function SupplyChainPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-primary-orange-dark to-dark-bg">
+      {/* <section className="section-padding bg-gradient-to-br from-[#1A1A1A] via-[#2D1B1B] to-[#E31E24]">
         <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-[#1A1A1A] mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
             BUILD A RESILIENT SUPPLY CHAIN
           </h2>
-          <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
             Transform your supply chain with predictive AI and autonomous optimization.
           </p>
-          <Link href="/contact" className="btn-primary text-lg px-8 py-4">
+          <Link href="/contact" className="bg-white text-[#E31E24] hover:bg-gray-100 font-semibold py-4 px-8 rounded-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
             Book Consultation
           </Link>
         </div>
-      </section>
+      </section> */}
+
+      <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
+        <div className="container-custom text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            BUILD A RESILIENT SUPPLY CHAIN
+          </h2>
+          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+            Transform your supply chain with predictive AI and autonomous optimization.
+          </p>
+          <Link href="/contact" className="btn-primary bg-white text-[#E31E24] hover:bg-white">
+            Book Consultation
+          </Link>
+        </div>
+      </section>                 
     </div>
   );
 }

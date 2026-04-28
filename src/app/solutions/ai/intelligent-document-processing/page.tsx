@@ -313,7 +313,7 @@ export default function DocumentProcessingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-primary-orange-dark to-dark-bg">
+      {/* <section className="section-padding bg-gradient-to-br from-primary-orange-dark to-dark-bg">
         <div className="container-custom text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-text-white mb-6">
             TURN YOUR DOCUMENTS INTO STRUCTURED INTELLIGENCE
@@ -325,7 +325,21 @@ export default function DocumentProcessingPage() {
             Book Consultation
           </Link>
         </div>
-      </section>
+      </section> */}
+
+      <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
+        <div className="container-custom text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            TURN YOUR DOCUMENTS INTO STRUCTURED INTELLIGENCE
+          </h2>
+          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+            Enable faster, more accurate decision making across your organization.
+          </p>
+          <Link href="/contact" className="btn-primary bg-white text-[#E31E24] hover:bg-white">
+            Book Consultation
+          </Link>
+        </div>
+      </section>        
     </div>
   );
 }

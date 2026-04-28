@@ -110,16 +110,6 @@ export default function WebinarPage() {
                     alt={webinar.title}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                   />
-                  {/* Status Badge Overlay */}
-                  <div className="absolute top-4 left-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                      webinar.status === "upcoming"
-                        ? "bg-[#E31E24] text-white"
-                        : "bg-white/90 text-gray-700"
-                    }`}>
-                      {webinar.status === "upcoming" ? "UPCOMING" : "PAST EVENT"}
-                    </span>
-                  </div>
                 </div>
 
                 {/* Content */}
@@ -167,12 +157,20 @@ export default function WebinarPage() {
                       Register Now
                     </Link>
                   ) : (
-                    <Link href="#" className="text-primary-orange hover:text-primary-orange font-semibold transition-colors flex items-center">
-                      See More
-                      <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </Link>
+                    <>
+                      <Link href="#" className="text-primary-orange hover:text-primary-orange font-semibold transition-colors flex items-center">
+                        See More
+                        <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </Link>
+                      {/* Status Badge */}
+                      <div className="mt-4">
+                        <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#E31E24]/10 text-[#E31E24] border border-[#E31E24]/20">
+                          PAST EVENT
+                        </span>
+                      </div>
+                    </>
                   )}
                 </div>
               </div>
@@ -182,7 +180,7 @@ export default function WebinarPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-primary-orange-dark to-dark-bg">
+      {/* <section className="section-padding bg-gradient-to-br from-primary-orange-dark to-dark-bg">
         <div className="container-custom text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-text-dark mb-6">
             DON'T MISS OUR NEXT EVENTS & WEBINARS!
@@ -194,7 +192,21 @@ export default function WebinarPage() {
             Register Now
           </Link>
         </div>
-      </section>
+      </section> */}
+
+      <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
+        <div className="container-custom text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            DON'T MISS OUR NEXT EVENTS & WEBINARS!
+          </h2>
+          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+            Register now to stay updated with the latest AI insights and industry trends.
+          </p>
+          <Link href="/contact" className="btn-primary bg-white text-[#E31E24] hover:bg-white">
+            Book Consultation
+          </Link>
+        </div>
+      </section> 
     </div>
   );
 }
