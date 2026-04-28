@@ -228,7 +228,7 @@ export default function OCRSolutionsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-primary-orange-dark to-dark-bg">
+      {/* <section className="section-padding bg-gradient-to-br from-primary-orange-dark to-dark-bg">
         <div className="container-custom text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-[#1A1A1A] mb-6">
             AUTOMATE YOUR DOCUMENT PROCESSING
@@ -240,7 +240,21 @@ export default function OCRSolutionsPage() {
             Book Consultation
           </Link>
         </div>
+      </section> */}
+      <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
+        <div className="container-custom text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            AUTOMATE YOUR DOCUMENT PROCESSING
+          </h2>
+          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+            Transform unstructured documents into actionable data with AI-powered OCR.
+          </p>
+          <Link href="/contact" className="btn-primary bg-white text-[#E31E24] hover:bg-white">
+            Book Consultation
+          </Link>
+        </div>
       </section>
+
     </div>
   );
 }

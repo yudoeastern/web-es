@@ -200,7 +200,7 @@ export default function RetailEcommercePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
+      {/* <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
         <div className="container-custom text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
             READY TO TRANSFORM YOUR RETAIL BUSINESS?
@@ -212,7 +212,20 @@ export default function RetailEcommercePage() {
             Talk to Our Experts
           </Link>
         </div>
-      </section>
+      </section> */}
+      <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
+        <div className="container-custom text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            READY TO TRANSFORM YOUR RETAIL BUSINESS?
+          </h2>
+          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+            Let's discuss how AI can enhance your customer experience and operations.
+          </p>
+          <Link href="/contact" className="btn-primary bg-white text-[#E31E24] hover:bg-white">
+            Book Consultation
+          </Link>
+        </div>
+      </section>                 
     </div>
   );
 }
