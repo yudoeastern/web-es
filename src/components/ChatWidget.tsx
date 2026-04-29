@@ -634,35 +634,44 @@ export default function ChatWidget() {
 
       // Check for multiple topics in one question
       const lowerText = text.toLowerCase();
+      
+      // Detect if question is complex (should go to backend)
+      const isComplex = lowerText.includes("apa") || lowerText.includes("bagaimana") || 
+          lowerText.includes("solusi") || lowerText.includes("service") ||
+          lowerText.includes("produk") || lowerText.includes("recommend") ||
+          lowerText.includes("rekomendasi") || lowerText.includes("enaknya") ||
+          lowerText.includes("sebaiknya") || lowerText.includes("data pipeline") ||
+          lowerText.includes("gunakan") || lowerText.includes("pakai");
+      
       const hasAgentic = lowerText.includes("apa itu agentic") || lowerText.includes("apa itu ai") || 
           lowerText.includes("agentic ai") || lowerText.includes("definisi ai") ||
-          lowerText.includes("pengertian agentic") || lowerText.includes("apa itu agentic ai") ||
-          lowerText.includes("solusi untuk agentic") || lowerText.includes("ada solusi agentic") ||
-          lowerText.includes("solusi agentic ai") || lowerText.includes("butuh solusi agentic");
+          lowerText.includes("pengertian agentic") || lowerText.includes("apa itu agentic ai");
       
       const hasHarga = lowerText.includes("harga") || lowerText.includes("pricing") ||
-          lowerText.includes("biaya") || lowerText.includes("cost") ||
-          lowerText.includes("berapa harga") || lowerText.includes("harga implementasi") ||
-          lowerText.includes("biaya implementasi") || lowerText.includes("harga solusi") ||
-          lowerText.includes("biaya solusi") || lowerText.includes("paket harga") ||
-          lowerText.includes("berapa biaya");
+          lowerText.includes("biaya") || lowerText.includes("cost");
       
       const hasImplementasi = lowerText.includes("berapa lama implementasi") || lowerText.includes("durasi implementasi") || 
           lowerText.includes("waktu implementasi") || lowerText.includes("lama deploy") ||
-          lowerText.includes("berapa lama pembuatan") || lowerText.includes("lama pembuatan") ||
-          lowerText.includes("berapa lama pengerjaan") || lowerText.includes("durasi pengerjaan") ||
-          lowerText.includes("berapa lama membuat") || lowerText.includes("lama membuat") ||
-          lowerText.includes("timeline implementasi") || lowerText.includes("berapa lama");
+          lowerText.includes("berapa lama pembuatan") || lowerText.includes("lama pembuatan");
 
-      // If multiple topics detected, send to backend instead
-      const topicCount = [hasAgentic, hasHarga, hasImplementasi].filter(Boolean).length;
-      if (topicCount > 1) {
-        // Multiple topics - let backend handle it
+      const hasPartner = lowerText.includes("partner") || lowerText.includes("mitra") || 
+          lowerText.includes("kerjasama") || lowerText.includes("teknologi partner");
+      
+      const hasDemo = lowerText.includes("demo") || lowerText.includes("demonstrasi");
+      
+      const hasSales = lowerText.includes("hubungi sales") || lowerText.includes("tim sales") ||
+          lowerText.includes("contact sales") || lowerText.includes("kontak sales");
+
+      // Count topics
+      const topicCount = [hasAgentic, hasHarga, hasImplementasi, hasPartner, hasDemo, hasSales].filter(Boolean).length;
+      
+      // If complex question OR multiple topics OR not matching simple FAQ → send to backend
+      if (isComplex || topicCount > 1 || (!hasAgentic && !hasHarga && !hasImplementasi && !hasPartner && !hasDemo && !hasSales)) {
         (window as any).sendToBackend(text);
         return;
       }
       
-      // Single topic - use custom responses
+      // Single topic FAQ - use custom responses
       
       // Custom responses for common sales/contact questions
       if (lowerText.includes("hubungi sales") || lowerText.includes("tim sales") ||
