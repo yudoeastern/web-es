@@ -68,26 +68,55 @@ export default function ChatWidget() {
       #chat-header {
         background: linear-gradient(135deg, var(--es-red), var(--es-red-dark));
         color: white;
-        padding: 16px 18px;
+        padding: 14px 18px;
+        padding-top: max(14px, env(safe-area-inset-top));
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 12px;
+        flex-shrink: 0;
+      }
+
+      #chat-header .logo-wrapper {
+        position: relative;
+        flex-shrink: 0;
       }
 
       #chat-header .logo {
-        width: 32px;
-        height: 32px;
+        width: 36px;
+        height: 36px;
         object-fit: contain;
+        border-radius: 50%;
+        background: white;
+        padding: 4px;
+      }
+
+      #chat-header .online-status {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        width: 12px;
+        height: 12px;
+        background: #22c55e;
+        border: 2px solid var(--es-red);
+        border-radius: 50%;
+        box-shadow: 0 0 6px rgba(34, 197, 94, 0.6);
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.7; transform: scale(1.1); }
       }
 
       #chat-header .title-container {
         flex: 1;
+        min-width: 0;
       }
 
-      #chat-header .title { font-weight: 700; font-size: 16px; }
-      #chat-header .subtitle { font-size: 12px; opacity: 0.9; margin-top: 2px; }
-      #chat-header span { cursor: pointer; font-size: 22px; transition: transform 0.2s; }
+      #chat-header .title { font-weight: 700; font-size: 15px; line-height: 1.2; }
+      #chat-header .subtitle { font-size: 11px; opacity: 0.9; margin-top: 2px; line-height: 1.2; }
+      #chat-header span { cursor: pointer; font-size: 22px; transition: transform 0.2s; flex-shrink: 0; }
       #chat-header span:hover { transform: scale(1.2); }
 
       #chat-body {
@@ -275,27 +304,38 @@ export default function ChatWidget() {
         }
 
         #chat-widget {
-          bottom: 80px;
+          bottom: 70px;
           right: 16px;
           left: 16px;
           width: calc(100% - 32px);
-          height: calc(100vh - 120px);
-          max-height: none;
+          height: calc(100vh - 140px);
+          max-height: 500px;
           border-radius: 12px;
         }
 
         #chat-header {
-          padding: 14px 16px;
+          padding: 12px 16px;
+          padding-top: max(12px, env(safe-area-inset-top));
           gap: 10px;
         }
 
         #chat-header .logo {
-          width: 28px;
-          height: 28px;
+          width: 32px;
+          height: 32px;
+        }
+
+        #chat-header .online-status {
+          width: 10px;
+          height: 10px;
+          border-width: 2px;
         }
 
         #chat-header .title {
           font-size: 14px;
+        }
+
+        #chat-header .subtitle {
+          font-size: 10px;
         }
 
         #chat-body {
@@ -332,7 +372,10 @@ export default function ChatWidget() {
       
       <div id="chat-widget">
         <div id="chat-header">
-          <img src="/favicon_io/apple-touch-icon.png" alt="EasternStack" class="logo" />
+          <div class="logo-wrapper">
+            <img src="/favicon_io/apple-touch-icon.png" alt="EasternStack" class="logo" />
+            <div class="online-status"></div>
+          </div>
           <div class="title-container">
             <div class="title">EasternStack</div>
             <div class="subtitle">AI Customer Assistant</div>
