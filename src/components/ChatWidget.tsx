@@ -188,31 +188,38 @@ export default function ChatWidget() {
         display: inline-block;
         padding: 6px 12px;
         margin: 3px;
-        background: linear-gradient(135deg, var(--es-red), var(--es-red-dark));
-        color: white;
+        background: rgba(227, 30, 36, 0.1);
+        color: var(--es-red);
         border-radius: 16px;
         font-size: 11px;
         cursor: pointer;
         transition: all 0.2s;
-        border: none;
+        border: 1px solid rgba(227, 30, 36, 0.3);
         font-weight: 500;
         white-space: nowrap;
       }
 
       .suggestion-chip:hover {
         transform: translateY(-1px);
-        box-shadow: 0 3px 10px rgba(227, 30, 36, 0.4);
-        background: linear-gradient(135deg, var(--es-red-dark), #A0141A);
+        box-shadow: 0 3px 10px rgba(227, 30, 36, 0.2);
+        background: rgba(227, 30, 36, 0.2);
+        border-color: var(--es-red);
       }
 
       #suggestions-container {
-        padding: 12px 16px;
+        padding: 8px 12px;
         background: #f9fafb;
         border-top: 1px solid var(--es-border);
         display: none;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 4px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 6px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      #suggestions-container::-webkit-scrollbar {
+        display: none;
       }
 
       #suggestions-container.visible {
@@ -220,14 +227,20 @@ export default function ChatWidget() {
       }
 
       #followup-suggestions {
-        padding: 12px 16px;
+        padding: 8px 12px;
         background: linear-gradient(180deg, #fff 0%, #f9fafb 100%);
         border-top: 1px solid var(--es-border);
         display: none;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-wrap: nowrap;
+        overflow-x: auto;
         gap: 6px;
         animation: slideUp 0.3s ease;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      #followup-suggestions::-webkit-scrollbar {
+        display: none;
       }
 
       #followup-suggestions.visible {
@@ -340,10 +353,6 @@ export default function ChatWidget() {
         <div id="suggestions-container" class="visible">
           <button class="suggestion-chip" onclick="useSuggestion('Apa itu Agentic AI?')">Apa itu Agentic AI?</button>
           <button class="suggestion-chip" onclick="useSuggestion('Solusi AI apa saja yang tersedia?')">Solusi AI</button>
-          <button class="suggestion-chip" onclick="useSuggestion('EasternStack berpartner dengan siapa saja?')">Technology Partners</button>
-          <button class="suggestion-chip" onclick="useSuggestion('Bagaimana cara menghubungi Sales?')">Hubungi Sales</button>
-          <button class="suggestion-chip" onclick="useSuggestion('Berapa lama implementasi AI?')">Implementasi</button>
-          <button class="suggestion-chip" onclick="useSuggestion('Bisa request demo?')">Request Demo</button>
         </div>
 
         <div id="chat-input">
@@ -440,10 +449,62 @@ export default function ChatWidget() {
       }
     };
 
-    (window as any).showFollowUpSuggestions = function(topic: string) {
+    // Streaming text effect for custom responses
+    (window as any).streamResponse = function(htmlContent: string, topic: string, delay: number = 10) {
+      const typing = (window as any).addBubble("EasternStack sedang mengetik<span class='typing'></span>", "bot");
+      
+      // Create empty bot bubble
+      setTimeout(() => {
+        typing.remove();
+        const botBubble = (window as any).addBubble("", "bot");
+        
+        // Stream the HTML content character by character
+        let i = 0;
+        const streamInterval = setInterval(() => {
+          if (i < htmlContent.length) {
+            // Add chunks of characters for faster streaming
+            const chunk = htmlContent.substring(i, i + 3);
+            botBubble.innerHTML = (window as any).formatText(htmlContent.substring(0, i + 3));
+            i += 3;
+            
+            // Auto scroll to bottom
+            const body = document.getElementById("chat-body");
+            if (body) {
+              body.scrollTop = body.scrollHeight;
+            }
+          } else {
+            clearInterval(streamInterval);
+            // Show suggestions after streaming complete
+            (window as any).showFollowUpSuggestions(topic);
+          }
+        }, delay);
+      }, 500);
+    };
+
+    (window as any).showFollowUpSuggestions = function(topic: string, fromDify?: string[]) {
       const container = document.getElementById("followup-suggestions");
       if (!container) return;
 
+      // If Dify provided suggestions, use them (prioritize Dify)
+      if (fromDify && fromDify.length > 0) {
+        // Take max 2 from Dify
+        const selectedSuggestions = fromDify.slice(0, 2);
+        
+        container.innerHTML = selectedSuggestions
+          .map(q => `<button class="suggestion-chip" onclick="useSuggestion('${q.replace(/'/g, "\\'")}')">${q}</button>`)
+          .join("");
+
+        container.classList.add("visible");
+        
+        if (body) {
+          setTimeout(() => {
+            body.scrollTop = body.scrollHeight;
+          }, 100);
+        }
+        return;
+      }
+
+      // Otherwise use custom suggestions
       const suggestions: Record<string, string[]> = {
         "agentic": [
           "Bagaimana cara implementasi Agentic AI?",
@@ -499,8 +560,8 @@ export default function ChatWidget() {
 
       let selectedSuggestions = suggestions[topic] || suggestions["default"];
       
-      // Shuffle and pick 3
-      selectedSuggestions = selectedSuggestions.sort(() => 0.5 - Math.random()).slice(0, 3);
+      // Shuffle and pick 2 (instead of 3)
+      selectedSuggestions = selectedSuggestions.sort(() => 0.5 - Math.random()).slice(0, 2);
 
       container.innerHTML = selectedSuggestions
         .map(q => `<button class="suggestion-chip" onclick="useSuggestion('${q.replace(/'/g, "\\'")}')">${q}</button>`)
@@ -565,20 +626,14 @@ export default function ChatWidget() {
           lowerText.includes("contact sales") || lowerText.includes("kontak sales") ||
           lowerText.includes("berbicara dengan sales") || lowerText.includes("bicara sales")) {
 
-        const typing = (window as any).addBubble("EasternStack sedang mengetik<span class='typing'></span>", "bot");
-        setTimeout(() => {
-          typing.remove();
-          (window as any).addBubble(
-            "<strong>Hubungi Tim Sales EasternStack</strong><br><br>" +
-            "Untuk terhubung dengan tim Sales, Anda dapat:<br><br>" +
-            "📧 <strong>Email:</strong> sales&#64;easternstack.com<br>" +
-            "📱 <strong>WhatsApp:</strong> Hubungi kami melalui tombol chat ini<br>" +
-            "🌐 <strong>Website:</strong> easternstack.com<br><br>" +
-            "Atau kunjungi halaman <a href='/contact' style='color: var(--es-red); font-weight: 600;'>Kontak</a> untuk mengirim pesan langsung.",
-            "bot"
-          );
-          (window as any).showFollowUpSuggestions("sales");
-        }, 800);
+        const content = "<strong>Hubungi Tim Sales EasternStack</strong><br><br>" +
+          "Untuk terhubung dengan tim Sales, Anda dapat:<br><br>" +
+          "📧 <strong>Email:</strong> sales&#64;easternstack.com<br>" +
+          "📱 <strong>WhatsApp:</strong> Hubungi kami melalui tombol chat ini<br>" +
+          "🌐 <strong>Website:</strong> easternstack.com<br><br>" +
+          "Atau kunjungi halaman <a href='/contact' style='color: var(--es-red); font-weight: 600;'>Kontak</a> untuk mengirim pesan langsung.";
+        
+        (window as any).streamResponse(content, "sales");
         return;
       }
 
@@ -590,37 +645,25 @@ export default function ChatWidget() {
           lowerText.includes("biaya solusi") || lowerText.includes("paket harga") ||
           lowerText.includes("berapa biaya")) {
 
-        const typing = (window as any).addBubble("EasternStack sedang mengetik<span class='typing'></span>", "bot");
-        setTimeout(() => {
-          typing.remove();
-          (window as any).addBubble(
-            "<strong>Informasi Pricing</strong><br><br>" +
-            "Solusi EasternStack disesuaikan dengan kebutuhan bisnis Anda. Untuk informasi pricing yang akurat, tim Sales kami akan membantu Anda berdasarkan:<br><br>" +
-            "• Skala implementasi<br>" +
-            "• Fitur yang dibutuhkan<br>" +
-            "• Integrasi sistem<br><br>" +
-            "Silakan hubungi tim Sales kami untuk konsultasi gratis!",
-            "bot"
-          );
-          (window as any).showFollowUpSuggestions("harga");
-        }, 800);
+        const content = "<strong>Informasi Pricing</strong><br><br>" +
+          "Solusi EasternStack disesuaikan dengan kebutuhan bisnis Anda. Untuk informasi pricing yang akurat, tim Sales kami akan membantu Anda berdasarkan:<br><br>" +
+          "• Skala implementasi<br>" +
+          "• Fitur yang dibutuhkan<br>" +
+          "• Integrasi sistem<br><br>" +
+          "Silakan hubungi tim Sales kami untuk konsultasi gratis!";
+        
+        (window as any).streamResponse(content, "harga");
         return;
       }
 
       // Custom response for demo questions
       if (lowerText.includes("demo") || lowerText.includes("demonstrasi")) {
-        const typing = (window as any).addBubble("EasternStack sedang mengetik<span class='typing'></span>", "bot");
-        setTimeout(() => {
-          typing.remove();
-          (window as any).addBubble(
-            "<strong>Request Demo</strong><br><br>" +
-            "Kami dengan senang hati akan mendemonstrasikan solusi EasternStack untuk bisnis Anda!<br><br>" +
-            "📅 <strong>Jadwalkan Demo:</strong> Kunjungi halaman <a href='/contact' style='color: var(--es-red); font-weight: 600;'>Kontak</a> dan pilih opsi 'Request Demo'<br><br>" +
-            "Tim kami akan menghubungi Anda untuk mengatur sesi demo sesuai jadwal Anda.",
-            "bot"
-          );
-          (window as any).showFollowUpSuggestions("demo");
-        }, 800);
+        const content = "<strong>Request Demo</strong><br><br>" +
+          "Kami dengan senang hati akan mendemonstrasikan solusi EasternStack untuk bisnis Anda!<br><br>" +
+          "📅 <strong>Jadwalkan Demo:</strong> Kunjungi halaman <a href='/contact' style='color: var(--es-red); font-weight: 600;'>Kontak</a> dan pilih opsi 'Request Demo'<br><br>" +
+          "Tim kami akan menghubungi Anda untuk mengatur sesi demo sesuai jadwal Anda.";
+        
+        (window as any).streamResponse(content, "demo");
         return;
       }
 
@@ -628,26 +671,20 @@ export default function ChatWidget() {
       if (lowerText.includes("partner") || lowerText.includes("mitra") || lowerText.includes("kerjasama") ||
           lowerText.includes("teknologi partner") || lowerText.includes("bermitra")) {
 
-        const typing = (window as any).addBubble("EasternStack sedang mengetik<span class='typing'></span>", "bot");
-        setTimeout(() => {
-          typing.remove();
-          (window as any).addBubble(
-            "<strong>Technology Partners EasternStack</strong><br><br>" +
-            "EasternStack bermitra dengan penyedia teknologi global terkemuka untuk menghadirkan solusi terbaik:<br><br>" +
-            "☁️ <strong>Cloud Providers:</strong><br>" +
-            "• Alibaba Cloud<br>" +
-            "• Huawei Cloud<br>" +
-            "• Tencent Cloud<br><br>" +
-            "🔒 <strong>Security Partners:</strong><br>" +
-            "• AhnLab - Enterprise Security Solutions<br>" +
-            "• TrueWatch - Security Monitoring<br><br>" +
-            "⚙️ <strong>Infrastructure:</strong><br>" +
-            "• OnePro<br><br>" +
-            "Ingin tahu lebih lanjut? <a href='/platform' style='color: var(--es-red); font-weight: 600;'>Lihat Platform</a> atau <a href='/contact' style='color: var(--es-red); font-weight: 600;'>Hubungi Kami</a>.",
-            "bot"
-          );
-          (window as any).showFollowUpSuggestions("partner");
-        }, 800);
+        const content = "<strong>Technology Partners EasternStack</strong><br><br>" +
+          "EasternStack bermitra dengan penyedia teknologi global terkemuka untuk menghadirkan solusi terbaik:<br><br>" +
+          "☁️ <strong>Cloud Providers:</strong><br>" +
+          "• Alibaba Cloud<br>" +
+          "• Huawei Cloud<br>" +
+          "• Tencent Cloud<br><br>" +
+          "🔒 <strong>Security Partners:</strong><br>" +
+          "• AhnLab - Enterprise Security Solutions<br>" +
+          "• TrueWatch - Security Monitoring<br><br>" +
+          "⚙️ <strong>Infrastructure:</strong><br>" +
+          "• OnePro<br><br>" +
+          "Ingin tahu lebih lanjut? <a href='/platform' style='color: var(--es-red); font-weight: 600;'>Lihat Platform</a> atau <a href='/contact' style='color: var(--es-red); font-weight: 600;'>Hubungi Kami</a>.";
+        
+        (window as any).streamResponse(content, "partner");
         return;
       }
 
@@ -658,22 +695,16 @@ export default function ChatWidget() {
           lowerText.includes("solusi untuk agentic") || lowerText.includes("ada solusi agentic") ||
           lowerText.includes("solusi agentic ai") || lowerText.includes("butuh solusi agentic")) {
         
-        const typing = (window as any).addBubble("EasternStack sedang mengetik<span class='typing'></span>", "bot");
-        setTimeout(() => {
-          typing.remove();
-          (window as any).addBubble(
-            "<strong>Apa itu Agentic AI?</strong><br><br>" +
-            "<strong>Agentic AI</strong> adalah sistem AI cerdas yang dapat:<br><br>" +
-            "✅ <strong>Memahami konteks</strong> bisnis dan intent user<br>" +
-            "✅ <strong>Membuat keputusan</strong> secara mandiri<br>" +
-            "✅ <strong>Menjalankan tugas</strong> di berbagai sistem (CRM, ERP, dll)<br>" +
-            "✅ <strong>Belajar dan beradaptasi</strong> dengan kondisi baru<br><br>" +
-            "Berbeda dengan chatbot tradisional yang hanya merespon prompt, Agentic AI dapat <strong>bertindak secara otonom</strong> untuk menyelesaikan workflow bisnis yang kompleks.<br><br>" +
-            "📚 <a href='/solutions/ai' style='color: var(--es-red); font-weight: 600;'>Pelajari lebih lanjut tentang Solusi AI</a>",
-            "bot"
-          );
-          (window as any).showFollowUpSuggestions("agentic");
-        }, 800);
+        const content = "<strong>Apa itu Agentic AI?</strong><br><br>" +
+          "<strong>Agentic AI</strong> adalah sistem AI cerdas yang dapat:<br><br>" +
+          "✅ <strong>Memahami konteks</strong> bisnis dan intent user<br>" +
+          "✅ <strong>Membuat keputusan</strong> secara mandiri<br>" +
+          "✅ <strong>Menjalankan tugas</strong> di berbagai sistem (CRM, ERP, dll)<br>" +
+          "✅ <strong>Belajar dan beradaptasi</strong> dengan kondisi baru<br><br>" +
+          "Berbeda dengan chatbot tradisional yang hanya merespon prompt, Agentic AI dapat <strong>bertindak secara otonom</strong> untuk menyelesaikan workflow bisnis yang kompleks.<br><br>" +
+          "📚 <a href='/solutions/ai' style='color: var(--es-red); font-weight: 600;'>Pelajari lebih lanjut tentang Solusi AI</a>";
+        
+        (window as any).streamResponse(content, "agentic");
         return;
       }
 
@@ -681,25 +712,19 @@ export default function ChatWidget() {
       if (lowerText.includes("solusi ai") || lowerText.includes("produk ai") || 
           lowerText.includes("layanan ai") || lowerText.includes("apa saja solusi")) {
         
-        const typing = (window as any).addBubble("EasternStack sedang mengetik<span class='typing'></span>", "bot");
-        setTimeout(() => {
-          typing.remove();
-          (window as any).addBubble(
-            "<strong>Solusi AI EasternStack</strong><br><br>" +
-            "EasternStack menawarkan 4 solusi AI utama:<br><br>" +
-            "🤖 <strong>1. Agentic AI Assistant</strong><br>" +
-            "AI asisten yang dapat berinteraksi, reasoning, dan menjalankan workflow bisnis.<br><br>" +
-            "📄 <strong>2. Intelligent Document Processing</strong><br>" +
-            "AI untuk ekstraksi dan analisis dokumen otomatis (kontrak, invoice, dll).<br><br>" +
-            "🏗️ <strong>3. AI Agent Builder</strong><br>" +
-            "Platform untuk mendesain dan mengorkestrasi multiple AI agents.<br><br>" +
-            "👥 <strong>4. Enterprise Copilot Suite</strong><br>" +
-            "AI copilots untuk HR, Legal, Operations, dan tim bisnis lainnya.<br><br>" +
-            "🔗 <a href='/solutions/ai' style='color: var(--es-red); font-weight: 600;'>Lihat Semua Solusi AI</a>",
-            "bot"
-          );
-          (window as any).showFollowUpSuggestions("solusi");
-        }, 800);
+        const content = "<strong>Solusi AI EasternStack</strong><br><br>" +
+          "EasternStack menawarkan 4 solusi AI utama:<br><br>" +
+          "🤖 <strong>1. Agentic AI Assistant</strong><br>" +
+          "AI asisten yang dapat berinteraksi, reasoning, dan menjalankan workflow bisnis.<br><br>" +
+          "📄 <strong>2. Intelligent Document Processing</strong><br>" +
+          "AI untuk ekstraksi dan analisis dokumen otomatis (kontrak, invoice, dll).<br><br>" +
+          "🏗️ <strong>3. AI Agent Builder</strong><br>" +
+          "Platform untuk mendesain dan mengorkestrasi multiple AI agents.<br><br>" +
+          "👥 <strong>4. Enterprise Copilot Suite</strong><br>" +
+          "AI copilots untuk HR, Legal, Operations, dan tim bisnis lainnya.<br><br>" +
+          "🔗 <a href='/solutions/ai' style='color: var(--es-red); font-weight: 600;'>Lihat Semua Solusi AI</a>";
+        
+        (window as any).streamResponse(content, "solusi");
         return;
       }
 
@@ -711,24 +736,18 @@ export default function ChatWidget() {
           lowerText.includes("berapa lama membuat") || lowerText.includes("lama membuat") ||
           lowerText.includes("timeline implementasi") || lowerText.includes("berapa lama")) {
         
-        const typing = (window as any).addBubble("EasternStack sedang mengetik<span class='typing'></span>", "bot");
-        setTimeout(() => {
-          typing.remove();
-          (window as any).addBubble(
-            "<strong>Durasi Implementasi AI</strong><br><br>" +
-            "Implementasi AI di EasternStack sangat cepat berkat framework yang sudah proven:<br><br>" +
-            "⚡ <strong>Quick Win:</strong> 3-7 hari untuk use case sederhana<br>" +
-            "🚀 <strong>Standard Implementation:</strong> 2-4 minggu untuk integrasi medium<br>" +
-            "🏢 <strong>Enterprise Scale:</strong> 1-3 bulan untuk deployment kompleks<br><br>" +
-            "Faktor yang mempengaruhi:<br>" +
-            "• Kompleksitas integrasi sistem<br>" +
-            "• Ketersediaan data dan akses<br>" +
-            "• Requirement compliance & security<br><br>" +
-            "💬 <a href='/contact' style='color: var(--es-red); font-weight: 600;'>Konsultasi gratis</a> untuk estimasi lebih akurat.",
-            "bot"
-          );
-          (window as any).showFollowUpSuggestions("implementasi");
-        }, 800);
+        const content = "<strong>Durasi Implementasi AI</strong><br><br>" +
+          "Implementasi AI di EasternStack sangat cepat berkat framework yang sudah proven:<br><br>" +
+          "⚡ <strong>Quick Win:</strong> 3-7 hari untuk use case sederhana<br>" +
+          "🚀 <strong>Standard Implementation:</strong> 2-4 minggu untuk integrasi medium<br>" +
+          "🏢 <strong>Enterprise Scale:</strong> 1-3 bulan untuk deployment kompleks<br><br>" +
+          "Faktor yang mempengaruhi:<br>" +
+          "• Kompleksitas integrasi sistem<br>" +
+          "• Ketersediaan data dan akses<br>" +
+          "• Requirement compliance & security<br><br>" +
+          "💬 <a href='/contact' style='color: var(--es-red); font-weight: 600;'>Konsultasi gratis</a> untuk estimasi lebih akurat.";
+        
+        (window as any).streamResponse(content, "implementasi");
         return;
       }
 
@@ -762,6 +781,7 @@ export default function ChatWidget() {
 
         let botBubble: HTMLElement | null = null;
         let buffer = "";
+        let suggestedQuestions: string[] = [];
 
         while (true) {
           const { value, done } = await reader.read();
@@ -773,6 +793,8 @@ export default function ChatWidget() {
 
             try {
               const j = JSON.parse(line.replace("data:", "").trim());
+              
+              // Parse answer
               if (j.answer) {
                 if (!botBubble) {
                   typing.remove();
@@ -781,9 +803,46 @@ export default function ChatWidget() {
                 buffer += j.answer;
                 if (botBubble) botBubble.innerHTML = (window as any).formatText(buffer);
               }
+              
+              // Parse suggested questions from Dify (if available)
+              if (j.suggested_questions && Array.isArray(j.suggested_questions)) {
+                suggestedQuestions = j.suggested_questions.map((q: any) => 
+                  typeof q === 'string' ? q : q.text || q.question || ''
+                ).filter((q: string) => q.length > 0);
+              }
+              
+              // Also check metadata.suggested_questions
+              if (j.metadata?.suggested_questions && Array.isArray(j.metadata.suggested_questions)) {
+                suggestedQuestions = j.metadata.suggested_questions.map((q: any) => 
+                  typeof q === 'string' ? q : q.text || q.question || ''
+                ).filter((q: string) => q.length > 0);
+              }
             } catch {}
           });
         }
+
+        // Show follow-up suggestions after response complete
+        if (suggestedQuestions.length > 0) {
+          // Use Dify suggestions
+          (window as any).showFollowUpSuggestions("default", suggestedQuestions);
+        } else {
+          // Detect topic and use custom suggestions
+          const lowerQuery = query.toLowerCase();
+          let topic = "default";
+          
+          if (lowerQuery.includes("agentic") || lowerQuery.includes("ai")) topic = "agentic";
+          else if (lowerQuery.includes("solusi") || lowerQuery.includes("produk")) topic = "solusi";
+          else if (lowerQuery.includes("partner") || lowerQuery.includes("mitra")) topic = "partner";
+          else if (lowerQuery.includes("sales") || lowerQuery.includes("kontak") || lowerQuery.includes("hubungi")) topic = "sales";
+          else if (lowerQuery.includes("implementasi") || lowerQuery.includes("berapa lama")) topic = "implementasi";
+          else if (lowerQuery.includes("demo") || lowerQuery.includes("demo")) topic = "demo";
+          else if (lowerQuery.includes("harga") || lowerQuery.includes("biaya") || lowerQuery.includes("pricing")) topic = "harga";
+          else if (lowerQuery.includes("dokumen") || lowerQuery.includes("document") || lowerQuery.includes("ocr")) topic = "dokumen";
+          else if (lowerQuery.includes("copilot")) topic = "copilot";
+          
+          (window as any).showFollowUpSuggestions(topic);
+        }
+        
       } catch (err) {
         typing.remove();
         (window as any).addBubble("Terjadi kesalahan koneksi.", "bot");
