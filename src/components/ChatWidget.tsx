@@ -184,6 +184,61 @@ export default function ChatWidget() {
         text-decoration: underline;
       }
 
+      .suggestion-chip {
+        display: inline-block;
+        padding: 6px 12px;
+        margin: 3px;
+        background: linear-gradient(135deg, var(--es-red), var(--es-red-dark));
+        color: white;
+        border-radius: 16px;
+        font-size: 11px;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: none;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+
+      .suggestion-chip:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 3px 10px rgba(227, 30, 36, 0.4);
+        background: linear-gradient(135deg, var(--es-red-dark), #A0141A);
+      }
+
+      #suggestions-container {
+        padding: 12px 16px;
+        background: #f9fafb;
+        border-top: 1px solid var(--es-border);
+        display: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+      }
+
+      #suggestions-container.visible {
+        display: flex;
+      }
+
+      #followup-suggestions {
+        padding: 12px 16px;
+        background: linear-gradient(180deg, #fff 0%, #f9fafb 100%);
+        border-top: 1px solid var(--es-border);
+        display: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+        animation: slideUp 0.3s ease;
+      }
+
+      #followup-suggestions.visible {
+        display: flex;
+      }
+
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
       .typing::after {
         content: "⠋";
         animation: dots 1s infinite;
@@ -279,7 +334,18 @@ export default function ChatWidget() {
             Ada yang bisa kami bantu terkait AI, Data, Cloud, atau Security?</p>
           </div>
         </div>
-        
+
+        <div id="followup-suggestions"></div>
+
+        <div id="suggestions-container" class="visible">
+          <button class="suggestion-chip" onclick="useSuggestion('Apa itu Agentic AI?')">Apa itu Agentic AI?</button>
+          <button class="suggestion-chip" onclick="useSuggestion('Solusi AI apa saja yang tersedia?')">Solusi AI</button>
+          <button class="suggestion-chip" onclick="useSuggestion('EasternStack berpartner dengan siapa saja?')">Technology Partners</button>
+          <button class="suggestion-chip" onclick="useSuggestion('Bagaimana cara menghubungi Sales?')">Hubungi Sales</button>
+          <button class="suggestion-chip" onclick="useSuggestion('Berapa lama implementasi AI?')">Implementasi</button>
+          <button class="suggestion-chip" onclick="useSuggestion('Bisa request demo?')">Request Demo</button>
+        </div>
+
         <div id="chat-input">
           <input id="msg" placeholder="Tulis pertanyaan Anda..." />
           <button onclick="send()">Kirim</button>
@@ -326,9 +392,128 @@ export default function ChatWidget() {
     };
 
     (window as any).formatText = function(text: string) {
-      return text
-        .replace(/\*(.+?)\*/g, "<strong>$1</strong>")
-        .replace(/\n/g, "<br>");
+      let formatted = text;
+      
+      // Bold: *text* or **text**
+      formatted = formatted.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+      formatted = formatted.replace(/\*(.+?)\*/g, "<strong>$1</strong>");
+      
+      // Italic: _text_ or __text__
+      formatted = formatted.replace(/__(.+?)__/g, "<em>$1</em>");
+      formatted = formatted.replace(/_(.+?)_/g, "<em>$1</em>");
+      
+      // Bullet lists: - item or * item
+      formatted = formatted.replace(/^\s*[-*]\s+(.+)/gm, "<li class='ml-4'>• $1</li>");
+      
+      // Numbered lists: 1. item
+      formatted = formatted.replace(/^\s*\d+\.\s+(.+)/gm, "<li class='ml-4'>$1</li>");
+      
+      // Wrap consecutive <li> in <ul>
+      formatted = formatted.replace(/(<li[^>]*>.*?<\/li>\n?)+/g, "<ul class='my-2'>$&</ul>");
+      
+      // Headers: # Header
+      formatted = formatted.replace(/^### (.+)$/gm, "<h3 class='text-lg font-bold mt-4 mb-2'>$1</h3>");
+      formatted = formatted.replace(/^## (.+)$/gm, "<h2 class='text-xl font-bold mt-4 mb-2'>$1</h2>");
+      formatted = formatted.replace(/^# (.+)$/gm, "<h1 class='text-2xl font-bold mt-4 mb-2'>$1</h1>");
+      
+      // Line breaks
+      formatted = formatted.replace(/\n/g, "<br>");
+      
+      // Clean up multiple <br>
+      formatted = formatted.replace(/(<br>){3,}/g, "<br><br>");
+      
+      return formatted;
+    };
+
+    (window as any).useSuggestion = function(question: string) {
+      const input = document.getElementById("msg") as HTMLInputElement;
+      if (input) {
+        input.value = question;
+        (window as any).send();
+      }
+    };
+
+    (window as any).hideSuggestions = function() {
+      const container = document.getElementById("suggestions-container");
+      if (container) {
+        container.classList.remove("visible");
+      }
+    };
+
+    (window as any).showFollowUpSuggestions = function(topic: string) {
+      const container = document.getElementById("followup-suggestions");
+      if (!container) return;
+
+      const suggestions: Record<string, string[]> = {
+        "agentic": [
+          "Bagaimana cara implementasi Agentic AI?",
+          "Berapa harga Agentic AI Assistant?",
+          "Bisa integrasi dengan CRM kami?"
+        ],
+        "solusi": [
+          "Apa perbedaan Agentic AI vs Copilot?",
+          "Bagaimana cara memilih solusi yang tepat?",
+          "Bisa request demo?"
+        ],
+        "partner": [
+          "Mengapa memilih cloud partners ini?",
+          "Apa keuntungan partnership ini?",
+          "Bagaimana dengan security?"
+        ],
+        "sales": [
+          "Dimana office EasternStack?",
+          "Berapa lama response time?",
+          "Apa saja yang perlu disiapkan?"
+        ],
+        "implementasi": [
+          "Apa saja tahap implementasi?",
+          "Apakah ada training untuk tim kami?",
+          "Bagaimana dengan maintenance setelah go-live?"
+        ],
+        "demo": [
+          "Demo dilakukan online atau onsite?",
+          "Berapa lama durasi demo?",
+          "Bisa custom use case saat demo?"
+        ],
+        "harga": [
+          "Apakah ada paket subscription?",
+          "Apa saja yang termasuk dalam harga?",
+          "Bisa payment term?"
+        ],
+        "dokumen": [
+          "Jenis dokumen apa yang bisa diproses?",
+          "Berapa akurasi OCR?",
+          "Bisa handle tulisan tangan?"
+        ],
+        "copilot": [
+          "Copilot untuk departemen apa saja?",
+          "Bagaimana training copilot untuk tim kami?",
+          "Apa perbedaan dengan AI Assistant?"
+        ],
+        "default": [
+          "Bisa jelaskan lebih detail?",
+          "Bagaimana cara memulai?",
+          "Ada pertanyaan lain yang sering ditanyakan?"
+        ]
+      };
+
+      let selectedSuggestions = suggestions[topic] || suggestions["default"];
+      
+      // Shuffle and pick 3
+      selectedSuggestions = selectedSuggestions.sort(() => 0.5 - Math.random()).slice(0, 3);
+
+      container.innerHTML = selectedSuggestions
+        .map(q => `<button class="suggestion-chip" onclick="useSuggestion('${q.replace(/'/g, "\\'")}')">${q}</button>`)
+        .join("");
+
+      container.classList.add("visible");
+      
+      // Auto scroll to bottom
+      if (body) {
+        setTimeout(() => {
+          body.scrollTop = body.scrollHeight;
+        }, 100);
+      }
     };
 
     (window as any).send = async function() {
@@ -337,9 +522,222 @@ export default function ChatWidget() {
       const text = input.value.trim();
       if (!text) return;
 
+      // Hide suggestions after first user message
+      (window as any).hideSuggestions();
+
       (window as any).addBubble(text, "user");
       input.value = "";
 
+      // Check for multiple topics in one question
+      const lowerText = text.toLowerCase();
+      const hasAgentic = lowerText.includes("apa itu agentic") || lowerText.includes("apa itu ai") || 
+          lowerText.includes("agentic ai") || lowerText.includes("definisi ai") ||
+          lowerText.includes("pengertian agentic") || lowerText.includes("apa itu agentic ai") ||
+          lowerText.includes("solusi untuk agentic") || lowerText.includes("ada solusi agentic") ||
+          lowerText.includes("solusi agentic ai") || lowerText.includes("butuh solusi agentic");
+      
+      const hasHarga = lowerText.includes("harga") || lowerText.includes("pricing") ||
+          lowerText.includes("biaya") || lowerText.includes("cost") ||
+          lowerText.includes("berapa harga") || lowerText.includes("harga implementasi") ||
+          lowerText.includes("biaya implementasi") || lowerText.includes("harga solusi") ||
+          lowerText.includes("biaya solusi") || lowerText.includes("paket harga") ||
+          lowerText.includes("berapa biaya");
+      
+      const hasImplementasi = lowerText.includes("berapa lama implementasi") || lowerText.includes("durasi implementasi") || 
+          lowerText.includes("waktu implementasi") || lowerText.includes("lama deploy") ||
+          lowerText.includes("berapa lama pembuatan") || lowerText.includes("lama pembuatan") ||
+          lowerText.includes("berapa lama pengerjaan") || lowerText.includes("durasi pengerjaan") ||
+          lowerText.includes("berapa lama membuat") || lowerText.includes("lama membuat") ||
+          lowerText.includes("timeline implementasi") || lowerText.includes("berapa lama");
+
+      // If multiple topics detected, send to backend instead
+      const topicCount = [hasAgentic, hasHarga, hasImplementasi].filter(Boolean).length;
+      if (topicCount > 1) {
+        // Multiple topics - let backend handle it
+        (window as any).sendToBackend(text);
+        return;
+      }
+      
+      // Single topic - use custom responses
+      
+      // Custom responses for common sales/contact questions
+      if (lowerText.includes("hubungi sales") || lowerText.includes("tim sales") ||
+          lowerText.includes("contact sales") || lowerText.includes("kontak sales") ||
+          lowerText.includes("berbicara dengan sales") || lowerText.includes("bicara sales")) {
+
+        const typing = (window as any).addBubble("EasternStack sedang mengetik<span class='typing'></span>", "bot");
+        setTimeout(() => {
+          typing.remove();
+          (window as any).addBubble(
+            "<strong>Hubungi Tim Sales EasternStack</strong><br><br>" +
+            "Untuk terhubung dengan tim Sales, Anda dapat:<br><br>" +
+            "📧 <strong>Email:</strong> sales&#64;easternstack.com<br>" +
+            "📱 <strong>WhatsApp:</strong> Hubungi kami melalui tombol chat ini<br>" +
+            "🌐 <strong>Website:</strong> easternstack.com<br><br>" +
+            "Atau kunjungi halaman <a href='/contact' style='color: var(--es-red); font-weight: 600;'>Kontak</a> untuk mengirim pesan langsung.",
+            "bot"
+          );
+          (window as any).showFollowUpSuggestions("sales");
+        }, 800);
+        return;
+      }
+
+      // Custom response for pricing questions
+      if (lowerText.includes("harga") || lowerText.includes("pricing") ||
+          lowerText.includes("biaya") || lowerText.includes("cost") ||
+          lowerText.includes("berapa harga") || lowerText.includes("harga implementasi") ||
+          lowerText.includes("biaya implementasi") || lowerText.includes("harga solusi") ||
+          lowerText.includes("biaya solusi") || lowerText.includes("paket harga") ||
+          lowerText.includes("berapa biaya")) {
+
+        const typing = (window as any).addBubble("EasternStack sedang mengetik<span class='typing'></span>", "bot");
+        setTimeout(() => {
+          typing.remove();
+          (window as any).addBubble(
+            "<strong>Informasi Pricing</strong><br><br>" +
+            "Solusi EasternStack disesuaikan dengan kebutuhan bisnis Anda. Untuk informasi pricing yang akurat, tim Sales kami akan membantu Anda berdasarkan:<br><br>" +
+            "• Skala implementasi<br>" +
+            "• Fitur yang dibutuhkan<br>" +
+            "• Integrasi sistem<br><br>" +
+            "Silakan hubungi tim Sales kami untuk konsultasi gratis!",
+            "bot"
+          );
+          (window as any).showFollowUpSuggestions("harga");
+        }, 800);
+        return;
+      }
+
+      // Custom response for demo questions
+      if (lowerText.includes("demo") || lowerText.includes("demonstrasi")) {
+        const typing = (window as any).addBubble("EasternStack sedang mengetik<span class='typing'></span>", "bot");
+        setTimeout(() => {
+          typing.remove();
+          (window as any).addBubble(
+            "<strong>Request Demo</strong><br><br>" +
+            "Kami dengan senang hati akan mendemonstrasikan solusi EasternStack untuk bisnis Anda!<br><br>" +
+            "📅 <strong>Jadwalkan Demo:</strong> Kunjungi halaman <a href='/contact' style='color: var(--es-red); font-weight: 600;'>Kontak</a> dan pilih opsi 'Request Demo'<br><br>" +
+            "Tim kami akan menghubungi Anda untuk mengatur sesi demo sesuai jadwal Anda.",
+            "bot"
+          );
+          (window as any).showFollowUpSuggestions("demo");
+        }, 800);
+        return;
+      }
+
+      // Custom response for partner questions
+      if (lowerText.includes("partner") || lowerText.includes("mitra") || lowerText.includes("kerjasama") ||
+          lowerText.includes("teknologi partner") || lowerText.includes("bermitra")) {
+
+        const typing = (window as any).addBubble("EasternStack sedang mengetik<span class='typing'></span>", "bot");
+        setTimeout(() => {
+          typing.remove();
+          (window as any).addBubble(
+            "<strong>Technology Partners EasternStack</strong><br><br>" +
+            "EasternStack bermitra dengan penyedia teknologi global terkemuka untuk menghadirkan solusi terbaik:<br><br>" +
+            "☁️ <strong>Cloud Providers:</strong><br>" +
+            "• Alibaba Cloud<br>" +
+            "• Huawei Cloud<br>" +
+            "• Tencent Cloud<br><br>" +
+            "🔒 <strong>Security Partners:</strong><br>" +
+            "• AhnLab - Enterprise Security Solutions<br>" +
+            "• TrueWatch - Security Monitoring<br><br>" +
+            "⚙️ <strong>Infrastructure:</strong><br>" +
+            "• OnePro<br><br>" +
+            "Ingin tahu lebih lanjut? <a href='/platform' style='color: var(--es-red); font-weight: 600;'>Lihat Platform</a> atau <a href='/contact' style='color: var(--es-red); font-weight: 600;'>Hubungi Kami</a>.",
+            "bot"
+          );
+          (window as any).showFollowUpSuggestions("partner");
+        }, 800);
+        return;
+      }
+
+      // Custom response for "Apa itu Agentic AI"
+      if (lowerText.includes("apa itu agentic") || lowerText.includes("apa itu ai") || 
+          lowerText.includes("agentic ai") || lowerText.includes("definisi ai") ||
+          lowerText.includes("pengertian agentic") || lowerText.includes("apa itu agentic ai") ||
+          lowerText.includes("solusi untuk agentic") || lowerText.includes("ada solusi agentic") ||
+          lowerText.includes("solusi agentic ai") || lowerText.includes("butuh solusi agentic")) {
+        
+        const typing = (window as any).addBubble("EasternStack sedang mengetik<span class='typing'></span>", "bot");
+        setTimeout(() => {
+          typing.remove();
+          (window as any).addBubble(
+            "<strong>Apa itu Agentic AI?</strong><br><br>" +
+            "<strong>Agentic AI</strong> adalah sistem AI cerdas yang dapat:<br><br>" +
+            "✅ <strong>Memahami konteks</strong> bisnis dan intent user<br>" +
+            "✅ <strong>Membuat keputusan</strong> secara mandiri<br>" +
+            "✅ <strong>Menjalankan tugas</strong> di berbagai sistem (CRM, ERP, dll)<br>" +
+            "✅ <strong>Belajar dan beradaptasi</strong> dengan kondisi baru<br><br>" +
+            "Berbeda dengan chatbot tradisional yang hanya merespon prompt, Agentic AI dapat <strong>bertindak secara otonom</strong> untuk menyelesaikan workflow bisnis yang kompleks.<br><br>" +
+            "📚 <a href='/solutions/ai' style='color: var(--es-red); font-weight: 600;'>Pelajari lebih lanjut tentang Solusi AI</a>",
+            "bot"
+          );
+          (window as any).showFollowUpSuggestions("agentic");
+        }, 800);
+        return;
+      }
+
+      // Custom response for "Solusi AI apa saja"
+      if (lowerText.includes("solusi ai") || lowerText.includes("produk ai") || 
+          lowerText.includes("layanan ai") || lowerText.includes("apa saja solusi")) {
+        
+        const typing = (window as any).addBubble("EasternStack sedang mengetik<span class='typing'></span>", "bot");
+        setTimeout(() => {
+          typing.remove();
+          (window as any).addBubble(
+            "<strong>Solusi AI EasternStack</strong><br><br>" +
+            "EasternStack menawarkan 4 solusi AI utama:<br><br>" +
+            "🤖 <strong>1. Agentic AI Assistant</strong><br>" +
+            "AI asisten yang dapat berinteraksi, reasoning, dan menjalankan workflow bisnis.<br><br>" +
+            "📄 <strong>2. Intelligent Document Processing</strong><br>" +
+            "AI untuk ekstraksi dan analisis dokumen otomatis (kontrak, invoice, dll).<br><br>" +
+            "🏗️ <strong>3. AI Agent Builder</strong><br>" +
+            "Platform untuk mendesain dan mengorkestrasi multiple AI agents.<br><br>" +
+            "👥 <strong>4. Enterprise Copilot Suite</strong><br>" +
+            "AI copilots untuk HR, Legal, Operations, dan tim bisnis lainnya.<br><br>" +
+            "🔗 <a href='/solutions/ai' style='color: var(--es-red); font-weight: 600;'>Lihat Semua Solusi AI</a>",
+            "bot"
+          );
+          (window as any).showFollowUpSuggestions("solusi");
+        }, 800);
+        return;
+      }
+
+      // Custom response for "Berapa lama implementasi"
+      if (lowerText.includes("berapa lama implementasi") || lowerText.includes("durasi implementasi") || 
+          lowerText.includes("waktu implementasi") || lowerText.includes("lama deploy") ||
+          lowerText.includes("berapa lama pembuatan") || lowerText.includes("lama pembuatan") ||
+          lowerText.includes("berapa lama pengerjaan") || lowerText.includes("durasi pengerjaan") ||
+          lowerText.includes("berapa lama membuat") || lowerText.includes("lama membuat") ||
+          lowerText.includes("timeline implementasi") || lowerText.includes("berapa lama")) {
+        
+        const typing = (window as any).addBubble("EasternStack sedang mengetik<span class='typing'></span>", "bot");
+        setTimeout(() => {
+          typing.remove();
+          (window as any).addBubble(
+            "<strong>Durasi Implementasi AI</strong><br><br>" +
+            "Implementasi AI di EasternStack sangat cepat berkat framework yang sudah proven:<br><br>" +
+            "⚡ <strong>Quick Win:</strong> 3-7 hari untuk use case sederhana<br>" +
+            "🚀 <strong>Standard Implementation:</strong> 2-4 minggu untuk integrasi medium<br>" +
+            "🏢 <strong>Enterprise Scale:</strong> 1-3 bulan untuk deployment kompleks<br><br>" +
+            "Faktor yang mempengaruhi:<br>" +
+            "• Kompleksitas integrasi sistem<br>" +
+            "• Ketersediaan data dan akses<br>" +
+            "• Requirement compliance & security<br><br>" +
+            "💬 <a href='/contact' style='color: var(--es-red); font-weight: 600;'>Konsultasi gratis</a> untuk estimasi lebih akurat.",
+            "bot"
+          );
+          (window as any).showFollowUpSuggestions("implementasi");
+        }, 800);
+        return;
+      }
+
+      // No custom response match - send to backend
+      (window as any).sendToBackend(text);
+    };
+
+    // Backend API call function
+    (window as any).sendToBackend = async function(query: string) {
       const typing = (window as any).addBubble("EasternStack sedang mengetik<span class='typing'></span>", "bot");
 
       try {
@@ -351,7 +749,7 @@ export default function ChatWidget() {
           },
           body: JSON.stringify({
             inputs: {},
-            query: text,
+            query: query,
             response_mode: "streaming",
             conversation_id: "",
             user: "abc-123"
