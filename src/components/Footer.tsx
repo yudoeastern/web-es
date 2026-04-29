@@ -8,7 +8,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <Link href="/" className="mb-4 inline-block">
-              <img src="/logo.jpg" alt="EasternStack" className="h-10 w-auto" />
+              <img src="/logo.png" alt="EasternStack" className="h-10 w-auto" />
             </Link>
             <p className="text-text-muted mb-6 max-w-sm">
               Enterprise-grade AI solutions designed to transform your business operations,

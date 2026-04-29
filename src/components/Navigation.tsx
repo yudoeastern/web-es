@@ -22,7 +22,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
-            <img src="/logo.jpg" alt="EasternStack" className="h-12 w-auto" />
+            <img src="/logo.png" alt="EasternStack" className="h-12 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
