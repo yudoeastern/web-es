@@ -309,7 +309,7 @@ export default function ChatWidget() {
           left: 16px;
           width: calc(100% - 32px);
           height: calc(100vh - 140px);
-          max-height: 500px;
+          max-height: 700px;
           border-radius: 12px;
         }
 
