@@ -44,7 +44,7 @@ export default function AutonomousAgentsPage() {
             <p className="text-lg text-gray-600 mb-8">
               EasternStack Autonomous AI Agents represent the next evolution of business automation. These 
               self-governing AI systems can perceive their environment, reason about complex situations, make 
-              decisions, and execute actions across multiple systems—all while learning and adapting to optimize 
+              decisions, and execute actions across multiple systems all while learning and adapting to optimize 
               performance over time.
             </p>
           </div>
@@ -381,7 +381,7 @@ export default function AutonomousAgentsPage() {
               </h3>
               <p className="text-gray-600">
                 Autonomous agents are particularly valuable in finance, healthcare, retail, 
-                manufacturing, logistics, and professional services—any industry with complex, 
+                manufacturing, logistics, and professional services any industry with complex, 
                 repetitive processes that require speed, accuracy, and 24/7 operations.
               </p>
             </div>

@@ -18,7 +18,7 @@ export default function LoanProcessingPage() {
             </h1>
             <p className="text-xl text-gray-600">
               AI-powered loan origination that automates document verification, risk assessment, 
-              and approval decisions—reducing processing time from weeks to minutes.
+              and approval decisions reducing processing time from weeks to minutes.
             </p>
           </div>
         </div>
@@ -37,7 +37,7 @@ export default function LoanProcessingPage() {
               frustrated customers and lost revenue.
             </p>
             <p className="text-gray-600 mb-8">
-              EasternStack Loan Application Processing automates the entire workflow—from document 
+              EasternStack Loan Application Processing automates the entire workflow from document 
               collection and verification to credit analysis and final approval. AI agents handle 
               routine cases instantly while flagging complex applications for human review.
             </p>

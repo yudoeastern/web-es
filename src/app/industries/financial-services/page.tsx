@@ -38,7 +38,7 @@ export default function FinancialServicesPage() {
             </p>
             <p className="text-gray-600 mb-8">
               EasternStack delivers enterprise AI solutions specifically designed for financial 
-              institutions—从 automated loan processing to real-time fraud detection, helping you 
+              institutions 从 automated loan processing to real-time fraud detection, helping you 
               stay competitive in the digital age.
             </p>
 

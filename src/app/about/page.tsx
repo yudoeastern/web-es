@@ -28,7 +28,7 @@ export default function AboutPage() {
             <div className="bg-gradient-to-br from-gray-50 to-white p-8 md:p-10 rounded-2xl border border-gray-100 shadow-sm">
               <p className="text-xl text-text-secondary leading-relaxed">
                 EasternStack is an enterprise AI platform that enables organizations to build and operate AI applications
-                with full control over cost, performance, and deployment—powered by a diverse alternative model ecosystem.
+                with full control over cost, performance, and deployment powered by a diverse alternative model ecosystem.
               </p>
             </div>
             
@@ -52,7 +52,7 @@ export default function AboutPage() {
                   </svg>
                 </div>
                 <p className="text-lg text-text-secondary leading-relaxed">
-                  Combined with agentic AI platforms like QoderWork, EasternStack extends beyond traditional AI systems—
+                  Combined with agentic AI platforms like QoderWork, EasternStack extends beyond traditional AI systems 
                   enabling intelligent agents to plan, execute, and deliver real business tasks autonomously across the organization.
                 </p>
               </div>
@@ -83,7 +83,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-semibold text-text-dark mb-4">Sovereign AI</h3>
               <p className="text-text-secondary">
-                Your data, your models, your infrastructure—complete control.
+                Your data, your models, your infrastructure complete control.
               </p>
             </div>
 

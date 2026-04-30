@@ -33,11 +33,11 @@ export default function ChurnPredictionPage() {
             </h2>
             <p className="text-gray-600 mb-6">
               Acquiring a new customer costs <strong className="text-[#E31E24]">5-25x more</strong> than retaining an existing one. 
-              Yet most businesses only react to churn after it happens—when it's already too late.
+              Yet most businesses only react to churn after it happens when it's already too late.
             </p>
             <p className="text-gray-600 mb-8">
               EasternStack Churn Prediction uses machine learning to analyze customer behavior patterns, 
-              transaction history, and engagement signals to identify who's likely to leave—weeks or even 
+              transaction history, and engagement signals to identify who's likely to leave weeks or even 
               months in advance.
             </p>
 

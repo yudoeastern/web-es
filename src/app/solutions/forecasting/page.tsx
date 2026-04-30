@@ -17,7 +17,7 @@ export default function ForecastingPage() {
               <span className="gradient-text">FORECASTING</span>
             </h1>
             <p className="text-xl text-gray-600">
-              AI-powered forecasting for sales, inventory, and finance—making accurate predictions 
+              AI-powered forecasting for sales, inventory, and finance making accurate predictions 
               that drive smarter business decisions and proactive operations.
             </p>
           </div>

@@ -18,7 +18,7 @@ export default function SupplyChainPage() {
             </h1>
             <p className="text-xl text-gray-600">
               AI-powered supply chain optimization that predicts disruptions, automates procurement, 
-              and optimizes inventory—building resilient operations that adapt in real-time.
+              and optimizes inventory building resilient operations that adapt in real-time.
             </p>
           </div>
         </div>

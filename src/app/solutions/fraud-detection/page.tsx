@@ -17,7 +17,7 @@ export default function FraudDetectionPage() {
               <span className="gradient-text">FRAUD DETECTION</span>
             </h1>
             <p className="text-xl text-gray-600">
-              Autonomous AI agents that detect, investigate, and prevent fraud in real-time—
+              Autonomous AI agents that detect, investigate, and prevent fraud in real-time 
               protecting your business 24/7 with human-like reasoning at machine speed.
             </p>
           </div>
@@ -38,7 +38,7 @@ export default function FraudDetectionPage() {
             </p>
             <p className="text-gray-600 mb-8">
               EasternStack Agentic Fraud Detection deploys autonomous AI agents that don't just 
-              flag suspicious activity—they investigate, correlate evidence across multiple 
+              flag suspicious activity they investigate, correlate evidence across multiple 
               data sources, and take action in real-time.
             </p>
 
@@ -148,7 +148,7 @@ export default function FraudDetectionPage() {
                 </div>
                 <div className="lg:col-span-3">
                   <p className="text-gray-600 mb-4">
-                    Based on investigation findings, takes appropriate action automatically—
+                    Based on investigation findings, takes appropriate action automatically 
                     from blocking transactions to escalating to human investigators.
                   </p>
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600 text-sm">
@@ -194,7 +194,7 @@ export default function FraudDetectionPage() {
             <div className="card">
               <h3 className="text-lg font-semibold text-[#1A1A1A] mb-3">⚡ Real-Time Processing</h3>
               <p className="text-gray-600 text-sm">
-                Sub-second fraud detection and response—stopping fraud before completion.
+                Sub-second fraud detection and response stopping fraud before completion.
               </p>
             </div>
 
