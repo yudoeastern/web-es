@@ -84,7 +84,7 @@ export default function Home() {
               Available Models
             </p>
             <h2 className="text-3xl md:text-5xl font-bold text-text-dark">
-              Using smartest AI models on earth
+              Flexible model selection for every workload
             </h2>
           </div>
 
