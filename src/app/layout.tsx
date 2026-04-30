@@ -13,7 +13,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "EasternStack - Enterprise AI",
-  description: "Deploy production-grade AI agents across your enterprise. Automate complex workflows in days, not months.",
+  description: "Enterprise AI with Greater Model Choice and Operational Control",
   icons: {
     icon: [
       { url: '/favicon_io/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
