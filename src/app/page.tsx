@@ -50,13 +50,12 @@ export default function Home() {
             </div>
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
-              Enterprise Agentic AI Solutions for{" "}
-              <span className="gradient-text">Intelligent Business Operations</span>
+              Enterprise AI with Greater{" "}
+              <span className="gradient-text">Model Choice and Operational Control</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto drop-shadow-md">
-              Design, deploy, and scale AI systems that can understand, reason, and act across your
-              business workflows with secure and flexible architecture
+              EasternStack helps organizations build AI applications with better control over cost, performance, and deployment, supported by models such as Qwen, DeepSeek, GLM, Dola Seed, and Kimi, and enhanced by QoderWork for agentic execution.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -74,6 +73,100 @@ export default function Home() {
           <svg className="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
+        </div>
+      </section>
+
+      {/* Available Models Section */}
+      <section className="section-padding bg-white">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <p className="text-[#E31E24] text-sm font-semibold tracking-wider uppercase mb-3">
+              Available Models
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-text-dark">
+              Using smartest AI models on earth
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            {/* Qwen */}
+            <div className="group bg-gray-50 hover:bg-white p-6 rounded-xl border border-gray-100 hover:border-[#E31E24]/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
+                  <img src="/model/qwen.webp" alt="Qwen" className="w-8 h-8 object-contain" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-text-dark">Qwen</h3>
+                  <p className="text-sm text-text-secondary">By Qwen Team</p>
+                </div>
+              </div>
+            </div>
+
+            {/* DeepSeek */}
+            <div className="group bg-gray-50 hover:bg-white p-6 rounded-xl border border-gray-100 hover:border-[#E31E24]/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
+                  <img src="/model/deepseek-2.svg" alt="DeepSeek" className="w-8 h-8 object-contain" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-text-dark">DeepSeek</h3>
+                  <p className="text-sm text-text-secondary">By DeepSeek</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Kimi */}
+            <div className="group bg-gray-50 hover:bg-white p-6 rounded-xl border border-gray-100 hover:border-[#E31E24]/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
+                  <img src="/model/kimi.png" alt="Kimi" className="w-8 h-8 object-contain" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-text-dark">Kimi</h3>
+                  <p className="text-sm text-text-secondary">By Moonshot.AI</p>
+                </div>
+              </div>
+            </div>
+
+            {/* GLM */}
+            <div className="group bg-gray-50 hover:bg-white p-6 rounded-xl border border-gray-100 hover:border-[#E31E24]/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
+                  <img src="/model/glm.png" alt="GLM" className="w-8 h-8 object-contain" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-text-dark">GLM</h3>
+                  <p className="text-sm text-text-secondary">By Zhipu AI</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Dola Seed */}
+            <div className="group bg-gray-50 hover:bg-white p-6 rounded-xl border border-gray-100 hover:border-[#E31E24]/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
+                  <img src="/model/Dola-Seed.jpeg" alt="Dola Seed" className="w-8 h-8 object-contain" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-text-dark">Dola Seed</h3>
+                  <p className="text-sm text-text-secondary">By Dola</p>
+                </div>
+              </div>
+            </div>
+
+            {/* InternLM */}
+            <div className="group bg-gray-50 hover:bg-white p-6 rounded-xl border border-gray-100 hover:border-[#E31E24]/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
+                  <img src="/model/internlm.png" alt="InternLM" className="w-8 h-8 object-contain" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-text-dark">InternLM</h3>
+                  <p className="text-sm text-text-secondary">By Shanghai AI Lab</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

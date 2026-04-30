@@ -13,12 +13,11 @@ export default function AISolutionsPage() {
               </span>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-[#1A1A1A] mb-6">
-              Enterprise Agentic AI Solutions for{" "}
-              <span className="gradient-text">Intelligent Business Operations</span>
+              Enterprise AI with Greater{" "}
+              <span className="gradient-text">Model Choice and Operational Control</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              Design, deploy, and scale AI systems that can understand, reason, and act across your
-              business workflows with secure and flexible architecture
+            EasternStack helps organizations build AI applications with better control over cost, performance, and deployment, supported by models such as Qwen, DeepSeek, GLM, and Kimi, and enhanced by QoderWork for agentic execution.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact" className="btn-primary text-lg px-8 py-4">
