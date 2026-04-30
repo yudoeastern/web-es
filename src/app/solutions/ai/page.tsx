@@ -17,7 +17,7 @@ export default function AISolutionsPage() {
               <span className="gradient-text">Model Choice and Operational Control</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-            EasternStack helps organizations build AI applications with better control over cost, performance, and deployment, supported by models such as Qwen, DeepSeek, GLM, and Kimi, and enhanced by QoderWork for agentic execution.
+            EasternStack helps organizations build AI applications with better control over cost, performance, and deployment.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact" className="btn-primary text-lg px-8 py-4">

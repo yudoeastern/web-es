@@ -55,7 +55,7 @@ export default function Home() {
             </h1>
 
             <p className="text-base md:text-lg text-white/90 mb-8 max-w-3xl mx-auto drop-shadow-md">
-              EasternStack helps organizations build AI applications with better control over cost, performance, and deployment, supported by models such as Qwen, DeepSeek, GLM, Dola Seed, and Kimi, and enhanced by QoderWork for agentic execution.
+              EasternStack helps organizations build AI applications with better control over cost, performance, and deployment.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
