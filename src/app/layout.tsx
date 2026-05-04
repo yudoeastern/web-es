@@ -31,7 +31,7 @@ export function generateMetadata(): Metadata {
       type: "website",
       images: [
         {
-          url: `${baseUrl}/logo_head.png`,
+          url: `${baseUrl}/og-image.png`,
           width: 1200,
           height: 1200,
           alt: "EasternStack Logo",
@@ -43,15 +43,24 @@ export function generateMetadata(): Metadata {
       card: "summary_large_image",
       title: "EasternStack - Enterprise AI",
       description: "Enterprise AI with Greater Model Choice and Operational Control",
+      images: [
+        {
+          url: `${baseUrl}/og-image.png`,
+          width: 1200,
+          height: 1200,
+          alt: "EasternStack Logo",
+        },
+      ],
     },
 
     // LinkedIn uses og:image primarily - explicit meta tags for better compatibility
     other: {
-      "og:image": `${baseUrl}/logo_head.png`,
+      "og:image": `${baseUrl}/og-image.png`,
       "og:image:width": "1200",
       "og:image:height": "1200",
       "og:image:type": "image/png",
       "og:image:alt": "EasternStack Logo",
+      "og:image:secure_url": `${baseUrl}/og-image.png`,
     },
 
     icons: {
@@ -81,12 +90,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* LinkedIn OG Image - explicit format */}
-        <meta name="image" property="og:image" content={`${baseUrl}/logo_head.png`} />
+        {/* LinkedIn OG Image - explicit format per LinkedIn documentation */}
+        <meta name="image" property="og:image" content={`${baseUrl}/og-image.png`} />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="1200" />
         <meta property="og:image:alt" content="EasternStack Logo" />
+        <meta property="og:image:secure_url" content={`${baseUrl}/og-image.png`} />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:image" content={`${baseUrl}/og-image.png`} />
+        <meta name="twitter:image:alt" content="EasternStack Logo" />
         
         {/* Standard favicon links */}
         <link rel="icon" href="/favicon_io/favicon.ico" sizes="any" />
