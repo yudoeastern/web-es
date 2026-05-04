@@ -12,8 +12,11 @@ const inter = Inter({
 });
 
 export function generateMetadata(): Metadata {
-  // Get the deployment URL from environment variable or default to production
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://easternstack.com";
+  // Use Vercel preview URL or production URL
+  const baseUrl = process.env.VERCEL_URL 
+    ? `https://${process.env.VERCEL_URL}`
+    : process.env.NEXT_PUBLIC_SITE_URL 
+    || "https://easternstack.com";
   
   return {
     title: "EasternStack - Enterprise AI",
