@@ -20,14 +20,31 @@ export const metadata: Metadata = {
     description: "Enterprise AI with Greater Model Choice and Operational Control",
     url: "https://easternstack.com",
     siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
     images: [
       {
-        url: "https://easternstack.com/logo.png",
+        url: "https://easternstack.com/logo_head.png",
         width: 1200,
-        height: 627,
+        height: 1200,
+        alt: "EasternStack Logo",
       },
     ],
-    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "EasternStack - Enterprise AI",
+    description: "Enterprise AI with Greater Model Choice and Operational Control",
+  },
+
+  // LinkedIn uses og:image primarily - explicit meta tags for better compatibility
+  other: {
+    "og:image": "https://easternstack.com/logo_head.png",
+    "og:image:width": "1200",
+    "og:image:height": "1200",
+    "og:image:type": "image/png",
+    "og:image:alt": "EasternStack Logo",
   },
 
   icons: {
