@@ -70,9 +70,25 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Get the deployment URL from environment variable
+  const baseUrl = typeof window !== 'undefined' 
+    ? window.location.origin 
+    : process.env.VERCEL_URL 
+      ? `https://${process.env.VERCEL_URL}`
+      : process.env.NEXT_PUBLIC_SITE_URL 
+        || "https://easternstack.com";
+
   return (
     <html lang="en">
       <head>
+        {/* LinkedIn OG Image - explicit format */}
+        <meta name="image" property="og:image" content={`${baseUrl}/logo_head.png`} />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="1200" />
+        <meta property="og:image:alt" content="EasternStack Logo" />
+        
+        {/* Standard favicon links */}
         <link rel="icon" href="/favicon_io/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon_io/favicon-16x16.png" sizes="16x16" type="image/png" />
         <link rel="icon" href="/favicon_io/favicon-32x32.png" sizes="32x32" type="image/png" />
