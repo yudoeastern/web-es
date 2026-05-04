@@ -11,51 +11,56 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-export const metadata: Metadata = {
-  title: "EasternStack - Enterprise AI",
-  description: "Enterprise AI with Greater Model Choice and Operational Control",
-
-  openGraph: {
+export function generateMetadata(): Metadata {
+  // Get the deployment URL from environment variable or default to production
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://easternstack.com";
+  
+  return {
     title: "EasternStack - Enterprise AI",
     description: "Enterprise AI with Greater Model Choice and Operational Control",
-    url: "https://easternstack.com",
-    siteName: "EasternStack",
-    locale: "en_US",
-    type: "website",
-    images: [
-      {
-        url: "https://easternstack.com/logo_head.png",
-        width: 1200,
-        height: 1200,
-        alt: "EasternStack Logo",
-      },
-    ],
-  },
 
-  twitter: {
-    card: "summary_large_image",
-    title: "EasternStack - Enterprise AI",
-    description: "Enterprise AI with Greater Model Choice and Operational Control",
-  },
+    openGraph: {
+      title: "EasternStack - Enterprise AI",
+      description: "Enterprise AI with Greater Model Choice and Operational Control",
+      url: baseUrl,
+      siteName: "EasternStack",
+      locale: "en_US",
+      type: "website",
+      images: [
+        {
+          url: `${baseUrl}/logo_head.png`,
+          width: 1200,
+          height: 1200,
+          alt: "EasternStack Logo",
+        },
+      ],
+    },
 
-  // LinkedIn uses og:image primarily - explicit meta tags for better compatibility
-  other: {
-    "og:image": "https://easternstack.com/logo_head.png",
-    "og:image:width": "1200",
-    "og:image:height": "1200",
-    "og:image:type": "image/png",
-    "og:image:alt": "EasternStack Logo",
-  },
+    twitter: {
+      card: "summary_large_image",
+      title: "EasternStack - Enterprise AI",
+      description: "Enterprise AI with Greater Model Choice and Operational Control",
+    },
 
-  icons: {
-    icon: [
-      { url: '/favicon_io/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon_io/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-    ],
-    apple: '/favicon_io/apple-touch-icon.png',
-    shortcut: '/favicon_io/favicon.ico',
-  },
-};
+    // LinkedIn uses og:image primarily - explicit meta tags for better compatibility
+    other: {
+      "og:image": `${baseUrl}/logo_head.png`,
+      "og:image:width": "1200",
+      "og:image:height": "1200",
+      "og:image:type": "image/png",
+      "og:image:alt": "EasternStack Logo",
+    },
+
+    icons: {
+      icon: [
+        { url: '/favicon_io/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+        { url: '/favicon_io/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      ],
+      apple: '/favicon_io/apple-touch-icon.png',
+      shortcut: '/favicon_io/favicon.ico',
+    },
+  };
+}
 
 export default function RootLayout({
   children,
