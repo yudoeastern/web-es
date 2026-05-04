@@ -5,24 +5,18 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden py-16">
-        {/* Background with gradient + optional video */}
+        {/* Background image with gradient overlay */}
         <div className="absolute inset-0 w-full h-full overflow-hidden bg-[#1A1A1A]">
-          {/* Primary gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A1A] via-[#2D1B1B] to-[#E31E24]"></div>
-          
-          {/* Video overlay (if supported) */}
-          <video 
-            autoPlay 
-            muted 
-            loop 
-            playsInline
-            preload="auto"
-            className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay"
-            style={{ minHeight: '100%', minWidth: '100%' }}
-          >
-            <source src="/0_Computer_Code_Programming_3840x2160.mov" type="video/quicktime" />
-          </video>
-          
+          {/* Background image */}
+          <img
+            src="/bges.png"
+            alt="Background"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A1A]/90 via-[#2D1B1B]/85 to-[#E31E24]/80"></div>
+
           {/* Grid pattern overlay */}
           <div className="absolute inset-0 opacity-20" style={{
             backgroundImage: `linear-gradient(#E31E24 1px, transparent 1px), linear-gradient(90deg, #E31E24 1px, transparent 1px)`,
