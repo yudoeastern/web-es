@@ -12,13 +12,8 @@ const inter = Inter({
 });
 
 export function generateMetadata(): Metadata {
-  // Hardcode ngrok URL for development/testing
-  // Change this when ngrok URL changes
-  const ngrokUrl = 'https://easternstack.com';
-  const productionUrl = 'https://easternstack.com';
-  
-  // Use ngrok for local production builds, easternstack.com for Vercel
-  const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ngrokUrl;
+  // Production URL for easternstack.com
+  const baseUrl = 'https://easternstack.com';
   
   return {
     title: "EasternStack - Enterprise AI",
