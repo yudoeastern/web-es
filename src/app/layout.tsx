@@ -12,11 +12,13 @@ const inter = Inter({
 });
 
 export function generateMetadata(): Metadata {
-  // Use Vercel preview URL or production URL
-  const baseUrl = process.env.VERCEL_URL 
-    ? `https://${process.env.VERCEL_URL}`
-    : process.env.NEXT_PUBLIC_SITE_URL 
-    || "https://easternstack.com";
+  // Hardcode ngrok URL for development/testing
+  // Change this when ngrok URL changes
+  const ngrokUrl = 'https://easternstack.com';
+  const productionUrl = 'https://easternstack.com';
+  
+  // Use ngrok for local production builds, easternstack.com for Vercel
+  const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ngrokUrl;
   
   return {
     title: "EasternStack - Enterprise AI",
@@ -90,6 +92,32 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Dynamic OG Image Script - overrides static meta tags for LinkedIn */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var currentUrl = window.location.origin;
+                  var ogImage = currentUrl + '/og-image.png';
+                  
+                  // Update all og:image meta tags
+                  var ogImageTags = document.querySelectorAll('meta[property="og:image"], meta[name="og:image"]');
+                  ogImageTags.forEach(function(tag) {
+                    tag.setAttribute('content', ogImage);
+                  });
+                  
+                  // Update twitter:image
+                  var twitterImageTags = document.querySelectorAll('meta[name="twitter:image"]');
+                  twitterImageTags.forEach(function(tag) {
+                    tag.setAttribute('content', ogImage);
+                  });
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
+        
         {/* LinkedIn OG Image - explicit format per LinkedIn documentation */}
         <meta name="image" property="og:image" content={`${baseUrl}/og-image.png`} />
         <meta property="og:image:type" content="image/png" />
