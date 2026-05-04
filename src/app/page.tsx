@@ -70,6 +70,100 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Available Models Section */}
+      <section className="section-padding bg-white">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <p className="text-[#E31E24] text-sm font-semibold tracking-wider uppercase mb-3">
+              Available Models
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-text-dark">
+              Flexible model selection for every workload
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            {/* Qwen */}
+            <div className="group bg-gray-50 hover:bg-white p-6 rounded-xl border border-gray-100 hover:border-[#E31E24]/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
+                  <img src="/model/qwen.webp" alt="Qwen" className="w-8 h-8 object-contain" loading="lazy" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-text-dark">Qwen</h3>
+                  <p className="text-sm text-text-secondary">By Qwen Team</p>
+                </div>
+              </div>
+            </div>
+
+            {/* DeepSeek */}
+            <div className="group bg-gray-50 hover:bg-white p-6 rounded-xl border border-gray-100 hover:border-[#E31E24]/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
+                  <img src="/model/deepseek-2.svg" alt="DeepSeek" className="w-8 h-8 object-contain" loading="lazy" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-text-dark">DeepSeek</h3>
+                  <p className="text-sm text-text-secondary">By DeepSeek</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Kimi */}
+            <div className="group bg-gray-50 hover:bg-white p-6 rounded-xl border border-gray-100 hover:border-[#E31E24]/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
+                  <img src="/model/kimi.png" alt="Kimi" className="w-8 h-8 object-contain" loading="lazy" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-text-dark">Kimi</h3>
+                  <p className="text-sm text-text-secondary">By Moonshot.AI</p>
+                </div>
+              </div>
+            </div>
+
+            {/* GLM */}
+            <div className="group bg-gray-50 hover:bg-white p-6 rounded-xl border border-gray-100 hover:border-[#E31E24]/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
+                  <img src="/model/glm.png" alt="GLM" className="w-8 h-8 object-contain" loading="lazy" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-text-dark">GLM</h3>
+                  <p className="text-sm text-text-secondary">By Zhipu AI</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Dola Seed */}
+            <div className="group bg-gray-50 hover:bg-white p-6 rounded-xl border border-gray-100 hover:border-[#E31E24]/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
+                  <img src="/model/Dola-Seed.jpeg" alt="Dola Seed" className="w-8 h-8 object-contain" loading="lazy" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-text-dark">Dola Seed</h3>
+                  <p className="text-sm text-text-secondary">By Dola</p>
+                </div>
+              </div>
+            </div>
+
+            {/* InternLM */}
+            <div className="group bg-gray-50 hover:bg-white p-6 rounded-xl border border-gray-100 hover:border-[#E31E24]/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
+                  <img src="/model/internlm.png" alt="InternLM" className="w-8 h-8 object-contain" loading="lazy" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-text-dark">InternLM</h3>
+                  <p className="text-sm text-text-secondary">By Shanghai AI Lab</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Introduction Section */}
       <section className="section-padding bg-bg-light">
         <div className="container-custom">
@@ -416,100 +510,6 @@ export default function Home() {
           <Link href="/contact" className="btn-primary bg-white text-[#E31E24] hover:bg-gray-100">
             Book Consultation
           </Link>
-        </div>
-      </section>
-
-      {/* Available Models Section - Moved to bottom for SEO/LinkedIn */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <p className="text-[#E31E24] text-sm font-semibold tracking-wider uppercase mb-3">
-              Available Models
-            </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-text-dark">
-              Flexible model selection for every workload
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {/* Qwen */}
-            <div className="group bg-gray-50 hover:bg-white p-6 rounded-xl border border-gray-100 hover:border-[#E31E24]/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
-                  <img src="/model/qwen.webp" alt="Qwen" className="w-8 h-8 object-contain" loading="lazy" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-text-dark">Qwen</h3>
-                  <p className="text-sm text-text-secondary">By Qwen Team</p>
-                </div>
-              </div>
-            </div>
-
-            {/* DeepSeek */}
-            <div className="group bg-gray-50 hover:bg-white p-6 rounded-xl border border-gray-100 hover:border-[#E31E24]/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
-                  <img src="/model/deepseek-2.svg" alt="DeepSeek" className="w-8 h-8 object-contain" loading="lazy" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-text-dark">DeepSeek</h3>
-                  <p className="text-sm text-text-secondary">By DeepSeek</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Kimi */}
-            <div className="group bg-gray-50 hover:bg-white p-6 rounded-xl border border-gray-100 hover:border-[#E31E24]/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
-                  <img src="/model/kimi.png" alt="Kimi" className="w-8 h-8 object-contain" loading="lazy" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-text-dark">Kimi</h3>
-                  <p className="text-sm text-text-secondary">By Moonshot.AI</p>
-                </div>
-              </div>
-            </div>
-
-            {/* GLM */}
-            <div className="group bg-gray-50 hover:bg-white p-6 rounded-xl border border-gray-100 hover:border-[#E31E24]/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
-                  <img src="/model/glm.png" alt="GLM" className="w-8 h-8 object-contain" loading="lazy" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-text-dark">GLM</h3>
-                  <p className="text-sm text-text-secondary">By Zhipu AI</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Dola Seed */}
-            <div className="group bg-gray-50 hover:bg-white p-6 rounded-xl border border-gray-100 hover:border-[#E31E24]/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
-                  <img src="/model/Dola-Seed.jpeg" alt="Dola Seed" className="w-8 h-8 object-contain" loading="lazy" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-text-dark">Dola Seed</h3>
-                  <p className="text-sm text-text-secondary">By Dola</p>
-                </div>
-              </div>
-            </div>
-
-            {/* InternLM */}
-            <div className="group bg-gray-50 hover:bg-white p-6 rounded-xl border border-gray-100 hover:border-[#E31E24]/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
-                  <img src="/model/internlm.png" alt="InternLM" className="w-8 h-8 object-contain" loading="lazy" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-text-dark">InternLM</h3>
-                  <p className="text-sm text-text-secondary">By Shanghai AI Lab</p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </div>
