@@ -14,6 +14,22 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "EasternStack - Enterprise AI",
   description: "Enterprise AI with Greater Model Choice and Operational Control",
+
+  openGraph: {
+    title: "EasternStack - Enterprise AI",
+    description: "Enterprise AI with Greater Model Choice and Operational Control",
+    url: "https://easternstack.com",
+    siteName: "EasternStack",
+    images: [
+      {
+        url: "https://easternstack.com/logo.png",
+        width: 1200,
+        height: 627,
+      },
+    ],
+    type: "website",
+  },
+
   icons: {
     icon: [
       { url: '/favicon_io/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
