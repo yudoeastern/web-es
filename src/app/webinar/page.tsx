@@ -78,21 +78,6 @@ export default function WebinarPage() {
         </div>
       </section>
 
-      {/* Live Status Section */}
-      <section className="section-padding bg-bg-light">
-        <div className="container-custom">
-          <div className="card text-center py-8">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="w-3 h-3 bg-gray-500 rounded-full animate-pulse"></div>
-              <span className="text-text-secondary font-semibold">LIVE STATUS</span>
-            </div>
-            <p className="text-text-secondary text-lg">
-              WE'RE OFF-AIR FOR NOW. NEW SESSION COMING SOON!
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Webinars Grid */}
       <section className="section-padding bg-bg-light-light">
         <div className="container-custom">
