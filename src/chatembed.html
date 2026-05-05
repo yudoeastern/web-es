@@ -313,10 +313,10 @@ async function send() {
   const typing = addBubble("EasternStack sedang mengetik<span class='typing'></span>", "bot");
 
   try {
-    const res = await fetch("https://easternstack.trahlabs.my.id/v1/chat-messages", {
+    const res = await fetch("https://eap.easternstack.com/v1/chat-messages", {
       method: "POST",
       headers: {
-        "Authorization": "Bearer app-iFQYhaXBySMNsYwL6svkxHba",
+        "Authorization": "Bearer app-9UQDjEtSA7Ou1PUd8NIZFyAB",
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
