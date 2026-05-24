@@ -14,3 +14,14 @@ export const webinars = sqliteTable("webinars", {
   createdAt: text("created_at").notNull().default(sql`(CURRENT_TIMESTAMP)`),
   updatedAt: text("updated_at").notNull().default(sql`(CURRENT_TIMESTAMP)`),
 });
+
+export const registrations = sqliteTable("registrations", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  webinarId: integer("webinar_id").notNull().references(() => webinars.id, { onDelete: "cascade" }),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  company: text("company").notNull(),
+  jobTitle: text("job_title"),
+  phone: text("phone"),
+  createdAt: text("created_at").notNull().default(sql`(CURRENT_TIMESTAMP)`),
+});

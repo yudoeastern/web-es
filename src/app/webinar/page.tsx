@@ -119,25 +119,29 @@ export default async function WebinarPage({ searchParams }: PageProps) {
                       </div>
 
                       {/* Action Button */}
-                      {webinar.status === "upcoming" ? (
-                        <Link href="/contact" className="btn-primary w-full text-center block">
-                          Register Now
-                        </Link>
-                      ) : (
-                        <>
-                          <Link href="#" className="text-primary-orange hover:text-primary-orange font-semibold transition-colors flex items-center">
-                            See More
-                            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                          </Link>
-                          {/* Status Badge */}
-                          <div className="mt-4">
-                            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#E31E24]/10 text-[#E31E24] border border-[#E31E24]/20">
-                              PAST EVENT
-                            </span>
-                          </div>
-                        </>
+                      <Link
+                        href={`/webinar/${webinar.id}`}
+                        className={
+                          webinar.status === "upcoming"
+                            ? "btn-primary w-full text-center block"
+                            : "text-primary-orange hover:text-primary-orange font-semibold transition-colors flex items-center"
+                        }
+                      >
+                        {webinar.status === "upcoming" ? "Register Now" : "See More"}
+                        {webinar.status === "past" && (
+                          <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        )}
+                      </Link>
+
+                      {/* Past Event Badge */}
+                      {webinar.status === "past" && (
+                        <div className="mt-4">
+                          <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#E31E24]/10 text-[#E31E24] border border-[#E31E24]/20">
+                            PAST EVENT
+                          </span>
+                        </div>
                       )}
                     </div>
                   </div>
