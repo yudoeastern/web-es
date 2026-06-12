@@ -9,7 +9,7 @@ export const webinars = sqliteTable("webinars", {
   time: text("time").notNull(),
   location: text("location").notNull(),
   partner: text("partner").notNull(),
-  status: text("status", { enum: ["upcoming", "past"] }).notNull().default("upcoming"),
+  status: text("status", { enum: ["upcoming", "past", "fully_booked"] }).notNull().default("upcoming"),
   imageUrl: text("image_url"),
   createdAt: text("created_at").notNull().default(sql`(CURRENT_TIMESTAMP)`),
   updatedAt: text("updated_at").notNull().default(sql`(CURRENT_TIMESTAMP)`),

@@ -50,7 +50,7 @@ export default function RegisterForm({ webinarId, webinarTitle }: RegisterFormPr
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/webinar/register", {
+      const response = await fetch("/api/events/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

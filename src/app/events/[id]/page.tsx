@@ -26,7 +26,7 @@ export default async function WebinarDetailPage({ params }: PageProps) {
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-dark-bg via-dark-bg-light to-dark-bg">
         <div className="container-custom">
-          <Link href="/webinar" className="inline-flex items-center text-text-secondary hover:text-primary-orange transition mb-6">
+          <Link href="/events" className="inline-flex items-center text-text-secondary hover:text-primary-orange transition mb-6">
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
@@ -39,6 +39,10 @@ export default async function WebinarDetailPage({ params }: PageProps) {
               {webinar.status === "upcoming" ? (
                 <div className="inline-block mb-4 px-4 py-1.5 bg-green-100 border border-green-200 rounded-full">
                   <span className="text-green-700 text-sm font-semibold">UPCOMING EVENT</span>
+                </div>
+              ) : webinar.status === "fully_booked" ? (
+                <div className="inline-block mb-4 px-4 py-1.5 bg-orange-100 border border-orange-200 rounded-full">
+                  <span className="text-orange-700 text-sm font-semibold">FULLY BOOKED</span>
                 </div>
               ) : (
                 <div className="inline-block mb-4 px-4 py-1.5 bg-[#E31E24]/10 border border-[#E31E24]/20 rounded-full">
@@ -142,6 +146,28 @@ export default async function WebinarDetailPage({ params }: PageProps) {
 
             <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-200">
               <RegisterForm webinarId={webinar.id} webinarTitle={webinar.title} />
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Fully Booked Message */}
+      {webinar.status === "fully_booked" && (
+        <section className="section-padding bg-bg-light-light">
+          <div className="container-custom max-w-2xl text-center">
+            <div className="bg-orange-50 rounded-2xl p-8 border border-orange-200">
+              <svg className="w-16 h-16 text-orange-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+              <h2 className="text-2xl md:text-3xl font-bold text-text-dark mb-4">
+                This Event is Fully Booked
+              </h2>
+              <p className="text-text-secondary mb-6">
+                Unfortunately, all seats have been filled. Registration is now closed.
+              </p>
+              <Link href="/events" className="btn-primary inline-block">
+                View Other Events
+              </Link>
             </div>
           </div>
         </section>

@@ -120,14 +120,16 @@ export default async function WebinarPage({ searchParams }: PageProps) {
 
                       {/* Action Button */}
                       <Link
-                        href={`/webinar/${webinar.id}`}
+                        href={`/events/${webinar.id}`}
                         className={
                           webinar.status === "upcoming"
                             ? "btn-primary w-full text-center block"
+                            : webinar.status === "fully_booked"
+                            ? "btn-primary w-full text-center block bg-gray-400 hover:bg-gray-500"
                             : "text-primary-orange hover:text-primary-orange font-semibold transition-colors flex items-center"
                         }
                       >
-                        {webinar.status === "upcoming" ? "Register Now" : "See More"}
+                        {webinar.status === "upcoming" ? "Register Now" : webinar.status === "fully_booked" ? "Fully Booked" : "See More"}
                         {webinar.status === "past" && (
                           <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -135,11 +137,19 @@ export default async function WebinarPage({ searchParams }: PageProps) {
                         )}
                       </Link>
 
-                      {/* Past Event Badge */}
+                      {/* Status Badges */}
                       {webinar.status === "past" && (
                         <div className="mt-4">
                           <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#E31E24]/10 text-[#E31E24] border border-[#E31E24]/20">
                             PAST EVENT
+                          </span>
+                        </div>
+                      )}
+
+                      {webinar.status === "fully_booked" && (
+                        <div className="mt-4">
+                          <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-[#E31E24] border border-[#E31E24]/20">
+                            FULLY BOOKED
                           </span>
                         </div>
                       )}
@@ -153,7 +163,7 @@ export default async function WebinarPage({ searchParams }: PageProps) {
                 <div className="flex justify-center items-center gap-2 mt-12">
                   {currentPage > 1 && (
                     <Link
-                      href={`/webinar?page=${currentPage - 1}`}
+                      href={`/events?page=${currentPage - 1}`}
                       className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition text-sm font-medium"
                     >
                       ← Previous
@@ -163,7 +173,7 @@ export default async function WebinarPage({ searchParams }: PageProps) {
                   {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                     <Link
                       key={page}
-                      href={`/webinar?page=${page}`}
+                      href={`/events?page=${page}`}
                       className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
                         page === currentPage
                           ? "bg-[#E31E24] text-white"
@@ -176,7 +186,7 @@ export default async function WebinarPage({ searchParams }: PageProps) {
 
                   {currentPage < totalPages && (
                     <Link
-                      href={`/webinar?page=${currentPage + 1}`}
+                      href={`/events?page=${currentPage + 1}`}
                       className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition text-sm font-medium"
                     >
                       Next →

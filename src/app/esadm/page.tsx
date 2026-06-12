@@ -11,7 +11,7 @@ interface Webinar {
   time: string;
   location: string;
   partner: string;
-  status: "upcoming" | "past";
+  status: "upcoming" | "past" | "fully_booked";
   imageUrl: string | null;
   createdAt: string;
   updatedAt: string;
@@ -47,9 +47,11 @@ export default function AdminPage() {
     time: "",
     location: "",
     partner: "",
-    status: "upcoming" as "upcoming" | "past",
+    status: "upcoming" as "upcoming" | "past" | "fully_booked",
     imageUrl: "",
   });
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -58,7 +60,7 @@ export default function AdminPage() {
   const fetchData = async () => {
     setLoading(true);
     const [webinarRes, regRes] = await Promise.all([
-      fetch("/api/admin/webinars?page=1&limit=100"),
+      fetch("/api/admin/events?page=1&limit=100"),
       fetch("/api/admin/registrations"),
     ]);
     if (webinarRes.status === 401 || regRes.status === 401) {
@@ -81,8 +83,8 @@ export default function AdminPage() {
     e.preventDefault();
     const method = editing ? "PUT" : "POST";
     const url = editing
-      ? `/api/admin/webinars?id=${editing.id}`
-      : "/api/admin/webinars";
+      ? `/api/admin/events?id=${editing.id}`
+      : "/api/admin/events";
 
     const res = await fetch(url, {
       method,
@@ -114,9 +116,9 @@ export default function AdminPage() {
   };
 
   const handleDelete = async (id: number) => {
-    if (!confirm("Are you sure you want to delete this webinar?")) return;
+    if (!confirm("Are you sure you want to delete this event?")) return;
     setDeleting(id);
-    const res = await fetch(`/api/admin/webinars?id=${id}`, { method: "DELETE" });
+    const res = await fetch(`/api/admin/events?id=${id}`, { method: "DELETE" });
     if (res.ok) fetchData();
     setDeleting(null);
   };
@@ -132,6 +134,52 @@ export default function AdminPage() {
       status: "upcoming",
       imageUrl: "",
     });
+    setUploadError("");
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Validate file type
+    const validTypes = ["image/jpeg", "image/png", "image/webp", "image/gif"];
+    if (!validTypes.includes(file.type)) {
+      setUploadError("Only JPEG, PNG, WEBP, and GIF files are allowed");
+      return;
+    }
+
+    // Validate file size (max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      setUploadError("File size must be less than 5MB");
+      return;
+    }
+
+    setUploading(true);
+    setUploadError("");
+
+    try {
+      const formDataUpload = new FormData();
+      formDataUpload.append("file", file);
+
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        body: formDataUpload,
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Upload failed");
+      }
+
+      setFormData({ ...formData, imageUrl: data.path });
+    } catch (error) {
+      setUploadError(error instanceof Error ? error.message : "Upload failed");
+    } finally {
+      setUploading(false);
+      // Reset file input
+      e.target.value = "";
+    }
   };
 
   const getRegistrationsForWebinar = (webinarId: number) =>
@@ -160,7 +208,7 @@ export default function AdminPage() {
             <h1 className="text-xl font-bold text-[#1A1A1A]">Webinar Admin</h1>
           </div>
           <div className="flex items-center gap-3">
-            <a href="/webinar" target="_blank" className="text-sm text-gray-600 hover:text-[#E31E24] transition">
+            <a href="/events" target="_blank" className="text-sm text-gray-600 hover:text-[#E31E24] transition">
               View Public Page →
             </a>
             <button
@@ -285,23 +333,54 @@ export default function AdminPage() {
                       <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
                       <select
                         value={formData.status}
-                        onChange={(e) => setFormData({ ...formData, status: e.target.value as "upcoming" | "past" })}
+                        onChange={(e) => setFormData({ ...formData, status: e.target.value as "upcoming" | "past" | "fully_booked" })}
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E31E24] focus:border-transparent outline-none"
                       >
                         <option value="upcoming">Upcoming</option>
                         <option value="past">Past</option>
+                        <option value="fully_booked">Fully Booked</option>
                       </select>
                     </div>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Image URL</label>
-                    <input
-                      type="text"
-                      value={formData.imageUrl}
-                      onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
-                      placeholder="/events/my-webinar.png"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E31E24] focus:border-transparent outline-none"
-                    />
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        value={formData.imageUrl}
+                        onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
+                        placeholder="/events/my-webinar.png"
+                        className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E31E24] focus:border-transparent outline-none"
+                      />
+                      <label className="flex items-center justify-center px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg hover:bg-gray-200 transition cursor-pointer">
+                        <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span className="ml-2 text-sm text-gray-600">Upload</span>
+                        <input
+                          type="file"
+                          accept="image/jpeg,image/png,image/webp,image/gif"
+                          onChange={handleImageUpload}
+                          disabled={uploading}
+                          className="hidden"
+                        />
+                      </label>
+                    </div>
+                    {uploading && (
+                      <p className="text-sm text-blue-600 mt-1">Uploading...</p>
+                    )}
+                    {uploadError && (
+                      <p className="text-sm text-red-600 mt-1">{uploadError}</p>
+                    )}
+                    {formData.imageUrl && (
+                      <div className="mt-2">
+                        <img
+                          src={formData.imageUrl}
+                          alt="Preview"
+                          className="w-full max-w-xs h-auto rounded-lg border border-gray-200"
+                        />
+                      </div>
+                    )}
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
@@ -341,6 +420,7 @@ export default function AdminPage() {
               <table className="w-full">
                 <thead className="bg-gray-50 border-b border-gray-200">
                   <tr>
+                    <th className="text-left px-4 py-3 text-sm font-semibold text-gray-700">Image</th>
                     <th className="text-left px-4 py-3 text-sm font-semibold text-gray-700">Title</th>
                     <th className="text-left px-4 py-3 text-sm font-semibold text-gray-700">Date</th>
                     <th className="text-left px-4 py-3 text-sm font-semibold text-gray-700">Partner</th>
@@ -354,6 +434,17 @@ export default function AdminPage() {
                     const regCount = getRegistrationsForWebinar(webinar.id).length;
                     return (
                       <tr key={webinar.id} className="hover:bg-gray-50">
+                        <td className="px-4 py-3">
+                          {webinar.imageUrl ? (
+                            <img
+                              src={webinar.imageUrl}
+                              alt={webinar.title}
+                              className="w-16 h-12 object-cover rounded"
+                            />
+                          ) : (
+                            <span className="text-gray-400 text-xs">No image</span>
+                          )}
+                        </td>
                         <td className="px-4 py-3 text-sm font-medium text-gray-900">{webinar.title}</td>
                         <td className="px-4 py-3 text-sm text-gray-600">{webinar.date}</td>
                         <td className="px-4 py-3 text-sm text-gray-600">{webinar.partner}</td>
@@ -362,10 +453,12 @@ export default function AdminPage() {
                             className={`inline-block px-2 py-1 rounded-full text-xs font-semibold ${
                               webinar.status === "upcoming"
                                 ? "bg-green-100 text-green-700"
+                                : webinar.status === "fully_booked"
+                                ? "bg-orange-100 text-orange-700"
                                 : "bg-red-100 text-red-700"
                             }`}
                           >
-                            {webinar.status.toUpperCase()}
+                            {webinar.status.toUpperCase().replace("_", " ")}
                           </span>
                         </td>
                         <td className="px-4 py-3 text-sm text-gray-600">{regCount}</td>
@@ -391,7 +484,7 @@ export default function AdminPage() {
                   })}
                   {webinars.length === 0 && (
                     <tr>
-                      <td colSpan={6} className="px-4 py-8 text-center text-gray-500">
+                      <td colSpan={7} className="px-4 py-8 text-center text-gray-500">
                         No webinars yet. Click &quot;Add Webinar&quot; to create one.
                       </td>
                     </tr>

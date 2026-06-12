@@ -12,7 +12,7 @@ const webinarSchema = z.object({
   time: z.string().min(1, "Time is required"),
   location: z.string().min(1, "Location is required"),
   partner: z.string().min(1, "Partner is required"),
-  status: z.enum(["upcoming", "past"]),
+  status: z.enum(["upcoming", "past", "fully_booked"]),
   imageUrl: z.string().optional(),
 });
 

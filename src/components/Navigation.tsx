@@ -509,7 +509,7 @@ export default function Navigation() {
               </div>
             </div>
 
-            <Link href="/webinar" className="px-4 py-2 text-[#1A1A1A] hover:text-[#E31E24] font-medium">
+            <Link href="/events" className="px-4 py-2 text-[#1A1A1A] hover:text-[#E31E24] font-medium">
               Events
             </Link>
 
@@ -691,7 +691,7 @@ export default function Navigation() {
                 )}
               </div>
 
-              <Link href="/webinar" className="block py-3 text-gray-700 border-b border-gray-100" onClick={handleLinkClick}>
+              <Link href="/events" className="block py-3 text-gray-700 border-b border-gray-100" onClick={handleLinkClick}>
                 Events
               </Link>
 
