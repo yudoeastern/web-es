@@ -254,90 +254,13 @@ export default function SolutionsPage() {
             </p>
           </div>
 
-          {/* Product Preview - Topology Mockup */}
+          {/* Product Preview - Workspace Overview Screenshot */}
           <div className="mt-16">
-            <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-2xl">
-              <div className="flex items-center gap-3 border-b border-gray-100 px-4 py-2.5">
-                <span className="flex gap-1.5" aria-hidden="true">
-                  <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
-                </span>
-                <span className="min-w-0 flex-1 truncate rounded-md border border-gray-200 bg-gray-50 px-3 py-1 text-center font-mono text-[11px] text-gray-500">
-                  agentic.easternstack.com/agents
-                </span>
-              </div>
-              <div className="relative bg-gray-50 p-8 min-h-[300px] flex items-center justify-center">
-                {/* Simplified topology visualization */}
-                <div className="relative w-full max-w-2xl">
-                  {/* Supervisor Node */}
-                  <div className="absolute left-1/2 -translate-x-1/2 top-0 w-64 rounded-lg bg-[#1A1A1A] border border-gray-700 px-4 py-3 text-white shadow-xl">
-                    <div className="flex items-start gap-2.5">
-                      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-[#E31E24]">
-                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                      </span>
-                      <div className="min-w-0">
-                        <p className="truncate text-[12px] font-semibold leading-tight">Credit Analysis Supervisor Agent</p>
-                        <p className="mt-0.5 truncate font-mono text-[9.5px] opacity-70">qwen3.8-max-preview · v1</p>
-                      </div>
-                    </div>
-                    <div className="mt-2.5 flex items-center gap-2 text-[9.5px]">
-                      <span className="rounded bg-white/10 px-1.5 py-0.5">4 tools</span>
-                      <span className="rounded bg-white/10 px-1.5 py-0.5">2 delegates</span>
-                      <span className="ml-auto flex items-center gap-1">
-                        <span className="h-1.5 w-1.5 rounded-full bg-green-400" />
-                        online
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Connection lines */}
-                  <svg className="absolute left-1/2 -translate-x-1/2 top-[80px] w-64" height="80">
-                    <line x1="50" y1="0" x2="20" y2="80" stroke="#d1d5db" strokeWidth="2" strokeDasharray="4 2" />
-                    <line x1="50" y1="0" x2="80" y2="80" stroke="#d1d5db" strokeWidth="2" strokeDasharray="4 2" />
-                  </svg>
-
-                  {/* Delegate Nodes */}
-                  <div className="absolute left-[calc(50%-140px)] top-[160px] w-44 rounded-lg border border-gray-200 bg-white px-3 py-2.5 shadow-lg">
-                    <div className="flex items-start gap-2">
-                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded bg-[#E31E24]/10">
-                        <svg className="w-3.5 h-3.5 text-[#E31E24]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                      </span>
-                      <div className="min-w-0">
-                        <p className="truncate text-[11px] font-semibold leading-tight text-[#1A1A1A]">Financial Analyst Agent</p>
-                        <p className="mt-0.5 truncate font-mono text-[9px] text-gray-500">glm-4-plus · v1</p>
-                      </div>
-                    </div>
-                    <div className="mt-2 flex gap-1.5 text-[9px] text-gray-500">
-                      <span className="rounded bg-gray-100 px-1.5 py-0.5">delegate</span>
-                      <span className="rounded bg-gray-100 px-1.5 py-0.5">depth 1</span>
-                    </div>
-                  </div>
-
-                  <div className="absolute left-[calc(50%+20px)] top-[160px] w-44 rounded-lg border border-gray-200 bg-white px-3 py-2.5 shadow-lg">
-                    <div className="flex items-start gap-2">
-                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded bg-[#E31E24]/10">
-                        <svg className="w-3.5 h-3.5 text-[#E31E24]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                      </span>
-                      <div className="min-w-0">
-                        <p className="truncate text-[11px] font-semibold leading-tight text-[#1A1A1A]">Credit Report Writer Agent</p>
-                        <p className="mt-0.5 truncate font-mono text-[9px] text-gray-500">qwen2.5-72b · v1</p>
-                      </div>
-                    </div>
-                    <div className="mt-2 flex gap-1.5 text-[9px] text-gray-500">
-                      <span className="rounded bg-gray-100 px-1.5 py-0.5">delegate</span>
-                      <span className="rounded bg-gray-100 px-1.5 py-0.5">depth 1</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <img
+              src="/agentos/screens/workspace-overview.png"
+              alt="AgentOS Workspace Overview"
+              className="w-full rounded-xl border border-gray-200 shadow-2xl"
+            />
           </div>
         </div>
       </section>
