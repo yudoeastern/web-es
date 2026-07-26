@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { DescriptionMarkdown } from "@/lib/markdown";
+import type { AgendaItem, SpeakerInfo } from "@/db/schema";
 
 interface Webinar {
   id: number;
@@ -13,6 +15,8 @@ interface Webinar {
   partner: string;
   status: "upcoming" | "past" | "fully_booked";
   imageUrl: string | null;
+  agenda: AgendaItem[];
+  speakers: SpeakerInfo[];
   createdAt: string;
   updatedAt: string;
 }
@@ -49,9 +53,14 @@ export default function AdminPage() {
     partner: "",
     status: "upcoming" as "upcoming" | "past" | "fully_booked",
     imageUrl: "",
+    agenda: [] as AgendaItem[],
+    speakers: [] as SpeakerInfo[],
   });
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState("");
+  const [formError, setFormError] = useState("");
+  const [speakerUploadingIndex, setSpeakerUploadingIndex] = useState<number | null>(null);
+  const [speakerUploadError, setSpeakerUploadError] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -81,15 +90,22 @@ export default function AdminPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setFormError("");
     const method = editing ? "PUT" : "POST";
     const url = editing
       ? `/api/admin/events?id=${editing.id}`
       : "/api/admin/events";
 
+    const payload = {
+      ...formData,
+      agenda: formData.agenda.filter((item) => item.time.trim() && item.title.trim()),
+      speakers: formData.speakers.filter((s) => s.name.trim()),
+    };
+
     const res = await fetch(url, {
       method,
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(payload),
     });
 
     if (res.ok) {
@@ -97,6 +113,9 @@ export default function AdminPage() {
       setShowForm(false);
       resetForm();
       fetchData();
+    } else {
+      const data = await res.json().catch(() => null);
+      setFormError(data?.error || "Failed to save event");
     }
   };
 
@@ -111,6 +130,8 @@ export default function AdminPage() {
       partner: webinar.partner,
       status: webinar.status,
       imageUrl: webinar.imageUrl || "",
+      agenda: webinar.agenda || [],
+      speakers: webinar.speakers || [],
     });
     setShowForm(true);
   };
@@ -133,51 +154,100 @@ export default function AdminPage() {
       partner: "",
       status: "upcoming",
       imageUrl: "",
+      agenda: [],
+      speakers: [],
     });
     setUploadError("");
+    setSpeakerUploadError("");
+    setFormError("");
+  };
+
+  const uploadImageFile = async (file: File): Promise<string> => {
+    const validTypes = ["image/jpeg", "image/png", "image/webp", "image/gif"];
+    if (!validTypes.includes(file.type)) {
+      throw new Error("Only JPEG, PNG, WEBP, and GIF files are allowed");
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      throw new Error("File size must be less than 5MB");
+    }
+
+    const formDataUpload = new FormData();
+    formDataUpload.append("file", file);
+
+    const res = await fetch("/api/admin/upload", {
+      method: "POST",
+      body: formDataUpload,
+    });
+
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.error || "Upload failed");
+    }
+    return data.path as string;
   };
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // Validate file type
-    const validTypes = ["image/jpeg", "image/png", "image/webp", "image/gif"];
-    if (!validTypes.includes(file.type)) {
-      setUploadError("Only JPEG, PNG, WEBP, and GIF files are allowed");
-      return;
-    }
-
-    // Validate file size (max 5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      setUploadError("File size must be less than 5MB");
-      return;
-    }
-
     setUploading(true);
     setUploadError("");
 
     try {
-      const formDataUpload = new FormData();
-      formDataUpload.append("file", file);
-
-      const res = await fetch("/api/admin/upload", {
-        method: "POST",
-        body: formDataUpload,
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.error || "Upload failed");
-      }
-
-      setFormData({ ...formData, imageUrl: data.path });
+      const path = await uploadImageFile(file);
+      setFormData({ ...formData, imageUrl: path });
     } catch (error) {
       setUploadError(error instanceof Error ? error.message : "Upload failed");
     } finally {
       setUploading(false);
-      // Reset file input
+      e.target.value = "";
+    }
+  };
+
+  const addAgendaItem = () => {
+    setFormData({ ...formData, agenda: [...formData.agenda, { time: "", duration: "", title: "", speaker: "" }] });
+  };
+
+  const updateAgendaItem = (index: number, field: keyof AgendaItem, value: string) => {
+    setFormData({
+      ...formData,
+      agenda: formData.agenda.map((item, i) => (i === index ? { ...item, [field]: value } : item)),
+    });
+  };
+
+  const removeAgendaItem = (index: number) => {
+    setFormData({ ...formData, agenda: formData.agenda.filter((_, i) => i !== index) });
+  };
+
+  const addSpeaker = () => {
+    setFormData({ ...formData, speakers: [...formData.speakers, { name: "", title: "", company: "", photoUrl: "" }] });
+  };
+
+  const updateSpeaker = (index: number, field: keyof SpeakerInfo, value: string) => {
+    setFormData({
+      ...formData,
+      speakers: formData.speakers.map((s, i) => (i === index ? { ...s, [field]: value } : s)),
+    });
+  };
+
+  const removeSpeaker = (index: number) => {
+    setFormData({ ...formData, speakers: formData.speakers.filter((_, i) => i !== index) });
+  };
+
+  const handleSpeakerPhotoUpload = async (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setSpeakerUploadingIndex(index);
+    setSpeakerUploadError("");
+
+    try {
+      const path = await uploadImageFile(file);
+      updateSpeaker(index, "photoUrl", path);
+    } catch (error) {
+      setSpeakerUploadError(error instanceof Error ? error.message : "Upload failed");
+    } finally {
+      setSpeakerUploadingIndex(null);
       e.target.value = "";
     }
   };
@@ -383,21 +453,171 @@ export default function AdminPage() {
                     )}
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Description
+                      <span className="font-normal text-gray-400"> (mendukung Markdown: **bold**, *italic*, - list, [link](url), dst.)</span>
+                    </label>
                     <textarea
                       value={formData.description}
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                      rows={3}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E31E24] focus:border-transparent outline-none"
+                      rows={5}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E31E24] focus:border-transparent outline-none font-mono text-sm"
                       required
                     />
+                    {formData.description && (
+                      <div className="mt-2">
+                        <p className="text-xs font-medium text-gray-500 mb-1">Preview:</p>
+                        <div className="px-3 py-2 border border-gray-200 rounded-lg bg-gray-50">
+                          <DescriptionMarkdown content={formData.description} className="text-sm text-gray-700" />
+                        </div>
+                      </div>
+                    )}
                   </div>
+
+                  {/* Event Agenda */}
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <label className="block text-sm font-medium text-gray-700">Event Agenda (optional)</label>
+                      <button
+                        type="button"
+                        onClick={addAgendaItem}
+                        className="text-xs text-[#E31E24] font-semibold hover:underline"
+                      >
+                        + Add Agenda Item
+                      </button>
+                    </div>
+                    <div className="space-y-2">
+                      {formData.agenda.map((item, i) => (
+                        <div key={i} className="flex gap-2 items-start border border-gray-200 rounded-lg p-3">
+                          <div className="flex-1 grid grid-cols-2 gap-2">
+                            <input
+                              type="text"
+                              placeholder="Time (e.g. 09:00 - 09:10)"
+                              value={item.time}
+                              onChange={(e) => updateAgendaItem(i, "time", e.target.value)}
+                              className="px-3 py-1.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E31E24] focus:border-transparent outline-none"
+                            />
+                            <input
+                              type="text"
+                              placeholder="Duration (e.g. 10 min)"
+                              value={item.duration ?? ""}
+                              onChange={(e) => updateAgendaItem(i, "duration", e.target.value)}
+                              className="px-3 py-1.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E31E24] focus:border-transparent outline-none"
+                            />
+                            <input
+                              type="text"
+                              placeholder="Segment title"
+                              value={item.title}
+                              onChange={(e) => updateAgendaItem(i, "title", e.target.value)}
+                              className="col-span-2 px-3 py-1.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E31E24] focus:border-transparent outline-none"
+                            />
+                            <input
+                              type="text"
+                              placeholder="Speaker (optional)"
+                              value={item.speaker ?? ""}
+                              onChange={(e) => updateAgendaItem(i, "speaker", e.target.value)}
+                              className="col-span-2 px-3 py-1.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E31E24] focus:border-transparent outline-none"
+                            />
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => removeAgendaItem(i)}
+                            className="text-gray-400 hover:text-red-500 px-1 py-1.5"
+                            aria-label="Remove agenda item"
+                          >
+                            ✕
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Speakers */}
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <label className="block text-sm font-medium text-gray-700">Speakers (optional)</label>
+                      <button
+                        type="button"
+                        onClick={addSpeaker}
+                        className="text-xs text-[#E31E24] font-semibold hover:underline"
+                      >
+                        + Add Speaker
+                      </button>
+                    </div>
+                    {speakerUploadError && (
+                      <p className="text-sm text-red-600 mb-1">{speakerUploadError}</p>
+                    )}
+                    <div className="space-y-2">
+                      {formData.speakers.map((speaker, i) => (
+                        <div key={i} className="flex gap-3 items-start border border-gray-200 rounded-lg p-3">
+                          {speaker.photoUrl ? (
+                            <img
+                              src={speaker.photoUrl}
+                              alt={speaker.name}
+                              className="w-14 h-14 rounded-full object-cover flex-shrink-0 border border-gray-200"
+                            />
+                          ) : (
+                            <div className="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 text-gray-400 text-xs text-center">
+                              No photo
+                            </div>
+                          )}
+                          <div className="flex-1 grid grid-cols-2 gap-2">
+                            <input
+                              type="text"
+                              placeholder="Name"
+                              value={speaker.name}
+                              onChange={(e) => updateSpeaker(i, "name", e.target.value)}
+                              className="col-span-2 px-3 py-1.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E31E24] focus:border-transparent outline-none"
+                            />
+                            <input
+                              type="text"
+                              placeholder="Title (e.g. CTO)"
+                              value={speaker.title ?? ""}
+                              onChange={(e) => updateSpeaker(i, "title", e.target.value)}
+                              className="px-3 py-1.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E31E24] focus:border-transparent outline-none"
+                            />
+                            <input
+                              type="text"
+                              placeholder="Company"
+                              value={speaker.company ?? ""}
+                              onChange={(e) => updateSpeaker(i, "company", e.target.value)}
+                              className="px-3 py-1.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E31E24] focus:border-transparent outline-none"
+                            />
+                            <label className="col-span-2 flex items-center justify-center px-3 py-1.5 text-sm bg-gray-100 border border-gray-300 rounded-lg hover:bg-gray-200 transition cursor-pointer text-gray-600">
+                              {speakerUploadingIndex === i ? "Uploading..." : "Upload Photo"}
+                              <input
+                                type="file"
+                                accept="image/jpeg,image/png,image/webp,image/gif"
+                                onChange={(e) => handleSpeakerPhotoUpload(i, e)}
+                                disabled={speakerUploadingIndex !== null}
+                                className="hidden"
+                              />
+                            </label>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => removeSpeaker(i)}
+                            className="text-gray-400 hover:text-red-500 px-1 py-1.5"
+                            aria-label="Remove speaker"
+                          >
+                            ✕
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {formError && (
+                    <p className="text-sm text-red-600">{formError}</p>
+                  )}
+
                   <div className="flex gap-3 justify-end">
                     <button
                       type="button"
                       onClick={() => {
                         setShowForm(false);
                         setEditing(null);
+                        setFormError("");
                         resetForm();
                       }}
                       className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition"
@@ -505,6 +725,8 @@ export default function AdminPage() {
                   <tr>
                     <th className="text-left px-4 py-3 text-sm font-semibold text-gray-700">Name</th>
                     <th className="text-left px-4 py-3 text-sm font-semibold text-gray-700">Email</th>
+                    <th className="text-left px-4 py-3 text-sm font-semibold text-gray-700">Phone</th>
+                    <th className="text-left px-4 py-3 text-sm font-semibold text-gray-700">Job Title</th>
                     <th className="text-left px-4 py-3 text-sm font-semibold text-gray-700">Company</th>
                     <th className="text-left px-4 py-3 text-sm font-semibold text-gray-700">Event</th>
                     <th className="text-left px-4 py-3 text-sm font-semibold text-gray-700">Registered</th>
@@ -517,10 +739,9 @@ export default function AdminPage() {
                       <tr key={reg.id} className="hover:bg-gray-50">
                         <td className="px-4 py-3 text-sm font-medium text-gray-900">{reg.name}</td>
                         <td className="px-4 py-3 text-sm text-gray-600">{reg.email}</td>
-                        <td className="px-4 py-3 text-sm text-gray-600">
-                          {reg.company}
-                          {reg.jobTitle && <span className="text-gray-400"> · {reg.jobTitle}</span>}
-                        </td>
+                        <td className="px-4 py-3 text-sm text-gray-600">{reg.phone || "-"}</td>
+                        <td className="px-4 py-3 text-sm text-gray-600">{reg.jobTitle || "-"}</td>
+                        <td className="px-4 py-3 text-sm text-gray-600">{reg.company}</td>
                         <td className="px-4 py-3 text-sm text-gray-600">
                           {webinar ? webinar.title : "Unknown"}
                         </td>
@@ -532,7 +753,7 @@ export default function AdminPage() {
                   })}
                   {registrations.length === 0 && (
                     <tr>
-                      <td colSpan={5} className="px-4 py-8 text-center text-gray-500">
+                      <td colSpan={7} className="px-4 py-8 text-center text-gray-500">
                         No registrations yet.
                       </td>
                     </tr>

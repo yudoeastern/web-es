@@ -4,6 +4,7 @@ import { eq, count } from "drizzle-orm";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import RegisterForm from "./RegisterForm";
+import { DescriptionMarkdown } from "@/lib/markdown";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -20,11 +21,14 @@ export default async function WebinarDetailPage({ params }: PageProps) {
   }
 
   const webinar = result[0];
+  const agenda = webinar.agenda ?? [];
+  const speakers = webinar.speakers ?? [];
+  const hasExtendedContent = agenda.length > 0 || speakers.length > 0;
 
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-dark-bg via-dark-bg-light to-dark-bg">
+      <section className="pt-20 pb-8 px-6 md:pt-24 md:pb-10 md:px-8 bg-gradient-to-br from-dark-bg via-dark-bg-light to-dark-bg">
         <div className="container-custom">
           <Link href="/events" className="inline-flex items-center text-text-secondary hover:text-primary-orange transition mb-6">
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -50,13 +54,11 @@ export default async function WebinarDetailPage({ params }: PageProps) {
                 </div>
               )}
 
-              <h1 className="text-3xl md:text-5xl font-bold text-text-dark mb-6">
+              <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-text-dark mb-6 leading-tight">
                 {webinar.title}
               </h1>
 
-              <p className="text-lg text-text-secondary mb-8">
-                {webinar.description}
-              </p>
+              <DescriptionMarkdown content={webinar.description} className="text-lg text-text-secondary mb-8" />
 
               {/* Event Details */}
               <div className="space-y-4 mb-8">
@@ -131,46 +133,157 @@ export default async function WebinarDetailPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Registration Form (only for upcoming events) */}
-      {webinar.status === "upcoming" && (
-        <section className="section-padding bg-bg-light-light">
-          <div className="container-custom max-w-2xl">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-text-dark mb-4">
-                Register for this Event
-              </h2>
-              <p className="text-text-secondary">
-                Fill in your details to secure your spot. We&apos;ll send you a confirmation email with the event details.
-              </p>
-            </div>
+      {hasExtendedContent ? (
+        /* Agenda + Speakers (left) alongside a sticky registration/status sidebar (right) */
+        <section className="pt-0 pb-20 px-6 md:pt-2 md:pb-24 md:px-8 bg-bg-light-light">
+          <div className="container-custom">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+              <div className="lg:col-span-2 space-y-16">
+                {agenda.length > 0 && (
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-bold text-text-dark mb-8">Event Agenda</h2>
+                    <div className="relative pl-8 border-l-2 border-[#E31E24]/20 space-y-8">
+                      {agenda.map((item, i) => (
+                        <div key={i} className="relative">
+                          <div className="absolute -left-[2.55rem] top-1 w-4 h-4 rounded-full bg-[#E31E24] border-4 border-white shadow" />
+                          <p className="text-sm font-semibold text-[#E31E24] mb-1">
+                            {item.time}
+                            {item.duration ? ` · ${item.duration}` : ""}
+                          </p>
+                          <p className="text-text-dark font-medium">{item.title}</p>
+                          {item.speaker && <p className="text-text-secondary text-sm mt-1">{item.speaker}</p>}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
-            <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-200">
-              <RegisterForm webinarId={webinar.id} webinarTitle={webinar.title} />
+                {speakers.length > 0 && (
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-bold text-text-dark mb-8">Expert Speakers</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      {speakers.map((speaker, i) => (
+                        <div
+                          key={i}
+                          className="bg-white rounded-xl border border-gray-200 p-6 flex items-center gap-4"
+                        >
+                          {speaker.photoUrl ? (
+                            <img
+                              src={speaker.photoUrl}
+                              alt={speaker.name}
+                              className="w-16 h-16 rounded-full object-cover flex-shrink-0"
+                            />
+                          ) : (
+                            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#E31E24] to-[#C4181E] flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
+                              {speaker.name.charAt(0)}
+                            </div>
+                          )}
+                          <div>
+                            <p className="font-semibold text-text-dark">{speaker.name}</p>
+                            {(speaker.title || speaker.company) && (
+                              <p className="text-sm text-text-secondary">
+                                {[speaker.title, speaker.company].filter(Boolean).join(" · ")}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="lg:col-span-1">
+                <div className="lg:sticky lg:top-24">
+                  {webinar.status === "upcoming" && (
+                    <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-200">
+                      <h3 className="text-xl font-bold text-text-dark mb-2">Register for this Event</h3>
+                      <p className="text-text-secondary text-sm mb-6">
+                        Fill in your details to secure your spot. We&apos;ll send you a confirmation email with the
+                        event details.
+                      </p>
+                      <RegisterForm webinarId={webinar.id} webinarTitle={webinar.title} />
+                    </div>
+                  )}
+
+                  {webinar.status === "fully_booked" && (
+                    <div className="bg-orange-50 rounded-2xl p-8 border border-orange-200 text-center">
+                      <svg className="w-14 h-14 text-orange-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                      </svg>
+                      <h3 className="text-xl font-bold text-text-dark mb-3">Fully Booked</h3>
+                      <p className="text-text-secondary text-sm mb-6">
+                        Unfortunately, all seats have been filled. Registration is now closed.
+                      </p>
+                      <Link href="/events" className="btn-primary inline-block">
+                        View Other Events
+                      </Link>
+                    </div>
+                  )}
+
+                  {webinar.status === "past" && (
+                    <div className="bg-white rounded-2xl p-8 border border-gray-200 text-center">
+                      <svg className="w-14 h-14 text-[#E31E24]/40 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <h3 className="text-xl font-bold text-text-dark mb-3">This Event Has Ended</h3>
+                      <p className="text-text-secondary text-sm mb-6">
+                        Registration for this event is closed. Check out our upcoming events instead.
+                      </p>
+                      <Link href="/events" className="btn-primary inline-block">
+                        View Other Events
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </section>
-      )}
+      ) : (
+        <>
+          {/* Registration Form (only for upcoming events) */}
+          {webinar.status === "upcoming" && (
+            <section className="section-padding bg-bg-light-light">
+              <div className="container-custom max-w-2xl">
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-text-dark mb-4">
+                    Register for this Event
+                  </h2>
+                  <p className="text-text-secondary">
+                    Fill in your details to secure your spot. We&apos;ll send you a confirmation email with the event details.
+                  </p>
+                </div>
 
-      {/* Fully Booked Message */}
-      {webinar.status === "fully_booked" && (
-        <section className="section-padding bg-bg-light-light">
-          <div className="container-custom max-w-2xl text-center">
-            <div className="bg-orange-50 rounded-2xl p-8 border border-orange-200">
-              <svg className="w-16 h-16 text-orange-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
-              <h2 className="text-2xl md:text-3xl font-bold text-text-dark mb-4">
-                This Event is Fully Booked
-              </h2>
-              <p className="text-text-secondary mb-6">
-                Unfortunately, all seats have been filled. Registration is now closed.
-              </p>
-              <Link href="/events" className="btn-primary inline-block">
-                View Other Events
-              </Link>
-            </div>
-          </div>
-        </section>
+                <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-200">
+                  <RegisterForm webinarId={webinar.id} webinarTitle={webinar.title} />
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* Fully Booked Message */}
+          {webinar.status === "fully_booked" && (
+            <section className="section-padding bg-bg-light-light">
+              <div className="container-custom max-w-2xl text-center">
+                <div className="bg-orange-50 rounded-2xl p-8 border border-orange-200">
+                  <svg className="w-16 h-16 text-orange-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                  <h2 className="text-2xl md:text-3xl font-bold text-text-dark mb-4">
+                    This Event is Fully Booked
+                  </h2>
+                  <p className="text-text-secondary mb-6">
+                    Unfortunately, all seats have been filled. Registration is now closed.
+                  </p>
+                  <Link href="/events" className="btn-primary inline-block">
+                    View Other Events
+                  </Link>
+                </div>
+              </div>
+            </section>
+          )}
+        </>
       )}
 
       {/* CTA Section */}

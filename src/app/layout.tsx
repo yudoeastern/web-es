@@ -79,16 +79,39 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   // Get the deployment URL from environment variable
-  const baseUrl = typeof window !== 'undefined' 
-    ? window.location.origin 
-    : process.env.VERCEL_URL 
+  const baseUrl = typeof window !== 'undefined'
+    ? window.location.origin
+    : process.env.VERCEL_URL
       ? `https://${process.env.VERCEL_URL}`
-      : process.env.NEXT_PUBLIC_SITE_URL 
+      : process.env.NEXT_PUBLIC_SITE_URL
         || "https://easternstack.com";
+
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "EasternStack",
+    legalName: "PT Inovasi Konversasi Digital",
+    url: baseUrl,
+    logo: `${baseUrl}/logo_head.png`,
+    description: "Enterprise AI with Greater Model Choice and Operational Control",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Menara Caraka 3rd Floor, Jl. Dr. Ide Anak Agung Gde Agung, Lot E4-7 No. 1, Kuningan Timur",
+      addressLocality: "Jakarta",
+      postalCode: "12950",
+      addressCountry: "ID",
+    },
+    sameAs: ["https://www.linkedin.com/company/easternstack"],
+  };
 
   return (
     <html lang="en">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+
         {/* Tell scrapers which image to use for OG */}
         <link rel="image_src" href={`${baseUrl}/logo_head.png`} />
         <link rel="preload" as="image" href={`${baseUrl}/logo_head.png`} />

@@ -56,8 +56,8 @@ export default function Home() {
               <Link href="/solutions/ai" className="btn-primary text-lg px-8 py-4">
                 Explore Solutions
               </Link>
-              <Link href="/contact" className="bg-white text-[#E31E24] hover:bg-gray-100 font-semibold py-4 px-8 rounded-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-lg">
-                Book Consultation
+              <Link href="https://trial.easternstack.com/" target="_blank" rel="noopener noreferrer" className="bg-white text-[#E31E24] hover:bg-gray-100 font-semibold py-4 px-8 rounded-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-lg">
+                Trial Version
               </Link>
             </div>
           </div>
@@ -507,8 +507,8 @@ export default function Home() {
           <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
             Deliver measurable business impact with EasternStack enterprise AI solutions.
           </p>
-          <Link href="/contact" className="btn-primary bg-white text-[#E31E24] hover:bg-gray-100">
-            Book Consultation
+          <Link href="https://trial.easternstack.com/" target="_blank" rel="noopener noreferrer" className="btn-primary bg-white text-[#E31E24] hover:bg-gray-100">
+            Trial Version
           </Link>
         </div>
       </section>

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/db";
 import { webinars, registrations } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 import nodemailer from "nodemailer";
 
@@ -52,8 +52,10 @@ export async function POST(request: NextRequest) {
       .select()
       .from(registrations)
       .where(
-        eq(registrations.webinarId, validated.webinarId) &&
-        eq(registrations.email, validated.email)
+        and(
+          eq(registrations.webinarId, validated.webinarId),
+          eq(registrations.email, validated.email)
+        )
       );
 
     if (existing.length > 0) {
@@ -76,7 +78,9 @@ export async function POST(request: NextRequest) {
       })
       .returning();
 
-    // Send emails if SMTP is configured
+    // Send emails if SMTP is configured. Email failures must not fail the
+    // registration response — the record is already saved at this point.
+    try {
     if (process.env.SMTP_USER && process.env.SMTP_PASS) {
       const transporter = createTransporter();
 
@@ -314,6 +318,9 @@ export async function POST(request: NextRequest) {
     } else {
       console.log("SMTP not configured - emails skipped. Registration saved.");
       console.log("Registration:", registration[0]);
+    }
+    } catch (emailError) {
+      console.error("Failed to send registration emails (registration was still saved):", emailError);
     }
 
     return NextResponse.json({

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { db } from "@/db";
 import { webinars } from "@/db/schema";
 import { desc, count } from "drizzle-orm";
+import { stripMarkdown } from "@/lib/markdown";
 
 const ITEMS_PER_PAGE = 6;
 
@@ -93,7 +94,7 @@ export default async function WebinarPage({ searchParams }: PageProps) {
 
                       {/* Description */}
                       <p className="text-text-secondary text-sm mb-4 line-clamp-3">
-                        {webinar.description}
+                        {stripMarkdown(webinar.description)}
                       </p>
 
                       {/* Metadata */}
