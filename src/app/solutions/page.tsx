@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 
 function CheckIcon() {
@@ -12,7 +15,7 @@ const FEATURES = [
   {
     eyebrow: "01 · Agent Studio",
     title: "Design multi-agent workflows on a visual canvas",
-    body: "Model your operation as a topology — a supervisor agent that delegates to specialist agents, with depth limits, call budgets and publish gates on every branch.",
+    body: "Model your operation as a topology: a supervisor agent that delegates to specialist agents, with depth limits, call budgets and publish gates on every branch.",
     points: [
       "Supervisor → delegate orchestration with depth and call limits",
       "Per-branch budgets surfaced inline: depth 2 · 10 calls · 60s",
@@ -36,7 +39,7 @@ const FEATURES = [
   {
     eyebrow: "03 · Document Intelligence",
     title: "Turn documents into indexed, searchable knowledge",
-    body: "Upload PDFs and spreadsheets into a governed registry. AgentOS chunks, indexes and tracks cost per document, so agents retrieve evidence — not hallucinations.",
+    body: "Upload PDFs and spreadsheets into a governed registry. AgentOS chunks, indexes and tracks cost per document, so agents retrieve evidence, not hallucinations.",
     points: [
       "PDF & XLSX ingestion with chunk-level indexing",
       "Folder-scoped document registries per workspace",
@@ -46,33 +49,40 @@ const FEATURES = [
     alt: "Document Intelligence registry",
   },
   {
-    eyebrow: "04 · Agent Runtime",
-    title: "Durable execution you can actually monitor",
-    body: "Agents run on dedicated Agent Workers with heartbeats, task queues and uptime you can inspect — not black-box inference calls.",
+    eyebrow: "04 · Agentic Pipeline",
+    title: "Durable data processing you can actually trust",
+    body: "ABI runs on a fault-tolerant pipeline with schema validation, automatic dashboard generation, and analytics you can trace, not opaque AI guesswork.",
     points: [
-      "Registered / online / offline / error health at a glance",
-      "Worker endpoint, task queue and uptime per workspace",
-      "Document ingestion workers run alongside your agents",
+      "Upload → validate → transform → visualize, every step logged and resumable",
+      "Per-dataset processing status, row counts, and success rates at a glance",
+      "AI-generated widgets, insights, and filters, all queryable via natural language chat",
     ],
-    image: "/agentos/screens/agent-runtime.png",
-    alt: "Agent Runtime dashboard",
+    images: [
+      "/agentos/screens/ABI-AgenticBI-00.png",
+      "/agentos/screens/ABI-AgenticBI-01.png",
+      "/agentos/screens/ABI-AgenticBI-02.png",
+    ],
+    alt: "Agentic Pipeline dashboard",
   },
   {
-    eyebrow: "05 · Open API Access",
-    title: "Call any agent from any system over HTTP",
-    body: "Every capability is a versioned /v1 endpoint. Drop a workspace key into your backend and stream agent chat, upload documents or search knowledge.",
+    eyebrow: "05 · Sales Transition Engine",
+    title: "High sales turnover? Transitions don't have to be painful",
+    body: "This isn't just another CRM. It's built so when a sales rep leaves, the replacement instantly knows where to start, who to follow up with, and what to do next.",
     points: [
-      "x-api-key auth — the full secret is shown once at creation",
-      "Sync and SSE streaming chat endpoints",
-      "Document and knowledge endpoints under the same key",
+      "Every customer session is fully recorded: conversation history, deal status, and negotiation stage. The next rep picks up right where things left off instead of starting from scratch.",
+      "New reps see a prioritized follow-up list based on opportunity scores and recent activity.",
+      "Senior reps don't need to spend days training newcomers. The system guides them, not a person explaining everything.",
     ],
-    image: "/agentos/screens/open-api.png",
-    alt: "Open API Access documentation",
+    images: [
+      "/agentos/screens/Omnichannel-01.png",
+      "/agentos/screens/Omnichannel-02.png",
+    ],
+    alt: "Sales Transition Engine dashboard",
   },
   {
     eyebrow: "06 · Workspace Overview",
     title: "Every workspace isolated, every run accounted for",
-    body: "Members, agents, documents and 30-day run health per workspace — with model spend against a monthly budget and a full activity trail.",
+    body: "Members, agents, documents and 30-day run health per workspace, with model spend against a monthly budget and a full activity trail.",
     points: [
       "Runs, success rate and model spend per workspace",
       "Monthly budget tracking with on-track status",
@@ -146,6 +156,28 @@ const TESTIMONIALS = [
 ];
 
 function FeatureRow({ feature, flip }: { feature: typeof FEATURES[0]; flip: boolean }) {
+  const [lightbox, setLightbox] = useState<{ images: string[]; index: number } | null>(null);
+
+  const allImages = "images" in feature && feature.images ? feature.images : [feature.image];
+
+  function openLightbox(index: number) {
+    setLightbox({ images: allImages, index });
+  }
+
+  function closeLightbox() {
+    setLightbox(null);
+  }
+
+  function prevImage() {
+    if (!lightbox) return;
+    setLightbox({ ...lightbox, index: (lightbox.index - 1 + lightbox.images.length) % lightbox.images.length });
+  }
+
+  function nextImage() {
+    if (!lightbox) return;
+    setLightbox({ ...lightbox, index: (lightbox.index + 1) % lightbox.images.length });
+  }
+
   return (
     <div className={`grid items-center gap-8 lg:grid-cols-2 lg:gap-14 ${flip ? "lg:flex-row-reverse" : ""}`}>
       <div className={flip ? "lg:order-2" : ""}>
@@ -167,25 +199,136 @@ function FeatureRow({ feature, flip }: { feature: typeof FEATURES[0]; flip: bool
       </div>
 
       <figure className={flip ? "lg:order-1" : ""}>
-        <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-xl">
-          <div className="flex items-center gap-3 border-b border-gray-100 px-4 py-2.5">
-            <span className="flex gap-1.5" aria-hidden="true">
-              <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
-              <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
-              <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
-            </span>
-            <span className="min-w-0 flex-1 truncate rounded-md border border-gray-200 bg-gray-50 px-3 py-1 text-center font-mono text-[11px] text-gray-500">
-              agentic.easternstack.com{feature.image.replace("/agentos/screens", "")}
-            </span>
+        {"images" in feature && feature.images ? (
+          <div className="group relative cursor-pointer pb-4">
+            {feature.images.map((img, i) => (
+              <div
+                key={img}
+                onClick={() => openLightbox(i)}
+                className={`overflow-hidden rounded-xl border border-gray-200 bg-white shadow-xl transition-all duration-500 ease-out
+                  ${i === 0 ? "-rotate-3 -translate-y-1 group-hover:-rotate-6 group-hover:-translate-x-6 group-hover:-translate-y-2" : ""}
+                  ${i === 1 ? "rotate-0 translate-y-0" : ""}
+                  ${i === 2 ? "rotate-3 translate-y-1 group-hover:rotate-6 group-hover:translate-x-6 group-hover:translate-y-2" : ""}
+                `}
+                style={{
+                  zIndex: i,
+                  position: i < feature.images.length - 1 ? "absolute" : "relative",
+                  width: "100%",
+                }}
+              >
+                <div className="flex items-center gap-3 border-b border-gray-100 px-4 py-2.5">
+                  <span className="flex gap-1.5" aria-hidden="true">
+                    <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
+                  </span>
+                  <span className="min-w-0 flex-1 truncate rounded-md border border-gray-200 bg-gray-50 px-3 py-1 text-center font-mono text-[11px] text-gray-500">
+                    agentic.easternstack.com{img.replace("/agentos/screens", "")}
+                  </span>
+                </div>
+                <img
+                  src={img}
+                  alt={`${feature.alt} ${i + 1}`}
+                  loading="lazy"
+                  className="block w-full"
+                />
+              </div>
+            ))}
           </div>
-          <img
-            src={feature.image}
-            alt={feature.alt}
-            loading="lazy"
-            className="block w-full"
-          />
-        </div>
+        ) : (
+          <div
+            onClick={() => openLightbox(0)}
+            className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-xl cursor-pointer"
+          >
+            <div className="flex items-center gap-3 border-b border-gray-100 px-4 py-2.5">
+              <span className="flex gap-1.5" aria-hidden="true">
+                <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
+                <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
+                <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
+              </span>
+              <span className="min-w-0 flex-1 truncate rounded-md border border-gray-200 bg-gray-50 px-3 py-1 text-center font-mono text-[11px] text-gray-500">
+                agentic.easternstack.com{feature.image.replace("/agentos/screens", "")}
+              </span>
+            </div>
+            <img
+              src={feature.image}
+              alt={feature.alt}
+              loading="lazy"
+              className="block w-full"
+            />
+          </div>
+        )}
       </figure>
+
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+          onClick={closeLightbox}
+          onKeyDown={(e) => {
+            if (e.key === "Escape") closeLightbox();
+            if (e.key === "ArrowLeft") prevImage();
+            if (e.key === "ArrowRight") nextImage();
+          }}
+          tabIndex={0}
+          role="dialog"
+          aria-modal="true"
+          ref={(el) => el?.focus()}
+        >
+          <button
+            onClick={closeLightbox}
+            className="absolute top-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+            aria-label="Close"
+          >
+            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          {lightbox.images.length > 1 && (
+            <button
+              onClick={(e) => { e.stopPropagation(); prevImage(); }}
+              className="absolute left-4 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+              aria-label="Previous image"
+            >
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+          )}
+
+          <img
+            src={lightbox.images[lightbox.index]}
+            alt={`${feature.alt} ${lightbox.index + 1}`}
+            className="max-h-[90vh] max-w-[90vw] rounded-xl object-contain shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          {lightbox.images.length > 1 && (
+            <button
+              onClick={(e) => { e.stopPropagation(); nextImage(); }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+              aria-label="Next image"
+            >
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          )}
+
+          {lightbox.images.length > 1 && (
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              {lightbox.images.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={(e) => { e.stopPropagation(); setLightbox({ ...lightbox, index: i }); }}
+                  className={`h-2 w-2 rounded-full transition-all ${i === lightbox.index ? "bg-white w-6" : "bg-white/40 hover:bg-white/60"}`}
+                  aria-label={`Go to image ${i + 1}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -194,7 +337,7 @@ export default function SolutionsPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-white pt-32 pb-16 sm:pt-40 sm:pb-20">
+      <section className="relative overflow-hidden bg-white pt-20 pb-16 sm:pt-24 sm:pb-20">
         {/* Dot grid texture */}
         <div
           className="pointer-events-none absolute inset-0"
@@ -215,16 +358,17 @@ export default function SolutionsPage() {
             </div>
 
             <h1 className="mt-6 text-4xl font-extrabold text-[#1A1A1A] sm:text-5xl md:text-6xl" style={{ letterSpacing: "-0.03em", lineHeight: 1.05 }}>
-              Deploy an AI agent workforce over your{" "}
+              Deploy an AI Agent Workforce Over Your{" "}
               <span className="bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">
-                private knowledge
+                Private Knowledge
               </span>
             </h1>
 
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-600">
-              AgentOS gives your enterprise tenant-isolated agents that ingest documents,
-              orchestrate multi-step workflows, and run as durable workers — deployed in
-              your environment, exposed through a single versioned API.
+              <strong>Weast</strong> is EasternStack's unified enterprise AI platform designed to help organizations unlock the full potential of AI.
+            </p>
+            <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-gray-600">
+              Securely connect your enterprise knowledge, build intelligent AI agents, automate complex workflows, and integrate with your existing ecosystem. All on one platform, across every use case.
             </p>
 
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -274,7 +418,7 @@ export default function SolutionsPage() {
               One control plane for the whole agent lifecycle
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-gray-600">
-              From the first uploaded document to the last traced API call — every screen below is
+              From the first uploaded document to the last traced API call, every screen below is
               the shipping product, captured from a live AgentOS workspace.
             </p>
           </div>
@@ -296,7 +440,7 @@ export default function SolutionsPage() {
               Run agents on the models your teams already trust
             </h2>
             <p className="mt-4 leading-relaxed text-gray-600">
-              AgentOS is model-agnostic — point each agent at a provider per workspace, and swap
+              AgentOS is model-agnostic: point each agent at a provider per workspace, and swap
               models without touching your workflows.
             </p>
           </div>
@@ -319,7 +463,7 @@ export default function SolutionsPage() {
           </div>
 
           <p className="mt-6 text-center font-mono text-[12px] text-gray-500">
-            Plus any OpenAI-compatible endpoint — usage synced from Easternstack AI Gate, broken down by model.
+            Plus any OpenAI-compatible endpoint, usage synced from Easternstack AI Gate, broken down by model.
           </p>
         </div>
       </section>
@@ -334,7 +478,7 @@ export default function SolutionsPage() {
             </h2>
             <p className="mt-4 leading-relaxed text-gray-400">
               AgentOS runs inside your infrastructure with isolation, key management, and
-              auditability designed into the architecture — not bolted on.
+              auditability designed into the architecture, not bolted on.
             </p>
           </div>
 
@@ -388,7 +532,7 @@ export default function SolutionsPage() {
             </h2>
             <p className="mx-auto mt-4 max-w-xl leading-relaxed text-gray-600">
               Book a working session with our team. We'll stand up a workspace against
-              your documents and walk through the full agent lifecycle — ingestion,
+              your documents and walk through the full agent lifecycle: ingestion,
               orchestration, runtime, and API handoff.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
