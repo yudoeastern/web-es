@@ -158,7 +158,7 @@ const TESTIMONIALS = [
 function FeatureRow({ feature, flip }: { feature: typeof FEATURES[0]; flip: boolean }) {
   const [lightbox, setLightbox] = useState<{ images: string[]; index: number } | null>(null);
 
-  const allImages = "images" in feature && feature.images ? feature.images : [feature.image];
+  const allImages = "images" in feature && feature.images ? feature.images : "image" in feature && feature.image ? [feature.image] : [];
 
   function openLightbox(index: number) {
     setLightbox({ images: allImages, index });
@@ -247,11 +247,11 @@ function FeatureRow({ feature, flip }: { feature: typeof FEATURES[0]; flip: bool
                 <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
               </span>
               <span className="min-w-0 flex-1 truncate rounded-md border border-gray-200 bg-gray-50 px-3 py-1 text-center font-mono text-[11px] text-gray-500">
-                agentic.easternstack.com{feature.image.replace("/agentos/screens", "")}
+                agentic.easternstack.com{allImages[0]?.replace("/agentos/screens", "")}
               </span>
             </div>
             <img
-              src={feature.image}
+              src={allImages[0]}
               alt={feature.alt}
               loading="lazy"
               className="block w-full"
@@ -333,6 +333,79 @@ function FeatureRow({ feature, flip }: { feature: typeof FEATURES[0]; flip: bool
   );
 }
 
+const TABS = [
+  { label: "Agentic AI", indices: [0, 1] },
+  { label: "IDP", indices: [2] },
+  { label: "ABI (AgenticBI)", indices: [3] },
+  { label: "Pipeline Relay", indices: [4] },
+  { label: "Workspace", indices: [5] },
+];
+
+function CapabilitiesSection() {
+  const [activeTab, setActiveTab] = useState(0);
+  const activeFeatures = TABS[activeTab].indices.map((i) => FEATURES[i]);
+
+  return (
+    <section className="border-y border-gray-200 bg-gray-50 py-20 sm:py-24">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <div className="max-w-2xl">
+          <p className="text-xs font-bold uppercase tracking-widest text-[#E31E24]">Platform capabilities</p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#1A1A1A] sm:text-4xl">
+            One control plane for the whole agent lifecycle
+          </h2>
+          <p className="mt-4 text-lg leading-relaxed text-gray-600">
+            From the first uploaded document to the last traced API call, every screen below is
+            the shipping product, captured from a live workspace.
+          </p>
+        </div>
+
+        {/* Tab Bar */}
+        <div className="mt-12 sm:mt-16">
+          <div className="relative flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+            {TABS.map((tab, i) => (
+              <button
+                key={tab.label}
+                onClick={() => setActiveTab(i)}
+                className={`relative shrink-0 rounded-lg px-5 py-2.5 text-sm font-semibold transition-all duration-300 cursor-pointer
+                  ${activeTab === i
+                    ? "bg-[#1A1A1A] text-white shadow-lg shadow-black/10"
+                    : "bg-white text-gray-500 hover:bg-gray-100 hover:text-[#1A1A1A] border border-gray-200"
+                  }
+                `}
+              >
+                <span className="flex items-center gap-1.5">
+                  {tab.label}
+                  {activeTab === i && (
+                    <svg className="h-3.5 w-3.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  )}
+                </span>
+                {activeTab === i && (
+                  <span className="tab-indicator absolute -bottom-1 left-1/2 h-0.5 -translate-x-1/2 rounded-full bg-[#E31E24]" />
+                )}
+              </button>
+            ))}
+          </div>
+          <p className="mt-3 flex items-center gap-1.5 text-xs text-gray-400">
+            <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+            </svg>
+            Click a tab to explore each product
+          </p>
+        </div>
+
+        {/* Active Tab Features */}
+        <div className="mt-12 space-y-20 sm:mt-16 sm:space-y-24">
+          {activeFeatures.map((feature, index) => (
+            <FeatureRow key={feature.eyebrow} feature={feature} flip={index % 2 === 1} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function SolutionsPage() {
   return (
     <div className="min-h-screen">
@@ -353,7 +426,7 @@ export default function SolutionsPage() {
         <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <div className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-semibold text-gray-600">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#E31E24]" aria-hidden="true" />
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-green-500" aria-hidden="true" />
               Enterprise Agentic AI Platform
             </div>
 
@@ -410,26 +483,7 @@ export default function SolutionsPage() {
       </section>
 
       {/* Capabilities Section */}
-      <section className="border-y border-gray-200 bg-gray-50 py-20 sm:py-24">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="max-w-2xl">
-            <p className="text-xs font-bold uppercase tracking-widest text-[#E31E24]">Platform capabilities</p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#1A1A1A] sm:text-4xl">
-              One control plane for the whole agent lifecycle
-            </h2>
-            <p className="mt-4 text-lg leading-relaxed text-gray-600">
-              From the first uploaded document to the last traced API call, every screen below is
-              the shipping product, captured from a live AgentOS workspace.
-            </p>
-          </div>
-
-          <div className="mt-16 space-y-20 sm:mt-20 sm:space-y-24">
-            {FEATURES.map((feature, index) => (
-              <FeatureRow key={feature.eyebrow} feature={feature} flip={index % 2 === 1} />
-            ))}
-          </div>
-        </div>
-      </section>
+      <CapabilitiesSection />
 
       {/* LLM Providers Section */}
       <section className="border-b border-gray-200 bg-white py-16 sm:py-20">

@@ -429,3 +429,37 @@ body {
   color: #94A3B8;
   pointer-events: none;
 }
+
+/* Hide scrollbar for horizontal tab bar */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Tab indicator: dot to line expand, then pulse */
+@keyframes tab-expand {
+  0% {
+    width: 4px;
+    opacity: 0.4;
+  }
+  100% {
+    width: 75%;
+    opacity: 1;
+  }
+}
+
+@keyframes tab-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.tab-indicator {
+  animation: tab-expand 0.4s ease-out forwards, tab-pulse 1.8s ease-in-out 0.4s infinite;
+}
