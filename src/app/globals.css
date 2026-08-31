@@ -463,3 +463,49 @@ body {
 .tab-indicator {
   animation: tab-expand 0.4s ease-out forwards, tab-pulse 1.8s ease-in-out 0.4s infinite;
 }
+
+/* Studio demo: blinking editor caret */
+@keyframes caret-blink {
+  0%, 45% {
+    opacity: 1;
+  }
+  50%, 95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.cursor-blink {
+  animation: caret-blink 1.1s steps(1) infinite;
+}
+
+/* Studio demo: pulsing live indicator */
+@keyframes live-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.75);
+  }
+}
+
+.live-dot {
+  animation: live-pulse 1.4s ease-in-out infinite;
+}
+
+/* Agent Studio flow: delegation arrows draw themselves in */
+@keyframes flow-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.flow-edge {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: flow-draw 1.1s ease-out 0.2s forwards;
+}
