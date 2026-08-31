@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AI for Telecommunications in Indonesia | EasternStack",
+  description:
+    "Network optimization, churn prediction, 24/7 AI customer support, and fraud detection for telecom operators in Indonesia's growing digital economy.",
+  alternates: { canonical: "/industries/telecommunications" },
+  openGraph: {
+    title: "AI for Telecommunications in Indonesia | EasternStack",
+    description:
+      "Enhance network operations, reduce churn, and improve customer experience with telecom AI solutions for Indonesia's growing digital economy.",
+    url: "https://easternstack.com/industries/telecommunications",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — AI for Telecommunications",
+      },
+    ],
+  },
+};
 
 export default function TelecommunicationsPage() {
   return (

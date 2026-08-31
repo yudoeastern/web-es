@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AI for Manufacturing in Indonesia — Industry 4.0 | EasternStack",
+  description:
+    "Predictive maintenance, AI quality control, supply chain optimization, and production planning for manufacturers — less downtime, fewer defects, lower costs.",
+  alternates: { canonical: "/industries/manufacturing" },
+  openGraph: {
+    title: "AI for Manufacturing in Indonesia — Industry 4.0 | EasternStack",
+    description:
+      "Optimize production, predict maintenance, and improve quality control with AI-driven manufacturing solutions for Industry 4.0.",
+    url: "https://easternstack.com/industries/manufacturing",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — AI for Manufacturing",
+      },
+    ],
+  },
+};
 
 export default function ManufacturingPage() {
   return (

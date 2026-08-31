@@ -1,8 +1,78 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Autonomous AI Agents for Business Operations | EasternStack",
+  description:
+    "Self-governing AI agents that decide, execute, and adapt across business workflows — with governed autonomy, audit trails, and compliance controls.",
+  alternates: { canonical: "/solutions/ai/autonomous-agents" },
+  openGraph: {
+    title: "Autonomous AI Agents for Business Operations | EasternStack",
+    description:
+      "Self-governing AI agents that decide, execute, and adapt across business workflows — with governed autonomy, audit trails, and compliance controls.",
+    url: "https://easternstack.com/solutions/ai/autonomous-agents",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — Autonomous AI Agents for Business Operations",
+      },
+    ],
+  },
+};
+
+const faqs = [
+  {
+    question: "What makes an AI agent autonomous?",
+    answer:
+      "Autonomous AI agents can perceive their environment, make decisions, and take actions without human intervention. They use advanced reasoning, learning capabilities, and predefined goals to operate independently while staying within governance boundaries.",
+  },
+  {
+    question: "How do you ensure safety and control?",
+    answer:
+      "We implement multiple layers of governance including rule-based guardrails, approval workflows for critical actions, comprehensive audit trails, and human-in-the-loop escalation paths. Agents operate within clearly defined boundaries.",
+  },
+  {
+    question: "Can autonomous agents work with existing systems?",
+    answer:
+      "Yes, our agents integrate seamlessly with your existing enterprise systems including CRM, ERP, databases, and third-party APIs. They can read data, execute transactions, and coordinate workflows across multiple platforms.",
+  },
+  {
+    question: "How do agents learn and improve?",
+    answer:
+      "Agents continuously learn from outcomes, feedback, and new data patterns. They use machine learning models to optimize decision-making, adapt to changing conditions, and improve performance over time while maintaining compliance and safety standards.",
+  },
+  {
+    question: "What industries benefit from autonomous agents?",
+    answer:
+      "Autonomous agents are particularly valuable in finance, healthcare, retail, manufacturing, logistics, and professional services — any industry with complex, repetitive processes that require speed, accuracy, and 24/7 operations.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
 
 export default function AutonomousAgentsPage() {
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-dark-bg via-dark-bg-light to-dark-bg">
         <div className="container-custom">

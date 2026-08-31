@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Cloud Cost Optimization & FinOps — Save Up to 40% | EasternStack",
+  description:
+    "Reduce cloud spending by up to 40% with intelligent FinOps — resource rightsizing, reserved instance planning, storage tiering, and idle resource detection.",
+  alternates: { canonical: "/platform/cost-optimization" },
+  openGraph: {
+    title: "Cloud Cost Optimization & FinOps — Save Up to 40% | EasternStack",
+    description:
+      "Maximize ROI with automated cloud cost optimization — up to 40% cost reduction, 100% spend visibility, and 24/7 continuous optimization.",
+    url: "https://easternstack.com/platform/cost-optimization",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — Cloud Cost Optimization & FinOps",
+      },
+    ],
+  },
+};
 
 export default function CostOptimizationPage() {
   return (

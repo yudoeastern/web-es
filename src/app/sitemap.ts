@@ -16,6 +16,7 @@ const staticRoutes: Array<{
   { path: "/events", changeFrequency: "weekly", priority: 0.7 },
 
   { path: "/solutions", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/solutions/agentic-ai", changeFrequency: "monthly", priority: 0.8 },
   { path: "/solutions/ai-assistant", changeFrequency: "monthly", priority: 0.6 },
   { path: "/solutions/churn-prediction", changeFrequency: "monthly", priority: 0.6 },
   { path: "/solutions/forecasting", changeFrequency: "monthly", priority: 0.6 },
@@ -59,6 +60,14 @@ const staticRoutes: Array<{
   { path: "/industries/telecommunications", changeFrequency: "monthly", priority: 0.6 },
 ];
 
+function parseUpdatedAt(value: string): Date | undefined {
+  // Rows written by SQLite's CURRENT_TIMESTAMP come as "YYYY-MM-DD HH:MM:SS" (UTC),
+  // which is not a valid W3C date — normalize before use.
+  const normalized = value.includes("T") ? value : `${value.replace(" ", "T")}Z`;
+  const date = new Date(normalized);
+  return Number.isNaN(date.getTime()) ? undefined : date;
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
     url: `${baseUrl}${route.path}`,
@@ -70,7 +79,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const webinar of allWebinars) {
     entries.push({
       url: `${baseUrl}/events/${webinar.id}`,
-      lastModified: webinar.updatedAt,
+      lastModified: parseUpdatedAt(webinar.updatedAt),
       changeFrequency: "weekly",
       priority: 0.6,
     });

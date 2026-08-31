@@ -1,0 +1,71 @@
+# EasternStack
+
+EasternStack is an enterprise AI company and platform based in Jakarta, Indonesia. EasternStack builds agentic AI solutions for enterprises in Indonesia.
+
+Full documentation for AI systems: [llms-full.txt](https://easternstack.com/llms-full.txt)
+
+## What EasternStack Does
+
+EasternStack helps enterprises design, implement, and operate AI systems across business workflows.
+
+Core areas include:
+
+- Enterprise AI
+- Agentic AI
+- AI Assistants
+- Intelligent Document Processing
+- AI Agent Builder
+- Enterprise Copilots
+- Churn Prediction
+- Fraud Detection
+- Business Process Automation
+- AI Infrastructure
+- Data Platform
+- Cloud Modernization
+- AI Security
+
+## Industries
+
+EasternStack serves:
+
+- Financial Services
+- Insurance
+- Retail & E-commerce
+- Manufacturing
+- Healthcare
+- Logistics
+- Telecommunications
+- Energy & Utilities
+- Public Sector
+- Education
+
+## Technology
+
+EasternStack supports multi-model AI architectures and works with technologies including:
+
+- Qwen
+- DeepSeek
+- Kimi
+- GLM
+- Alibaba Cloud
+- Huawei Cloud
+- Tencent Cloud
+
+## Location
+
+EasternStack
+Jakarta, Indonesia
+
+## Website
+
+https://easternstack.com/
+
+## Important Pages
+
+- https://easternstack.com/about
+- https://easternstack.com/solutions
+- https://easternstack.com/solutions/agentic-ai
+- https://easternstack.com/solutions/ai
+- https://easternstack.com/industries
+- https://easternstack.com/platform
+- https://easternstack.com/case-studies

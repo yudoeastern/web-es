@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Agentic AI Assistant for Enterprise Workflows | EasternStack",
+  description:
+    "Autonomous AI agents for customer operations, revenue operations, and workforce productivity — executing multi-step workflows across your systems.",
+  alternates: { canonical: "/solutions/ai/agentic-ai-assistant" },
+  openGraph: {
+    title: "Agentic AI Assistant for Enterprise Workflows | EasternStack",
+    description:
+      "Autonomous AI agents for customer operations, revenue operations, and workforce productivity — executing multi-step workflows across your systems.",
+    url: "https://easternstack.com/solutions/ai/agentic-ai-assistant",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — Agentic AI Assistant for Enterprise Workflows",
+      },
+    ],
+  },
+};
 
 export default function AgenticAIAssistantPage() {
   return (

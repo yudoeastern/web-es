@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AhnLab Cybersecurity — Endpoint Protection & EDR | EasternStack",
+  description:
+    "Enterprise cybersecurity in Indonesia powered by AhnLab — V3 endpoint protection, EDR threat hunting, workstation security, and 24/7 threat monitoring.",
+  alternates: { canonical: "/platform/security/ahnlab" },
+  openGraph: {
+    title: "AhnLab Cybersecurity — Endpoint Protection & EDR | EasternStack",
+    description:
+      "Advanced threat protection from South Korea's leading cybersecurity company — endpoint security, EDR, and 24/7 SOC monitoring trusted since 1995.",
+    url: "https://easternstack.com/platform/security/ahnlab",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — AhnLab Enterprise Cybersecurity",
+      },
+    ],
+  },
+};
 
 export default function AhnLabPage() {
   return (

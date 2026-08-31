@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "OCR Solutions for Invoices, ID Verification & Receipts | EasternStack",
+  description:
+    "Enterprise OCR with 99% accuracy — InvoiceMind invoice automation, IDentify AI for KTP and Indonesian ID verification, and Receiptly expense scanning.",
+  alternates: { canonical: "/solutions/ocr-solutions" },
+  openGraph: {
+    title: "OCR Solutions for Invoices, ID Verification & Receipts | EasternStack",
+    description:
+      "Enterprise OCR with 99% accuracy — InvoiceMind invoice automation, IDentify AI for KTP and Indonesian ID verification, and Receiptly expense scanning.",
+    url: "https://easternstack.com/solutions/ocr-solutions",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — OCR Solutions for Invoices, ID Verification & Receipts",
+      },
+    ],
+  },
+};
 
 export default function OCRSolutionsPage() {
   return (

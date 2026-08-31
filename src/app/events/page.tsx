@@ -3,6 +3,33 @@ import { db } from "@/db";
 import { webinars } from "@/db/schema";
 import { desc, count } from "drizzle-orm";
 import { stripMarkdown } from "@/lib/markdown";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AI Events & Webinars in Indonesia | EasternStack",
+  description:
+    "Upcoming events, webinars, and workshops from EasternStack — learn from industry experts about agentic AI, document intelligence, and enterprise AI in Indonesia.",
+  alternates: {
+    canonical: "/events",
+  },
+  openGraph: {
+    title: "AI Events & Webinars in Indonesia | EasternStack",
+    description:
+      "Join EasternStack's events, webinars, and workshops on enterprise AI, agentic AI, and intelligent automation in Indonesia.",
+    url: "https://easternstack.com/events",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — AI Events & Webinars",
+      },
+    ],
+  },
+};
 
 const ITEMS_PER_PAGE = 6;
 

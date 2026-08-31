@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AI ROI Metrics — Measure Your AI Investment Returns | EasternStack",
+  description:
+    "Track and optimize AI ROI with metrics and dashboards — 3-6x returns within 18 months, 60% cost reduction, and 40% productivity gains.",
+  alternates: { canonical: "/platform/roi-metrics" },
+  openGraph: {
+    title: "AI ROI Metrics — Measure Your AI Investment Returns | EasternStack",
+    description:
+      "Measure AI investment returns across cost savings, revenue growth, customer impact, and operational efficiency.",
+    url: "https://easternstack.com/platform/roi-metrics",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — AI ROI Metrics & Dashboards",
+      },
+    ],
+  },
+};
 
 export default function RoiMetricsPage() {
   return (

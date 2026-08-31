@@ -1,4 +1,30 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Industries We Serve — Enterprise AI Solutions in Indonesia | EasternStack",
+  description:
+    "Enterprise AI solutions across industries in Indonesia — financial services, retail, healthcare, manufacturing, logistics, telecom, energy, and public sector.",
+  alternates: { canonical: "/industries" },
+  openGraph: {
+    title:
+      "Industries We Serve — Enterprise AI Solutions in Indonesia | EasternStack",
+    description:
+      "Enterprise AI solutions tailored to diverse industries in Indonesia and beyond — Jakarta-based team, industry expertise, and rapid deployment.",
+    url: "https://easternstack.com/industries",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — Industries We Serve",
+      },
+    ],
+  },
+};
 
 export default function IndustriesPage() {
   const industries = [

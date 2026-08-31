@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Agentic Fraud Detection AI Solutions | EasternStack",
+  description:
+    "Autonomous AI agents that detect, investigate, and prevent fraud in real time — 99% detection rate, sub-100ms response, and 60% fewer false positives.",
+  alternates: { canonical: "/solutions/fraud-detection" },
+  openGraph: {
+    title: "Agentic Fraud Detection AI Solutions | EasternStack",
+    description:
+      "Autonomous AI agents that detect, investigate, and prevent fraud in real time — 99% detection rate, sub-100ms response, and 60% fewer false positives.",
+    url: "https://easternstack.com/solutions/fraud-detection",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — Agentic Fraud Detection AI Solutions",
+      },
+    ],
+  },
+};
 
 export default function FraudDetectionPage() {
   return (

@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AI for Retail & E-Commerce in Indonesia | EasternStack",
+  description:
+    "Personalized recommendations, inventory optimization, and AI customer service for Indonesia's booming e-commerce market — with visual search and 24/7 support.",
+  alternates: { canonical: "/industries/retail-ecommerce" },
+  openGraph: {
+    title: "AI for Retail & E-Commerce in Indonesia | EasternStack",
+    description:
+      "Transform retail with AI-powered personalization, inventory optimization, and customer service automation built for Indonesia's booming e-commerce market.",
+    url: "https://easternstack.com/industries/retail-ecommerce",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — AI for Retail & E-Commerce",
+      },
+    ],
+  },
+};
 
 export default function RetailEcommercePage() {
   return (

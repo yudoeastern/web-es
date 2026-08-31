@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AI for Logistics & Transportation in Indonesia | EasternStack",
+  description:
+    "Route optimization, fleet management, ETA prediction, and warehouse automation for logistics across Indonesia's archipelago — lower fuel costs, faster deliveries.",
+  alternates: { canonical: "/industries/logistics" },
+  openGraph: {
+    title: "AI for Logistics & Transportation in Indonesia | EasternStack",
+    description:
+      "Optimize routes, track shipments, and improve delivery efficiency with intelligent logistics AI built for Indonesia's archipelago geography.",
+    url: "https://easternstack.com/industries/logistics",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — AI for Logistics",
+      },
+    ],
+  },
+};
 
 export default function LogisticsPage() {
   return (

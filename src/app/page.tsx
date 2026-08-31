@@ -1,4 +1,33 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export function generateMetadata(): Metadata {
+  return {
+    title: "EasternStack — Enterprise Agentic AI Solutions in Indonesia",
+    description:
+      "Design, deploy, and scale agentic AI systems that understand, reason, and act across your business workflows. Enterprise AI platform from Jakarta, Indonesia, with multi-model choice (Qwen, DeepSeek, GLM, Kimi) and full operational control.",
+    alternates: {
+      canonical: "/",
+    },
+    openGraph: {
+      title: "EasternStack — Enterprise Agentic AI Solutions in Indonesia",
+      description:
+        "Enterprise agentic AI platform from Jakarta, Indonesia — AI systems that understand, reason, and act across your business workflows.",
+      url: "https://easternstack.com",
+      siteName: "EasternStack",
+      locale: "en_US",
+      type: "website",
+      images: [
+        {
+          url: "https://easternstack.com/logo_head.png",
+          width: 1200,
+          height: 1200,
+          alt: "EasternStack — Enterprise Agentic AI Solutions",
+        },
+      ],
+    },
+  };
+}
 
 export default function Home() {
   return (

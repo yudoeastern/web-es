@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Regulatory Compliance for AI & Data in Indonesia | EasternStack",
+  description:
+    "Meet GDPR, SOC 2, HIPAA, ISO 27001, PCI DSS, and OJK requirements with compliance frameworks for AI, data, and security built for regulated industries.",
+  alternates: { canonical: "/platform/compliance" },
+  openGraph: {
+    title: "Regulatory Compliance for AI & Data in Indonesia | EasternStack",
+    description:
+      "Comprehensive compliance standards for AI, data, and security — GDPR, SOC 2, HIPAA, ISO 27001, PCI DSS, and Indonesia's OJK regulations.",
+    url: "https://easternstack.com/platform/compliance",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — Regulatory Compliance for AI, Data & Security",
+      },
+    ],
+  },
+};
 
 export default function CompliancePage() {
   return (

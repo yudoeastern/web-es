@@ -1,4 +1,31 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title:
+    "AI for Legal Services — Contract Review & Document Automation | EasternStack",
+  description:
+    "AI-powered contract review, legal research, and document automation for law firms in Indonesia — clause extraction, risk flagging, and compliance checking.",
+  alternates: { canonical: "/industries/legal" },
+  openGraph: {
+    title:
+      "AI for Legal Services — Contract Review & Document Automation | EasternStack",
+    description:
+      "Transform legal operations with AI-powered contract review, legal research, and document automation for law firms and legal teams.",
+    url: "https://easternstack.com/industries/legal",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — AI for Legal Services",
+      },
+    ],
+  },
+};
 
 export default function LegalServicesPage() {
   return (

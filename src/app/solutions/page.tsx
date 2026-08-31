@@ -39,7 +39,7 @@ const FEATURES = [
   {
     eyebrow: "03 · Document Intelligence",
     title: "Turn documents into indexed, searchable knowledge",
-    body: "Upload PDFs and spreadsheets into a governed registry. AgentOS chunks, indexes and tracks cost per document, so agents retrieve evidence, not hallucinations.",
+    body: "Upload PDFs and spreadsheets into a governed registry. Weast chunks, indexes and tracks cost per document, so agents retrieve evidence, not hallucinations.",
     points: [
       "PDF & XLSX ingestion with chunk-level indexing",
       "Folder-scoped document registries per workspace",
@@ -149,7 +149,7 @@ const TESTIMONIALS = [
   },
   {
     quote:
-      "AgentOS gave us a runtime we could deploy inside our own infrastructure. Each team gets an isolated workspace with its own keys, and we track model spend down to the request.",
+      "Weast gave us a runtime we could deploy inside our own infrastructure. Each team gets an isolated workspace with its own keys, and we track model spend down to the request.",
     name: "VP of Engineering",
     org: "Financial services platform, 400+ engineers",
   },
@@ -475,7 +475,7 @@ export default function SolutionsPage() {
           <div className="mt-16">
             <img
               src="/agentos/screens/workspace-overview.png"
-              alt="AgentOS Workspace Overview"
+              alt="Weast Workspace Overview"
               className="w-full rounded-xl border border-gray-200 shadow-2xl"
             />
           </div>
@@ -494,7 +494,7 @@ export default function SolutionsPage() {
               Run agents on the models your teams already trust
             </h2>
             <p className="mt-4 leading-relaxed text-gray-600">
-              AgentOS is model-agnostic: point each agent at a provider per workspace, and swap
+              Weast is model-agnostic: point each agent at a provider per workspace, and swap
               models without touching your workflows.
             </p>
           </div>
@@ -531,7 +531,7 @@ export default function SolutionsPage() {
               Built for the controls your security team will ask about
             </h2>
             <p className="mt-4 leading-relaxed text-gray-400">
-              AgentOS runs inside your infrastructure with isolation, key management, and
+              Weast runs inside your infrastructure with isolation, key management, and
               auditability designed into the architecture, not bolted on.
             </p>
           </div>
@@ -582,7 +582,7 @@ export default function SolutionsPage() {
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-extrabold text-[#1A1A1A] sm:text-4xl" style={{ letterSpacing: "-0.025em" }}>
-              See AgentOS in your environment
+              See Weast in your environment
             </h2>
             <p className="mx-auto mt-4 max-w-xl leading-relaxed text-gray-600">
               Book a working session with our team. We'll stand up a workspace against

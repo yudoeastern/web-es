@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Disaster Recovery for Enterprise AI | EasternStack",
+  description:
+    "Enterprise disaster recovery with 99.9% uptime SLA — pilot light, warm standby, and multi-site active failover with under one-hour recovery times.",
+  alternates: { canonical: "/platform/disaster-recovery" },
+  openGraph: {
+    title: "Disaster Recovery for Enterprise AI | EasternStack",
+    description:
+      "Business continuity assured — 99.9% uptime SLA, under 5-minute recovery points, and 24/7 monitoring for mission-critical workloads.",
+    url: "https://easternstack.com/platform/disaster-recovery",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — Disaster Recovery & Business Continuity",
+      },
+    ],
+  },
+};
 
 export default function DisasterRecoveryPage() {
   return (

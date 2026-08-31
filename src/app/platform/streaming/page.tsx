@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Real-Time Streaming & Event-Driven Architecture | EasternStack",
+  description:
+    "Process millions of events per second — Flink stream processing, real-time analytics, anomaly detection, and event sourcing for responsive AI applications.",
+  alternates: { canonical: "/platform/streaming" },
+  openGraph: {
+    title: "Real-Time Streaming & Event-Driven Architecture | EasternStack",
+    description:
+      "High-throughput event ingestion with sub-second processing — live dashboards, anomaly detection, and event sourcing with CQRS support.",
+    url: "https://easternstack.com/platform/streaming",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — Real-Time Streaming & Event-Driven Architecture",
+      },
+    ],
+  },
+};
 
 export default function StreamingPage() {
   return (

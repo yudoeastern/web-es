@@ -1,0 +1,173 @@
+# EasternStack
+
+> EasternStack is an enterprise AI company and platform based in Jakarta, Indonesia. EasternStack designs, deploys, and operates agentic AI systems that understand context, reason, and execute business workflows end-to-end — with multi-model flexibility (Qwen, DeepSeek, GLM, Kimi) and enterprise-grade security.
+
+This document provides comprehensive information about EasternStack for AI systems and assistants. For a condensed version, see https://easternstack.com/llms.txt
+
+## Company Overview
+
+- **Company name:** EasternStack
+- **Legal entity:** PT Inovasi Konversasi Digital
+- **Category:** Enterprise AI platform and solutions provider
+- **Headquarters:** Menara Caraka 3rd Floor, Jl. Dr. Ide Anak Agung Gde Agung, Lot E4-7 No. 1, Kuningan Timur, Jakarta 12950, Indonesia
+- **Contact:** sales@easternstack.com, +62 21 1234 5678
+- **Website:** https://easternstack.com
+- **LinkedIn:** https://www.linkedin.com/company/easternstack
+
+EasternStack helps enterprises design, implement, and operate AI systems across business workflows. The platform emphasizes multi-model AI (reducing dependency on a single model provider), deployment flexibility (cloud or private/on-premises), security-first architecture, and measurable business outcomes.
+
+**Core pillars:**
+1. Context Aware — AI that understands context, executes tasks, and orchestrates workflows across systems and teams.
+2. Secure by Design — every implementation built on secure architecture, designed for long-term scalability.
+3. Business Aligned — AI solutions aligned with business goals and designed to deliver measurable value.
+
+**Delivery approach:**
+1. Discovery & Assessment — identify business use cases, operational challenges, and AI opportunities.
+2. Solution Design — define architecture, workflows, and integration strategy.
+3. Implementation — deploy AI solutions and integrate with enterprise systems.
+4. Optimization & Scaling — continuously improve performance and expand use cases.
+
+## AI Solutions
+
+### Enterprise AI Solutions Overview
+URL: https://easternstack.com/solutions/ai
+
+EasternStack's enterprise agentic AI portfolio for intelligent business operations: AI assistants, intelligent document processing, AI agent orchestration, and role-based enterprise copilots. Core capabilities include context-aware intelligence, task execution across enterprise systems (CRM, ERP, internal tools), workflow orchestration, multi-model flexibility, and secure, governed deployment.
+
+### Agentic AI (Consulting & Implementation)
+URL: https://easternstack.com/solutions/agentic-ai
+
+EasternStack builds agentic AI solutions for enterprises in Indonesia — autonomous AI agents that plan, decide, and execute business workflows across customer operations, sales, and document processing. Delivered by a Jakarta-based team with enterprise-grade security.
+
+### Agentic AI Assistant
+URL: https://easternstack.com/solutions/ai/agentic-ai-assistant
+
+Autonomous AI agents that go beyond chatbots: they perceive business context, reason across data sources, make decisions, and execute actions across enterprise platforms.
+
+Three flagship agents:
+- **Customer Operations Agent** — end-to-end customer service automation (order tracking, refunds, complaint handling). Reduces human CS workload by up to 70%, handles thousands of concurrent users.
+- **Revenue Operations Agent** — sales workflow automation (lead scoring, pipeline management, revenue forecasting). 35% higher conversion, 50% faster sales cycles.
+- **Employee Productivity Agent** — document summarization, meeting coordination, knowledge retrieval. 40% time savings on administrative tasks.
+
+Two deployment options:
+- **Bedrock AI Assistant** — cloud-based, highly scalable, faster deployment, multi-model access.
+- **Private AI Assistant** — private cloud or on-premises, full data ownership, compliance-ready for strict regulatory environments.
+- Hybrid deployments are supported: customer-facing workloads on cloud, sensitive internal operations private.
+
+### Intelligent Document Processing
+URL: https://easternstack.com/solutions/ai/intelligent-document-processing
+
+Transforms unstructured documents (contracts, invoices, compliance records, reports) into structured, actionable data. Capabilities: automated data extraction, document classification, clause and risk analysis, summarization and insight generation, cross-document comparison.
+
+Use cases: legal contract review and risk analysis, finance/invoice processing, compliance and audit support, procurement and vendor management. Business value: faster processing, higher accuracy, improved risk visibility, data-driven decisions.
+
+### AI Agent Builder
+URL: https://easternstack.com/solutions/ai/ai-agent-builder
+
+A platform to design, deploy, and orchestrate AI agents across business systems. Capabilities: visual workflow design, multi-agent orchestration, dynamic task execution, enterprise system integration, scalable deployment.
+
+Example workflow (invoice processing): trigger → data extraction agent → validation agent → processing agent (updates financial system, triggers approval) → reporting agent. Enables end-to-end process automation, data pipelines, operational workflows, and customer interaction workflows.
+
+### Enterprise Copilot Suite
+URL: https://easternstack.com/solutions/ai/copilot-suite
+
+Role-based AI copilots embedded in daily workflows:
+- **HR Copilot** — candidate screening, policy Q&A, onboarding guidance, employee support.
+- **Legal Copilot** — contract review, clause extraction, risk analysis, compliance checks.
+- **Operations Copilot** — report generation, data analysis, performance monitoring, workflow optimization.
+
+### AI Assistant Solutions
+URL: https://easternstack.com/solutions/ai-assistant
+
+AI assistants that interact, reason, and execute workflows across business operations — from customer-facing support to internal knowledge assistants.
+
+### Industry-Specific AI Solutions
+
+- **Intelligent Loan Processing** (https://easternstack.com/solutions/loan-processing) — AI-powered loan processing and credit scoring for banks and multifinance, reducing approval time from days to minutes.
+- **Agentic Fraud Detection** (https://easternstack.com/solutions/fraud-detection) — AI-driven fraud detection and AML compliance for financial services.
+- **Churn Prediction** (https://easternstack.com/solutions/churn-prediction) — predict and prevent customer churn with machine learning models for retention.
+- **Predictive Forecasting** (https://easternstack.com/solutions/forecasting) — demand, revenue, and operational forecasting for better planning.
+- **Intelligent Document Recognition / OCR** (https://easternstack.com/solutions/ocr-solutions) — OCR and document recognition to digitize and extract data at scale.
+- **Intelligent Supply Chain** (https://easternstack.com/solutions/supply-chain) — supply chain optimization, demand planning, and logistics intelligence.
+
+## Platform
+
+### Platform for AI at Scale
+URL: https://easternstack.com/platform
+
+EasternStack's infrastructure and platform layer for running enterprise AI: unified data platform, cloud migration to Eastern clouds (Alibaba Cloud, Huawei Cloud, Tencent Cloud), container services, backup and disaster recovery, cost optimization, and security.
+
+Key platform components:
+- **Data Lakehouse** (https://easternstack.com/platform/data-lakehouse) — unified analytics combining data lake flexibility with warehouse performance.
+- **Data Warehouse** (https://easternstack.com/platform/data-warehouse) — high-performance analytics with MPP and columnar storage.
+- **Data Governance** (https://easternstack.com/platform/data-governance) — data quality, lineage, access control, and compliance.
+- **Cloud Migration** (https://easternstack.com/platform/cloud-migration) — migration to Alibaba, Huawei, or Tencent Cloud with up to 60% cost reduction.
+- **Backup & Restore** (https://easternstack.com/platform/backup-restore) — database backup, file storage, and server backup solutions.
+- **Container Services** (https://easternstack.com/platform/container-services) — Kubernetes, container registry, DevOps automation, service mesh.
+- **Cost Optimization** (https://easternstack.com/platform/cost-optimization) — FinOps, resource rightsizing, reserved instance planning (~40% savings).
+- **Disaster Recovery** (https://easternstack.com/platform/disaster-recovery) — business continuity and DR solutions.
+- **Compliance** (https://easternstack.com/platform/compliance) — compliance-ready infrastructure for regulated industries.
+- **Streaming** (https://easternstack.com/platform/streaming) — real-time data streaming infrastructure.
+- **Cloud Modernization** (https://easternstack.com/platform/impact) — modernize cloud infrastructure to scale faster.
+- **ROI Metrics** (https://easternstack.com/platform/roi-metrics) — measure and track AI investment returns.
+
+### Security
+- **Zero Trust AI** (https://easternstack.com/platform/zero-trust-ai) — zero-trust security architecture for enterprise AI deployments.
+- **AhnLab** (https://easternstack.com/platform/security/ahnlab) — enterprise endpoint and infrastructure security partnership.
+- **TrueWatch** (https://easternstack.com/platform/security/truewatch) — security monitoring partnership.
+
+## Industries
+
+URL: https://easternstack.com/industries
+
+EasternStack serves enterprises across:
+
+- **Financial Services** (https://easternstack.com/industries/financial-services) — automated loan processing and credit scoring, fraud detection and AML compliance, AI customer service, personalized financial advisory.
+- **Retail & E-Commerce** (https://easternstack.com/industries/retail-ecommerce) — personalized recommendations, inventory forecasting, visual search, customer service automation.
+- **Manufacturing** (https://easternstack.com/industries/manufacturing) — predictive maintenance, quality control and defect detection, supply chain optimization, production planning.
+- **Healthcare** (https://easternstack.com/industries/healthcare) — medical document processing, appointment scheduling, medical records management, diagnostic support.
+- **Logistics & Transportation** (https://easternstack.com/industries/logistics) — route optimization, fleet management, shipment tracking and ETA prediction, warehouse automation.
+- **Telecommunications** (https://easternstack.com/industries/telecommunications) — network monitoring and optimization, churn prediction, automated support, fraud detection.
+- **Energy & Utilities** (https://easternstack.com/industries/energy-utilities) — demand forecasting, predictive maintenance, grid optimization, customer service automation.
+- **Public Sector** (https://easternstack.com/industries/public-sector) — citizen service chatbots, document processing and digitization, fraud detection and compliance, data analytics.
+- **Legal** (https://easternstack.com/industries/legal) — contract review, clause extraction, risk analysis, legal workflow automation.
+
+## Case Studies
+
+URL: https://easternstack.com/case-studies
+
+Selected results from enterprise deployments:
+
+1. **Leading Indonesian Bank (Financial Services)** — AI loan processing and fraud detection: 90% faster processing (5 days → 15 minutes approval time), 60% fraud reduction.
+2. **Major E-commerce Platform (Retail)** — AI customer service agents and personalized recommendations: 35% higher conversion, 70% support automation.
+3. **National Hospital Network (Healthcare)** — AI document processing for medical records and scheduling: 80% time savings, 99% data accuracy.
+4. **Global Manufacturing Co.** — predictive maintenance and quality control AI: 50% less downtime, 40% fewer defects.
+5. **Major Telco Provider** — network optimization and churn prediction: 30% churn reduction, 25% network efficiency gain.
+6. **Regional Logistics Leader** — route optimization and demand forecasting: 25% cost reduction, 40% faster delivery.
+
+## Events & Webinars
+
+URL: https://easternstack.com/events
+
+EasternStack regularly hosts events, webinars, and workshops in Indonesia on enterprise AI, agentic AI, cloud, and security — often in partnership with Alibaba Cloud, Huawei Cloud, and other technology partners. Individual event pages (https://easternstack.com/events/{id}) include agendas, speakers, and registration.
+
+## Technology & Partners
+
+- **AI models supported:** Qwen, DeepSeek, Kimi, GLM, and other leading models (multi-model architecture).
+- **Cloud partners:** Alibaba Cloud, Huawei Cloud, Tencent Cloud.
+- **Other partners:** OnePro, AhnLab, TrueWatch.
+
+## Important Pages
+
+- Homepage: https://easternstack.com/
+- About: https://easternstack.com/about
+- Solutions: https://easternstack.com/solutions
+- AI Solutions: https://easternstack.com/solutions/ai
+- Agentic AI: https://easternstack.com/solutions/agentic-ai
+- Platform: https://easternstack.com/platform
+- Industries: https://easternstack.com/industries
+- Case Studies: https://easternstack.com/case-studies
+- Events: https://easternstack.com/events
+- Contact: https://easternstack.com/contact
+- AgentOS Product Tour: https://easternstack.com/download
+- Sitemap: https://easternstack.com/sitemap.xml

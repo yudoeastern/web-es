@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Enterprise Cloud Platform for AI at Scale | EasternStack",
+  description:
+    "Cloud-native platform for enterprise AI in Indonesia — unified data, cloud modernisation, and zero-trust security powered by Alibaba, Huawei, and Tencent Cloud.",
+  alternates: { canonical: "/platform" },
+  openGraph: {
+    title: "Enterprise Cloud Platform for AI at Scale | EasternStack",
+    description:
+      "Cloud-native infrastructure powering reliable, scalable, and secure AI — unified data platform, cloud modernisation, and zero-trust architecture.",
+    url: "https://easternstack.com/platform",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — Enterprise Cloud Platform for AI at Scale",
+      },
+    ],
+  },
+};
 
 export default function PlatformPage() {
   return (

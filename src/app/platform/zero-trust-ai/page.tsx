@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Zero-Trust AI Security Architecture | EasternStack",
+  description:
+    "Zero-trust security for enterprise AI — model access control, data leakage prevention, prompt injection defense, secure RAG pipelines, and full audit trails.",
+  alternates: { canonical: "/platform/zero-trust-ai" },
+  openGraph: {
+    title: "Zero-Trust AI Security Architecture | EasternStack",
+    description:
+      "Enterprise AI security built on never trust, always verify — compliance-ready for GDPR, HIPAA, and SOC 2 with complete audit trails.",
+    url: "https://easternstack.com/platform/zero-trust-ai",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — Zero-Trust AI Security Architecture",
+      },
+    ],
+  },
+};
 
 export default function ZeroTrustAIPage() {
   return (

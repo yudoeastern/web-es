@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "TrueWatch AI Security Monitoring & Surveillance | EasternStack",
+  description:
+    "AI-powered security monitoring with TrueWatch — real-time surveillance, threat detection, video analytics, and automated incident response for enterprises.",
+  alternates: { canonical: "/platform/security/truewatch" },
+  openGraph: {
+    title: "TrueWatch AI Security Monitoring & Surveillance | EasternStack",
+    description:
+      "Intelligent security monitoring — 24/7 AI-powered surveillance, intrusion detection, video analytics, and automated incident response.",
+    url: "https://easternstack.com/platform/security/truewatch",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — TrueWatch AI Security Monitoring",
+      },
+    ],
+  },
+};
 
 export default function TrueWatchPage() {
   return (

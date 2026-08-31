@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Cloud Migration to Alibaba, Huawei & Tencent Cloud | EasternStack",
+  description:
+    "Zero-downtime cloud migration for enterprises in Indonesia — up to 60% cost reduction and lower Asia-Pacific latency on Alibaba, Huawei, and Tencent Cloud.",
+  alternates: { canonical: "/platform/cloud-migration" },
+  openGraph: {
+    title: "Cloud Migration to Alibaba, Huawei & Tencent Cloud | EasternStack",
+    description:
+      "Move to affordable Eastern cloud infrastructure with zero downtime, up to 60% cost savings, and a proven five-step migration process.",
+    url: "https://easternstack.com/platform/cloud-migration",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — Cloud Migration to Eastern Cloud",
+      },
+    ],
+  },
+};
 
 export default function CloudMigrationPage() {
   return (

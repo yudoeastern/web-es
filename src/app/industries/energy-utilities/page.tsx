@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AI for Energy & Utilities in Indonesia | EasternStack",
+  description:
+    "AI-powered demand forecasting, predictive maintenance, and grid optimization for Indonesia's energy and utilities sector — fewer outages, lower costs.",
+  alternates: { canonical: "/industries/energy-utilities" },
+  openGraph: {
+    title: "AI for Energy & Utilities in Indonesia | EasternStack",
+    description:
+      "Optimize energy distribution and predict demand with AI solutions built for Indonesia's growing energy sector.",
+    url: "https://easternstack.com/industries/energy-utilities",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — AI for Energy & Utilities",
+      },
+    ],
+  },
+};
 
 export default function EnergyUtilitiesPage() {
   return (

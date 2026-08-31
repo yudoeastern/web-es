@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Data Governance for Trusted Enterprise AI | EasternStack",
+  description:
+    "Enterprise data governance for organizations in Indonesia — data quality, lineage, access control, PII protection, and regulatory compliance for trusted AI.",
+  alternates: { canonical: "/platform/data-governance" },
+  openGraph: {
+    title: "Data Governance for Trusted Enterprise AI | EasternStack",
+    description:
+      "Trusted data framework — data quality, lineage, and access control with data catalog, PII masking, and master data management capabilities.",
+    url: "https://easternstack.com/platform/data-governance",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — Data Governance for Trusted AI",
+      },
+    ],
+  },
+};
 
 export default function DataGovernancePage() {
   return (

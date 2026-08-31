@@ -14,8 +14,9 @@ const inter = Inter({
 export function generateMetadata(): Metadata {
   // Production URL for easternstack.com
   const baseUrl = 'https://easternstack.com';
-  
+
   return {
+    metadataBase: new URL(baseUrl),
     title: "EasternStack - Enterprise AI",
     description: "Enterprise AI with Greater Model Choice and Operational Control",
 
@@ -104,12 +105,31 @@ export default function RootLayout({
     sameAs: ["https://www.linkedin.com/company/easternstack"],
   };
 
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "EasternStack",
+    url: baseUrl,
+    description:
+      "EasternStack is an enterprise AI company based in Jakarta, Indonesia, delivering agentic AI, AI assistants, and intelligent document processing for enterprises.",
+    inLanguage: "en",
+    publisher: {
+      "@type": "Organization",
+      name: "EasternStack",
+      url: baseUrl,
+    },
+  };
+
   return (
     <html lang="en">
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
 
         {/* Tell scrapers which image to use for OG */}

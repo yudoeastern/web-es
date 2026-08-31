@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AI for Government & Public Sector in Indonesia | EasternStack",
+  description:
+    "Secure, compliant AI for Indonesian government agencies — citizen service chatbots, document digitization, fraud detection, and policy analytics.",
+  alternates: { canonical: "/industries/public-sector" },
+  openGraph: {
+    title: "AI for Government & Public Sector in Indonesia | EasternStack",
+    description:
+      "Improve citizen services, streamline operations, and enhance decision-making with secure AI for Indonesian government agencies.",
+    url: "https://easternstack.com/industries/public-sector",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — AI for Government & Public Sector",
+      },
+    ],
+  },
+};
 
 export default function PublicSectorPage() {
   return (

@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Cloud Modernisation with Measurable Impact | EasternStack",
+  description:
+    "Modernize your cloud with measurable outcomes — up to 60% licensing savings, multi-cloud vendor independence, disaster recovery, containers, and FinOps.",
+  alternates: { canonical: "/platform/impact" },
+  openGraph: {
+    title: "Cloud Modernisation with Measurable Impact | EasternStack",
+    description:
+      "Cloud adoption driven by measurable performance and cost outcomes — scale fast, spend smart, stay secure.",
+    url: "https://easternstack.com/platform/impact",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — Measurable Cloud Impact",
+      },
+    ],
+  },
+};
 
 export default function ImpactPage() {
   return (

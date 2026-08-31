@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Kubernetes & Container Services for Enterprise | EasternStack",
+  description:
+    "Enterprise Kubernetes and container services — managed clusters with auto-scaling, secure container registry, GitOps DevOps automation, and service mesh.",
+  alternates: { canonical: "/platform/container-services" },
+  openGraph: {
+    title: "Kubernetes & Container Services for Enterprise | EasternStack",
+    description:
+      "Microservices architecture for cloud-native deployment — managed Kubernetes, container registry, DevOps automation, and service mesh.",
+    url: "https://easternstack.com/platform/container-services",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — Kubernetes & Container Services",
+      },
+    ],
+  },
+};
 
 export default function ContainerServicesPage() {
   return (

@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Supply Chain AI & Optimization Solutions | EasternStack",
+  description:
+    "AI-powered supply chain optimization — demand forecasting, disruption prediction, procurement automation, and inventory control that adapts in real time.",
+  alternates: { canonical: "/solutions/supply-chain" },
+  openGraph: {
+    title: "Supply Chain AI & Optimization Solutions | EasternStack",
+    description:
+      "AI-powered supply chain optimization — demand forecasting, disruption prediction, procurement automation, and inventory control that adapts in real time.",
+    url: "https://easternstack.com/solutions/supply-chain",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — Supply Chain AI & Optimization Solutions",
+      },
+    ],
+  },
+};
 
 export default function SupplyChainPage() {
   return (

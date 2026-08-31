@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Enterprise Data Warehouse for Analytics & ML | EasternStack",
+  description:
+    "High-performance data warehousing with massively parallel processing, columnar storage, and in-database ML training for petabyte-scale analytics.",
+  alternates: { canonical: "/platform/data-warehouse" },
+  openGraph: {
+    title: "Enterprise Data Warehouse for Analytics & ML | EasternStack",
+    description:
+      "High-performance analytics for complex reporting and ML model training — MPP, columnar storage, and elastic cost optimization.",
+    url: "https://easternstack.com/platform/data-warehouse",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — Enterprise Data Warehouse",
+      },
+    ],
+  },
+};
 
 export default function DataWarehousePage() {
   return (

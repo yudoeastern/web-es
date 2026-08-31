@@ -1,8 +1,73 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Intelligent Document Processing (IDP) Solutions | EasternStack",
+  description:
+    "Turn contracts, invoices, and reports into structured data with AI — extraction, classification, clause risk analysis, and cross-document comparison.",
+  alternates: { canonical: "/solutions/ai/intelligent-document-processing" },
+  openGraph: {
+    title: "Intelligent Document Processing (IDP) Solutions | EasternStack",
+    description:
+      "Turn contracts, invoices, and reports into structured data with AI — extraction, classification, clause risk analysis, and cross-document comparison.",
+    url: "https://easternstack.com/solutions/ai/intelligent-document-processing",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — Intelligent Document Processing Solutions",
+      },
+    ],
+  },
+};
+
+const faqs = [
+  {
+    question: "What is Intelligent Document Processing?",
+    answer:
+      "Intelligent Document Processing uses AI to extract, analyze, and structure information from documents such as contracts, invoices, and reports.",
+  },
+  {
+    question: "What types of documents can be processed?",
+    answer:
+      "The solution supports contracts, invoices, financial reports, compliance documents, and other business records.",
+  },
+  {
+    question: "How accurate is AI document processing?",
+    answer:
+      "AI document processing achieves high accuracy by combining machine learning and contextual analysis, significantly reducing manual errors.",
+  },
+  {
+    question: "Can this solution support compliance and risk management?",
+    answer:
+      "Yes, it helps identify risks, detect inconsistencies, and support regulatory compliance.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
 
 export default function DocumentProcessingPage() {
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-dark-bg via-dark-bg-light to-dark-bg">
         <div className="container-custom">

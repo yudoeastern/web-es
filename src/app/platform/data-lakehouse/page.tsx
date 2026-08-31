@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Data Lakehouse for Petabyte-Scale AI | EasternStack",
+  description:
+    "Unified data lakehouse combining lake flexibility with warehouse performance — ACID transactions, petabyte-scale storage, and AI-ready architecture.",
+  alternates: { canonical: "/platform/data-lakehouse" },
+  openGraph: {
+    title: "Data Lakehouse for Petabyte-Scale AI | EasternStack",
+    description:
+      "Build AI on a unified analytics platform — Alibaba Cloud MaxCompute, Huawei Cloud DWS, and Tencent Cloud EMR for petabyte-scale AI workloads.",
+    url: "https://easternstack.com/platform/data-lakehouse",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — Data Lakehouse for AI at Scale",
+      },
+    ],
+  },
+};
 
 export default function DataLakehousePage() {
   return (

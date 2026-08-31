@@ -1,32 +1,141 @@
 import { db } from "@/db";
-import { webinars, registrations } from "@/db/schema";
-import { eq, count } from "drizzle-orm";
+import { webinars } from "@/db/schema";
+import { eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import RegisterForm from "./RegisterForm";
-import { DescriptionMarkdown } from "@/lib/markdown";
+import { DescriptionMarkdown, stripMarkdown } from "@/lib/markdown";
+import type { Metadata } from "next";
+
+const baseUrl = "https://easternstack.com";
 
 interface PageProps {
   params: Promise<{ id: string }>;
 }
 
+async function getWebinar(id: string) {
+  const webinarId = parseInt(id);
+  if (Number.isNaN(webinarId)) return null;
+  const result = await db.select().from(webinars).where(eq(webinars.id, webinarId));
+  return result[0] ?? null;
+}
+
+function truncate(text: string, max: number): string {
+  if (text.length <= max) return text;
+  return `${text.slice(0, max).trimEnd()}…`;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { id } = await params;
+  const webinar = await getWebinar(id);
+
+  if (!webinar) {
+    return { title: "Event Not Found | EasternStack" };
+  }
+
+  const title = `${truncate(webinar.title, 60)} | EasternStack Events`;
+  const description = truncate(stripMarkdown(webinar.description).replace(/\s+/g, " ").trim(), 160);
+  const image = webinar.imageUrl ? `${baseUrl}${webinar.imageUrl}` : `${baseUrl}/logo_head.png`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/events/${webinar.id}`,
+    },
+    openGraph: {
+      title: `${webinar.title} | EasternStack Events`,
+      description,
+      url: `${baseUrl}/events/${webinar.id}`,
+      siteName: "EasternStack",
+      locale: "en_US",
+      type: "website",
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 1200,
+          alt: webinar.title,
+        },
+      ],
+    },
+  };
+}
+
+function toIsoDateTime(dateText: string, timeText: string, useEndTime: boolean): string | undefined {
+  const parsed = new Date(dateText);
+  if (Number.isNaN(parsed.getTime())) return undefined;
+
+  const pad = (n: number) => String(n).padStart(2, "0");
+  const datePart = `${parsed.getFullYear()}-${pad(parsed.getMonth() + 1)}-${pad(parsed.getDate())}`;
+
+  const times = [...timeText.matchAll(/(\d{1,2}):(\d{2})/g)];
+  const match = useEndTime ? times[1] : times[0];
+  if (!match) return datePart;
+
+  const hour = parseInt(match[1], 10);
+  if (hour > 23) return datePart;
+  return `${datePart}T${pad(hour)}:${match[2]}:00+07:00`;
+}
+
+function buildEventJsonLd(webinar: typeof webinars.$inferSelect) {
+  const isOnline = /online|zoom|virtual|webinar/i.test(webinar.location);
+  const startDate = toIsoDateTime(webinar.date, webinar.time, false);
+  const endDate = toIsoDateTime(webinar.date, webinar.time, true);
+
+  const jsonLd: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: webinar.title,
+    description: stripMarkdown(webinar.description).replace(/\s+/g, " ").trim(),
+    startDate,
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: isOnline
+      ? "https://schema.org/OnlineEventAttendanceMode"
+      : "https://schema.org/OfflineEventAttendanceMode",
+    location: isOnline
+      ? { "@type": "VirtualLocation", url: `${baseUrl}/events/${webinar.id}` }
+      : {
+          "@type": "Place",
+          name: webinar.location,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Jakarta",
+            addressCountry: "ID",
+          },
+        },
+    organizer: {
+      "@type": "Organization",
+      name: "EasternStack",
+      url: baseUrl,
+    },
+    image: webinar.imageUrl ? `${baseUrl}${webinar.imageUrl}` : `${baseUrl}/logo_head.png`,
+  };
+
+  if (endDate) jsonLd.endDate = endDate;
+  if (webinar.partner) jsonLd.performer = { "@type": "Organization", name: webinar.partner };
+
+  return jsonLd;
+}
+
 export default async function WebinarDetailPage({ params }: PageProps) {
   const { id } = await params;
-  const webinarId = parseInt(id);
+  const webinar = await getWebinar(id);
 
-  const result = await db.select().from(webinars).where(eq(webinars.id, webinarId));
-
-  if (!result.length) {
+  if (!webinar) {
     notFound();
   }
 
-  const webinar = result[0];
   const agenda = webinar.agenda ?? [];
   const speakers = webinar.speakers ?? [];
   const hasExtendedContent = agenda.length > 0 || speakers.length > 0;
 
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildEventJsonLd(webinar)) }}
+      />
       {/* Hero Section */}
       <section className="pt-20 pb-8 px-6 md:pt-24 md:pb-10 md:px-8 bg-gradient-to-br from-dark-bg via-dark-bg-light to-dark-bg">
         <div className="container-custom">

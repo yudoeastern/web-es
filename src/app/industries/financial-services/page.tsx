@@ -1,4 +1,31 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title:
+    "AI for Financial Services in Indonesia — Banking, Insurance & Fintech | EasternStack",
+  description:
+    "AI-powered loan processing, fraud detection, AML compliance, and 24/7 customer service for banks and fintech in Indonesia — built for BI and OJK compliance.",
+  alternates: { canonical: "/industries/financial-services" },
+  openGraph: {
+    title:
+      "AI for Financial Services in Indonesia — Banking, Insurance & Fintech | EasternStack",
+    description:
+      "Transform banking, insurance, and fintech with AI automation, risk management, and personalized customer experiences built for Indonesia's financial landscape.",
+    url: "https://easternstack.com/industries/financial-services",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — AI for Financial Services",
+      },
+    ],
+  },
+};
 
 export default function FinancialServicesPage() {
   return (

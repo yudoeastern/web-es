@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AI Forecasting for Sales, Inventory & Finance | EasternStack",
+  description:
+    "AI forecasting for sales, inventory, and finance — 95% forecast accuracy, proactive stockout alerts, and cashflow predictions up to 60 days ahead.",
+  alternates: { canonical: "/solutions/forecasting" },
+  openGraph: {
+    title: "AI Forecasting for Sales, Inventory & Finance | EasternStack",
+    description:
+      "AI forecasting for sales, inventory, and finance — 95% forecast accuracy, proactive stockout alerts, and cashflow predictions up to 60 days ahead.",
+    url: "https://easternstack.com/solutions/forecasting",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — AI Forecasting for Sales, Inventory & Finance",
+      },
+    ],
+  },
+};
 
 export default function ForecastingPage() {
   return (

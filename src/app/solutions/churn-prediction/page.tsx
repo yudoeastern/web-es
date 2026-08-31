@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AI Churn Prediction Solutions | EasternStack",
+  description:
+    "AI-powered churn prediction that identifies at-risk customers before they leave — 85% accuracy, explainable risk scores, and retention playbooks.",
+  alternates: { canonical: "/solutions/churn-prediction" },
+  openGraph: {
+    title: "AI Churn Prediction Solutions | EasternStack",
+    description:
+      "AI-powered churn prediction that identifies at-risk customers before they leave — 85% accuracy, explainable risk scores, and retention playbooks.",
+    url: "https://easternstack.com/solutions/churn-prediction",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — AI Churn Prediction Solutions",
+      },
+    ],
+  },
+};
 
 export default function ChurnPredictionPage() {
   return (

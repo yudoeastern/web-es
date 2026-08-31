@@ -1,8 +1,73 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AI Agent Builder & Orchestration Platform | EasternStack",
+  description:
+    "Design, deploy, and orchestrate AI agents across your business systems — visual workflow design, multi-agent orchestration, and enterprise integrations.",
+  alternates: { canonical: "/solutions/ai/ai-agent-builder" },
+  openGraph: {
+    title: "AI Agent Builder & Orchestration Platform | EasternStack",
+    description:
+      "Design, deploy, and orchestrate AI agents across your business systems — visual workflow design, multi-agent orchestration, and enterprise integrations.",
+    url: "https://easternstack.com/solutions/ai/ai-agent-builder",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — AI Agent Builder & Orchestration Platform",
+      },
+    ],
+  },
+};
+
+const faqs = [
+  {
+    question: "What is an AI Agent Builder?",
+    answer:
+      "AI Agent Builder is a platform that allows organizations to design, deploy, and manage AI agents that automate workflows and interact with systems.",
+  },
+  {
+    question: "How is this different from traditional automation tools?",
+    answer:
+      "Unlike traditional automation, AI agents can understand context, make decisions, and collaborate across workflows.",
+  },
+  {
+    question: "Can multiple AI agents work together?",
+    answer:
+      "Yes, multiple agents can coordinate tasks and execute complex workflows.",
+  },
+  {
+    question: "What systems can AI agents integrate with?",
+    answer:
+      "AI agents can integrate with enterprise systems, APIs, databases, and cloud platforms.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
 
 export default function AIAgentBuilderPage() {
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-dark-bg via-dark-bg-light to-dark-bg">
         <div className="container-custom">

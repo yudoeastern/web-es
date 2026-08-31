@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AI Assistant Solutions for Enterprise | EasternStack",
+  description:
+    "Conversational AI assistants for 24/7 customer support, sales, tutoring, and employee productivity — cut support workload by up to 70% with EasternStack.",
+  alternates: { canonical: "/solutions/ai-assistant" },
+  openGraph: {
+    title: "AI Assistant Solutions for Enterprise | EasternStack",
+    description:
+      "Conversational AI assistants for 24/7 customer support, sales, tutoring, and employee productivity — cut support workload by up to 70% with EasternStack.",
+    url: "https://easternstack.com/solutions/ai-assistant",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — AI Assistant Solutions for Enterprise",
+      },
+    ],
+  },
+};
 
 export default function AIAssistantPage() {
   return (

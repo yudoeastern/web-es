@@ -1,4 +1,31 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About EasternStack | Enterprise AI Platform Company in Indonesia",
+  description:
+    "EasternStack is an enterprise AI platform company in Jakarta, Indonesia, enabling organizations to build and operate AI applications with full control over cost, performance, and deployment across Qwen, DeepSeek, GLM, and Kimi.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About EasternStack | Enterprise AI Platform Company in Indonesia",
+    description:
+      "Enterprise AI platform from Jakarta, Indonesia — build and operate AI applications with full control over cost, performance, and deployment.",
+    url: "https://easternstack.com/about",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — Enterprise AI Platform Company in Indonesia",
+      },
+    ],
+  },
+};
 
 export default function AboutPage() {
   return (

@@ -1,8 +1,73 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Enterprise AI Solutions in Indonesia | EasternStack",
+  description:
+    "Enterprise AI solutions with greater model choice and control — context-aware intelligence, workflow orchestration, and secure deployment by EasternStack.",
+  alternates: { canonical: "/solutions/ai" },
+  openGraph: {
+    title: "Enterprise AI Solutions in Indonesia | EasternStack",
+    description:
+      "Enterprise AI solutions with greater model choice and control — context-aware intelligence, workflow orchestration, and secure deployment by EasternStack.",
+    url: "https://easternstack.com/solutions/ai",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — Enterprise AI Solutions in Indonesia",
+      },
+    ],
+  },
+};
+
+const faqs = [
+  {
+    question: "What is AI and how is it different from traditional AI?",
+    answer:
+      "AI refers to intelligent systems that can understand context, make decisions, and execute tasks across workflows, while traditional AI typically responds to prompts without taking action.",
+  },
+  {
+    question: "How can AI solutions improve business operations?",
+    answer:
+      "AI solutions help automate repetitive tasks, improve efficiency, and enable faster decision making across departments such as operations, customer service, and human resources.",
+  },
+  {
+    question: "Is AI secure for enterprise environments?",
+    answer:
+      "Yes, enterprise AI solutions can be deployed with secure architecture, data governance, and compliance controls to ensure privacy and protection of sensitive information.",
+  },
+  {
+    question: "How do I choose the right AI solution for my organization?",
+    answer:
+      "The right solution depends on your business needs, such as whether you require automation, document processing, or role based assistance, as well as your infrastructure and security requirements.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
 
 export default function AISolutionsPage() {
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-dark-bg via-dark-bg-light to-dark-bg">
         <div className="container-custom">
@@ -54,6 +119,27 @@ export default function AISolutionsPage() {
           <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-12 text-center">
             OUR AI SOLUTIONS
           </h2>
+
+          <Link
+            href="/solutions/agentic-ai"
+            className="card group flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12 border-l-4 border-[#E31E24]"
+          >
+            <div>
+              <h3 className="text-2xl font-bold text-[#1A1A1A] mb-2 group-hover:text-[#E31E24] transition-colors">
+                Agentic AI Solutions in Indonesia
+              </h3>
+              <p className="text-gray-600">
+                Autonomous AI agents that plan, decide, and execute business workflows
+                end-to-end — built for Indonesian enterprises.
+              </p>
+            </div>
+            <span className="text-[#E31E24] font-semibold whitespace-nowrap flex items-center">
+              Explore Agentic AI
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+          </Link>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <Link href="/solutions/ai-assistant" className="card group">

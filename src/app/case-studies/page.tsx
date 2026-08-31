@@ -1,4 +1,31 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AI Case Studies | EasternStack",
+  description:
+    "Real-world results from Indonesian enterprises that transformed operations with EasternStack AI — loan processing, fraud detection, document intelligence, and more.",
+  alternates: {
+    canonical: "/case-studies",
+  },
+  openGraph: {
+    title: "AI Case Studies | EasternStack",
+    description:
+      "Success stories from enterprises running AI in production with EasternStack — measurable results across financial services, insurance, and beyond.",
+    url: "https://easternstack.com/case-studies",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — AI Case Studies",
+      },
+    ],
+  },
+};
 
 export default function CaseStudiesPage() {
   return (

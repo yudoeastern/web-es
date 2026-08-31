@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AI for Healthcare in Indonesia — Hospitals & Clinics | EasternStack",
+  description:
+    "AI solutions for Indonesian hospitals and clinics — medical document processing, appointment scheduling, patient chatbots, and diagnostic support.",
+  alternates: { canonical: "/industries/healthcare" },
+  openGraph: {
+    title: "AI for Healthcare in Indonesia — Hospitals & Clinics | EasternStack",
+    description:
+      "Improve patient care, streamline operations, and accelerate medical research with healthcare AI built for Indonesian hospitals and clinics.",
+    url: "https://easternstack.com/industries/healthcare",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — AI for Healthcare",
+      },
+    ],
+  },
+};
 
 export default function HealthcarePage() {
   return (

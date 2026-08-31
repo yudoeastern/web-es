@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Enterprise Backup & Restore for Critical Data | EasternStack",
+  description:
+    "Automated backup and restore for enterprises in Indonesia — point-in-time database recovery, geo-redundant object storage, and bare-metal server restore.",
+  alternates: { canonical: "/platform/backup-restore" },
+  openGraph: {
+    title: "Enterprise Backup & Restore for Critical Data | EasternStack",
+    description:
+      "Guaranteed data availability with automated database backup, file and object storage, and full server imaging with bare-metal restore.",
+    url: "https://easternstack.com/platform/backup-restore",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — Enterprise Backup & Restore",
+      },
+    ],
+  },
+};
 
 export default function BackupRestorePage() {
   return (

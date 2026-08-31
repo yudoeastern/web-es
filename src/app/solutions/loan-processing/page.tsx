@@ -1,4 +1,29 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AI Loan Application Processing Solutions | EasternStack",
+  description:
+    "AI-powered loan origination that automates document verification, KYC checks, credit risk scoring, and approvals — 90% faster loan processing.",
+  alternates: { canonical: "/solutions/loan-processing" },
+  openGraph: {
+    title: "AI Loan Application Processing Solutions | EasternStack",
+    description:
+      "AI-powered loan origination that automates document verification, KYC checks, credit risk scoring, and approvals — 90% faster loan processing.",
+    url: "https://easternstack.com/solutions/loan-processing",
+    siteName: "EasternStack",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://easternstack.com/logo_head.png",
+        width: 1200,
+        height: 1200,
+        alt: "EasternStack — AI Loan Application Processing Solutions",
+      },
+    ],
+  },
+};
 
 export default function LoanProcessingPage() {
   return (
