@@ -315,7 +315,7 @@ export function AgentOsShell({
             </div>
             <LogoutIcon className="h-3.5 w-3.5 text-slate-400" />
           </div>
-          <p className="mt-2 px-1 text-[10px] text-slate-300">AgentOS v0.1.0</p>
+          <p className="mt-2 px-1 text-[10px] text-slate-300">WEAST v0.1.0</p>
         </div>
       </aside>
 

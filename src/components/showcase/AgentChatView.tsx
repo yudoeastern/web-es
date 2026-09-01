@@ -62,7 +62,13 @@ const PLAN_ITEMS = [
 const DEMO_QUESTION = "Analyze this financial statement";
 
 const FINAL_ANSWER =
-  "Credit memo ready. Revenue grew at a 13.8% CAGR from FY2023 to FY2025, while EBIT margin compressed from 9.9% to 6.6%. DSCR stands at 1.4x. Recommendation: APPROVE with covenants, facility of IDR 40B working capital, 12 months, secured by receivables. Origination ref ORG-2026-0831.";
+  "Credit memo ready.\n\n" +
+  "Revenue CAGR FY2023 to FY2025: 13.8%\n" +
+  "EBIT margin: 9.9% down to 6.6%\n" +
+  "DSCR: 1.4x\n\n" +
+  "Recommendation: APPROVE with covenants\n" +
+  "Facility: IDR 40B working capital, 12 months, secured by receivables\n" +
+  "Origination ref: ORG-2026-0831";
 
 type Phase = "boot" | "user-typing" | "thinking" | "plan" | "waiting" | "answer" | "done";
 
@@ -81,6 +87,9 @@ export default function AgentChatView({
   const [answerLen, setAnswerLen] = useState(0);
   const [custom, setCustom] = useState<{ q: string; a: string }[]>([]);
   const [input, setInput] = useState("");
+  const [railOpen, setRailOpen] = useState(false);
+  const [thinkingOpen, setThinkingOpen] = useState(true);
+  const [planOpen, setPlanOpen] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const selected = agents.find((a) => a.id === selectedId) ?? null;
@@ -118,6 +127,21 @@ export default function AgentChatView({
     const t = window.setTimeout(() => setPhase("user-typing"), 900);
     return () => window.clearTimeout(t);
   }, [stage, phase]);
+
+  /* collapse Thinking & Plan once the answer is fully typed, reset on new chat */
+  useEffect(() => {
+    if (phase === "done") {
+      const t = window.setTimeout(() => {
+        setThinkingOpen(false);
+        setPlanOpen(false);
+      }, 400);
+      return () => window.clearTimeout(t);
+    }
+    if (phase === "boot") {
+      setThinkingOpen(true);
+      setPlanOpen(true);
+    }
+  }, [phase]);
 
   useEffect(() => {
     if (phase !== "user-typing") return;
@@ -206,30 +230,54 @@ export default function AgentChatView({
     <AgentOsShell active="chat" onNavigate={onNavigate} header={header}>
       <div className="flex h-full">
         {/* secondary rail */}
-        <div className="hidden w-56 shrink-0 flex-col border-r border-slate-200 bg-white sm:flex">
-          <div className="border-b border-slate-100 p-3">
-            <button className="flex w-full items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5">
-              <span className="flex h-6 w-6 items-center justify-center rounded-md bg-red-50 text-[#E31E24]">
-                <BotIcon className="h-3.5 w-3.5" />
-              </span>
-              <span className="flex-1 truncate text-left text-[12.5px] font-semibold text-slate-800">
-                {selected ? selected.name : "Select an agent"}
-              </span>
-              {selected?.online && <span className="h-2 w-2 rounded-full bg-emerald-500" />}
-              <ChevronDownIcon className="h-3.5 w-3.5 text-slate-400" />
+        {railOpen ? (
+          <div className="hidden w-56 shrink-0 flex-col border-r border-slate-200 bg-white sm:flex">
+            <div className="border-b border-slate-100 p-3">
+              <button className="flex w-full items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5">
+                <span className="flex h-6 w-6 items-center justify-center rounded-md bg-red-50 text-[#E31E24]">
+                  <BotIcon className="h-3.5 w-3.5" />
+                </span>
+                <span className="flex-1 truncate text-left text-[12.5px] font-semibold text-slate-800">
+                  {selected ? selected.name : "Select an agent"}
+                </span>
+                {selected?.online && <span className="h-2 w-2 rounded-full bg-emerald-500" />}
+                <ChevronDownIcon className="h-3.5 w-3.5 text-slate-400" />
+              </button>
+            </div>
+            <div className="p-3">
+              <button
+                onClick={newChat}
+                className="flex w-full items-center gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2.5 text-[12.5px] font-semibold text-[#E31E24] transition-colors hover:bg-red-100"
+              >
+                <PlusIcon className="h-3.5 w-3.5" /> New chat
+              </button>
+            </div>
+            <div className="flex-1" />
+            <button
+              onClick={() => setRailOpen(false)}
+              className="w-full border-t border-slate-100 px-4 py-3 text-left text-[11px] text-slate-400 transition-colors hover:text-slate-600"
+            >
+              « Collapse
             </button>
           </div>
-          <div className="p-3">
+        ) : (
+          <div className="hidden w-12 shrink-0 flex-col items-center gap-3 border-r border-slate-200 bg-white py-3 sm:flex">
+            <button
+              onClick={() => setRailOpen(true)}
+              title="Expand panel"
+              className="flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 bg-slate-50 text-slate-500 transition-colors hover:bg-slate-100"
+            >
+              <ChevronDownIcon className="h-3.5 w-3.5 -rotate-90" />
+            </button>
             <button
               onClick={newChat}
-              className="flex w-full items-center gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2.5 text-[12.5px] font-semibold text-[#E31E24] transition-colors hover:bg-red-100"
+              title="New chat"
+              className="flex h-8 w-8 items-center justify-center rounded-lg border border-red-200 bg-red-50 text-[#E31E24] transition-colors hover:bg-red-100"
             >
-              <PlusIcon className="h-3.5 w-3.5" /> New chat
+              <PlusIcon className="h-3.5 w-3.5" />
             </button>
           </div>
-          <div className="flex-1" />
-          <p className="border-t border-slate-100 px-4 py-3 text-[11px] text-slate-400">« Collapse</p>
-        </div>
+        )}
 
         {/* main */}
         <div className="flex min-w-0 flex-1 flex-col">
@@ -344,44 +392,72 @@ export default function AgentChatView({
                         <div className="min-w-0 flex-1 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
                           {/* thinking */}
                           <div className="mb-3 rounded-lg border border-amber-200/70 bg-amber-50/40 p-3">
-                            <p className="flex items-center gap-2 text-[12px] font-bold text-amber-600">
+                            <button
+                              onClick={() => setThinkingOpen((v) => !v)}
+                              className="flex w-full items-center gap-2 text-left text-[12px] font-bold text-amber-600"
+                            >
                               {phase === "thinking" ? (
                                 <SpinnerIcon className="h-3.5 w-3.5" />
                               ) : (
                                 <CheckIcon className="h-3.5 w-3.5 text-emerald-500" />
                               )}
                               Thinking <span className="font-normal text-slate-400">(1 step)</span>
-                            </p>
-                            <p className="mt-2 flex items-center gap-2 rounded-md bg-white px-2.5 py-1.5 font-mono text-[10.5px] text-slate-500">
-                              <span className="flex h-4 w-4 items-center justify-center rounded bg-slate-100 text-[9px]">1</span>
-                              Running document.ingest, wait: true, document_id: bfdc1f01-2896-4679
-                            </p>
+                              <ChevronDownIcon
+                                className={`ml-auto h-3.5 w-3.5 text-slate-400 transition-transform duration-200 ${thinkingOpen ? "" : "-rotate-90"}`}
+                              />
+                            </button>
+                            <div
+                              className={`grid transition-all duration-300 ease-in-out ${
+                                thinkingOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                              }`}
+                            >
+                              <div className="overflow-hidden">
+                                <p className="mt-2 flex items-center gap-2 rounded-md bg-white px-2.5 py-1.5 font-mono text-[10.5px] text-slate-500">
+                                  <span className="flex h-4 w-4 items-center justify-center rounded bg-slate-100 text-[9px]">1</span>
+                                  Running document.ingest, wait: true, document_id: bfdc1f01-2896-4679
+                                </p>
+                              </div>
+                            </div>
                           </div>
 
                           {/* plan */}
                           {isSupervisor && (phase === "plan" || phase === "waiting" || phase === "answer" || phase === "done") && (
                             <div className="mb-3 rounded-lg border border-amber-200/70 bg-amber-50/40 p-3">
-                              <p className="flex items-center gap-2 text-[12px] font-bold text-amber-600">
+                              <button
+                                onClick={() => setPlanOpen((v) => !v)}
+                                className="flex w-full items-center gap-2 text-left text-[12px] font-bold text-amber-600"
+                              >
                                 {planDone >= PLAN_ITEMS.length ? (
                                   <CheckIcon className="h-3.5 w-3.5 text-emerald-500" />
                                 ) : (
                                   <SpinnerIcon className="h-3.5 w-3.5" />
                                 )}
                                 Plan <span className="font-normal text-slate-400">({planDone}/{PLAN_ITEMS.length})</span>
-                              </p>
-                              <div className="mt-2 space-y-1.5">
-                                {PLAN_ITEMS.map((item, i) => (
-                                  <p key={item} className="flex items-center gap-2 text-[11.5px]">
-                                    {i < planDone ? (
-                                      <CheckIcon className="h-3.5 w-3.5 shrink-0 text-emerald-500" />
-                                    ) : i === planDone && phase === "plan" ? (
-                                      <SpinnerIcon className="h-3.5 w-3.5 shrink-0 text-amber-500" />
-                                    ) : (
-                                      <span className="h-3.5 w-3.5 shrink-0 rounded-full border border-slate-300" />
-                                    )}
-                                    <span className={i < planDone ? "text-slate-600" : "text-slate-400"}>{item}</span>
-                                  </p>
-                                ))}
+                                <ChevronDownIcon
+                                  className={`ml-auto h-3.5 w-3.5 text-slate-400 transition-transform duration-200 ${planOpen ? "" : "-rotate-90"}`}
+                                />
+                              </button>
+                              <div
+                                className={`grid transition-all duration-300 ease-in-out ${
+                                  planOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                                }`}
+                              >
+                                <div className="overflow-hidden">
+                                  <div className="mt-2 space-y-1.5">
+                                    {PLAN_ITEMS.map((item, i) => (
+                                      <p key={item} className="flex items-center gap-2 text-[11.5px]">
+                                        {i < planDone ? (
+                                          <CheckIcon className="h-3.5 w-3.5 shrink-0 text-emerald-500" />
+                                        ) : i === planDone && phase === "plan" ? (
+                                          <SpinnerIcon className="h-3.5 w-3.5 shrink-0 text-amber-500" />
+                                        ) : (
+                                          <span className="h-3.5 w-3.5 shrink-0 rounded-full border border-slate-300" />
+                                        )}
+                                        <span className={i < planDone ? "text-slate-600" : "text-slate-400"}>{item}</span>
+                                      </p>
+                                    ))}
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           )}
@@ -393,7 +469,7 @@ export default function AgentChatView({
                           )}
 
                           {(phase === "answer" || phase === "done") && (
-                            <p className="text-[13px] leading-relaxed text-slate-700">
+                            <p className="whitespace-pre-line text-[13px] leading-relaxed text-slate-700">
                               {FINAL_ANSWER.slice(0, answerLen)}
                               {phase === "answer" && (
                                 <span className="cursor-blink ml-0.5 inline-block h-[12px] w-[6px] translate-y-[1px] bg-[#E31E24]" />

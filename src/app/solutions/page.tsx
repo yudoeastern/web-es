@@ -93,14 +93,6 @@ const FEATURES = [
   },
 ];
 
-const PROVIDERS = [
-  { name: "Qwen", logo: "/agentos/models/qwen.webp" },
-  { name: "DeepSeek", logo: "/agentos/models/deepseek.svg" },
-  { name: "Dola Seed", logo: "/agentos/models/dola-seed.jpeg" },
-  { name: "GLM", logo: "/agentos/models/glm.png" },
-  { name: "Kimi", logo: "/agentos/models/kimi.png" },
-];
-
 const PROOF_POINTS = [
   {
     icon: (
@@ -484,43 +476,6 @@ export default function SolutionsPage() {
 
       {/* Capabilities Section */}
       <CapabilitiesSection />
-
-      {/* LLM Providers Section */}
-      <section className="border-b border-gray-200 bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-xs font-bold uppercase tracking-widest text-[#E31E24]">Model providers</p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#1A1A1A] sm:text-4xl">
-              Run agents on the models your teams already trust
-            </h2>
-            <p className="mt-4 leading-relaxed text-gray-600">
-              Weast is model-agnostic: point each agent at a provider per workspace, and swap
-              models without touching your workflows.
-            </p>
-          </div>
-
-          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-            {PROVIDERS.map((provider) => (
-              <div
-                key={provider.name}
-                className="flex flex-col items-center justify-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-4 py-6 shadow-sm"
-              >
-                <img
-                  src={provider.logo}
-                  alt={`${provider.name} logo`}
-                  loading="lazy"
-                  className="h-12 w-12 rounded-lg object-contain"
-                />
-                <span className="text-sm font-semibold text-[#1A1A1A]">{provider.name}</span>
-              </div>
-            ))}
-          </div>
-
-          <p className="mt-6 text-center font-mono text-[12px] text-gray-500">
-            Plus any OpenAI-compatible endpoint, usage synced from Easternstack AI Gate, broken down by model.
-          </p>
-        </div>
-      </section>
 
       {/* Trust Section */}
       <section className="bg-[#1A1A1A] py-16 sm:py-20 text-white">

@@ -77,11 +77,44 @@ interface DocRow {
   status: "indexed" | "processing";
   cost?: string;
   costPer?: string;
+  children?: FolderChild[];
+}
+
+interface FolderChild {
+  id: string;
+  name: string;
+  size: string;
+  chunks: number;
+  cost: string;
+  costPer: string;
+  ocr: string;
 }
 
 const INITIAL_ROWS: DocRow[] = [
-  { id: "f1", name: "Financial Statements", kind: "folder", status: "indexed" },
-  { id: "f2", name: "Financial Statements 2", kind: "folder", status: "indexed" },
+  {
+    id: "f1",
+    name: "Financial Statements",
+    kind: "folder",
+    status: "indexed",
+    children: [
+      { id: "d1", name: "Screenshot_20260804_140818.png", size: "197 KB", chunks: 1, cost: "$0.0029", costPer: "$0.0029/pg", ocr: "OCR 8.9s · 1 pg" },
+      { id: "c2", name: "FY2024-annual-report.pdf", size: "2.4 MB", chunks: 12, cost: "$0.0348", costPer: "$0.0029/pg", ocr: "OCR 6.2s · 12 pg" },
+      { id: "c3", name: "FY2025-interim-notes.pdf", size: "1.1 MB", chunks: 5, cost: "$0.0145", costPer: "$0.0029/pg", ocr: "OCR 4.1s · 5 pg" },
+      { id: "c4", name: "receivables-schedule.xlsx", size: "88 KB", chunks: 3, cost: "$0.0000", costPer: "$0.0000/pg", ocr: "Parsed · 3 sheets" },
+    ],
+  },
+  {
+    id: "f2",
+    name: "Financial Statements 2",
+    kind: "folder",
+    status: "indexed",
+    children: [
+      { id: "c5", name: "Q1-cash-flow.pdf", size: "640 KB", chunks: 2, cost: "$0.0058", costPer: "$0.0029/pg", ocr: "OCR 3.8s · 2 pg" },
+      { id: "c6", name: "bank-statement-jan.pdf", size: "1.8 MB", chunks: 8, cost: "$0.0232", costPer: "$0.0029/pg", ocr: "OCR 5.5s · 8 pg" },
+      { id: "c7", name: "loan-agreement.pdf", size: "3.2 MB", chunks: 14, cost: "$0.0406", costPer: "$0.0029/pg", ocr: "OCR 7.3s · 14 pg" },
+      { id: "c8", name: "collateral-valuation.pdf", size: "980 KB", chunks: 4, cost: "$0.0116", costPer: "$0.0029/pg", ocr: "OCR 2.9s · 4 pg" },
+    ],
+  },
   {
     id: "d1",
     name: "Screenshot_20260804_140818.png",
@@ -108,7 +141,35 @@ export default function DocIntelligenceView({
   const [resultTab, setResultTab] = useState<ResultTab>("reading");
   const [pipelineStep, setPipelineStep] = useState(0);
   const [dragOver, setDragOver] = useState(false);
+  const [openFolders, setOpenFolders] = useState<string[]>([]);
   const uploadSeq = useRef(0);
+
+  const toggleFolder = (id: string) =>
+    setOpenFolders((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
+
+  const openChildDoc = (child: FolderChild) => {
+    setPipelineStep(0);
+    setResultTab("reading");
+    setRows((prev) => {
+      if (prev.some((r) => r.id === child.id)) return prev;
+      return [
+        ...prev,
+        {
+          id: child.id,
+          name: child.name,
+          kind: "file",
+          type: child.name.split(".").pop()?.toUpperCase() ?? "FILE",
+          size: child.size,
+          chunks: child.chunks,
+          indexedAt: "Aug 5, 2026",
+          status: "indexed",
+          cost: child.cost,
+          costPer: child.costPer,
+        },
+      ];
+    });
+    setDetailId(child.id);
+  };
 
   const detail = rows.find((r) => r.id === detailId && r.kind === "file") ?? null;
 
@@ -172,17 +233,46 @@ export default function DocIntelligenceView({
             </div>
             {rows
               .filter((r) => r.kind === "folder")
-              .map((f) => (
-                <button
-                  key={f.id}
-                  className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-[12.5px] text-slate-600 hover:bg-slate-50"
-                >
-                  <ChevronRightIcon className="h-3 w-3 text-slate-400" />
-                  <FolderIcon className="h-4 w-4 text-amber-400" />
-                  <span className="flex-1 truncate">{f.name}</span>
-                  <span className="text-[10px] text-slate-400">4</span>
-                </button>
-              ))}
+              .map((f) => {
+                const open = openFolders.includes(f.id);
+                return (
+                  <div key={f.id}>
+                    <button
+                      onClick={() => toggleFolder(f.id)}
+                      className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-[12.5px] text-slate-600 hover:bg-slate-50"
+                    >
+                      <ChevronRightIcon
+                        className={`h-3 w-3 shrink-0 text-slate-400 transition-transform duration-200 ${open ? "rotate-90" : ""}`}
+                      />
+                      <FolderIcon className="h-4 w-4 text-amber-400" />
+                      <span className="flex-1 truncate">{f.name}</span>
+                      <span className="text-[10px] text-slate-400">{f.children?.length ?? 0}</span>
+                    </button>
+                    <div
+                      className={`grid transition-all duration-300 ease-in-out ${
+                        open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        {(f.children ?? []).map((c) => (
+                          <button
+                            key={c.id}
+                            onClick={() => openChildDoc(c)}
+                            title={`Open ${c.name}`}
+                            className="flex w-full items-center gap-2 rounded-md py-1.5 pl-9 pr-2 text-left transition-colors hover:bg-slate-50"
+                          >
+                            <FileIcon className="h-3.5 w-3.5 shrink-0 text-slate-400" />
+                            <span className="min-w-0 flex-1 leading-tight">
+                              <span className="block truncate text-[11.5px] text-slate-600">{c.name}</span>
+                              <span className="block font-mono text-[9px] text-emerald-600">{c.ocr}</span>
+                            </span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
           </div>
 
           {/* documents table */}
@@ -384,7 +474,8 @@ export default function DocIntelligenceView({
                 <div className="mb-3 flex items-baseline justify-between">
                   <p className="text-[13px] font-bold text-slate-900">Processing Cost</p>
                   <p className="font-mono text-[15px] font-bold text-slate-900">
-                    $0.0029 <span className="text-[10px] font-normal text-slate-400">$0.0029/pg</span>
+                    {detail.cost ?? "-"}{" "}
+                    <span className="text-[10px] font-normal text-slate-400">{detail.costPer ?? ""}</span>
                   </p>
                 </div>
                 <div className="grid grid-cols-[1fr_80px_80px_70px] gap-2 border-b border-slate-100 pb-1.5 text-[9.5px] font-bold uppercase tracking-widest text-slate-400">

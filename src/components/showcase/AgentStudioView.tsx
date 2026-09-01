@@ -68,7 +68,7 @@ export default function AgentStudioView({
   const [mode, setMode] = useState<Mode>("flow");
   const [agents, setAgents] = useState(INITIAL_AGENTS);
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [zoom, setZoom] = useState(132);
+  const [zoom, setZoom] = useState(84);
   const [customCount, setCustomCount] = useState(0);
 
   const selected = agents.find((a) => a.id === selectedId) ?? null;

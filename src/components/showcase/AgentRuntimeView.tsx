@@ -210,7 +210,7 @@ export default function AgentRuntimeView({
         </div>
         {isOpen && (
           <div className="grid gap-2 border-t border-slate-100 bg-slate-50/60 px-5 py-3 font-mono text-[10.5px] text-slate-500 sm:grid-cols-3">
-            <p>image: agentos/worker:0.1.0</p>
+            <p>image: weast/worker:0.1.0</p>
             <p>container: {w.slug}-7f3d2</p>
             <p>
               {w.status === "online"

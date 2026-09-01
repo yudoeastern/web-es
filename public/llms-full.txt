@@ -169,5 +169,5 @@ EasternStack regularly hosts events, webinars, and workshops in Indonesia on ent
 - Case Studies: https://easternstack.com/case-studies
 - Events: https://easternstack.com/events
 - Contact: https://easternstack.com/contact
-- AgentOS Product Tour: https://easternstack.com/download
+- WEAST Product Tour: https://easternstack.com/download
 - Sitemap: https://easternstack.com/sitemap.xml
