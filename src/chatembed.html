@@ -268,7 +268,7 @@
   </div>
 
   <div id="chat-powered">
-    Powered by <a href="https://easternstack.com" target="_blank">easternstack.com</a>
+    Powered by <a href="https://easternstack.ai" target="_blank">easternstack.ai</a>
   </div>
 </div>
 
@@ -313,7 +313,7 @@ async function send() {
   const typing = addBubble("EasternStack sedang mengetik<span class='typing'></span>", "bot");
 
   try {
-    const res = await fetch("https://eap.easternstack.com/v1/chat-messages", {
+    const res = await fetch("https://eap.easternstack.ai/v1/chat-messages", {
       method: "POST",
       headers: {
         "Authorization": "Bearer app-9UQDjEtSA7Ou1PUd8NIZFyAB",

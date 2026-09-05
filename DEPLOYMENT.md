@@ -211,7 +211,7 @@ Content:
 ```nginx
 server {
     listen 80;
-    server_name easternstack.com www.easternstack.com;
+    server_name easternstack.ai www.easternstack.ai;
 
     # Security headers
     add_header X-Frame-Options "SAMEORIGIN" always;
@@ -287,7 +287,7 @@ sudo apt install -y certbot python3-certbot-nginx
 
 ### 7.2 Obtain SSL Certificate
 ```bash
-sudo certbot --nginx -d easternstack.com -d www.easternstack.com
+sudo certbot --nginx -d easternstack.ai -d www.easternstack.ai
 ```
 
 ### 7.3 Auto-Renewal Test
@@ -464,7 +464,7 @@ pm2 restart easternstack-web
 ### Check Application Status
 ```bash
 pm2 status
-curl -I https://easternstack.com
+curl -I https://easternstack.ai
 ```
 
 ### View Logs

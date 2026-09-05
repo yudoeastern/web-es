@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
-const baseUrl = "https://easternstack.com";
+const baseUrl = "https://easternstack.ai";
 
 export function generateMetadata(): Metadata {
   return {

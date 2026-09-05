@@ -4,19 +4,19 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Agentic Fraud Detection AI Solutions | EasternStack",
   description:
-    "Autonomous AI agents that detect, investigate, and prevent fraud in real time — 99% detection rate, sub-100ms response, and 60% fewer false positives.",
+    "Autonomous AI agents that detect, investigate, and prevent fraud in real time with reliable detection, sub-100ms response, and far fewer false positives.",
   alternates: { canonical: "/solutions/fraud-detection" },
   openGraph: {
     title: "Agentic Fraud Detection AI Solutions | EasternStack",
     description:
-      "Autonomous AI agents that detect, investigate, and prevent fraud in real time — 99% detection rate, sub-100ms response, and 60% fewer false positives.",
-    url: "https://easternstack.com/solutions/fraud-detection",
+      "Autonomous AI agents that detect, investigate, and prevent fraud in real time with reliable detection, sub-100ms response, and far fewer false positives.",
+    url: "https://easternstack.ai/solutions/fraud-detection",
     siteName: "EasternStack",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://easternstack.com/logo_head.png",
+        url: "https://easternstack.ai/logo_head.png",
         width: 1200,
         height: 1200,
         alt: "EasternStack — Agentic Fraud Detection AI Solutions",
@@ -69,16 +69,16 @@ export default function FraudDetectionPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="card text-center">
-                <div className="text-4xl font-bold gradient-text mb-2">99%</div>
-                <div className="text-gray-600 text-sm">Fraud detection rate</div>
+                <div className="text-4xl font-bold gradient-text mb-2">High detection</div>
+                <div className="text-gray-600 text-sm">Fraud caught in real time</div>
               </div>
               <div className="card text-center">
                 <div className="text-4xl font-bold gradient-text mb-2">&lt;100ms</div>
                 <div className="text-gray-600 text-sm">Real-time response</div>
               </div>
               <div className="card text-center">
-                <div className="text-4xl font-bold gradient-text mb-2">60%</div>
-                <div className="text-gray-600 text-sm">Fewer false positives</div>
+                <div className="text-4xl font-bold gradient-text mb-2">Far fewer</div>
+                <div className="text-gray-600 text-sm">False positives</div>
               </div>
             </div>
           </div>

@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
       // Email to admin
       await transporter.sendMail({
         from: `"EasternStack" <${process.env.SMTP_USER}>`,
-        to: process.env.ADMIN_EMAIL || "sales@easternstack.com",
+        to: process.env.ADMIN_EMAIL || "sales@easternstack.ai",
         subject: `New Registration: ${webinar.title}`,
         html: `
           <h2>New Webinar Registration</h2>
@@ -290,7 +290,7 @@ export async function POST(request: NextRequest) {
                           <tr>
                             <td style="text-align: center;">
                               <p style="margin: 0 0 8px 0; color: #999999; font-size: 12px;">
-                                <strong>PT. INOVASI KONVERSASI DIGITAL</strong>
+                                <strong>PT EASTERNSTACK AI</strong>
                               </p>
                               <p style="margin: 0 0 8px 0; color: #999999; font-size: 12px; line-height: 1.5;">
                                 Menara Caraka, 3rd Floor<br>
@@ -299,7 +299,7 @@ export async function POST(request: NextRequest) {
                                 Jakarta 12950, Indonesia
                               </p>
                               <p style="margin: 0; color: #999999; font-size: 12px;">
-                                <a href="https://www.easternstack.com" style="color: #E31E24; text-decoration: none;">www.easternstack.com</a>
+                                <a href="https://www.easternstack.ai" style="color: #E31E24; text-decoration: none;">www.easternstack.ai</a>
                               </p>
                             </td>
                           </tr>

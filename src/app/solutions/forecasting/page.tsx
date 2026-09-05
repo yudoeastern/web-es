@@ -4,19 +4,19 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "AI Forecasting for Sales, Inventory & Finance | EasternStack",
   description:
-    "AI forecasting for sales, inventory, and finance — 95% forecast accuracy, proactive stockout alerts, and cashflow predictions up to 60 days ahead.",
+    "AI forecasting for sales, inventory, and finance with high-accuracy forecasts, proactive stockout alerts, and cashflow predictions up to 60 days ahead.",
   alternates: { canonical: "/solutions/forecasting" },
   openGraph: {
     title: "AI Forecasting for Sales, Inventory & Finance | EasternStack",
     description:
-      "AI forecasting for sales, inventory, and finance — 95% forecast accuracy, proactive stockout alerts, and cashflow predictions up to 60 days ahead.",
-    url: "https://easternstack.com/solutions/forecasting",
+      "AI forecasting for sales, inventory, and finance with high-accuracy forecasts, proactive stockout alerts, and cashflow predictions up to 60 days ahead.",
+    url: "https://easternstack.ai/solutions/forecasting",
     siteName: "EasternStack",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://easternstack.com/logo_head.png",
+        url: "https://easternstack.ai/logo_head.png",
         width: 1200,
         height: 1200,
         alt: "EasternStack — AI Forecasting for Sales, Inventory & Finance",
@@ -101,10 +101,10 @@ export default function ForecastingPage() {
               </div>
               <div className="card">
                 <div className="text-center py-8">
-                  <div className="text-5xl font-bold gradient-text mb-2">95%</div>
-                  <div className="text-gray-600 mb-6">Forecast Accuracy</div>
-                  <div className="text-5xl font-bold gradient-text mb-2">30%</div>
-                  <div className="text-gray-600 mb-6">Revenue Increase</div>
+                  <div className="text-5xl font-bold gradient-text mb-2">High accuracy</div>
+                  <div className="text-gray-600 mb-6">Forecasts</div>
+                  <div className="text-5xl font-bold gradient-text mb-2">Higher</div>
+                  <div className="text-gray-600 mb-6">Revenue</div>
                   <div className="text-5xl font-bold gradient-text">Daily</div>
                   <div className="text-gray-600">Predictions</div>
                 </div>
@@ -251,8 +251,8 @@ export default function ForecastingPage() {
               </div>
               <div className="card">
                 <div className="text-center py-8">
-                  <div className="text-5xl font-bold gradient-text mb-2">90%</div>
-                  <div className="text-gray-600 mb-6">Cashflow Accuracy</div>
+                  <div className="text-5xl font-bold gradient-text mb-2">High accuracy</div>
+                  <div className="text-gray-600 mb-6">Cashflow</div>
                   <div className="text-5xl font-bold gradient-text mb-2">60</div>
                   <div className="text-gray-600 mb-6">Days Ahead</div>
                   <div className="text-5xl font-bold gradient-text">24/7</div>

@@ -12,8 +12,8 @@ const inter = Inter({
 });
 
 export function generateMetadata(): Metadata {
-  // Production URL for easternstack.com
-  const baseUrl = 'https://easternstack.com';
+  // Production URL for easternstack.ai
+  const baseUrl = 'https://easternstack.ai';
 
   return {
     metadataBase: new URL(baseUrl),
@@ -85,16 +85,16 @@ export default function RootLayout({
     : process.env.VERCEL_URL
       ? `https://${process.env.VERCEL_URL}`
       : process.env.NEXT_PUBLIC_SITE_URL
-        || "https://easternstack.com";
+        || "https://easternstack.ai";
 
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "EasternStack",
-    legalName: "PT Inovasi Konversasi Digital",
+    legalName: "PT EasternStack AI",
     url: baseUrl,
     logo: `${baseUrl}/logo_head.png`,
-    description: "Enterprise AI with Greater Model Choice and Operational Control",
+    description: "Build, run, and govern AI workflows across your people, systems, and data.",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Menara Caraka 3rd Floor, Jl. Dr. Ide Anak Agung Gde Agung, Lot E4-7 No. 1, Kuningan Timur",

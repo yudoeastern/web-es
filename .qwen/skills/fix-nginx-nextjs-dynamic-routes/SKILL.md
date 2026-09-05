@@ -40,7 +40,7 @@ So `/events/14` tries to load `/public/events/14` as a static file instead of pr
 
 2. **Test via nginx** (production URL):
    ```bash
-   curl -I https://www.easternstack.com/events/14
+   curl -I https://www.easternstack.ai/events/14
    ```
    If this returns `404` while direct test returns `200`, nginx is the problem.
 

@@ -137,8 +137,8 @@ export default function ThankYouPage() {
         {/* Contact Info */}
         <div className="mt-8 text-sm text-gray-500">
           <p>Butuh bantuan segera?</p>
-          <a href="mailto:sales@easternstack.com" className="text-[#E31E24] hover:underline font-medium">
-            sales@easternstack.com
+          <a href="mailto:sales@easternstack.ai" className="text-[#E31E24] hover:underline font-medium">
+            sales@easternstack.ai
           </a>
         </div>
       </div>

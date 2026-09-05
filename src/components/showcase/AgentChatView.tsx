@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import {
-  AgentOsShell,
+  WeastShell,
   ViewHeader,
   ChatIcon,
   BotIcon,
@@ -14,7 +14,7 @@ import {
   CheckIcon,
   SpinnerIcon,
   StatusBadge,
-} from "./AgentOsShell";
+} from "./WeastShell";
 
 interface AgentDef {
   id: string;
@@ -227,7 +227,7 @@ export default function AgentChatView({
   );
 
   return (
-    <AgentOsShell active="chat" onNavigate={onNavigate} header={header}>
+    <WeastShell active="chat" onNavigate={onNavigate} header={header}>
       <div className="flex h-full">
         {/* secondary rail */}
         {railOpen ? (
@@ -334,7 +334,7 @@ export default function AgentChatView({
           ) : (
             <>
               {/* chat header strip */}
-              <div className="flex flex-wrap items-center gap-2 border-b border-slate-100 bg-white px-5 py-2.5">
+              <div className="flex flex-wrap items-center gap-2 border-b border-slate-100 bg-white px-3 py-2.5 sm:px-5">
                 <button
                   onClick={() => setStage("picker")}
                   className="flex items-center gap-1.5 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-slate-500 hover:bg-slate-100"
@@ -357,7 +357,7 @@ export default function AgentChatView({
               </div>
 
               {/* messages */}
-              <div ref={scrollRef} className="flex-1 overflow-y-auto p-6">
+              <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 sm:p-6">
                 {phase === "boot" && custom.length === 0 ? (
                   <div className="flex h-full flex-col items-center justify-center text-center">
                     <span className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl border border-slate-200 bg-white text-[#E31E24] shadow-sm">
@@ -506,11 +506,11 @@ export default function AgentChatView({
               </div>
 
               {/* composer */}
-              <div className="border-t border-slate-100 bg-white px-6 pb-3 pt-3">
+              <div className="border-t border-slate-100 bg-white px-3 pb-3 pt-3 sm:px-6">
                 <div className="mx-auto max-w-3xl">
                   <div className="mb-2 flex">
-                    <span className="flex items-center gap-1.5 rounded-full border border-sky-200 bg-sky-50 px-2.5 py-1 text-[10.5px] font-semibold text-sky-600">
-                      <ClipIcon className="h-3 w-3" /> pt_kopi_arunika_financial_statements.png
+                    <span className="flex min-w-0 max-w-full items-center gap-1.5 rounded-full border border-sky-200 bg-sky-50 px-2.5 py-1 text-[10.5px] font-semibold text-sky-600">
+                      <ClipIcon className="h-3 w-3 shrink-0" /> <span className="truncate">pt_kopi_arunika_financial_statements.png</span>
                       <span className="ml-1 rounded bg-white px-1.5 text-[8.5px] font-bold tracking-wider text-sky-500">
                         ACTIVE
                       </span>
@@ -545,6 +545,6 @@ export default function AgentChatView({
           )}
         </div>
       </div>
-    </AgentOsShell>
+    </WeastShell>
   );
 }

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import {
-  AgentOsShell,
+  WeastShell,
   ViewHeader,
   ServerIcon,
   BotIcon,
@@ -13,7 +13,7 @@ import {
   StatusBadge,
   SlugChip,
   SpinnerIcon,
-} from "./AgentOsShell";
+} from "./WeastShell";
 
 type WorkerStatus = "online" | "sleeping" | "error" | "restarting";
 
@@ -145,7 +145,7 @@ export default function AgentRuntimeView({
     const isOpen = expanded === w.id;
     return (
       <div key={w.id} className="rounded-xl border border-slate-200 bg-white shadow-sm">
-        <div className="flex flex-wrap items-center gap-3 px-4 py-3">
+        <div className="flex flex-wrap items-center gap-2 px-3 py-3 sm:gap-3 sm:px-4">
           <span
             className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${
               w.status === "error"
@@ -226,8 +226,8 @@ export default function AgentRuntimeView({
   };
 
   return (
-    <AgentOsShell active="runtime" onNavigate={onNavigate} header={header}>
-      <div className="space-y-6 p-6">
+    <WeastShell active="runtime" onNavigate={onNavigate} header={header}>
+      <div className="space-y-6 p-3 sm:p-6">
         {/* stats */}
         <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
           {stats.map((s) => (
@@ -279,6 +279,6 @@ export default function AgentRuntimeView({
           <div className="space-y-3">{diWorkers.map(renderRow)}</div>
         </div>
       </div>
-    </AgentOsShell>
+    </WeastShell>
   );
 }

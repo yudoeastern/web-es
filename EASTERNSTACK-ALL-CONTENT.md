@@ -1,8 +1,8 @@
 # EASTERNSTACK WEBSITE - COMPLETE CONTENT COMPILATION
 
 **Generated:** April 29, 2026  
-**Website:** easternstack.com  
-**Company:** PT. INOVASI KONVERSASI DIGITAL
+**Website:** easternstack.ai  
+**Company:** PT EASTERNSTACK AI
 
 ---
 
@@ -112,14 +112,14 @@
 
 ### Contact Information
 **Office Address:**  
-PT. INOVASI KONVERSASI DIGITAL  
+PT EASTERNSTACK AI  
 Menara Carako, 3rd Floor  
 Jl. Dr. Ide Anak Agung Gde Agung  
 Lot E4-7 No. 1, Kuningan Timur  
 Jakarta 12950, Indonesia
 
 **Contact Details:**
-- Email: sales@easternstack.com
+- Email: sales@easternstack.ai
 - Phone: +62 21 1234 5678
 
 ---
@@ -679,7 +679,7 @@ Zero-trust security architecture for AI.
 
 ## COMPANY INFORMATION
 
-**Legal Entity:** PT. INOVASI KONVERSASI DIGITAL
+**Legal Entity:** PT EASTERNSTACK AI
 
 **Office Address:**  
 Menara Carako, 3rd Floor  
@@ -688,9 +688,9 @@ Lot E4-7 No. 1, Kuningan Timur
 Jakarta 12950, Indonesia
 
 **Contact:**
-- Email: sales@easternstack.com
+- Email: sales@easternstack.ai
 - Phone: +62 21 1234 5678
-- Website: easternstack.com
+- Website: easternstack.ai
 
 **Brand Colors:**
 - Primary Red: #E31E24

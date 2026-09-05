@@ -2,7 +2,18 @@
 
 EasternStack is an enterprise AI company and platform based in Jakarta, Indonesia. EasternStack builds agentic AI solutions for enterprises in Indonesia.
 
-Full documentation for AI systems: [llms-full.txt](https://easternstack.com/llms-full.txt)
+Full documentation for AI systems: [llms-full.txt](https://easternstack.ai/llms-full.txt)
+
+## WEAST by EasternStack (Flagship Platform)
+
+WEAST is EasternStack's enterprise agentic AI platform: "Where enterprise AI becomes real work". Build, run, and govern AI workflows across your people, systems, and data. Key properties: agents, approvals, and full run traces; model control per workspace; tenant boundaries by design; cost visibility on every run. A live interactive product tour runs directly on the homepage, no account needed.
+
+WEAST is one platform for every team, with deep capabilities:
+
+- WEAST Core: the full platform (Agent Studio, Agent Editor, Document Intelligence, Agent Runtime, Workspace). https://easternstack.ai/solutions/weast-core
+- Industry applications: financial services, retail and e-commerce, manufacturing, healthcare, logistics. https://easternstack.ai/industries
+
+Deployment: any public cloud, private cloud, VPC, or fully on-premise. Model-agnostic: Qwen, DeepSeek, GLM, Kimi, Dola Seed, or any OpenAI-compatible endpoint.
 
 ## What EasternStack Does
 
@@ -58,14 +69,16 @@ Jakarta, Indonesia
 
 ## Website
 
-https://easternstack.com/
+https://easternstack.ai/
 
 ## Important Pages
 
-- https://easternstack.com/about
-- https://easternstack.com/solutions
-- https://easternstack.com/solutions/agentic-ai
-- https://easternstack.com/solutions/ai
-- https://easternstack.com/industries
-- https://easternstack.com/platform
-- https://easternstack.com/case-studies
+- https://easternstack.ai/ (WEAST landing + live product tour)
+- https://easternstack.ai/about
+- https://easternstack.ai/solutions
+- https://easternstack.ai/solutions/weast-core
+- https://easternstack.ai/solutions/agentic-ai
+- https://easternstack.ai/solutions/ai
+- https://easternstack.ai/industries
+- https://easternstack.ai/technology
+- https://easternstack.ai/case-studies

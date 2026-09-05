@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     title: "AI Events & Webinars in Indonesia | EasternStack",
     description:
       "Join EasternStack's events, webinars, and workshops on enterprise AI, agentic AI, and intelligent automation in Indonesia.",
-    url: "https://easternstack.com/events",
+    url: "https://easternstack.ai/events",
     siteName: "EasternStack",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://easternstack.com/logo_head.png",
+        url: "https://easternstack.ai/logo_head.png",
         width: 1200,
         height: 1200,
         alt: "EasternStack — AI Events & Webinars",

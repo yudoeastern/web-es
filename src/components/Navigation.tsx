@@ -211,10 +211,10 @@ export default function Navigation() {
               </div>
             </div>
 
-            {/* Platform - WITH ICONS LIKE AI SOLUTIONS */}
+            {/* Technology */}
             <div className="relative group">
               <button className="px-4 py-2 text-[#1A1A1A] hover:text-[#E31E24] font-medium flex items-center gap-1">
-                Platform
+                Technology
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -239,11 +239,11 @@ export default function Navigation() {
                         <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wider">Cloud Solutions</h3>
                       </div>
                       <ul className="space-y-2">
-                        <li><Link href="/platform" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Platform Overview</Link></li>
-                        <li><Link href="/platform/cloud-migration" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Cloud Migration</Link></li>
-                        <li><Link href="/platform/disaster-recovery" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Disaster Recovery</Link></li>
-                        <li><Link href="/platform/backup-restore" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Backup & Restore</Link></li>
-                        <li><Link href="/platform/container-services" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Container Services</Link></li>
+                        <li><Link href="/technology" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Platform Overview</Link></li>
+                        <li><Link href="/technology/cloud-migration" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Cloud Migration</Link></li>
+                        <li><Link href="/technology/disaster-recovery" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Disaster Recovery</Link></li>
+                        <li><Link href="/technology/backup-restore" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Backup & Restore</Link></li>
+                        <li><Link href="/technology/container-services" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Container Services</Link></li>
                       </ul>
                     </div>
 
@@ -258,10 +258,10 @@ export default function Navigation() {
                         <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wider">Data Platform</h3>
                       </div>
                       <ul className="space-y-2">
-                        <li><Link href="/platform/data-lakehouse" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Data Lakehouse</Link></li>
-                        <li><Link href="/platform/streaming" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Real-Time Streaming</Link></li>
-                        <li><Link href="/platform/data-warehouse" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Data Warehouse</Link></li>
-                        <li><Link href="/platform/data-governance" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Data Governance</Link></li>
+                        <li><Link href="/technology/data-lakehouse" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Data Lakehouse</Link></li>
+                        <li><Link href="/technology/streaming" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Real-Time Streaming</Link></li>
+                        <li><Link href="/technology/data-warehouse" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Data Warehouse</Link></li>
+                        <li><Link href="/technology/data-governance" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Data Governance</Link></li>
                       </ul>
                     </div>
 
@@ -276,10 +276,10 @@ export default function Navigation() {
                         <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wider">Security & Compliance</h3>
                       </div>
                       <ul className="space-y-2">
-                        <li><Link href="/platform/zero-trust-ai" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Zero-Trust AI</Link></li>
-                        <li><Link href="/platform/security/ahnlab" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Cybersecurity (AhnLab)</Link></li>
-                        <li><Link href="/platform/security/truewatch" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Security Monitoring</Link></li>
-                        <li><Link href="/platform/compliance" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Compliance</Link></li>
+                        <li><Link href="/technology/zero-trust-ai" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Zero-Trust AI</Link></li>
+                        <li><Link href="/technology/security/ahnlab" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Cybersecurity (AhnLab)</Link></li>
+                        <li><Link href="/technology/security/truewatch" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Security Monitoring</Link></li>
+                        <li><Link href="/technology/compliance" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Compliance</Link></li>
                       </ul>
                     </div>
 
@@ -294,9 +294,9 @@ export default function Navigation() {
                         <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wider">Impact & ROI</h3>
                       </div>
                       <ul className="space-y-2">
-                        <li><Link href="/platform/impact" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Business Impact</Link></li>
-                        <li><Link href="/platform/cost-optimization" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Cost Optimization</Link></li>
-                        <li><Link href="/platform/roi-metrics" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">ROI Metrics</Link></li>
+                        <li><Link href="/technology/impact" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Business Impact</Link></li>
+                        <li><Link href="/technology/cost-optimization" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Cost Optimization</Link></li>
+                        <li><Link href="/technology/roi-metrics" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">ROI Metrics</Link></li>
                         <li><Link href="/case-studies" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Case Studies</Link></li>
                       </ul>
                     </div>
@@ -429,14 +429,14 @@ export default function Navigation() {
                 )}
               </div>
 
-              {/* Platform Accordion */}
+              {/* Technology Accordion */}
               <div className="border-b border-gray-100">
                 <button
                   type="button"
                   className="w-full py-3 flex items-center justify-between text-gray-700 font-medium"
                   onClick={() => toggleSubmenu('platform')}
                 >
-                  <span>Platform</span>
+                  <span>Technology</span>
                   <svg className={`w-5 h-5 transition-transform ${openSubmenu === 'platform' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
@@ -445,31 +445,31 @@ export default function Navigation() {
                   <div className="pb-4 pl-4 space-y-4 border-l-2 border-gray-200">
                     <div>
                       <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">☁️ Cloud Solutions</div>
-                      <Link href="/platform" className="block py-2 text-gray-600" onClick={handleLinkClick}>Platform Overview</Link>
-                      <Link href="/platform/cloud-migration" className="block py-2 text-gray-600" onClick={handleLinkClick}>Cloud Migration</Link>
-                      <Link href="/platform/disaster-recovery" className="block py-2 text-gray-600" onClick={handleLinkClick}>Disaster Recovery</Link>
-                      <Link href="/platform/backup-restore" className="block py-2 text-gray-600" onClick={handleLinkClick}>Backup & Restore</Link>
-                      <Link href="/platform/container-services" className="block py-2 text-gray-600" onClick={handleLinkClick}>Container Services</Link>
+                      <Link href="/technology" className="block py-2 text-gray-600" onClick={handleLinkClick}>Platform Overview</Link>
+                      <Link href="/technology/cloud-migration" className="block py-2 text-gray-600" onClick={handleLinkClick}>Cloud Migration</Link>
+                      <Link href="/technology/disaster-recovery" className="block py-2 text-gray-600" onClick={handleLinkClick}>Disaster Recovery</Link>
+                      <Link href="/technology/backup-restore" className="block py-2 text-gray-600" onClick={handleLinkClick}>Backup & Restore</Link>
+                      <Link href="/technology/container-services" className="block py-2 text-gray-600" onClick={handleLinkClick}>Container Services</Link>
                     </div>
                     <div>
                       <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">📊 Data Platform</div>
-                      <Link href="/platform/data-lakehouse" className="block py-2 text-gray-600" onClick={handleLinkClick}>Data Lakehouse</Link>
-                      <Link href="/platform/streaming" className="block py-2 text-gray-600" onClick={handleLinkClick}>Real-Time Streaming</Link>
-                      <Link href="/platform/data-warehouse" className="block py-2 text-gray-600" onClick={handleLinkClick}>Data Warehouse</Link>
-                      <Link href="/platform/data-governance" className="block py-2 text-gray-600" onClick={handleLinkClick}>Data Governance</Link>
+                      <Link href="/technology/data-lakehouse" className="block py-2 text-gray-600" onClick={handleLinkClick}>Data Lakehouse</Link>
+                      <Link href="/technology/streaming" className="block py-2 text-gray-600" onClick={handleLinkClick}>Real-Time Streaming</Link>
+                      <Link href="/technology/data-warehouse" className="block py-2 text-gray-600" onClick={handleLinkClick}>Data Warehouse</Link>
+                      <Link href="/technology/data-governance" className="block py-2 text-gray-600" onClick={handleLinkClick}>Data Governance</Link>
                     </div>
                     <div>
                       <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">🔒 Security & Compliance</div>
-                      <Link href="/platform/zero-trust-ai" className="block py-2 text-gray-600" onClick={handleLinkClick}>Zero-Trust AI</Link>
-                      <Link href="/platform/security/ahnlab" className="block py-2 text-gray-600" onClick={handleLinkClick}>Cybersecurity (AhnLab)</Link>
-                      <Link href="/platform/security/truewatch" className="block py-2 text-gray-600" onClick={handleLinkClick}>Security Monitoring</Link>
-                      <Link href="/platform/compliance" className="block py-2 text-gray-600" onClick={handleLinkClick}>Compliance</Link>
+                      <Link href="/technology/zero-trust-ai" className="block py-2 text-gray-600" onClick={handleLinkClick}>Zero-Trust AI</Link>
+                      <Link href="/technology/security/ahnlab" className="block py-2 text-gray-600" onClick={handleLinkClick}>Cybersecurity (AhnLab)</Link>
+                      <Link href="/technology/security/truewatch" className="block py-2 text-gray-600" onClick={handleLinkClick}>Security Monitoring</Link>
+                      <Link href="/technology/compliance" className="block py-2 text-gray-600" onClick={handleLinkClick}>Compliance</Link>
                     </div>
                     <div>
                       <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">📈 Impact & ROI</div>
-                      <Link href="/platform/impact" className="block py-2 text-gray-600" onClick={handleLinkClick}>Business Impact</Link>
-                      <Link href="/platform/cost-optimization" className="block py-2 text-gray-600" onClick={handleLinkClick}>Cost Optimization</Link>
-                      <Link href="/platform/roi-metrics" className="block py-2 text-gray-600" onClick={handleLinkClick}>ROI Metrics</Link>
+                      <Link href="/technology/impact" className="block py-2 text-gray-600" onClick={handleLinkClick}>Business Impact</Link>
+                      <Link href="/technology/cost-optimization" className="block py-2 text-gray-600" onClick={handleLinkClick}>Cost Optimization</Link>
+                      <Link href="/technology/roi-metrics" className="block py-2 text-gray-600" onClick={handleLinkClick}>ROI Metrics</Link>
                       <Link href="/case-studies" className="block py-2 text-gray-600" onClick={handleLinkClick}>Case Studies</Link>
                     </div>
                   </div>

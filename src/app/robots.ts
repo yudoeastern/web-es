@@ -11,7 +11,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://easternstack.com/sitemap.xml",
-    host: "https://easternstack.com",
+    sitemap: "https://easternstack.ai/sitemap.xml",
+    host: "https://easternstack.ai",
   };
 }

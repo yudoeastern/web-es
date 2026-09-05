@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
-const baseUrl = "https://easternstack.com";
+const baseUrl = "https://easternstack.ai";
 
 // Mirrors the industry content in ./page.tsx. That file is a Client
 // Component, so its data map cannot be imported into this Server Component —

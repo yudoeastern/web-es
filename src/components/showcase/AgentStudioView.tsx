@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import {
-  AgentOsShell,
+  WeastShell,
   ViewHeader,
   SparkIcon,
   BotIcon,
@@ -12,7 +12,7 @@ import {
   FlowIcon,
   StatusBadge,
   SlugChip,
-} from "./AgentOsShell";
+} from "./WeastShell";
 
 interface StudioAgent {
   id: string;
@@ -120,9 +120,10 @@ export default function AgentStudioView({
           </div>
           <button
             onClick={addAgent}
-            className="flex items-center gap-2 rounded-lg bg-[#E31E24] px-4 py-2 text-[12.5px] font-semibold text-white shadow-sm transition-colors hover:bg-[#C4181E]"
+            className="flex items-center gap-2 rounded-lg bg-[#E31E24] px-3 py-2 text-[12.5px] font-semibold text-white shadow-sm transition-colors hover:bg-[#C4181E] sm:px-4"
+            title="New agent"
           >
-            <PlusIcon className="h-3.5 w-3.5" /> New agent
+            <PlusIcon className="h-3.5 w-3.5" /> <span className="hidden sm:inline">New agent</span>
           </button>
         </div>
       }
@@ -130,7 +131,7 @@ export default function AgentStudioView({
   );
 
   return (
-    <AgentOsShell active="studio" onNavigate={onNavigate} header={header}>
+    <WeastShell active="studio" onNavigate={onNavigate} header={header}>
       {mode === "card" && (
         <div className="grid gap-4 p-6 md:grid-cols-2 xl:grid-cols-3">
           {agents.map((agent) => (
@@ -173,27 +174,29 @@ export default function AgentStudioView({
       {mode === "list" && (
         <div className="p-6">
           <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-            <div className="grid grid-cols-[1.4fr_1.2fr_1fr_90px_70px_90px] gap-2 border-b border-slate-100 px-4 py-2.5 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+            <div className="grid grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_84px] gap-2 border-b border-slate-100 px-4 py-2.5 text-[10px] font-bold uppercase tracking-widest text-slate-400 md:grid-cols-[1.4fr_1.2fr_1fr_90px_70px_90px]">
               <span>Name</span>
-              <span>Slug</span>
+              <span className="hidden md:block">Slug</span>
               <span>Model</span>
               <span>Status</span>
-              <span>Tools</span>
-              <span>Delegates</span>
+              <span className="hidden md:block">Tools</span>
+              <span className="hidden md:block">Delegates</span>
             </div>
             {agents.map((agent) => (
               <div
                 key={agent.id}
-                className="grid grid-cols-[1.4fr_1.2fr_1fr_90px_70px_90px] items-center gap-2 border-b border-slate-50 px-4 py-3 last:border-0 hover:bg-slate-50"
+                className="grid grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_84px] items-center gap-2 border-b border-slate-50 px-4 py-3 last:border-0 hover:bg-slate-50 md:grid-cols-[1.4fr_1.2fr_1fr_90px_70px_90px]"
               >
-                <span className="flex items-center gap-2 text-[12.5px] font-semibold text-slate-800">
-                  <BotIcon className="h-4 w-4 text-slate-400" /> {agent.name}
+                <span className="flex min-w-0 items-center gap-2 text-[12.5px] font-semibold text-slate-800">
+                  <BotIcon className="h-4 w-4 shrink-0 text-slate-400" /> <span className="truncate">{agent.name}</span>
                 </span>
-                <SlugChip>{agent.slug}</SlugChip>
-                <span className="font-mono text-[10.5px] text-slate-500">{agent.model}</span>
+                <span className="hidden md:block">
+                  <SlugChip>{agent.slug}</SlugChip>
+                </span>
+                <span className="truncate font-mono text-[10.5px] text-slate-500">{agent.model}</span>
                 <StatusBadge kind={agent.online ? "online" : "offline"} label={agent.online ? "ONLINE" : "OFFLINE"} />
-                <span className="font-mono text-[11px] text-slate-600">{agent.tools}</span>
-                <span className="font-mono text-[11px] text-slate-600">{agent.delegates}</span>
+                <span className="hidden font-mono text-[11px] text-slate-600 md:block">{agent.tools}</span>
+                <span className="hidden font-mono text-[11px] text-slate-600 md:block">{agent.delegates}</span>
               </div>
             ))}
           </div>
@@ -237,7 +240,7 @@ export default function AgentStudioView({
               </button>
             </div>
             {/* legend */}
-            <div className="absolute right-4 top-4 z-10 flex items-center gap-4 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-[10.5px] text-slate-500 shadow-sm">
+            <div className="absolute right-4 top-4 z-10 hidden items-center gap-4 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-[10.5px] text-slate-500 shadow-sm sm:flex">
               <span className="flex items-center gap-1.5">
                 <span className="h-[2px] w-5 rounded bg-[#E31E24]" /> Delegates
               </span>
@@ -248,9 +251,9 @@ export default function AgentStudioView({
             </div>
 
             {/* scaled canvas */}
-            <div className="flex min-h-full items-center justify-center p-8">
+            <div className="flex min-h-full p-8">
               <div
-                className="relative h-[430px] w-[860px] shrink-0 transition-transform duration-300"
+                className="relative m-auto h-[430px] w-[860px] shrink-0 transition-transform duration-300"
                 style={{ transform: `scale(${zoom / 100})` }}
               >
                 {/* edges */}
@@ -407,6 +410,6 @@ export default function AgentStudioView({
           </div>
         </div>
       )}
-    </AgentOsShell>
+    </WeastShell>
   );
 }

@@ -404,7 +404,7 @@ export default function ChatWidget() {
         </div>
         
         <div id="chat-powered">
-          Powered by <a href="https://easternstack.com" target="_blank">easternstack.com</a>
+          Powered by <a href="https://easternstack.ai" target="_blank">easternstack.ai</a>
         </div>
       </div>
     `;
@@ -680,9 +680,9 @@ export default function ChatWidget() {
 
         const content = "<strong>Hubungi Tim Sales EasternStack</strong><br><br>" +
           "Untuk terhubung dengan tim Sales, Anda dapat:<br><br>" +
-          "📧 <strong>Email:</strong> sales&#64;easternstack.com<br>" +
+          "📧 <strong>Email:</strong> sales&#64;easternstack.ai<br>" +
           "📱 <strong>WhatsApp:</strong> Hubungi kami melalui tombol chat ini<br>" +
-          "🌐 <strong>Website:</strong> easternstack.com<br><br>" +
+          "🌐 <strong>Website:</strong> easternstack.ai<br><br>" +
           "Atau kunjungi halaman <a href='/contact' style='color: var(--es-red); font-weight: 600;'>Kontak</a> untuk mengirim pesan langsung.";
         
         (window as any).streamResponse(content, "sales");
@@ -734,7 +734,7 @@ export default function ChatWidget() {
           "• TrueWatch - Security Monitoring<br><br>" +
           "⚙️ <strong>Infrastructure:</strong><br>" +
           "• OnePro<br><br>" +
-          "Ingin tahu lebih lanjut? <a href='/platform' style='color: var(--es-red); font-weight: 600;'>Lihat Platform</a> atau <a href='/contact' style='color: var(--es-red); font-weight: 600;'>Hubungi Kami</a>.";
+          "Ingin tahu lebih lanjut? <a href='/technology' style='color: var(--es-red); font-weight: 600;'>Lihat Platform</a> atau <a href='/contact' style='color: var(--es-red); font-weight: 600;'>Hubungi Kami</a>.";
         
         (window as any).streamResponse(content, "partner");
         return;
@@ -812,7 +812,7 @@ export default function ChatWidget() {
       const typing = (window as any).addBubble("EasternStack sedang mengetik<span class='typing'></span>", "bot");
 
       try {
-        const res = await fetch("https://eap.easternstack.com/v1/chat-messages", {
+        const res = await fetch("https://eap.easternstack.ai/v1/chat-messages", {
           method: "POST",
           headers: {
             "Authorization": "Bearer app-9UQDjEtSA7Ou1PUd8NIZFyAB",

@@ -7,7 +7,7 @@ import RegisterForm from "./RegisterForm";
 import { DescriptionMarkdown, stripMarkdown } from "@/lib/markdown";
 import type { Metadata } from "next";
 
-const baseUrl = "https://easternstack.com";
+const baseUrl = "https://easternstack.ai";
 
 interface PageProps {
   params: Promise<{ id: string }>;

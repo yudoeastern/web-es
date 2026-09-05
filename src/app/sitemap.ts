@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { db } from "@/db";
 import { webinars } from "@/db/schema";
 
-const baseUrl = "https://easternstack.com";
+const baseUrl = "https://easternstack.ai";
 
 const staticRoutes: Array<{
   path: string;
@@ -16,6 +16,7 @@ const staticRoutes: Array<{
   { path: "/events", changeFrequency: "weekly", priority: 0.7 },
 
   { path: "/solutions", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/solutions/weast-core", changeFrequency: "monthly", priority: 0.7 },
   { path: "/solutions/agentic-ai", changeFrequency: "monthly", priority: 0.8 },
   { path: "/solutions/ai-assistant", changeFrequency: "monthly", priority: 0.6 },
   { path: "/solutions/churn-prediction", changeFrequency: "monthly", priority: 0.6 },
@@ -31,22 +32,22 @@ const staticRoutes: Array<{
   { path: "/solutions/ai/copilot-suite", changeFrequency: "monthly", priority: 0.5 },
   { path: "/solutions/ai/intelligent-document-processing", changeFrequency: "monthly", priority: 0.5 },
 
-  { path: "/platform", changeFrequency: "monthly", priority: 0.8 },
-  { path: "/platform/backup-restore", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/platform/cloud-migration", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/platform/compliance", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/platform/container-services", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/platform/cost-optimization", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/platform/data-governance", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/platform/data-lakehouse", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/platform/data-warehouse", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/platform/disaster-recovery", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/platform/impact", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/platform/roi-metrics", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/platform/streaming", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/platform/zero-trust-ai", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/platform/security/ahnlab", changeFrequency: "monthly", priority: 0.5 },
-  { path: "/platform/security/truewatch", changeFrequency: "monthly", priority: 0.5 },
+  { path: "/technology", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/technology/backup-restore", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/technology/cloud-migration", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/technology/compliance", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/technology/container-services", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/technology/cost-optimization", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/technology/data-governance", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/technology/data-lakehouse", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/technology/data-warehouse", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/technology/disaster-recovery", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/technology/impact", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/technology/roi-metrics", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/technology/streaming", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/technology/zero-trust-ai", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/technology/security/ahnlab", changeFrequency: "monthly", priority: 0.5 },
+  { path: "/technology/security/truewatch", changeFrequency: "monthly", priority: 0.5 },
 
   { path: "/industries", changeFrequency: "monthly", priority: 0.8 },
   { path: "/industries/energy-utilities", changeFrequency: "monthly", priority: 0.6 },

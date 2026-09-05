@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     title: "AI Case Studies | EasternStack",
     description:
       "Success stories from enterprises running AI in production with EasternStack — measurable results across financial services, insurance, and beyond.",
-    url: "https://easternstack.com/case-studies",
+    url: "https://easternstack.ai/case-studies",
     siteName: "EasternStack",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://easternstack.com/logo_head.png",
+        url: "https://easternstack.ai/logo_head.png",
         width: 1200,
         height: 1200,
         alt: "EasternStack — AI Case Studies",
@@ -72,12 +72,12 @@ export default function CaseStudiesPage() {
               </p>
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
-                  <div className="text-3xl font-bold gradient-text">90%</div>
+                  <div className="text-3xl font-bold gradient-text">Substantially</div>
                   <div className="text-xs text-gray-600">Faster Processing</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold gradient-text">60%</div>
-                  <div className="text-xs text-gray-600">Fraud Reduction</div>
+                  <div className="text-3xl font-bold gradient-text">Stronger</div>
+                  <div className="text-xs text-gray-600">Fraud Prevention</div>
                 </div>
               </div>
               <Link href="/contact" className="text-[#E31E24] font-semibold hover:text-[#E31E24]-dark transition-colors">
@@ -101,12 +101,12 @@ export default function CaseStudiesPage() {
               </p>
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
-                  <div className="text-3xl font-bold gradient-text">35%</div>
-                  <div className="text-xs text-gray-600">Higher Conversion</div>
+                  <div className="text-3xl font-bold gradient-text">Higher</div>
+                  <div className="text-xs text-gray-600">Conversion</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold gradient-text">70%</div>
-                  <div className="text-xs text-gray-600">Support Automation</div>
+                  <div className="text-3xl font-bold gradient-text">Majority</div>
+                  <div className="text-xs text-gray-600">Support Automated</div>
                 </div>
               </div>
               <Link href="/contact" className="text-[#E31E24] font-semibold hover:text-[#E31E24]-dark transition-colors">
@@ -130,12 +130,12 @@ export default function CaseStudiesPage() {
               </p>
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
-                  <div className="text-3xl font-bold gradient-text">80%</div>
+                  <div className="text-3xl font-bold gradient-text">Major</div>
                   <div className="text-xs text-gray-600">Time Savings</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold gradient-text">99%</div>
-                  <div className="text-xs text-gray-600">Data Accuracy</div>
+                  <div className="text-3xl font-bold gradient-text">High accuracy</div>
+                  <div className="text-xs text-gray-600">Medical Data</div>
                 </div>
               </div>
               <Link href="/contact" className="text-[#E31E24] font-semibold hover:text-[#E31E24]-dark transition-colors">
@@ -159,12 +159,12 @@ export default function CaseStudiesPage() {
               </p>
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
-                  <div className="text-3xl font-bold gradient-text">50%</div>
-                  <div className="text-xs text-gray-600">Less Downtime</div>
+                  <div className="text-3xl font-bold gradient-text">Less</div>
+                  <div className="text-xs text-gray-600">Downtime</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold gradient-text">40%</div>
-                  <div className="text-xs text-gray-600">Fewer Defects</div>
+                  <div className="text-3xl font-bold gradient-text">Fewer</div>
+                  <div className="text-xs text-gray-600">Defects</div>
                 </div>
               </div>
               <Link href="/contact" className="text-[#E31E24] font-semibold hover:text-[#E31E24]-dark transition-colors">
@@ -188,11 +188,11 @@ export default function CaseStudiesPage() {
               </p>
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
-                  <div className="text-3xl font-bold gradient-text">30%</div>
-                  <div className="text-xs text-gray-600">Churn Reduction</div>
+                  <div className="text-3xl font-bold gradient-text">Lower</div>
+                  <div className="text-xs text-gray-600">Churn</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold gradient-text">25%</div>
+                  <div className="text-3xl font-bold gradient-text">Better</div>
                   <div className="text-xs text-gray-600">Network Efficiency</div>
                 </div>
               </div>
@@ -217,12 +217,12 @@ export default function CaseStudiesPage() {
               </p>
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
-                  <div className="text-3xl font-bold gradient-text">25%</div>
-                  <div className="text-xs text-gray-600">Cost Reduction</div>
+                  <div className="text-3xl font-bold gradient-text">Lower</div>
+                  <div className="text-xs text-gray-600">Costs</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold gradient-text">40%</div>
-                  <div className="text-xs text-gray-600">Faster Delivery</div>
+                  <div className="text-3xl font-bold gradient-text">Faster</div>
+                  <div className="text-xs text-gray-600">Delivery</div>
                 </div>
               </div>
               <Link href="/contact" className="text-[#E31E24] font-semibold hover:text-[#E31E24]-dark transition-colors">

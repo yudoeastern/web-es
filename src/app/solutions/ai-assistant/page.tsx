@@ -4,19 +4,19 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "AI Assistant Solutions for Enterprise | EasternStack",
   description:
-    "Conversational AI assistants for 24/7 customer support, sales, tutoring, and employee productivity — cut support workload by up to 70% with EasternStack.",
+    "Conversational AI assistants for 24/7 customer support, sales, tutoring, and employee productivity that dramatically cut support workload with EasternStack.",
   alternates: { canonical: "/solutions/ai-assistant" },
   openGraph: {
     title: "AI Assistant Solutions for Enterprise | EasternStack",
     description:
-      "Conversational AI assistants for 24/7 customer support, sales, tutoring, and employee productivity — cut support workload by up to 70% with EasternStack.",
-    url: "https://easternstack.com/solutions/ai-assistant",
+      "Conversational AI assistants for 24/7 customer support, sales, tutoring, and employee productivity that dramatically cut support workload with EasternStack.",
+    url: "https://easternstack.ai/solutions/ai-assistant",
     siteName: "EasternStack",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://easternstack.com/logo_head.png",
+        url: "https://easternstack.ai/logo_head.png",
         width: 1200,
         height: 1200,
         alt: "EasternStack — AI Assistant Solutions for Enterprise",
@@ -98,7 +98,7 @@ export default function AIAssistantPage() {
                     <svg className="w-5 h-5 text-primary-orange mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
                     </svg>
-                    Reduces human customer service workload by up to 70%
+                    Substantially reduces human customer service workload
                   </li>
                   <li className="flex items-start text-gray-600">
                     <svg className="w-5 h-5 text-primary-orange mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -118,7 +118,7 @@ export default function AIAssistantPage() {
                 <div className="text-center py-8">
                   <div className="text-5xl font-bold gradient-text mb-2">24/7</div>
                   <div className="text-gray-600 mb-6">Support Coverage</div>
-                  <div className="text-5xl font-bold gradient-text mb-2">70%</div>
+                  <div className="text-5xl font-bold gradient-text mb-2">Substantial</div>
                   <div className="text-gray-600 mb-6">Workload Reduction</div>
                   <div className="text-5xl font-bold gradient-text">1000+</div>
                   <div className="text-gray-600">Concurrent Users</div>

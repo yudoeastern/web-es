@@ -11,13 +11,13 @@ export const metadata: Metadata = {
       "Industries We Serve — Enterprise AI Solutions in Indonesia | EasternStack",
     description:
       "Enterprise AI solutions tailored to diverse industries in Indonesia and beyond — Jakarta-based team, industry expertise, and rapid deployment.",
-    url: "https://easternstack.com/industries",
+    url: "https://easternstack.ai/industries",
     siteName: "EasternStack",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://easternstack.com/logo_head.png",
+        url: "https://easternstack.ai/logo_head.png",
         width: 1200,
         height: 1200,
         alt: "EasternStack — Industries We Serve",

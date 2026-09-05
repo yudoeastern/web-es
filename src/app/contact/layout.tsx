@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     title: "Contact Us | EasternStack",
     description:
       "Talk to EasternStack about enterprise AI for your organization. Jakarta-based team, enterprise-grade delivery.",
-    url: "https://easternstack.com/contact",
+    url: "https://easternstack.ai/contact",
     siteName: "EasternStack",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://easternstack.com/logo_head.png",
+        url: "https://easternstack.ai/logo_head.png",
         width: 1200,
         height: 1200,
         alt: "EasternStack — Contact Us",

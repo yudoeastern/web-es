@@ -10,13 +10,13 @@ export const metadata: Metadata = {
     title: "Enterprise AI Solutions in Indonesia | EasternStack",
     description:
       "Enterprise AI solutions with greater model choice and control — context-aware intelligence, workflow orchestration, and secure deployment by EasternStack.",
-    url: "https://easternstack.com/solutions/ai",
+    url: "https://easternstack.ai/solutions/ai",
     siteName: "EasternStack",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://easternstack.com/logo_head.png",
+        url: "https://easternstack.ai/logo_head.png",
         width: 1200,
         height: 1200,
         alt: "EasternStack — Enterprise AI Solutions in Indonesia",

@@ -10,13 +10,13 @@ export const metadata: Metadata = {
     title: "Supply Chain AI & Optimization Solutions | EasternStack",
     description:
       "AI-powered supply chain optimization — demand forecasting, disruption prediction, procurement automation, and inventory control that adapts in real time.",
-    url: "https://easternstack.com/solutions/supply-chain",
+    url: "https://easternstack.ai/solutions/supply-chain",
     siteName: "EasternStack",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://easternstack.com/logo_head.png",
+        url: "https://easternstack.ai/logo_head.png",
         width: 1200,
         height: 1200,
         alt: "EasternStack — Supply Chain AI & Optimization Solutions",
@@ -69,20 +69,20 @@ export default function SupplyChainPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               <div className="card text-center">
-                <div className="text-4xl font-bold gradient-text mb-2">30%</div>
-                <div className="text-gray-600 text-sm">Lower inventory costs</div>
+                <div className="text-4xl font-bold gradient-text mb-2">Lower</div>
+                <div className="text-gray-600 text-sm">Inventory costs</div>
               </div>
               <div className="card text-center">
-                <div className="text-4xl font-bold gradient-text mb-2">50%</div>
-                <div className="text-gray-600 text-sm">Fewer stockouts</div>
+                <div className="text-4xl font-bold gradient-text mb-2">Fewer</div>
+                <div className="text-gray-600 text-sm">Stockouts</div>
               </div>
               <div className="card text-center">
-                <div className="text-4xl font-bold gradient-text mb-2">25%</div>
-                <div className="text-gray-600 text-sm">Reduced logistics cost</div>
+                <div className="text-4xl font-bold gradient-text mb-2">Reduced</div>
+                <div className="text-gray-600 text-sm">Logistics cost</div>
               </div>
               <div className="card text-center">
-                <div className="text-4xl font-bold gradient-text mb-2">95%</div>
-                <div className="text-gray-600 text-sm">Forecast accuracy</div>
+                <div className="text-4xl font-bold gradient-text mb-2">High accuracy</div>
+                <div className="text-gray-600 text-sm">Demand forecasting</div>
               </div>
             </div>
           </div>

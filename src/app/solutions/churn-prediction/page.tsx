@@ -4,19 +4,19 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "AI Churn Prediction Solutions | EasternStack",
   description:
-    "AI-powered churn prediction that identifies at-risk customers before they leave — 85% accuracy, explainable risk scores, and retention playbooks.",
+    "AI-powered churn prediction that identifies at-risk customers before they leave, with high-accuracy predictions, explainable risk scores, and retention playbooks.",
   alternates: { canonical: "/solutions/churn-prediction" },
   openGraph: {
     title: "AI Churn Prediction Solutions | EasternStack",
     description:
-      "AI-powered churn prediction that identifies at-risk customers before they leave — 85% accuracy, explainable risk scores, and retention playbooks.",
-    url: "https://easternstack.com/solutions/churn-prediction",
+      "AI-powered churn prediction that identifies at-risk customers before they leave, with high-accuracy predictions, explainable risk scores, and retention playbooks.",
+    url: "https://easternstack.ai/solutions/churn-prediction",
     siteName: "EasternStack",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://easternstack.com/logo_head.png",
+        url: "https://easternstack.ai/logo_head.png",
         width: 1200,
         height: 1200,
         alt: "EasternStack — AI Churn Prediction Solutions",
@@ -72,12 +72,12 @@ export default function ChurnPredictionPage() {
                 <div className="text-gray-600 text-sm">Cheaper to retain than acquire</div>
               </div>
               <div className="card text-center">
-                <div className="text-4xl font-bold gradient-text mb-2">85%</div>
-                <div className="text-gray-600 text-sm">Prediction accuracy</div>
+                <div className="text-4xl font-bold gradient-text mb-2">High accuracy</div>
+                <div className="text-gray-600 text-sm">Churn predictions</div>
               </div>
               <div className="card text-center">
-                <div className="text-4xl font-bold gradient-text mb-2">30%</div>
-                <div className="text-gray-600 text-sm">Churn reduction</div>
+                <div className="text-4xl font-bold gradient-text mb-2">Less churn</div>
+                <div className="text-gray-600 text-sm">Proactive retention</div>
               </div>
             </div>
           </div>

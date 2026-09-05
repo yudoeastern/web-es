@@ -4,19 +4,19 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "AI Loan Application Processing Solutions | EasternStack",
   description:
-    "AI-powered loan origination that automates document verification, KYC checks, credit risk scoring, and approvals — 90% faster loan processing.",
+    "AI-powered loan origination that automates document verification, KYC checks, credit risk scoring, and approvals for dramatically faster loan processing.",
   alternates: { canonical: "/solutions/loan-processing" },
   openGraph: {
     title: "AI Loan Application Processing Solutions | EasternStack",
     description:
-      "AI-powered loan origination that automates document verification, KYC checks, credit risk scoring, and approvals — 90% faster loan processing.",
-    url: "https://easternstack.com/solutions/loan-processing",
+      "AI-powered loan origination that automates document verification, KYC checks, credit risk scoring, and approvals for dramatically faster loan processing.",
+    url: "https://easternstack.ai/solutions/loan-processing",
     siteName: "EasternStack",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://easternstack.com/logo_head.png",
+        url: "https://easternstack.ai/logo_head.png",
         width: 1200,
         height: 1200,
         alt: "EasternStack — AI Loan Application Processing Solutions",
@@ -69,16 +69,16 @@ export default function LoanProcessingPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               <div className="card text-center">
-                <div className="text-4xl font-bold gradient-text mb-2">90%</div>
-                <div className="text-gray-600 text-sm">Faster processing</div>
+                <div className="text-4xl font-bold gradient-text mb-2">Faster</div>
+                <div className="text-gray-600 text-sm">Processing time</div>
               </div>
               <div className="card text-center">
-                <div className="text-4xl font-bold gradient-text mb-2">50%</div>
-                <div className="text-gray-600 text-sm">Lower operational cost</div>
+                <div className="text-4xl font-bold gradient-text mb-2">Lower</div>
+                <div className="text-gray-600 text-sm">Operational cost</div>
               </div>
               <div className="card text-center">
-                <div className="text-4xl font-bold gradient-text mb-2">99%</div>
-                <div className="text-gray-600 text-sm">Document accuracy</div>
+                <div className="text-4xl font-bold gradient-text mb-2">High accuracy</div>
+                <div className="text-gray-600 text-sm">Document verification</div>
               </div>
               <div className="card text-center">
                 <div className="text-4xl font-bold gradient-text mb-2">24/7</div>
@@ -229,7 +229,7 @@ export default function LoanProcessingPage() {
                   <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
                   </svg>
-                  Cut operational costs by 50% or more
+                  Cut operational costs substantially
                 </li>
                 <li className="flex items-start text-gray-600">
                   <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">

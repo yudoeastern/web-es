@@ -9,9 +9,9 @@ const industryData: Record<string, { icon: string; title: string; description: s
     title: "REAL ESTATE",
     description: "Transform property management, valuation, and customer experience with AI-powered real estate solutions.",
     metrics: [
-      { value: "50%", label: "Faster Valuation", desc: "AI-powered property valuation with market analysis." },
-      { value: "40%", label: "Higher Conversion", desc: "Better lead qualification and matching." },
-      { value: "60%", label: "Time Savings", desc: "Automated documentation and compliance." },
+      { value: "Faster", label: "Property Valuation", desc: "AI-powered property valuation with market analysis." },
+      { value: "Higher", label: "Conversion", desc: "Better lead qualification and matching." },
+      { value: "More", label: "Time Savings", desc: "Automated documentation and compliance." },
     ],
   },
   insurance: {
@@ -19,9 +19,9 @@ const industryData: Record<string, { icon: string; title: string; description: s
     title: "INSURANCE",
     description: "Streamline claims processing, underwriting, and customer service with AI-powered insurance solutions.",
     metrics: [
-      { value: "70%", label: "Faster Claims", desc: "Automated claims processing and fraud detection." },
-      { value: "35%", label: "Lower Costs", desc: "Reduced operational costs through automation." },
-      { value: "90%", label: "Accuracy", desc: "Improved underwriting accuracy with AI." },
+      { value: "Faster", label: "Claims Processing", desc: "Automated claims processing and fraud detection." },
+      { value: "Lower", label: "Operating Costs", desc: "Reduced operational costs through automation." },
+      { value: "Higher", label: "Accuracy", desc: "Improved underwriting accuracy with AI." },
     ],
   },
   consulting: {
@@ -29,9 +29,9 @@ const industryData: Record<string, { icon: string; title: string; description: s
     title: "CONSULTING",
     description: "Enhance client insights, research, and deliverables with AI-powered consulting tools.",
     metrics: [
-      { value: "60%", label: "Faster Research", desc: "AI-powered market research and analysis." },
-      { value: "45%", label: "Better Insights", desc: "Data-driven recommendations and insights." },
-      { value: "50%", label: "Time Savings", desc: "Automated report generation and documentation." },
+      { value: "Faster", label: "Research", desc: "AI-powered market research and analysis." },
+      { value: "Better", label: "Insights", desc: "Data-driven recommendations and insights." },
+      { value: "More", label: "Time Savings", desc: "Automated report generation and documentation." },
     ],
   },
   education: {
@@ -39,9 +39,9 @@ const industryData: Record<string, { icon: string; title: string; description: s
     title: "EDUCATION",
     description: "Personalize learning, automate administration, and improve student outcomes with AI.",
     metrics: [
-      { value: "40%", label: "Better Outcomes", desc: "Personalized learning paths for students." },
-      { value: "50%", label: "Admin Efficiency", desc: "Automated grading and administration." },
-      { value: "80%", label: "Engagement", desc: "Interactive AI-powered learning experiences." },
+      { value: "Better", label: "Learning Outcomes", desc: "Personalized learning paths for students." },
+      { value: "Higher", label: "Admin Efficiency", desc: "Automated grading and administration." },
+      { value: "Higher", label: "Engagement", desc: "Interactive AI-powered learning experiences." },
     ],
   },
   hospitality: {
@@ -49,9 +49,9 @@ const industryData: Record<string, { icon: string; title: string; description: s
     title: "HOSPITALITY",
     description: "Enhance guest experience, optimize operations, and boost revenue with AI-powered hospitality solutions.",
     metrics: [
-      { value: "30%", label: "Higher Revenue", desc: "Dynamic pricing and personalized offers." },
-      { value: "50%", label: "Guest Satisfaction", desc: "AI-powered concierge and support." },
-      { value: "40%", label: "Operational Efficiency", desc: "Automated booking and operations." },
+      { value: "Higher", label: "Revenue", desc: "Dynamic pricing and personalized offers." },
+      { value: "Higher", label: "Guest Satisfaction", desc: "AI-powered concierge and support." },
+      { value: "Greater", label: "Operational Efficiency", desc: "Automated booking and operations." },
     ],
   },
   "food-beverage": {
@@ -59,9 +59,9 @@ const industryData: Record<string, { icon: string; title: string; description: s
     title: "FOOD & BEVERAGE",
     description: "Optimize supply chain, personalize menus, and enhance customer experience with AI solutions.",
     metrics: [
-      { value: "35%", label: "Reduced Waste", desc: "AI-powered demand forecasting." },
-      { value: "25%", label: "Higher Sales", desc: "Personalized recommendations and menus." },
-      { value: "45%", label: "Efficiency", desc: "Automated inventory and supply chain." },
+      { value: "Less", label: "Waste", desc: "AI-powered demand forecasting." },
+      { value: "Higher", label: "Sales", desc: "Personalized recommendations and menus." },
+      { value: "Greater", label: "Efficiency", desc: "Automated inventory and supply chain." },
     ],
   },
   "saas-software": {
@@ -69,9 +69,9 @@ const industryData: Record<string, { icon: string; title: string; description: s
     title: "SAAS & SOFTWARE",
     description: "Accelerate development, improve customer support, and optimize operations with AI-powered software solutions.",
     metrics: [
-      { value: "50%", label: "Faster Development", desc: "AI-assisted coding and testing." },
-      { value: "40%", label: "Better Support", desc: "Automated customer support with AI." },
-      { value: "55%", label: "Efficiency", desc: "Streamlined operations and workflows." },
+      { value: "Faster", label: "Development", desc: "AI-assisted coding and testing." },
+      { value: "Better", label: "Support", desc: "Automated customer support with AI." },
+      { value: "Greater", label: "Efficiency", desc: "Streamlined operations and workflows." },
     ],
   },
   gaming: {
@@ -79,9 +79,9 @@ const industryData: Record<string, { icon: string; title: string; description: s
     title: "GAMING",
     description: "Enhance player experience, optimize game development, and prevent fraud with AI gaming solutions.",
     metrics: [
-      { value: "45%", label: "Player Engagement", desc: "Personalized gaming experiences." },
-      { value: "60%", label: "Faster Development", desc: "AI-assisted game design and testing." },
-      { value: "70%", label: "Fraud Prevention", desc: "Real-time cheating detection." },
+      { value: "Higher", label: "Player Engagement", desc: "Personalized gaming experiences." },
+      { value: "Faster", label: "Development", desc: "AI-assisted game design and testing." },
+      { value: "Stronger", label: "Fraud Prevention", desc: "Real-time cheating detection." },
     ],
   },
   cybersecurity: {
@@ -89,9 +89,9 @@ const industryData: Record<string, { icon: string; title: string; description: s
     title: "CYBERSECURITY",
     description: "Detect threats, automate response, and protect assets with AI-powered cybersecurity solutions.",
     metrics: [
-      { value: "80%", label: "Threat Detection", desc: "AI-powered threat identification." },
-      { value: "60%", label: "Faster Response", desc: "Automated incident response." },
-      { value: "50%", label: "Cost Savings", desc: "Reduced breach impact and costs." },
+      { value: "Stronger", label: "Threat Detection", desc: "AI-powered threat identification." },
+      { value: "Faster", label: "Response", desc: "Automated incident response." },
+      { value: "Lower", label: "Incident Costs", desc: "Reduced breach impact and costs." },
     ],
   },
   automotive: {
@@ -99,9 +99,9 @@ const industryData: Record<string, { icon: string; title: string; description: s
     title: "AUTOMOTIVE",
     description: "Optimize manufacturing, enhance safety, and improve customer experience with AI automotive solutions.",
     metrics: [
-      { value: "40%", label: "Efficiency", desc: "Optimized manufacturing processes." },
-      { value: "50%", label: "Safety", desc: "AI-powered safety systems." },
-      { value: "35%", label: "Customer Satisfaction", desc: "Personalized customer experiences." },
+      { value: "Greater", label: "Efficiency", desc: "Optimized manufacturing processes." },
+      { value: "Stronger", label: "Safety", desc: "AI-powered safety systems." },
+      { value: "Higher", label: "Customer Satisfaction", desc: "Personalized customer experiences." },
     ],
   },
   chemical: {
@@ -109,9 +109,9 @@ const industryData: Record<string, { icon: string; title: string; description: s
     title: "CHEMICAL",
     description: "Optimize production, ensure safety, and reduce environmental impact with AI chemical solutions.",
     metrics: [
-      { value: "30%", label: "Production Efficiency", desc: "Optimized chemical processes." },
-      { value: "50%", label: "Safety", desc: "AI-powered safety monitoring." },
-      { value: "40%", label: "Environmental Impact", desc: "Reduced waste and emissions." },
+      { value: "Greater", label: "Production Efficiency", desc: "Optimized chemical processes." },
+      { value: "Stronger", label: "Safety", desc: "AI-powered safety monitoring." },
+      { value: "Lower", label: "Environmental Impact", desc: "Reduced waste and emissions." },
     ],
   },
 };
@@ -127,9 +127,9 @@ export default function IndustryPage({ params }: IndustryPageProps) {
     title: industry.replace(/-/g, " ").toUpperCase(),
     description: "Transform your industry with AI-powered solutions for intelligent automation and enhanced customer experiences.",
     metrics: [
-      { value: "60%", label: "Cost Reduction", desc: "Average operational cost savings through AI automation." },
-      { value: "40%", label: "Productivity", desc: "Employee productivity improvement with AI assistance." },
-      { value: "90%", label: "Accuracy", desc: "Improvement in decision quality with AI insights." },
+      { value: "Lower", label: "Operating Costs", desc: "Operational cost savings through AI automation." },
+      { value: "Higher", label: "Productivity", desc: "Employee productivity improvement with AI assistance." },
+      { value: "Better", label: "Decision Quality", desc: "Improvement in decision quality with AI insights." },
     ],
   };
 

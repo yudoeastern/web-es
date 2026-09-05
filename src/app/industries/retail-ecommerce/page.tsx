@@ -1,256 +1,267 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import ChurnPredictionFlow from "@/components/industries/ChurnPredictionFlow";
+import WeastCta from "@/components/WeastCta";
 
 export const metadata: Metadata = {
-  title: "AI for Retail & E-Commerce in Indonesia | EasternStack",
+  title: "AI for Retail & E-Commerce: Agentic Churn Prediction | EasternStack",
   description:
-    "Personalized recommendations, inventory optimization, and AI customer service for Indonesia's booming e-commerce market — with visual search and 24/7 support.",
+    "Agentic churn prediction for Indonesia's retail: signals, risk scores, and win-back plays on one WEAST platform, with forecasting and inventory agents behind the scenes.",
   alternates: { canonical: "/industries/retail-ecommerce" },
   openGraph: {
-    title: "AI for Retail & E-Commerce in Indonesia | EasternStack",
+    title: "AI for Retail & E-Commerce: Agentic Churn Prediction | EasternStack",
     description:
-      "Transform retail with AI-powered personalization, inventory optimization, and customer service automation built for Indonesia's booming e-commerce market.",
-    url: "https://easternstack.com/industries/retail-ecommerce",
+      "Catch churn before it happens: signals, risk scores, and win-back plays on one governed WEAST platform, with forecasting and inventory agents behind the scenes.",
+    url: "https://easternstack.ai/industries/retail-ecommerce",
     siteName: "EasternStack",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://easternstack.com/logo_head.png",
+        url: "https://easternstack.ai/logo_head.png",
         width: 1200,
         height: 1200,
-        alt: "EasternStack — AI for Retail & E-Commerce",
+        alt: "EasternStack, AI for Retail & E-Commerce",
       },
     ],
   },
 };
 
+const USE_CASES = [
+  {
+    title: "Churn Prediction & Retention",
+    body: "Agents score who is drifting, explain why, and run win-back plays your team approves, before the customer says goodbye.",
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M13 17h8m0 0v-8m0 8l-8-8-4 4-6-6" />
+      </svg>
+    ),
+  },
+  {
+    title: "Demand Forecasting",
+    body: "Agents forecast demand per SKU and season, so purchasing plans arrive before the spike, not after it.",
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+      </svg>
+    ),
+  },
+  {
+    title: "Smart Inventory",
+    body: "Automatic reorder points and cross-warehouse balancing that prevent stockouts and overstock.",
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+      </svg>
+    ),
+  },
+  {
+    title: "Support & Returns",
+    body: "24/7 handling of order status, returns, and exchanges in Bahasa Indonesia, with order context attached.",
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Visual Search",
+    body: "Customers search with photos; the agent matches style, suggests alternatives, and continues the chat.",
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+    ),
+  },
+];
+
+const LOCAL = [
+  {
+    title: "WhatsApp-first commerce",
+    body: "Conversational selling where your customers already are, with handoffs to humans when it matters.",
+  },
+  {
+    title: "Bahasa & slang NLP",
+    body: "Language understanding for Indonesian patterns, slang, and regional dialects, not translated templates.",
+  },
+  {
+    title: "Channel-ready architecture",
+    body: "The same shared-memory agent architecture extends to more channels as your team turns them on.",
+  },
+  {
+    title: "Seasonal scale",
+    body: "Built to stay calm through Ramadan and harbolnas spikes, with agents absorbing the surge.",
+  },
+  {
+    title: "Sovereign & secure",
+    body: "Customer data stays in your environment, with tenant boundaries and audit trails per workspace.",
+  },
+];
+
+const OUTCOMES = [
+  { stat: "Earlier warnings", label: "risk scores arrive while there is still time to act" },
+  { stat: "Every score explained", label: "reasons your team can act on, not a black box" },
+  { stat: "One platform", label: "churn, forecasting, and inventory agents under one governed WEAST" },
+];
+
 export default function RetailEcommercePage() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-bg-light via-white to-bg-light">
-        <div className="container-custom">
-          <div className="max-w-4xl">
-            <div className="inline-block mb-6 px-4 py-2 bg-white border border-gray-700 rounded-full shadow-sm">
-              <span className="text-[#E31E24] text-sm font-semibold">
-                🛒 Retail & E-Commerce
+    <div className="min-h-screen overflow-x-clip bg-white">
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-white pt-20 pb-16 sm:pt-24 sm:pb-20">
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage: "radial-gradient(circle, #e5e7eb 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+            maskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent)",
+            WebkitMaskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent)",
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <img
+              src="/weast/weast-logo-black.png"
+              alt="WEAST by EasternStack.AI"
+              className="mx-auto h-10 w-auto md:h-12"
+            />
+            <p className="mt-4 text-xs font-bold uppercase tracking-widest text-gray-500">
+              Industry · Retail & E-Commerce
+            </p>
+            <h1
+              className="mt-5 text-4xl font-extrabold text-[#1A1A1A] sm:text-5xl md:text-6xl"
+              style={{ letterSpacing: "-0.03em", lineHeight: 1.05 }}
+            >
+              Catch churn{" "}
+              <span className="bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">
+                before it happens
               </span>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-6">
-              AI FOR{" "}
-              <span className="gradient-text">RETAIL & E-COMMERCE</span>
             </h1>
-            <p className="text-xl text-gray-600">
-              Transform retail operations with AI-powered personalization, inventory optimization, 
-              and customer service automation built for Indonesia's booming e-commerce market.
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-600">
+              Agentic churn prediction for retail and e-commerce: signals, risk scores, and
+              win-back plays on one WEAST platform, with forecasting and inventory agents
+              behind the scenes.
+            </p>
+            <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#E31E24] to-[#C4181E] px-6 py-3 text-sm font-semibold text-white shadow-lg hover:shadow-xl transition-all"
+              >
+                Request a Demo
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              <Link
+                href="/#demo-ide"
+                className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-transparent px-6 py-3 text-sm font-semibold text-[#1A1A1A] hover:border-[#E31E24] hover:text-[#E31E24] transition-all"
+              >
+                Try the Live Product Tour
+              </Link>
+            </div>
+            <p className="mt-5 text-[13px] text-gray-500">
+              Signals to win-back · Human-approved plays · Data sovereignty
             </p>
           </div>
         </div>
       </section>
 
-      {/* Overview */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-[#1A1A1A] mb-6">
-              Why Retail & E-Commerce Need AI
+      {/* Animated omnichannel flow */}
+      <section className="bg-[#0A0A0C] py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#E31E24]">
+              Agentic churn prediction
+            </p>
+            <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">
+              A loop that catches drift early
             </h2>
-            <p className="text-gray-600 mb-6">
-              Indonesia's e-commerce market is projected to reach $95 billion by 2025. 
-              Retailers face intense competition, rising customer expectations, and complex 
-              logistics challenges across the archipelago.
+            <p className="mt-4 text-zinc-400">
+              Signals stream in from usage, support, and payments. The risk agent scores who
+              is drifting, the insight agent explains why, and the outreach agent runs the
+              win-back, all grounded in customer memory.
             </p>
-            <p className="text-gray-600 mb-8">
-              EasternStack delivers AI solutions that help retailers personalize customer 
-              experiences, optimize inventory across multiple warehouses, and automate 
-              customer service at scale.
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="card text-center">
-                <div className="text-4xl font-bold gradient-text mb-2">35%</div>
-                <div className="text-gray-600 text-sm">Revenue increase</div>
-              </div>
-              <div className="card text-center">
-                <div className="text-4xl font-bold gradient-text mb-2">50%</div>
-                <div className="text-gray-600 text-sm">Lower inventory costs</div>
-              </div>
-              <div className="card text-center">
-                <div className="text-4xl font-bold gradient-text mb-2">24/7</div>
-                <div className="text-gray-600 text-sm">Customer support</div>
-              </div>
-            </div>
+          </div>
+          <div className="mt-12">
+            <ChurnPredictionFlow />
           </div>
         </div>
       </section>
 
-      {/* Use Cases */}
-      <section className="section-padding bg-whiteer">
-        <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-12 text-center">
-            AI USE CASES FOR RETAIL
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="card">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                </svg>
+      {/* Use cases */}
+      <section className="border-b border-gray-200 bg-gray-50 py-20 sm:py-24">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#E31E24]">
+              Use cases
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#1A1A1A] sm:text-4xl">
+              What retail teams run on WEAST
+            </h2>
+          </div>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {USE_CASES.map((u) => (
+              <div
+                key={u.title}
+                className="rounded-xl border border-gray-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-[#E31E24]/40 hover:shadow-lg"
+              >
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-br from-[#E31E24] to-[#C4181E] text-white">
+                  {u.icon}
+                </div>
+                <h3 className="mt-4 text-[15px] font-bold text-[#1A1A1A]">{u.title}</h3>
+                <p className="mt-2 text-[13px] leading-relaxed text-gray-600">{u.body}</p>
               </div>
-              <h3 className="text-xl font-semibold text-[#1A1A1A] mb-4">Personalized Recommendations</h3>
-              <p className="text-gray-600 mb-4">
-                AI-powered product recommendations that increase conversion rates and average order value.
-              </p>
-              <ul className="space-y-2">
-                <li className="flex items-start text-gray-600">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Behavior-based product suggestions
-                </li>
-                <li className="flex items-start text-gray-600">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Cross-sell and upsell automation
-                </li>
-                <li className="flex items-start text-gray-600">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Personalized email campaigns
-                </li>
-              </ul>
-            </div>
-
-            <div className="card">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-[#1A1A1A] mb-4">Inventory Optimization</h3>
-              <p className="text-gray-600 mb-4">
-                AI forecasting that prevents stockouts and reduces overstock across multiple locations.
-              </p>
-              <ul className="space-y-2">
-                <li className="flex items-start text-gray-600">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Demand forecasting per SKU
-                </li>
-                <li className="flex items-start text-gray-600">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Automatic reorder points
-                </li>
-                <li className="flex items-start text-gray-600">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Seasonal demand prediction
-                </li>
-              </ul>
-            </div>
-
-            <div className="card">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-[#1A1A1A] mb-4">Customer Service Automation</h3>
-              <p className="text-gray-600 mb-4">
-                24/7 AI chatbots that handle inquiries, returns, and order tracking in Bahasa Indonesia.
-              </p>
-              <ul className="space-y-2">
-                <li className="flex items-start text-gray-600">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Order status inquiries
-                </li>
-                <li className="flex items-start text-gray-600">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Return and exchange handling
-                </li>
-                <li className="flex items-start text-gray-600">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Product Q&A automation
-                </li>
-              </ul>
-            </div>
-
-            <div className="card">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-[#1A1A1A] mb-4">Visual Search</h3>
-              <p className="text-gray-600 mb-4">
-                Allow customers to search products using images instead of text queries.
-              </p>
-              <ul className="space-y-2">
-                <li className="flex items-start text-gray-600">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Image-based product search
-                </li>
-                <li className="flex items-start text-gray-600">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Similar product recommendations
-                </li>
-                <li className="flex items-start text-gray-600">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Style matching
-                </li>
-              </ul>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      {/* <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            READY TO TRANSFORM YOUR RETAIL BUSINESS?
-          </h2>
-          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            Let's discuss how AI can enhance your customer experience and operations.
-          </p>
-          <Link href="/contact" className="btn-primary bg-white text-[#E31E24] hover:bg-white">
-            Talk to Our Experts
-          </Link>
+      {/* Local context */}
+      <section className="bg-white py-20 sm:py-24">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#E31E24]">
+              Local by design
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#1A1A1A] sm:text-4xl">
+              Built for how Indonesia shops
+            </h2>
+          </div>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {LOCAL.map((i) => (
+              <div key={i.title} className="rounded-xl border border-gray-200 bg-white p-6">
+                <h3 className="text-[15px] font-bold text-[#1A1A1A]">{i.title}</h3>
+                <p className="mt-2 text-[13px] leading-relaxed text-gray-600">{i.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </section> */}
-      <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            READY TO TRANSFORM YOUR RETAIL BUSINESS?
-          </h2>
-          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            Let's discuss how AI can enhance your customer experience and operations.
-          </p>
-          <Link href="/contact" className="btn-primary bg-white text-[#E31E24] hover:bg-white">
-            Book Consultation
-          </Link>
+      </section>
+
+      {/* Outcomes */}
+      <section className="border-y border-gray-200 bg-gray-50 py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#E31E24]">
+              Outcomes
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#1A1A1A] sm:text-4xl">
+              What changes for your brand
+            </h2>
+          </div>
+          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            {OUTCOMES.map((o) => (
+              <div key={o.label} className="rounded-xl border border-gray-200 bg-white p-7 text-center">
+                <p className="text-3xl font-extrabold text-[#E31E24]">{o.stat}</p>
+                <p className="mt-2 text-sm leading-relaxed text-gray-600">{o.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </section>                 
+      </section>
+
+      <WeastCta tourHref="/#demo-ide" />
     </div>
   );
 }

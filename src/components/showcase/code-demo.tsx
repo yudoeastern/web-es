@@ -54,7 +54,7 @@ export async function predictChurn(customerId: string) {
       { text: "> tsx src/churn-agent.ts", kind: "dim" },
       { text: "Loaded customer profile #8821", kind: "info" },
       { text: "Risk score: 0.83 (high)", kind: "info" },
-      { text: "Sales alert sent to crm@easternstack.com", kind: "ok" },
+      { text: "Sales alert sent to crm@easternstack.ai", kind: "ok" },
       { text: "Done in 1.24s", kind: "ok" },
     ],
   },

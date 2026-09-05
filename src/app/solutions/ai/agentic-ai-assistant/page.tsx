@@ -10,13 +10,13 @@ export const metadata: Metadata = {
     title: "Agentic AI Assistant for Enterprise Workflows | EasternStack",
     description:
       "Autonomous AI agents for customer operations, revenue operations, and workforce productivity — executing multi-step workflows across your systems.",
-    url: "https://easternstack.com/solutions/ai/agentic-ai-assistant",
+    url: "https://easternstack.ai/solutions/ai/agentic-ai-assistant",
     siteName: "EasternStack",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://easternstack.com/logo_head.png",
+        url: "https://easternstack.ai/logo_head.png",
         width: 1200,
         height: 1200,
         alt: "EasternStack — Agentic AI Assistant for Enterprise Workflows",
@@ -125,7 +125,7 @@ export default function AgenticAIAssistantPage() {
                       <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
                       </svg>
-                      70% reduction in support workload
+                      Substantial reduction in support workload
                     </li>
                     <li className="flex items-start text-gray-600">
                       <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -188,13 +188,13 @@ export default function AgenticAIAssistantPage() {
                       <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
                       </svg>
-                      50% faster sales cycle
+                      Dramatically faster sales cycle
                     </li>
                     <li className="flex items-start text-gray-600">
                       <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
                       </svg>
-                      40% improvement in lead conversion
+                      Meaningful improvement in lead conversion
                     </li>
                     <li className="flex items-start text-gray-600">
                       <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -251,7 +251,7 @@ export default function AgenticAIAssistantPage() {
                       <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
                       </svg>
-                      60% reduction in manual work
+                      Majority of manual work removed
                     </li>
                     <li className="flex items-start text-gray-600">
                       <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -318,7 +318,7 @@ export default function AgenticAIAssistantPage() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-gray-700"><strong className="text-[#1A1A1A]">Manual:</strong> Sales team spends 60% of time on repetitive tasks like data entry, follow-ups, and documentation instead of closing deals.</p>
+                    <p className="text-gray-700"><strong className="text-[#1A1A1A]">Manual:</strong> Sales team spends most of its time on repetitive tasks like data entry, follow-ups, and documentation instead of closing deals.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">

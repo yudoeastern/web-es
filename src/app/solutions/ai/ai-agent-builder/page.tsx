@@ -10,13 +10,13 @@ export const metadata: Metadata = {
     title: "AI Agent Builder & Orchestration Platform | EasternStack",
     description:
       "Design, deploy, and orchestrate AI agents across your business systems — visual workflow design, multi-agent orchestration, and enterprise integrations.",
-    url: "https://easternstack.com/solutions/ai/ai-agent-builder",
+    url: "https://easternstack.ai/solutions/ai/ai-agent-builder",
     siteName: "EasternStack",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://easternstack.com/logo_head.png",
+        url: "https://easternstack.ai/logo_head.png",
         width: 1200,
         height: 1200,
         alt: "EasternStack — AI Agent Builder & Orchestration Platform",

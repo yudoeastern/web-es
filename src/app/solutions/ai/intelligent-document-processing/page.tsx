@@ -10,13 +10,13 @@ export const metadata: Metadata = {
     title: "Intelligent Document Processing (IDP) Solutions | EasternStack",
     description:
       "Turn contracts, invoices, and reports into structured data with AI — extraction, classification, clause risk analysis, and cross-document comparison.",
-    url: "https://easternstack.com/solutions/ai/intelligent-document-processing",
+    url: "https://easternstack.ai/solutions/ai/intelligent-document-processing",
     siteName: "EasternStack",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://easternstack.com/logo_head.png",
+        url: "https://easternstack.ai/logo_head.png",
         width: 1200,
         height: 1200,
         alt: "EasternStack — Intelligent Document Processing Solutions",

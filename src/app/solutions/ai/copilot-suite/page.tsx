@@ -10,13 +10,13 @@ export const metadata: Metadata = {
     title: "Enterprise AI Copilot Suite for HR, Legal & Operations | EasternStack",
     description:
       "Role-based AI copilots for HR, legal, and operations teams — automate routine work, surface real-time insights, and integrate with enterprise tools.",
-    url: "https://easternstack.com/solutions/ai/copilot-suite",
+    url: "https://easternstack.ai/solutions/ai/copilot-suite",
     siteName: "EasternStack",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://easternstack.com/logo_head.png",
+        url: "https://easternstack.ai/logo_head.png",
         width: 1200,
         height: 1200,
         alt: "EasternStack — Enterprise AI Copilot Suite",

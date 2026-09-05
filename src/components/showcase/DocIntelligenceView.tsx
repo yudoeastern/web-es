@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { highlightLine } from "./code-demo";
 import {
-  AgentOsShell,
+  WeastShell,
   ViewHeader,
   ScanIcon,
   SearchIcon,
@@ -18,7 +18,7 @@ import {
   SpinnerIcon,
   StatusBadge,
   SlugChip,
-} from "./AgentOsShell";
+} from "./WeastShell";
 
 const PIPELINE_STEPS = [
   { label: "Detect", meta: "" },
@@ -208,7 +208,7 @@ export default function DocIntelligenceView({
       title="Document Intelligence"
       subtitle="Credit Scoring"
       right={
-        <div className="flex items-center gap-2">
+        <div className="hidden items-center gap-2 sm:flex">
           <button className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-[12px] font-semibold text-slate-700 hover:bg-slate-50">
             <FileIcon className="h-3.5 w-3.5" /> Document Registry
           </button>
@@ -221,7 +221,7 @@ export default function DocIntelligenceView({
   );
 
   return (
-    <AgentOsShell active="docs" onNavigate={onNavigate} header={header}>
+    <WeastShell active="docs" onNavigate={onNavigate} header={header}>
       {!detail ? (
         /* ---------------- list screen ---------------- */
         <div className="flex h-full">
@@ -313,11 +313,11 @@ export default function DocIntelligenceView({
             </div>
 
             <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-              <div className="grid grid-cols-[1fr_70px_70px_100px_100px_90px] gap-2 border-b border-slate-100 px-4 py-2.5 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+              <div className="grid grid-cols-[minmax(0,1fr)_88px_78px] gap-2 border-b border-slate-100 px-4 py-2.5 text-[10px] font-bold uppercase tracking-widest text-slate-400 md:grid-cols-[1fr_70px_70px_100px_100px_90px]">
                 <span>Name</span>
-                <span>Type</span>
-                <span>Chunks</span>
-                <span>Indexed</span>
+                <span className="hidden md:block">Type</span>
+                <span className="hidden md:block">Chunks</span>
+                <span className="hidden md:block">Indexed</span>
                 <span>Status</span>
                 <span>Cost</span>
               </div>
@@ -330,7 +330,7 @@ export default function DocIntelligenceView({
                     setResultTab("reading");
                     setDetailId(row.id);
                   }}
-                  className={`grid w-full grid-cols-[1fr_70px_70px_100px_100px_90px] items-center gap-2 border-b border-slate-50 px-4 py-3 text-left last:border-0 ${
+                  className={`grid w-full grid-cols-[minmax(0,1fr)_88px_78px] items-center gap-2 border-b border-slate-50 px-4 py-3 text-left last:border-0 md:grid-cols-[1fr_70px_70px_100px_100px_90px] ${
                     row.kind === "file" && row.status === "indexed" ? "hover:bg-slate-50" : "cursor-default"
                   }`}
                 >
@@ -349,7 +349,7 @@ export default function DocIntelligenceView({
                       </span>
                     </span>
                   </span>
-                  <span>
+                  <span className="hidden md:block">
                     {row.kind === "file" && row.type ? (
                       <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-semibold text-slate-500">
                         {row.type}
@@ -358,8 +358,8 @@ export default function DocIntelligenceView({
                       <span className="text-slate-300">-</span>
                     )}
                   </span>
-                  <span className="font-mono text-[11px] text-slate-500">{row.chunks ?? "-"}</span>
-                  <span className="text-[11px] text-slate-500">{row.indexedAt ?? "-"}</span>
+                  <span className="hidden font-mono text-[11px] text-slate-500 md:block">{row.chunks ?? "-"}</span>
+                  <span className="hidden text-[11px] text-slate-500 md:block">{row.indexedAt ?? "-"}</span>
                   <span>
                     {row.status === "indexed" ? (
                       <span className="flex items-center gap-1.5 text-[11px] font-semibold text-emerald-600">
@@ -392,7 +392,7 @@ export default function DocIntelligenceView({
         </div>
       ) : (
         /* ---------------- detail screen ---------------- */
-        <div className="p-5">
+        <div className="p-3 sm:p-5">
           <div className="mb-5 flex flex-wrap items-center gap-3">
             <button
               onClick={() => setDetailId(null)}
@@ -478,7 +478,7 @@ export default function DocIntelligenceView({
                     <span className="text-[10px] font-normal text-slate-400">{detail.costPer ?? ""}</span>
                   </p>
                 </div>
-                <div className="grid grid-cols-[1fr_80px_80px_70px] gap-2 border-b border-slate-100 pb-1.5 text-[9.5px] font-bold uppercase tracking-widest text-slate-400">
+                <div className="grid grid-cols-[minmax(0,1fr)_58px_70px_58px] gap-2 border-b border-slate-100 pb-1.5 text-[9.5px] font-bold uppercase tracking-widest text-slate-400 sm:grid-cols-[1fr_80px_80px_70px]">
                   <span>Step</span>
                   <span>Amount</span>
                   <span>Duration</span>
@@ -487,7 +487,7 @@ export default function DocIntelligenceView({
                 {COST_ROWS.slice(0, Math.max(1, Math.min(COST_ROWS.length, pipelineStep))).map((r) => (
                   <div
                     key={r.step}
-                    className="grid grid-cols-[1fr_80px_80px_70px] gap-2 border-b border-slate-50 py-2 text-[11.5px] last:border-0"
+                    className="grid grid-cols-[minmax(0,1fr)_58px_70px_58px] gap-2 border-b border-slate-50 py-2 text-[11.5px] last:border-0 sm:grid-cols-[1fr_80px_80px_70px]"
                   >
                     <span className="font-semibold text-slate-700">{r.step}</span>
                     <span className="font-mono text-slate-500">{r.amount}</span>
@@ -575,6 +575,6 @@ export default function DocIntelligenceView({
           </div>
         </div>
       )}
-    </AgentOsShell>
+    </WeastShell>
   );
 }

@@ -10,13 +10,13 @@ export const metadata: Metadata = {
     title: "Autonomous AI Agents for Business Operations | EasternStack",
     description:
       "Self-governing AI agents that decide, execute, and adapt across business workflows — with governed autonomy, audit trails, and compliance controls.",
-    url: "https://easternstack.com/solutions/ai/autonomous-agents",
+    url: "https://easternstack.ai/solutions/ai/autonomous-agents",
     siteName: "EasternStack",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://easternstack.com/logo_head.png",
+        url: "https://easternstack.ai/logo_head.png",
         width: 1200,
         height: 1200,
         alt: "EasternStack — Autonomous AI Agents for Business Operations",
@@ -363,7 +363,7 @@ export default function AutonomousAgentsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="card text-center">
-              <div className="text-4xl font-bold gradient-text mb-2">99% Uptime</div>
+              <div className="text-4xl font-bold gradient-text mb-2">Reliable Uptime</div>
               <p className="text-gray-600 text-sm">
                 Autonomous operations with minimal human intervention.
               </p>
@@ -377,7 +377,7 @@ export default function AutonomousAgentsPage() {
             </div>
 
             <div className="card text-center">
-              <div className="text-4xl font-bold gradient-text mb-2">80% Cost Reduction</div>
+              <div className="text-4xl font-bold gradient-text mb-2">Major Cost Reduction</div>
               <p className="text-gray-600 text-sm">
                 Operational costs through intelligent automation.
               </p>

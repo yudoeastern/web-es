@@ -123,7 +123,9 @@ export default function ContactPage() {
         <div className="container-custom text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-text-dark mb-6">
             GET IN{" "}
-            <span className="gradient-text">TOUCH</span>
+            <span className="bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">
+              TOUCH
+            </span>
           </h1>
           <p className="text-xl text-text-secondary max-w-3xl mx-auto">
             Ready to transform your enterprise with AI? Let's talk about your goals 
@@ -304,7 +306,7 @@ export default function ContactPage() {
                 <div className="card">
                   <h3 className="text-lg font-semibold text-text-dark mb-4">Office Address</h3>
                   <p className="text-text-secondary">
-                    <strong>PT. INOVASI KONVERSASI DIGITAL</strong><br />
+                    <strong>PT EASTERNSTACK AI</strong><br />
                     Menara Caraka, 3rd Floor<br />
                     Jl. Dr. Ide Anak Agung Gde Agung<br />
                     Lot E4-7 No. 1, Kuningan Timur<br />
@@ -319,7 +321,7 @@ export default function ContactPage() {
                       <svg className="w-5 h-5 text-primary-orange mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
-                      sales@easternstack.com
+                      sales@easternstack.ai
                     </div>
                     <div className="flex items-center">
                       <svg className="w-5 h-5 text-primary-orange mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -9,13 +9,13 @@ export const metadata: Metadata = {
     title: "Enterprise AI Solutions & Agentic AI Platform | EasternStack",
     description:
       "Deploy an AI agent workforce over your private knowledge with Weast — EasternStack's enterprise agentic AI platform with secure, multi-model orchestration.",
-    url: "https://easternstack.com/solutions",
+    url: "https://easternstack.ai/solutions",
     siteName: "EasternStack",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://easternstack.com/logo_head.png",
+        url: "https://easternstack.ai/logo_head.png",
         width: 1200,
         height: 1200,
         alt: "EasternStack — Enterprise AI Solutions & Agentic AI Platform",
