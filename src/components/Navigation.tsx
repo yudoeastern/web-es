@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { openAskWeast } from '@/components/AskWeast';
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -201,9 +202,13 @@ export default function Navigation() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                           </svg>
                         </Link>
-                        <Link href="/contact" className="px-5 py-2.5 bg-gradient-to-r from-[#E31E24] to-[#C4181E] text-white font-semibold rounded-lg text-sm hover:shadow-lg transition-all">
-                          Schedule Demo
-                        </Link>
+                        <button
+                          onClick={openAskWeast}
+                          className="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-bold text-[#E31E24] shadow-sm transition-all hover:shadow-lg"
+                        >
+                          Ask
+                          <img src="/weast/weast-logo-black.png" alt="WEAST" className="h-4 w-auto" />
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -339,10 +344,23 @@ export default function Navigation() {
               Contact
             </Link>
 
-            <Link href="/contact" className="ml-4 px-6 py-2.5 bg-gradient-to-r from-[#E31E24] to-[#C4181E] text-white font-semibold rounded-lg hover:shadow-lg transition-all">
-              Schedule Demo
-            </Link>
+            <button
+              onClick={openAskWeast}
+              className="ml-4 flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-5 py-2.5 font-bold text-[#E31E24] shadow-sm transition-all hover:shadow-lg"
+            >
+              Ask
+              <img src="/weast/weast-logo-black.png" alt="WEAST" className="h-4 w-auto" />
+            </button>
           </div>
+
+          {/* Mobile Ask Weast */}
+          <button
+            onClick={openAskWeast}
+            className="mr-1 flex items-center rounded-lg border border-gray-200 bg-white px-2.5 py-2 shadow-sm lg:hidden"
+            aria-label="Ask Weast"
+          >
+            <img src="/weast/weast-logo-black.png" alt="WEAST" className="h-4 w-auto" />
+          </button>
 
           {/* Mobile Menu Button */}
           <button
@@ -488,9 +506,13 @@ export default function Navigation() {
                 Contact
               </Link>
 
-              <Link href="/contact" className="block w-full py-3 mt-4 bg-gradient-to-r from-[#E31E24] to-[#C4181E] text-white font-semibold rounded-lg text-center">
-                Schedule Demo
-              </Link>
+              <button
+                onClick={openAskWeast}
+                className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white py-3 font-bold text-[#E31E24] shadow-sm"
+              >
+                Ask
+                <img src="/weast/weast-logo-black.png" alt="WEAST" className="h-4 w-auto" />
+              </button>
             </div>
           </div>
         </div>

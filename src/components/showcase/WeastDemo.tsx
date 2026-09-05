@@ -2,11 +2,14 @@
 
 import { useRef, useState } from "react";
 import type { WeastView } from "./WeastShell";
-import { ScanIcon, ChatIcon, SparkIcon, ServerIcon } from "./WeastShell";
+import { ScanIcon, ChatIcon, SparkIcon, ServerIcon, CodeIcon } from "./WeastShell";
 import DocIntelligenceView from "./DocIntelligenceView";
 import AgentChatView from "./AgentChatView";
 import AgentStudioView from "./AgentStudioView";
 import AgentRuntimeView from "./AgentRuntimeView";
+import OpenApiView from "./OpenApiView";
+import AdminLockedView from "./AdminLockedView";
+import WorkspaceSettingsView from "./WorkspaceSettingsView";
 
 const FEATURES: {
   id: WeastView;
@@ -38,6 +41,12 @@ const FEATURES: {
     desc: "Sleep, wake, and restart agent containers from a UI. No terminal required.",
     icon: ServerIcon,
   },
+  {
+    id: "api",
+    title: "Open API Access",
+    desc: "Call agents and document intelligence from any system over versioned HTTP endpoints.",
+    icon: CodeIcon,
+  },
 ];
 
 export default function WeastDemo() {
@@ -61,6 +70,9 @@ export default function WeastDemo() {
           {view === "chat" && <AgentChatView onNavigate={setView} />}
           {view === "studio" && <AgentStudioView onNavigate={setView} />}
           {view === "runtime" && <AgentRuntimeView onNavigate={setView} />}
+          {view === "api" && <OpenApiView onNavigate={setView} />}
+          {view === "admin" && <AdminLockedView onNavigate={setView} />}
+          {view === "settings" && <WorkspaceSettingsView onNavigate={setView} />}
         </div>
       </div>
 
@@ -74,10 +86,10 @@ export default function WeastDemo() {
               <div className="flow-line-v absolute left-1/2 top-0 h-8 w-[3px] -translate-x-1/2 text-[#E31E24]" />
               {/* rail segments: only the route to the active card glows red */}
               {[
-                { from: 12.5, to: 37.5, hot: activeIndex === 0, rev: true },
-                { from: 37.5, to: 50, hot: activeIndex <= 1, rev: true },
-                { from: 50, to: 62.5, hot: activeIndex >= 2, rev: false },
-                { from: 62.5, to: 87.5, hot: activeIndex === 3, rev: false },
+                { from: 10, to: 30, hot: activeIndex === 0, rev: true },
+                { from: 30, to: 50, hot: activeIndex <= 1, rev: true },
+                { from: 50, to: 70, hot: activeIndex === 3 || activeIndex === 4, rev: false },
+                { from: 70, to: 90, hot: activeIndex === 4, rev: false },
               ].map((s) => (
                 <div
                   key={`${s.from}-${s.to}`}
@@ -88,7 +100,7 @@ export default function WeastDemo() {
                 />
               ))}
               {/* drops with arrows into each card */}
-              {[12.5, 37.5, 62.5, 87.5].map((x, i) => {
+              {[10, 30, 50, 70, 90].map((x, i) => {
                 const active = i === activeIndex;
                 return (
                   <div
@@ -113,7 +125,7 @@ export default function WeastDemo() {
       </div>
 
       {/* Feature shortcuts */}
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {FEATURES.map((f) => {
           const Icon = f.icon;
           const active = view === f.id;

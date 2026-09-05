@@ -14,6 +14,7 @@ import {
   SlugChip,
   SpinnerIcon,
 } from "./WeastShell";
+import type { WeastView } from "./WeastShell";
 
 type WorkerStatus = "online" | "sleeping" | "error" | "restarting";
 
@@ -27,6 +28,11 @@ interface Worker {
   group: "agents" | "workers";
   shared?: boolean;
   errorNote?: string;
+  runtimeId: string;
+  version: string;
+  containerId: string;
+  mem: string;
+  vcpu: string;
 }
 
 const INITIAL_WORKERS: Worker[] = [
@@ -38,6 +44,11 @@ const INITIAL_WORKERS: Worker[] = [
     status: "online",
     uptime: 2,
     group: "agents",
+    runtimeId: "5febd8e1-8379-4eec-8169-9f6301f64856",
+    version: "4f9af484-bb6b-4e4c-aed9-1a4411dac141",
+    containerId: "44d9e950d66c",
+    mem: "512 MB",
+    vcpu: "1.00",
   },
   {
     id: "financial",
@@ -47,6 +58,11 @@ const INITIAL_WORKERS: Worker[] = [
     status: "sleeping",
     uptime: 0,
     group: "agents",
+    runtimeId: "9c21d4a7-6f30-4b8e-a1d2-7e8b3c9d0e5f",
+    version: "4f9af484-bb6b-4e4c-aed9-1a4411dac141",
+    containerId: "7b1c83af2e90",
+    mem: "0 MB · scaled to zero",
+    vcpu: "0.00",
   },
   {
     id: "writer",
@@ -56,6 +72,11 @@ const INITIAL_WORKERS: Worker[] = [
     status: "sleeping",
     uptime: 0,
     group: "agents",
+    runtimeId: "d4e5f6a7-b8c9-4d0e-a1b2-c3d4e5f6a7b8",
+    version: "4f9af484-bb6b-4e4c-aed9-1a4411dac141",
+    containerId: "2f60b7c1d483",
+    mem: "0 MB · scaled to zero",
+    vcpu: "0.00",
   },
   {
     id: "ingestion",
@@ -67,19 +88,65 @@ const INITIAL_WORKERS: Worker[] = [
     group: "workers",
     shared: true,
     errorNote: "Worker heartbeat timeout, last seen 28m ago",
+    runtimeId: "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+    version: "4f9af484-bb6b-4e4c-aed9-1a4411dac141",
+    containerId: "9e8d7c6b5a4f",
+    mem: "256 MB",
+    vcpu: "0.50",
   },
 ];
+
+function workerLogs(w: Worker): { t: string; c?: "warn" | "error" }[] {
+  const head = [
+    { t: "WEAST Dedicated Worker starting" },
+    { t: `  agent_key    : ${w.slug}` },
+    { t: "  workspace_id : 2819bced-54d8-41da-8497-e52b0a3fed00" },
+    { t: "  backend_url  : http://apigateway:8000" },
+    { t: "  orchestrator : weast-orchestrator:7233 (ns=eap-agentic)" },
+    { t: "" },
+  ];
+  if (w.status === "error") {
+    return [
+      ...head,
+      { t: "[warn] heartbeat missed · 1/3" },
+      { t: "[error] heartbeat_timeout · last seen 28m ago", c: "error" },
+      { t: "[warn] retry scheduled · backoff 30s" },
+    ];
+  }
+  if (w.status === "sleeping") {
+    return [...head, { t: "[info] task queue listening" }, { t: "[info] scale_to_zero · memory released" }];
+  }
+  return [
+    ...head,
+    { t: "[info] task queue listening" },
+    { t: "[info] heartbeat ok · 42ms" },
+    { t: "[info] run 7f3d2c91 started · pt_kopi_arunika_financial_statements.png" },
+    { t: "[info] delegated → financial-analyst · spreading/ratio/red-flags" },
+    { t: "[info] delegated → credit-report-writer · memo draft" },
+    { t: "[info] run 7f3d2c91 completed · 41.2s · $0.0841" },
+  ];
+}
+
+function Detail({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="min-w-0">
+      <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400">{label}</p>
+      <p className="mt-0.5 truncate font-mono text-[10.5px] text-slate-600">{value}</p>
+    </div>
+  );
+}
 
 const fmtUptime = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 
 export default function AgentRuntimeView({
   onNavigate,
 }: {
-  onNavigate: (view: "docs" | "chat" | "studio" | "runtime") => void;
+  onNavigate: (view: WeastView) => void;
 }) {
   const [workers, setWorkers] = useState(INITIAL_WORKERS);
   const [expanded, setExpanded] = useState<string | null>(null);
   const [refreshing, setRefreshing] = useState(false);
+  const [hiddenLogs, setHiddenLogs] = useState<Record<string, boolean>>({});
 
   /* live uptime tick */
   useEffect(() => {
@@ -209,16 +276,50 @@ export default function AgentRuntimeView({
           </button>
         </div>
         {isOpen && (
-          <div className="grid gap-2 border-t border-slate-100 bg-slate-50/60 px-5 py-3 font-mono text-[10.5px] text-slate-500 sm:grid-cols-3">
-            <p>image: weast/worker:0.1.0</p>
-            <p>container: {w.slug}-7f3d2</p>
-            <p>
-              {w.status === "online"
-                ? `uptime: ${fmtUptime(w.uptime)}`
-                : w.status === "error"
-                  ? "last event: heartbeat_timeout"
-                  : "last event: scale_to_zero"}
-            </p>
+          <div className="border-t border-slate-100 bg-slate-50/60 px-5 py-4">
+            <div className="grid gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
+              <Detail label="Agent key" value={w.slug} />
+              <Detail label="Runtime ID" value={w.runtimeId} />
+              <Detail label="Active version" value={w.version} />
+              <Detail
+                label="Last heartbeat"
+                value={
+                  w.status === "online"
+                    ? "3s ago"
+                    : w.status === "error"
+                      ? "28m ago"
+                      : "scaled to zero"
+                }
+              />
+              <Detail label="Container ID" value={w.containerId} />
+              <Detail label="Image" value="weast/agent-worker:latest" />
+              <Detail label="Memory" value={w.mem} />
+              <Detail label="vCPU" value={w.vcpu} />
+            </div>
+            <button
+              onClick={() => setHiddenLogs((prev) => ({ ...prev, [w.id]: !prev[w.id] }))}
+              className="mt-3 text-[11px] font-semibold text-slate-500 hover:text-slate-700"
+            >
+              {hiddenLogs[w.id] ? "Show logs" : "Hide logs"}
+            </button>
+            {!hiddenLogs[w.id] && (
+              <div className="mt-2 overflow-x-auto rounded-lg bg-[#0d1526] p-4">
+                {workerLogs(w).map((line, i) => (
+                  <p
+                    key={i}
+                    className={`whitespace-pre font-mono text-[10.5px] leading-relaxed ${
+                      line.c === "error"
+                        ? "text-red-400"
+                        : line.c === "warn"
+                          ? "text-amber-300"
+                          : "text-emerald-300"
+                    }`}
+                  >
+                    {line.t || " "}
+                  </p>
+                ))}
+              </div>
+            )}
           </div>
         )}
       </div>

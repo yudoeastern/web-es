@@ -1,15 +1,16 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import WeastCta from "@/components/WeastCta";
 
 export const metadata: Metadata = {
-  title: "Enterprise Cloud Platform for AI at Scale | EasternStack",
+  title: "Enterprise Technology for AI at Scale | EasternStack",
   description:
-    "Cloud-native platform for enterprise AI in Indonesia — unified data, cloud modernisation, and zero-trust security powered by Alibaba, Huawei, and Tencent Cloud.",
+    "EasternStack's infrastructure for enterprise AI: unified data platform, cloud modernization, and zero-trust AI security, powered with Alibaba Cloud, Huawei Cloud, and Tencent Cloud.",
   alternates: { canonical: "/technology" },
   openGraph: {
-    title: "Enterprise Cloud Platform for AI at Scale | EasternStack",
+    title: "Enterprise Technology for AI at Scale | EasternStack",
     description:
-      "Cloud-native infrastructure powering reliable, scalable, and secure AI — unified data platform, cloud modernisation, and zero-trust architecture.",
+      "Unified data, cloud modernization, and zero-trust AI architecture. The technology layer behind every EasternStack deployment.",
     url: "https://easternstack.ai/technology",
     siteName: "EasternStack",
     locale: "en_US",
@@ -19,334 +20,311 @@ export const metadata: Metadata = {
         url: "https://easternstack.ai/logo_head.png",
         width: 1200,
         height: 1200,
-        alt: "EasternStack — Enterprise Cloud Platform for AI at Scale",
+        alt: "EasternStack, enterprise technology for AI at scale",
       },
     ],
   },
 };
 
-export default function PlatformPage() {
+const PARTNERS = [
+  { name: "Alibaba Cloud", logo: "/partner/Alibaba_Cloud_Logo.png", h: "h-20" },
+  { name: "Huawei Cloud", logo: "/partner/huawei.jpg", h: "h-14" },
+  { name: "Tencent Cloud", logo: "/partner/tencent.png", h: "h-14" },
+  { name: "OnePro", logo: "/partner/onepro.png", h: "h-14" },
+  { name: "AhnLab", logo: "/partner/ahnlab.jpg", h: "h-14" },
+  { name: "TrueWatch", logo: "/partner/true_watch_logo.svg", h: "h-14" },
+];
+
+const DATA_PLATFORM = [
+  {
+    title: "Modern Data Lakehouse",
+    body: "Unified analytics combining lake flexibility with warehouse performance for enterprise-scale AI workloads.",
+    href: "/technology/data-lakehouse",
+  },
+  {
+    title: "Enterprise Data Warehouse",
+    body: "High-performance warehousing optimized for complex analytics, reporting, and model training at scale.",
+    href: "/technology/data-warehouse",
+  },
+  {
+    title: "Real-Time Streaming",
+    body: "Event-driven architecture for instant insights and responsive agents on live business data.",
+    href: "/technology/streaming",
+  },
+  {
+    title: "Data Governance",
+    body: "Quality, lineage, access control, and compliance across your whole data estate.",
+    href: "/technology/data-governance",
+  },
+  {
+    title: "Backup & Restore",
+    body: "Database, file, and server backups with recovery drills your auditors can watch.",
+    href: "/technology/backup-restore",
+  },
+];
+
+const CLOUD_MODERN = [
+  {
+    n: "01",
+    title: "Container Orchestration",
+    body: "Kubernetes-native with auto-scaling, service mesh, and zero-downtime deployments.",
+    href: "/technology/container-services",
+  },
+  {
+    n: "02",
+    title: "Infrastructure Automation",
+    body: "GitOps workflows with infrastructure as code for consistent, auditable deployments.",
+    href: "/technology/impact",
+  },
+  {
+    n: "03",
+    title: "FinOps Optimisation",
+    body: "Cloud cost optimization that meaningfully reduces spend with no performance impact.",
+    href: "/technology/cost-optimization",
+  },
+  {
+    n: "04",
+    title: "High Availability",
+    body: "Multi-region resilience with disaster recovery and enterprise-grade availability.",
+    href: "/technology/disaster-recovery",
+  },
+  {
+    n: "05",
+    title: "Cloud Migration",
+    body: "Guided migration to Alibaba, Huawei, or Tencent Cloud with meaningful cost reduction.",
+    href: "/technology/cloud-migration",
+  },
+];
+
+const ZERO_TRUST = [
+  {
+    title: "Model Access Control",
+    body: "Role-based permissions with zero-trust architecture.",
+  },
+  {
+    title: "Data Leakage Prevention",
+    body: "Advanced filtering to prevent sensitive data exposure.",
+  },
+  {
+    title: "Prompt Injection Defense",
+    body: "Multi-layered protection against adversarial inputs.",
+  },
+  {
+    title: "Secure RAG Pipeline",
+    body: "End-to-end encryption for retrieval-augmented generation workflows.",
+  },
+  {
+    title: "Audit & Compliance",
+    body: "Comprehensive logging of all AI interactions for compliance.",
+    href: "/technology/compliance",
+  },
+  {
+    title: "Policy Guardrails",
+    body: "Configurable rules ensuring regulatory compliance.",
+  },
+];
+
+const DEEP_DIVES = [
+  { label: "Data Lakehouse", href: "/technology/data-lakehouse" },
+  { label: "Data Warehouse", href: "/technology/data-warehouse" },
+  { label: "Data Governance", href: "/technology/data-governance" },
+  { label: "Streaming", href: "/technology/streaming" },
+  { label: "Backup & Restore", href: "/technology/backup-restore" },
+  { label: "Container Services", href: "/technology/container-services" },
+  { label: "Cloud Migration", href: "/technology/cloud-migration" },
+  { label: "Cost Optimization", href: "/technology/cost-optimization" },
+  { label: "Disaster Recovery", href: "/technology/disaster-recovery" },
+  { label: "Compliance", href: "/technology/compliance" },
+  { label: "Cloud Modernization", href: "/technology/impact" },
+  { label: "ROI Metrics", href: "/technology/roi-metrics" },
+  { label: "Zero Trust AI", href: "/technology/zero-trust-ai" },
+  { label: "AhnLab Security", href: "/technology/security/ahnlab" },
+  { label: "TrueWatch Monitoring", href: "/technology/security/truewatch" },
+];
+
+function CardIcon() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-bg-light via-white to-bg-light">
-        <div className="container-custom text-center">
-          <div className="inline-block mb-6 px-4 py-2 bg-white border border-border-color rounded-full shadow-sm">
-            <span className="text-primary-orange text-sm font-semibold">
-              Enterprise Infrastructure
-            </span>
+    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[#E31E24] to-[#C4181E] text-white">
+      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+    </span>
+  );
+}
+
+export default function TechnologyPage() {
+  return (
+    <div className="min-h-screen overflow-x-clip bg-white">
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-white pt-20 pb-16 sm:pt-24 sm:pb-20">
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage: "radial-gradient(circle, #e5e7eb 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+            maskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent)",
+            WebkitMaskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent)",
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <img
+              src="/logo.png"
+              alt="EasternStack.AI"
+              className="mx-auto h-12 w-auto md:h-14"
+            />
+            <p className="mt-4 text-xs font-bold uppercase tracking-widest text-gray-500">
+              Technology · Infrastructure for AI at scale
+            </p>
+            <h1
+              className="mt-5 text-4xl font-extrabold text-[#1A1A1A] sm:text-5xl md:text-6xl"
+              style={{ letterSpacing: "-0.03em", lineHeight: 1.05 }}
+            >
+              The ground{" "}
+              <span className="bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">
+                enterprise AI stands on
+              </span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-600">
+              Unified data, cloud modernization, and zero-trust security, engineered so
+              agentic AI runs reliably inside your infrastructure, on your terms.
+            </p>
+            <p className="mt-5 text-[13px] text-gray-500">
+              Alibaba Cloud · Huawei Cloud · Tencent Cloud · OnePro · AhnLab · TrueWatch
+            </p>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-text-dark mb-6">
-            PLATFORM FOR{" "}
-            <span className="gradient-text">AI AT SCALE</span>
-          </h1>
-          <p className="text-xl text-text-secondary max-w-4xl mx-auto">
-            Cloud-native infrastructure powering reliable, scalable, and secure AI applications 
-            from data foundation to production deployment.
+        </div>
+      </section>
+
+      {/* Partners */}
+      <section className="border-y border-gray-200 bg-gray-50 py-14">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <p className="text-center text-xs font-bold uppercase tracking-widest text-gray-400">
+            Our technology partners
           </p>
-        </div>
-      </section>
-
-      {/* Partners Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <h2 className="text-2xl md:text-3xl font-bold text-text-dark mb-12 text-center">
-            OUR TECHNOLOGY PARTNERS
-          </h2>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 max-w-5xl mx-auto">
-            {/* Alibaba Cloud */}
-            <div className="flex items-center justify-center p-4">
-              <img src="/partner/Alibaba_Cloud_Logo.png" alt="Alibaba Cloud" className="h-24 w-auto object-contain" />
-            </div>
-
-            {/* Huawei Cloud */}
-            <div className="flex items-center justify-center p-4">
-              <img src="/partner/huawei.jpg" alt="Huawei Cloud" className="h-16 w-auto object-contain" />
-            </div>
-
-            {/* Tencent Cloud */}
-            <div className="flex items-center justify-center p-4">
-              <img src="/partner/tencent.png" alt="Tencent Cloud" className="h-16 w-auto object-contain" />
-            </div>
-
-            {/* OnePro */}
-            <div className="flex items-center justify-center p-4">
-              <img src="/partner/onepro.png" alt="OnePro" className="h-16 w-auto object-contain" />
-            </div>
-
-            {/* AhnLab */}
-            <div className="flex items-center justify-center p-4">
-              <img src="/partner/ahnlab.jpg" alt="AhnLab" className="h-16 w-auto object-contain" />
-            </div>
-
-            {/* TrueWatch */}
-            <div className="flex items-center justify-center p-4">
-              <img src="/partner/true_watch_logo.svg" alt="TrueWatch" className="h-16 w-auto object-contain" />
-            </div>
+          <div className="mt-8 grid grid-cols-2 items-center gap-8 sm:grid-cols-3 lg:grid-cols-6">
+            {PARTNERS.map((p) => (
+              <div key={p.name} className="flex items-center justify-center">
+                <img src={p.logo} alt={p.name} className={`${p.h} w-auto object-contain opacity-80`} />
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Unified Data Platform */}
-      <section className="section-padding bg-bg-lighter">
-        <div className="container-custom">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
-                </svg>
-              </div>
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-text-dark">Unified Data Platform</h2>
-                <p className="text-text-secondary">Build AI on a foundation designed for enterprise-scale data processing and analytics.</p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-              <div className="card">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-text-dark mb-3">Modern Data Lakehouse</h3>
-                <p className="text-text-secondary">
-                  Unified analytics combining lake flexibility with warehouse performance supporting petabyte-scale AI workloads.
-                </p>
-              </div>
-
-              <div className="card">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-text-dark mb-3">Real-Time Streaming</h3>
-                <p className="text-text-secondary">
-                  Event-driven architecture processing millions of events per second powering instant insights and responsive AI.
-                </p>
-              </div>
-
-              <div className="card">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-text-dark mb-3">Enterprise Data Warehouse</h3>
-                <p className="text-text-secondary">
-                  High-performance warehousing optimized for complex analytics, reporting, and ML model training at scale.
-                </p>
-              </div>
-
-              <div className="card">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-text-dark mb-3">Data Governance</h3>
-                <p className="text-text-secondary">
-                  Comprehensive frameworks ensuring quality, lineage, access control, and regulatory compliance across your data estate.
-                </p>
-              </div>
-            </div>
+      {/* Unified data platform */}
+      <section className="bg-white py-20 sm:py-24">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#E31E24]">
+              Unified data platform
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#1A1A1A] sm:text-4xl">
+              A data foundation built for agent-scale workloads
+            </h2>
+          </div>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {DATA_PLATFORM.map((c) => (
+              <Link
+                key={c.title}
+                href={c.href}
+                className="group rounded-xl border border-gray-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-[#E31E24]/40 hover:shadow-lg"
+              >
+                <CardIcon />
+                <h3 className="mt-4 text-[15px] font-bold text-[#1A1A1A] group-hover:text-[#E31E24]">
+                  {c.title}
+                </h3>
+                <p className="mt-2 text-[13px] leading-relaxed text-gray-600">{c.body}</p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Cloud Modernisation */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-                </svg>
-              </div>
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-text-dark">Cloud Modernisation</h2>
-                <p className="text-text-secondary">Transform infrastructure with cloud-native architecture that scales with your AI ambitions.</p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-              <div className="card">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold">01</span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-text-dark">Container Orchestration</h3>
-                </div>
-                <p className="text-text-secondary">
-                  Kubernetes-native with auto-scaling, service mesh, and zero downtime deployments.
-                </p>
-              </div>
-
-              <div className="card">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold">02</span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-text-dark">Infrastructure Automation</h3>
-                </div>
-                <p className="text-text-secondary">
-                  GitOps workflows with infrastructure as Code for consistent, auditable deployments.
-                </p>
-              </div>
-
-              <div className="card">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold">03</span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-text-dark">FinOps Optimisation</h3>
-                </div>
-                <p className="text-text-secondary">
-                  Cloud cost optimization that meaningfully reduces spend with no performance impact.
-                </p>
-              </div>
-
-              <div className="card">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold">04</span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-text-dark">High Availability</h3>
-                </div>
-                <p className="text-text-secondary">
-                  Multi-region resilience with disaster recovery and enterprise-grade availability.
-                </p>
-              </div>
-            </div>
+      {/* Cloud modernisation */}
+      <section className="border-y border-gray-200 bg-gray-50 py-20 sm:py-24">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#E31E24]">
+              Cloud modernisation
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#1A1A1A] sm:text-4xl">
+              Infrastructure that scales with your AI ambitions
+            </h2>
+          </div>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {CLOUD_MODERN.map((c) => (
+              <Link
+                key={c.n}
+                href={c.href}
+                className="group rounded-xl border border-gray-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-[#E31E24]/40 hover:shadow-lg"
+              >
+                <span className="font-mono text-[11px] font-bold text-[#E31E24]">{c.n}</span>
+                <h3 className="mt-2 text-[15px] font-bold text-[#1A1A1A] group-hover:text-[#E31E24]">
+                  {c.title}
+                </h3>
+                <p className="mt-2 text-[13px] leading-relaxed text-gray-600">{c.body}</p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Zero-Trust AI Architecture */}
-      <section className="section-padding bg-bg-lighter">
-        <div className="container-custom">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
+      {/* Zero trust */}
+      <section className="bg-white py-20 sm:py-24">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#E31E24]">
+              Zero-trust AI architecture
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#1A1A1A] sm:text-4xl">
+              Security controls your auditors will ask about
+            </h2>
+          </div>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {ZERO_TRUST.map((c) => (
+              <div key={c.title} className="rounded-xl border border-gray-200 bg-white p-6">
+                <CardIcon />
+                <h3 className="mt-4 text-[15px] font-bold text-[#1A1A1A]">{c.title}</h3>
+                <p className="mt-2 text-[13px] leading-relaxed text-gray-600">{c.body}</p>
+                {c.href && (
+                  <Link href={c.href} className="mt-3 inline-block text-[12px] font-bold text-[#E31E24] hover:underline">
+                    Learn more →
+                  </Link>
+                )}
               </div>
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-text-dark">Zero-Trust AI Architecture</h2>
-                <p className="text-text-secondary">Enterprise-grade security controls ensuring responsible, compliant, and auditable AI deployment.</p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-              <div className="card">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold text-text-dark mb-2">Model Access Control</h3>
-                <p className="text-text-secondary text-sm">
-                  Role-based permissions with zero-trust architecture.
-                </p>
-              </div>
-
-              <div className="card">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold text-text-dark mb-2">Data Leakage Prevention</h3>
-                <p className="text-text-secondary text-sm">
-                  Advanced filtering to prevent sensitive data exposure.
-                </p>
-              </div>
-
-              <div className="card">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold text-text-dark mb-2">Prompt Injection Defense</h3>
-                <p className="text-text-secondary text-sm">
-                  Multi-layered protection against adversarial inputs.
-                </p>
-              </div>
-
-              <div className="card">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold text-text-dark mb-2">Secure RAG Pipeline</h3>
-                <p className="text-text-secondary text-sm">
-                  End-to-end encryption for retrieval-augmented generation workflows.
-                </p>
-              </div>
-
-              <div className="card">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold text-text-dark mb-2">Audit & Compliance</h3>
-                <p className="text-text-secondary text-sm">
-                  Comprehensive logging of all AI interactions for compliance.
-                </p>
-              </div>
-
-              <div className="card">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold text-text-dark mb-2">Policy Guardrails</h3>
-                <p className="text-text-secondary text-sm">
-                  Configurable rules ensuring regulatory compliance.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      {/* <section className="section-padding bg-gradient-to-br from-primary-orange-dark to-bg-light">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            READY TO SCALE YOUR AI INFRASTRUCTURE?
-          </h2>
-          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            Build on a platform designed for enterprise AI at scale.
-          </p>
-          <Link href="/contact" className="btn-primary bg-white text-primary-orange hover:bg-bg-light">
-            Talk to Our Team
-          </Link>
+      {/* Deep dives */}
+      <section className="border-t border-gray-200 bg-gray-50 py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#E31E24]">
+              Deep dives
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#1A1A1A] sm:text-4xl">
+              Explore every layer of the stack
+            </h2>
+          </div>
+          <div className="mt-8 flex flex-wrap gap-3">
+            {DEEP_DIVES.map((d) => (
+              <Link
+                key={d.href}
+                href={d.href}
+                className="rounded-full border border-gray-200 bg-white px-4 py-2 text-[12.5px] font-semibold text-gray-700 transition-all hover:border-[#E31E24]/50 hover:text-[#E31E24]"
+              >
+                {d.label}
+              </Link>
+            ))}
+          </div>
         </div>
-      </section> */}
+      </section>
 
-      <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            READY TO SCALE YOUR AI INFRASTRUCTURE?
-          </h2>
-          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            Build on a platform designed for enterprise AI at scale.
-          </p>
-          <Link href="/contact" className="btn-primary bg-white text-[#E31E24] hover:bg-white">
-            Book Consultation
-          </Link>
-        </div>
-      </section> 
+      <WeastCta tourHref="/#demo-ide" brand="our platform" />
     </div>
   );
 }

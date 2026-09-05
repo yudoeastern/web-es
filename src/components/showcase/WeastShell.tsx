@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 
-export type WeastView = "docs" | "chat" | "studio" | "runtime";
+export type WeastView = "docs" | "chat" | "studio" | "runtime" | "api" | "admin" | "settings";
 
 /* ---------- tiny icon set ---------- */
 
@@ -212,7 +212,7 @@ export function SlugChip({ children }: { children: ReactNode }) {
 
 const NAV: {
   section: string;
-  items: { id: WeastView | "api"; label: string; icon: (p: IconProps) => ReactNode; count?: number }[];
+  items: { id: WeastView; label: string; icon: (p: IconProps) => ReactNode; count?: number }[];
 }[] = [
   { section: "Knowledge", items: [{ id: "docs", label: "Document Intelligence", icon: ScanIcon }] },
   {
@@ -271,7 +271,7 @@ export function WeastShell({
                 return (
                   <button
                     key={item.id}
-                    onClick={() => item.id !== "api" && onNavigate(item.id)}
+                    onClick={() => onNavigate(item.id)}
                     className={`relative mb-0.5 flex w-full items-center gap-2.5 rounded-md px-2.5 py-2 text-left text-[13px] font-medium transition-colors ${
                       isActive
                         ? "bg-red-50 text-[#E31E24]"
@@ -297,10 +297,26 @@ export function WeastShell({
         </nav>
 
         <div className="border-t border-slate-100 px-3 py-3">
-          <button className="flex w-full items-center gap-2.5 rounded-md px-2.5 py-2 text-[13px] font-medium text-slate-600 hover:bg-slate-50">
+          <button
+            onClick={() => onNavigate("admin")}
+            className={`relative flex w-full items-center gap-2.5 rounded-md px-2.5 py-2 text-left text-[13px] font-medium transition-colors ${
+              active === "admin" ? "bg-red-50 text-[#E31E24]" : "text-slate-600 hover:bg-slate-50 hover:text-slate-800"
+            }`}
+          >
+            {active === "admin" && (
+              <span className="absolute left-[-12px] top-1/2 h-5 w-[3px] -translate-y-1/2 rounded-r bg-[#E31E24]" />
+            )}
             <ShieldIcon className="h-4 w-4" /> Platform Admin
           </button>
-          <button className="flex w-full items-center gap-2.5 rounded-md px-2.5 py-2 text-[13px] font-medium text-slate-600 hover:bg-slate-50">
+          <button
+            onClick={() => onNavigate("settings")}
+            className={`relative flex w-full items-center gap-2.5 rounded-md px-2.5 py-2 text-left text-[13px] font-medium transition-colors ${
+              active === "settings" ? "bg-red-50 text-[#E31E24]" : "text-slate-600 hover:bg-slate-50 hover:text-slate-800"
+            }`}
+          >
+            {active === "settings" && (
+              <span className="absolute left-[-12px] top-1/2 h-5 w-[3px] -translate-y-1/2 rounded-r bg-[#E31E24]" />
+            )}
             <GearIcon className="h-4 w-4" /> Workspace Settings
           </button>
           <div className="mt-2 flex items-center gap-2.5 rounded-lg border border-slate-200 px-2.5 py-2">

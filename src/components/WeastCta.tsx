@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function WeastCta({ tourHref = "#demo-ide" }: { tourHref?: string }) {
+export default function WeastCta({ tourHref = "#demo-ide", brand = "WEAST" }: { tourHref?: string; brand?: string }) {
   return (
     <section className="relative overflow-hidden bg-[#0A0A0C] py-20">
       <div className="container-custom relative z-10">
@@ -9,7 +9,7 @@ export default function WeastCta({ tourHref = "#demo-ide" }: { tourHref?: string
             Bring agentic AI to your enterprise
           </h2>
           <p className="leading-relaxed text-zinc-400 md:text-lg">
-            Talk to our team and deploy WEAST on your terms. Same platform, same
+            Talk to our team and deploy {brand} on your terms. Same platform, same
             security, wherever your data lives.
           </p>
         </div>
@@ -20,7 +20,7 @@ export default function WeastCta({ tourHref = "#demo-ide" }: { tourHref?: string
               <h3 className="text-xl font-bold text-white">Deploy on your terms</h3>
               <p className="mt-3 leading-relaxed text-zinc-400">
                 Your data stays in the country and in the environment your regulator
-                expects, because WEAST runs in your cloud account, your VPC, or your
+                expects, because {brand} runs in your cloud account, your VPC, or your
                 own data center.
               </p>
             </div>

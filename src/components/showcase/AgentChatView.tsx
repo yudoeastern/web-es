@@ -15,6 +15,7 @@ import {
   SpinnerIcon,
   StatusBadge,
 } from "./WeastShell";
+import type { WeastView } from "./WeastShell";
 
 interface AgentDef {
   id: string;
@@ -75,7 +76,7 @@ type Phase = "boot" | "user-typing" | "thinking" | "plan" | "waiting" | "answer"
 export default function AgentChatView({
   onNavigate,
 }: {
-  onNavigate: (view: "docs" | "chat" | "studio" | "runtime") => void;
+  onNavigate: (view: WeastView) => void;
 }) {
   const [stage, setStage] = useState<"picker" | "chat">("chat");
   const [agents, setAgents] = useState(AGENTS);
@@ -86,6 +87,7 @@ export default function AgentChatView({
   const [planDone, setPlanDone] = useState(0);
   const [answerLen, setAnswerLen] = useState(0);
   const [custom, setCustom] = useState<{ q: string; a: string }[]>([]);
+  const [stream, setStream] = useState<{ idx: number; len: number } | null>(null);
   const [input, setInput] = useState("");
   const [railOpen, setRailOpen] = useState(false);
   const [thinkingOpen, setThinkingOpen] = useState(true);
@@ -201,17 +203,31 @@ export default function AgentChatView({
   useEffect(() => {
     const el = scrollRef.current;
     if (el) el.scrollTop = el.scrollHeight;
-  }, [phase, userTyped, planDone, answerLen, custom]);
+  }, [phase, userTyped, planDone, answerLen, custom, stream]);
 
   const sendCustom = () => {
     const q = input.trim();
     if (!q) return;
     setInput("");
+    const idx = custom.length;
     setCustom((prev) => [
       ...prev,
       { q, a: "This demo runs fully in your browser, so my reply is simulated. In production I would ground the answer in your indexed documents and tools." },
     ]);
+    setStream({ idx, len: 0 });
   };
+
+  /* stream the simulated reply */
+  useEffect(() => {
+    if (!stream) return;
+    const target = custom[stream.idx]?.a ?? "";
+    if (stream.len >= target.length) {
+      const t = window.setTimeout(() => setStream(null), 300);
+      return () => window.clearTimeout(t);
+    }
+    const id = window.setTimeout(() => setStream({ idx: stream.idx, len: stream.len + 2 }), 18);
+    return () => window.clearTimeout(id);
+  }, [stream, custom]);
 
   const header = (
     <ViewHeader
@@ -496,7 +512,10 @@ export default function AgentChatView({
                             <BotIcon className="h-4 w-4" />
                           </span>
                           <p className="flex-1 rounded-xl border border-slate-200 bg-white p-4 text-[13px] leading-relaxed text-slate-700 shadow-sm">
-                            {c.a}
+                            {stream && stream.idx === i ? c.a.slice(0, stream.len) : c.a}
+                            {stream && stream.idx === i && (
+                              <span className="ml-0.5 inline-block h-3.5 w-[2px] animate-pulse bg-[#E31E24] align-middle" />
+                            )}
                           </p>
                         </div>
                       </div>

@@ -13,6 +13,7 @@ import {
   StatusBadge,
   SlugChip,
 } from "./WeastShell";
+import type { WeastView } from "./WeastShell";
 
 interface StudioAgent {
   id: string;
@@ -63,7 +64,7 @@ type Mode = "card" | "list" | "flow";
 export default function AgentStudioView({
   onNavigate,
 }: {
-  onNavigate: (view: "docs" | "chat" | "studio" | "runtime") => void;
+  onNavigate: (view: WeastView) => void;
 }) {
   const [mode, setMode] = useState<Mode>("flow");
   const [agents, setAgents] = useState(INITIAL_AGENTS);

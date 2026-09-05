@@ -19,6 +19,7 @@ import {
   StatusBadge,
   SlugChip,
 } from "./WeastShell";
+import type { WeastView } from "./WeastShell";
 
 const PIPELINE_STEPS = [
   { label: "Detect", meta: "" },
@@ -134,7 +135,7 @@ type ResultTab = "reading" | "chunks" | "tables" | "json" | "versions";
 export default function DocIntelligenceView({
   onNavigate,
 }: {
-  onNavigate: (view: "docs" | "chat" | "studio" | "runtime") => void;
+  onNavigate: (view: WeastView) => void;
 }) {
   const [rows, setRows] = useState<DocRow[]>(INITIAL_ROWS);
   const [detailId, setDetailId] = useState<string | null>(null);

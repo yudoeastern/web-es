@@ -4,7 +4,7 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
-import ChatWidget from "@/components/ChatWidget";
+import AskWeastModal from "@/components/AskWeast";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -162,7 +162,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <ChatWidget />
+        <AskWeastModal />
       </body>
     </html>
   );
