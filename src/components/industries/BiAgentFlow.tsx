@@ -1,20 +1,20 @@
 const NODES = [
-  { id: "t", cx: 100, cy: 210, title: "Raw business data", sub: "exports, sheets, warehouse feeds", accent: false },
-  { id: "v", cx: 330, cy: 105, title: "Validation Agent", sub: "schema & quality checks", accent: false },
-  { id: "tr", cx: 330, cy: 315, title: "Transform Agent", sub: "clean, join, model", accent: false },
-  { id: "a", cx: 575, cy: 210, title: "Analytics Agent", sub: "widgets, insights, filters", accent: true },
-  { id: "s", cx: 810, cy: 105, title: "BI Lead Agent", sub: "reviews & approves", accent: true },
-  { id: "n", cx: 810, cy: 315, title: "Answer Agent", sub: "NL answers for stakeholders", accent: false },
+  { id: "t", cx: 125, cy: 210, title: "Raw business data", sub: "exports, sheets, warehouse feeds", accent: false },
+  { id: "v", cx: 355, cy: 105, title: "Validation Agent", sub: "schema & quality checks", accent: false },
+  { id: "tr", cx: 355, cy: 315, title: "Transform Agent", sub: "clean, join, model", accent: false },
+  { id: "a", cx: 595, cy: 210, title: "Analytics Agent", sub: "widgets, insights, filters", accent: true },
+  { id: "s", cx: 825, cy: 105, title: "BI Lead Agent", sub: "reviews & approves", accent: true },
+  { id: "n", cx: 825, cy: 315, title: "Answer Agent", sub: "NL answers for stakeholders", accent: false },
 ];
 
 const PATHS = [
-  { id: "p1", d: "M100,210 C 200,210 230,105 330,105", begin: "0s" },
-  { id: "p2", d: "M100,210 C 200,210 230,315 330,315", begin: "0.4s" },
-  { id: "p3", d: "M330,105 C 430,105 470,210 575,210", begin: "0.9s" },
-  { id: "p4", d: "M330,315 C 430,315 470,210 575,210", begin: "1.3s" },
-  { id: "p5", d: "M575,210 C 670,210 700,105 810,105", begin: "1.8s" },
-  { id: "p6", d: "M575,210 C 670,210 700,315 810,315", begin: "2.2s" },
-  { id: "p7", d: "M810,140 C 860,180 860,240 810,280", begin: "2.7s" },
+  { id: "p1", d: "M235,210 C 275,210 215,105 245,105", begin: "0s" },
+  { id: "p2", d: "M235,210 C 275,210 215,315 245,315", begin: "0.4s" },
+  { id: "p3", d: "M465,105 C 505,105 455,210 485,210", begin: "0.9s" },
+  { id: "p4", d: "M465,315 C 505,315 455,210 485,210", begin: "1.3s" },
+  { id: "p5", d: "M705,210 C 745,210 685,105 715,105", begin: "1.8s" },
+  { id: "p6", d: "M705,210 C 745,210 685,315 715,315", begin: "2.2s" },
+  { id: "p7", d: "M825,139 C 875,180 875,240 825,281", begin: "2.7s" },
 ];
 
 const MOBILE_STEPS = [
@@ -30,20 +30,20 @@ function FlowNode({ cx, cy, title, sub, accent }: (typeof NODES)[number]) {
   return (
     <g>
       <rect
-        x={cx - 92}
+        x={cx - 110}
         y={cy - 34}
-        width={184}
+        width={220}
         height={68}
         rx={14}
         fill="#15151B"
         stroke={accent ? "rgba(227,30,36,0.6)" : "rgba(255,255,255,0.14)"}
         strokeWidth={1.5}
       />
-      <circle cx={cx - 72} cy={cy} r={4} fill="#E31E24" />
-      <text x={cx - 56} y={cy - 3} fill="#ffffff" fontSize={13} fontWeight={700}>
+      <circle cx={cx - 90} cy={cy} r={4} fill="#E31E24" />
+      <text x={cx - 74} y={cy - 3} fill="#ffffff" fontSize={13} fontWeight={700}>
         {title}
       </text>
-      <text x={cx - 56} y={cy + 15} fill="#9ca3af" fontSize={10.5}>
+      <text x={cx - 74} y={cy + 15} fill="#9ca3af" fontSize={10.5}>
         {sub}
       </text>
     </g>

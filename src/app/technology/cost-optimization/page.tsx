@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { Metadata } from "next";
+import WeastCta from "@/components/WeastCta";
 
 export const metadata: Metadata = {
   title: "Cloud Cost Optimization & FinOps | EasternStack",
@@ -25,215 +25,158 @@ export const metadata: Metadata = {
   },
 };
 
+const BENEFITS = [
+  {
+    label: "Lower spend",
+    title: "Cost Reduction",
+    body: "Meaningful savings achieved through intelligent resource optimization and rightsizing.",
+  },
+  {
+    label: "Complete",
+    title: "Cost Visibility",
+    body: "Complete transparency across all cloud spending with detailed breakdowns and alerts.",
+  },
+  {
+    label: "24/7",
+    title: "Continuous Optimization",
+    body: "Automated cost optimization running around the clock to maximize savings.",
+  },
+];
+
+const STRATEGIES = [
+  {
+    title: "Resource Rightsizing",
+    body: "Automatically match instance sizes to actual workload requirements to eliminate over-provisioning.",
+    icon: (
+      <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+      </svg>
+    ),
+    bullets: ["Usage pattern analysis", "Automated recommendations", "Zero-downtime resizing"],
+  },
+  {
+    title: "Reserved Instance Planning",
+    body: "Optimize commitment strategies with data-driven reserved instance purchases.",
+    icon: (
+      <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    bullets: ["Usage forecasting", "ROI analysis", "Portfolio optimization"],
+  },
+  {
+    title: "Storage Optimization",
+    body: "Reduce storage costs with intelligent tiering and lifecycle policies.",
+    icon: (
+      <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+      </svg>
+    ),
+    bullets: ["Automated tiering", "Data lifecycle management", "Deduplication"],
+  },
+  {
+    title: "Idle Resource Detection",
+    body: "Identify and eliminate unused resources to stop paying for what you do not use.",
+    icon: (
+      <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    bullets: ["Automated scanning", "Smart alerts", "Auto-termination"],
+  },
+];
+
 export default function CostOptimizationPage() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-bg-light via-white to-bg-light">
-        <div className="container-custom text-center">
-          <div className="inline-block mb-6 px-4 py-2 bg-white border border-gray-700 rounded-full shadow-sm">
-            <span className="text-[#E31E24] text-sm font-semibold">
-              Cost Optimization
-            </span>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-[#1A1A1A] mb-6">
-            MAXIMIZE ROI WITH{" "}
-            <span className="gradient-text">CLOUD COST OPTIMIZATION</span>
-          </h1>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-            Meaningfully reduce cloud spending with intelligent FinOps practices and automated cost optimization.
-          </p>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-12 text-center">
-            COST OPTIMIZATION BENEFITS
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="card text-center">
-              <div className="text-5xl font-bold gradient-text mb-4">Lower spend</div>
-              <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Cost Reduction</h3>
-              <p className="text-gray-600">
-                Meaningful savings achieved through intelligent resource optimization and rightsizing.
-              </p>
-            </div>
-
-            <div className="card text-center">
-              <div className="text-5xl font-bold gradient-text mb-4">Complete</div>
-              <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Cost Visibility</h3>
-              <p className="text-gray-600">
-                Complete transparency across all cloud spending with detailed breakdowns and alerts.
-              </p>
-            </div>
-
-            <div className="card text-center">
-              <div className="text-5xl font-bold gradient-text mb-4">24/7</div>
-              <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Continuous Optimization</h3>
-              <p className="text-gray-600">
-                Automated cost optimization running around the clock to maximize savings.
-              </p>
-            </div>
+    <div className="min-h-screen overflow-x-clip bg-white">
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-white pt-20 pb-16 sm:pt-24 sm:pb-20">
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage: "radial-gradient(circle, #e5e7eb 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+            maskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent)",
+            WebkitMaskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent)",
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <img src="/logo.png" alt="EasternStack.AI" className="mx-auto h-12 w-auto md:h-14" />
+            <p className="mt-4 text-xs font-bold uppercase tracking-widest text-gray-500">
+              Technology · Cost Optimization
+            </p>
+            <h1 className="mt-5 text-4xl font-extrabold text-[#1A1A1A] sm:text-5xl md:text-6xl" style={{ letterSpacing: "-0.03em", lineHeight: 1.05 }}>
+              Maximize ROI with{" "}
+              <span className="bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">cloud cost optimization</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-600">
+              Meaningfully reduce cloud spending with intelligent FinOps practices and automated cost optimization.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Strategies Section */}
-      <section className="section-padding bg-whiteer">
-        <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-12 text-center">
-            OPTIMIZATION STRATEGIES
-          </h2>
+      {/* Benefits */}
+      <section className="border-y border-gray-200 bg-gray-50 py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="text-center">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#E31E24]">Benefits</p>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight text-[#1A1A1A]">
+              Cost optimization benefits
+            </h2>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="card">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                </svg>
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
+            {BENEFITS.map((item) => (
+              <div key={item.title} className="rounded-xl border border-gray-200 bg-white p-6 text-center">
+                <p className="text-4xl font-extrabold bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">
+                  {item.label}
+                </p>
+                <h3 className="mt-3 text-lg font-semibold text-[#1A1A1A]">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-gray-600">{item.body}</p>
               </div>
-              <h3 className="text-xl font-semibold text-[#1A1A1A] mb-3">Resource Rightsizing</h3>
-              <p className="text-gray-600 mb-4">
-                Automatically match instance sizes to actual workload requirements to eliminate over-provisioning.
-              </p>
-              <ul className="space-y-2 text-gray-600">
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Usage pattern analysis
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Automated recommendations
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Zero-downtime resizing
-                </li>
-              </ul>
-            </div>
-
-            <div className="card">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-[#1A1A1A] mb-3">Reserved Instance Planning</h3>
-              <p className="text-gray-600 mb-4">
-                Optimize commitment strategies with data-driven reserved instance purchases.
-              </p>
-              <ul className="space-y-2 text-gray-600">
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Usage forecasting
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  ROI analysis
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Portfolio optimization
-                </li>
-              </ul>
-            </div>
-
-            <div className="card">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-[#1A1A1A] mb-3">Storage Optimization</h3>
-              <p className="text-gray-600 mb-4">
-                Reduce storage costs with intelligent tiering and lifecycle policies.
-              </p>
-              <ul className="space-y-2 text-gray-600">
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Automated tiering
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Data lifecycle management
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Deduplication
-                </li>
-              </ul>
-            </div>
-
-            <div className="card">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-[#1A1A1A] mb-3">Idle Resource Detection</h3>
-              <p className="text-gray-600 mb-4">
-                Identify and eliminate unused resources to stop paying for what you don't use.
-              </p>
-              <ul className="space-y-2 text-gray-600">
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Automated scanning
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Smart alerts
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Auto-termination
-                </li>
-              </ul>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            START SAVING ON CLOUD COSTS
-          </h2>
-          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            Get a free cloud cost optimization assessment and discover your savings potential.
-          </p>
-          <Link href="/contact" className="btn-primary bg-white text-[#E31E24] hover:bg-white">
-            Get Free Assessment
-          </Link>
+      {/* Strategies */}
+      <section className="bg-white py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="text-center">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#E31E24]">Strategies</p>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight text-[#1A1A1A]">
+              Optimization strategies
+            </h2>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {STRATEGIES.map((s) => (
+              <div key={s.title} className="rounded-xl border border-gray-200 bg-white p-6">
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-br from-[#E31E24] to-[#C4181E]">
+                  {s.icon}
+                </div>
+                <h3 className="mt-4 text-xl font-semibold text-[#1A1A1A]">{s.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-gray-600">{s.body}</p>
+                <ul className="mt-4 space-y-2">
+                  {s.bullets.map((b) => (
+                    <li key={b} className="flex items-start text-sm text-gray-600">
+                      <svg className="mr-3 mt-0.5 h-5 w-5 flex-shrink-0 text-[#E31E24]" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
+
+      <WeastCta tourHref="/#demo-ide" brand="our platform" />
     </div>
   );
 }

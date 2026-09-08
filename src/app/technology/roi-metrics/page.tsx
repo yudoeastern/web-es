@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { Metadata } from "next";
+import WeastCta from "@/components/WeastCta";
 
 export const metadata: Metadata = {
   title: "AI ROI Metrics — Measure Your AI Investment Returns | EasternStack",
@@ -25,249 +25,178 @@ export const metadata: Metadata = {
   },
 };
 
+const KEY_METRICS = [
+  {
+    label: "Clear",
+    title: "Payback Period",
+    body: "Return on AI investment tracked per initiative.",
+  },
+  {
+    label: "Lower costs",
+    title: "Cost Reduction",
+    body: "Operational cost savings measured through AI-powered automation.",
+  },
+  {
+    label: "Higher output",
+    title: "Productivity Gain",
+    body: "Employee productivity improvement with AI assistance and automation.",
+  },
+  {
+    label: "Fewer errors",
+    title: "Accuracy Improvement",
+    body: "Reduction in errors and improvement in decision quality with AI.",
+  },
+];
+
+const ROI_CATEGORIES = [
+  {
+    title: "Cost Savings",
+    icon: (
+      <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    bullets: [
+      "Labor cost reduction through automation",
+      "Infrastructure cost optimization",
+      "Error reduction and rework elimination",
+      "Vendor consolidation savings",
+    ],
+  },
+  {
+    title: "Revenue Growth",
+    icon: (
+      <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+      </svg>
+    ),
+    bullets: [
+      "Increased sales conversion rates",
+      "Higher customer lifetime value",
+      "New revenue streams from AI products",
+      "Faster time-to-market",
+    ],
+  },
+  {
+    title: "Customer Impact",
+    icon: (
+      <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+    ),
+    bullets: [
+      "Improved customer satisfaction (CSAT)",
+      "Higher Net Promoter Score (NPS)",
+      "Reduced customer churn",
+      "Faster response times",
+    ],
+  },
+  {
+    title: "Operational Efficiency",
+    icon: (
+      <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+      </svg>
+    ),
+    bullets: [
+      "Process cycle time reduction",
+      "Throughput increase",
+      "Resource utilization optimization",
+      "Quality improvement metrics",
+    ],
+  },
+];
+
 export default function RoiMetricsPage() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-bg-light via-white to-bg-light">
-        <div className="container-custom text-center">
-          <div className="inline-block mb-6 px-4 py-2 bg-white border border-gray-700 rounded-full shadow-sm">
-            <span className="text-[#E31E24] text-sm font-semibold">
-              ROI Metrics
-            </span>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-[#1A1A1A] mb-6">
-            MEASURE YOUR{" "}
-            <span className="gradient-text">AI INVESTMENT RETURNS</span>
-          </h1>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-            Track and optimize AI ROI with comprehensive metrics, dashboards, and business intelligence.
-          </p>
-        </div>
-      </section>
-
-      {/* Key Metrics Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-12 text-center">
-            KEY AI ROI METRICS
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="card text-center">
-              <div className="text-5xl font-bold gradient-text mb-4">Clear</div>
-              <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Payback Period</h3>
-              <p className="text-gray-600 text-sm">
-                Return on AI investment tracked per initiative.
-              </p>
-            </div>
-
-            <div className="card text-center">
-              <div className="text-5xl font-bold gradient-text mb-4">Lower costs</div>
-              <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Cost Reduction</h3>
-              <p className="text-gray-600 text-sm">
-                Operational cost savings measured through AI-powered automation.
-              </p>
-            </div>
-
-            <div className="card text-center">
-              <div className="text-5xl font-bold gradient-text mb-4">Higher output</div>
-              <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Productivity Gain</h3>
-              <p className="text-gray-600 text-sm">
-                Employee productivity improvement with AI assistance and automation.
-              </p>
-            </div>
-
-            <div className="card text-center">
-              <div className="text-5xl font-bold gradient-text mb-4">Fewer errors</div>
-              <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Accuracy Improvement</h3>
-              <p className="text-gray-600 text-sm">
-                Reduction in errors and improvement in decision quality with AI.
-              </p>
-            </div>
+    <div className="min-h-screen overflow-x-clip bg-white">
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-white pt-20 pb-16 sm:pt-24 sm:pb-20">
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage: "radial-gradient(circle, #e5e7eb 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+            maskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent)",
+            WebkitMaskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent)",
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <img src="/logo.png" alt="EasternStack.AI" className="mx-auto h-12 w-auto md:h-14" />
+            <p className="mt-4 text-xs font-bold uppercase tracking-widest text-gray-500">
+              Technology · ROI Metrics
+            </p>
+            <h1 className="mt-5 text-4xl font-extrabold text-[#1A1A1A] sm:text-5xl md:text-6xl" style={{ letterSpacing: "-0.03em", lineHeight: 1.05 }}>
+              Measure your{" "}
+              <span className="bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">AI investment returns</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-600">
+              Track and optimize AI ROI with comprehensive metrics, dashboards, and business intelligence.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* ROI Categories */}
-      <section className="section-padding bg-whiteer">
-        <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-12 text-center">
-            ROI CATEGORIES
-          </h2>
+      {/* Key metrics */}
+      <section className="border-y border-gray-200 bg-gray-50 py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="text-center">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#E31E24]">Metrics</p>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight text-[#1A1A1A]">
+              Key AI ROI metrics
+            </h2>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="card">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {KEY_METRICS.map((item) => (
+              <div key={item.title} className="rounded-xl border border-gray-200 bg-white p-6 text-center">
+                <p className="text-4xl font-extrabold bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">
+                  {item.label}
+                </p>
+                <h3 className="mt-3 text-lg font-semibold text-[#1A1A1A]">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-gray-600">{item.body}</p>
               </div>
-              <h3 className="text-xl font-semibold text-[#1A1A1A] mb-3">Cost Savings</h3>
-              <ul className="space-y-3 text-gray-600">
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Labor cost reduction through automation
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Infrastructure cost optimization
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Error reduction and rework elimination
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Vendor consolidation savings
-                </li>
-              </ul>
-            </div>
-
-            <div className="card">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-[#1A1A1A] mb-3">Revenue Growth</h3>
-              <ul className="space-y-3 text-gray-600">
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Increased sales conversion rates
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Higher customer lifetime value
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  New revenue streams from AI products
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Faster time-to-market
-                </li>
-              </ul>
-            </div>
-
-            <div className="card">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-[#1A1A1A] mb-3">Customer Impact</h3>
-              <ul className="space-y-3 text-gray-600">
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Improved customer satisfaction (CSAT)
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Higher Net Promoter Score (NPS)
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Reduced customer churn
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Faster response times
-                </li>
-              </ul>
-            </div>
-
-            <div className="card">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-[#1A1A1A] mb-3">Operational Efficiency</h3>
-              <ul className="space-y-3 text-gray-600">
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Process cycle time reduction
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Throughput increase
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Resource utilization optimization
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-[#E31E24] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  Quality improvement metrics
-                </li>
-              </ul>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      {/* <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            MEASURE YOUR AI SUCCESS
-          </h2>
-          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            Get comprehensive ROI tracking and optimization for your AI investments.
-          </p>
-          <Link href="/contact" className="btn-primary bg-white text-[#E31E24] hover:bg-white">
-            Request ROI Assessment
-          </Link>
-        </div>
-      </section> */}
+      {/* ROI categories */}
+      <section className="bg-white py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="text-center">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#E31E24]">Categories</p>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight text-[#1A1A1A]">
+              ROI categories
+            </h2>
+          </div>
 
-      <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            MEASURE YOUR AI SUCCESS
-          </h2>
-          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            Get comprehensive ROI tracking and optimization for your AI investments.
-          </p>
-          <Link href="/contact" className="btn-primary bg-white text-[#E31E24] hover:bg-white">
-            Request ROI Assessment
-          </Link>
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {ROI_CATEGORIES.map((cat) => (
+              <div key={cat.title} className="rounded-xl border border-gray-200 bg-white p-6">
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-br from-[#E31E24] to-[#C4181E]">
+                  {cat.icon}
+                </div>
+                <h3 className="mt-4 text-xl font-semibold text-[#1A1A1A]">{cat.title}</h3>
+                <ul className="mt-4 space-y-2">
+                  {cat.bullets.map((b) => (
+                    <li key={b} className="flex items-start text-sm text-gray-600">
+                      <svg className="mr-3 mt-0.5 h-5 w-5 flex-shrink-0 text-[#E31E24]" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
-      </section>    
+      </section>
+
+      <WeastCta tourHref="/#demo-ide" brand="our platform" />
     </div>
   );
 }

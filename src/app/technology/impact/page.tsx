@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { Metadata } from "next";
+import WeastCta from "@/components/WeastCta";
 
 export const metadata: Metadata = {
   title: "Cloud Modernisation with Measurable Impact | EasternStack",
@@ -25,229 +25,185 @@ export const metadata: Metadata = {
   },
 };
 
+const WHY_ITEMS = [
+  {
+    label: "Lower spend",
+    title: "Cost Freedom",
+    body: "Meaningfully reduce licensing costs through open-source alternatives.",
+  },
+  {
+    label: "No lock-in",
+    title: "Vendor Independence",
+    body: "Multi-cloud strategy ensures no single-provider dependency.",
+  },
+  {
+    label: "24/7",
+    title: "Innovation Power",
+    body: "Advanced cloud-native solutions with enterprise reliability.",
+  },
+  {
+    label: "Resilient",
+    title: "Risk Diversification",
+    body: "Distributed architecture minimizes operational vulnerabilities.",
+  },
+];
+
+const HOW_ITEMS = [
+  {
+    step: "01",
+    title: "Cloud Migration",
+    body: "Move to affordable and powerful cloud services with seamless migration.",
+  },
+  {
+    step: "02",
+    title: "Disaster Recovery",
+    body: "Drive business continuity by adopting disaster recovery solution.",
+  },
+  {
+    step: "03",
+    title: "Backup & Restore",
+    body: "Enable data availability through backup and restore solution.",
+  },
+  {
+    step: "04",
+    title: "Container Services",
+    body: "Initiate and deploy microservice architecture containerization setup.",
+  },
+  {
+    step: "05",
+    title: "Content Delivery",
+    body: "Global CDN with enhanced security and performance optimization.",
+  },
+  {
+    step: "06",
+    title: "Observability",
+    body: "Understand service performance through end-to-end observability tools.",
+  },
+  {
+    step: "07",
+    title: "FinOps",
+    body: "Optimize cloud costs with real-time monitoring and recommendations.",
+  },
+  {
+    step: "08",
+    title: "Security",
+    body: "Enterprise-grade security with Zero-Trust architecture.",
+  },
+];
+
+const PARTNERS = [
+  { name: "Alibaba Cloud", logo: "/partner/Alibaba_Cloud_Logo.png", h: "h-20" },
+  { name: "Huawei Cloud", logo: "/partner/huawei.jpg", h: "h-14" },
+  { name: "Tencent Cloud", logo: "/partner/tencent.png", h: "h-14" },
+  { name: "OnePro", logo: "/partner/onepro.png", h: "h-14" },
+  { name: "AhnLab", logo: "/partner/ahnlab.jpg", h: "h-14" },
+  { name: "TrueWatch", logo: "/partner/true_watch_logo.svg", h: "h-14" },
+];
+
 export default function ImpactPage() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-bg-light via-white to-bg-light">
-        <div className="container-custom text-center">
-          <div className="inline-block mb-6 px-4 py-2 bg-white border border-gray-700 rounded-full shadow-sm">
-            <span className="text-[#E31E24] text-sm font-semibold">
-              Measurable Impact
-            </span>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-[#1A1A1A] mb-6">
-            MODERNIZE YOUR CLOUD TO{" "}
-            <span className="gradient-text">SCALE FASTER</span>
-          </h1>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-            Cloud adoption driven by measurable performance and cost outcomes.
-          </p>
-        </div>
-      </section>
-
-      {/* Key Metrics Section */}
-      <section id="cost" className="section-padding bg-white">
-        <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-12 text-center">
-            WHY CLOUD ADOPTION ON EASTERNSTACK?
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="card text-center">
-              <div className="text-5xl font-bold gradient-text mb-4">Lower spend</div>
-              <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Cost Freedom</h3>
-              <p className="text-gray-600">
-                Meaningfully reduce licensing costs through open-source alternatives.
-              </p>
-            </div>
-
-            <div className="card text-center">
-              <div className="text-5xl font-bold gradient-text mb-4">No lock-in</div>
-              <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Vendor Independence</h3>
-              <p className="text-gray-600">
-                Multi-cloud strategy ensures no single-provider dependency.
-              </p>
-            </div>
-
-            <div className="card text-center">
-              <div className="text-5xl font-bold gradient-text mb-4">24/7</div>
-              <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Innovation Power</h3>
-              <p className="text-gray-600">
-                Advanced cloud-native solutions with enterprise reliability.
-              </p>
-            </div>
-
-            <div className="card text-center">
-              <div className="text-5xl font-bold gradient-text mb-4">Resilient</div>
-              <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Risk Diversification</h3>
-              <p className="text-gray-600">
-                Distributed architecture minimizes operational vulnerabilities.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works Section */}
-      <section className="section-padding bg-whiteer">
-        <div className="container-custom">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-4 text-center">
-              HERE'S HOW IT WORKS
-            </h2>
-            <p className="text-xl text-gray-600 text-center mb-12">
-              Scale Fast. Spend Smart. Stay Secure.
+    <div className="min-h-screen overflow-x-clip bg-white">
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-white pt-20 pb-16 sm:pt-24 sm:pb-20">
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage: "radial-gradient(circle, #e5e7eb 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+            maskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent)",
+            WebkitMaskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent)",
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <img src="/logo.png" alt="EasternStack.AI" className="mx-auto h-12 w-auto md:h-14" />
+            <p className="mt-4 text-xs font-bold uppercase tracking-widest text-gray-500">
+              Technology · Measurable Impact
             </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="card">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-white font-bold text-xl">01</span>
-                </div>
-                <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Cloud Migration</h3>
-                <p className="text-gray-600 text-sm">
-                  Move to affordable and powerful cloud services with seamless migration.
-                </p>
-              </div>
-
-              <div className="card">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-white font-bold text-xl">02</span>
-                </div>
-                <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Disaster Recovery</h3>
-                <p className="text-gray-600 text-sm">
-                  Drive business continuity by adopting disaster recovery solution.
-                </p>
-              </div>
-
-              <div className="card">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-white font-bold text-xl">03</span>
-                </div>
-                <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Backup & Restore</h3>
-                <p className="text-gray-600 text-sm">
-                  Enable data availability through backup and restore solution.
-                </p>
-              </div>
-
-              <div className="card">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-white font-bold text-xl">04</span>
-                </div>
-                <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Container Services</h3>
-                <p className="text-gray-600 text-sm">
-                  Initiate and deploy microservice architecture containerization setup.
-                </p>
-              </div>
-
-              <div className="card">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-white font-bold text-xl">05</span>
-                </div>
-                <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Content Delivery</h3>
-                <p className="text-gray-600 text-sm">
-                  Global CDN with enhanced security and performance optimization.
-                </p>
-              </div>
-
-              <div className="card">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-white font-bold text-xl">06</span>
-                </div>
-                <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Observability</h3>
-                <p className="text-gray-600 text-sm">
-                  Understand service performance through end-to-end observability tools.
-                </p>
-              </div>
-
-              <div className="card">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-white font-bold text-xl">07</span>
-                </div>
-                <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">FinOps</h3>
-                <p className="text-gray-600 text-sm">
-                  Optimize cloud costs with real-time monitoring and recommendations.
-                </p>
-              </div>
-
-              <div className="card">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-white font-bold text-xl">08</span>
-                </div>
-                <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Security</h3>
-                <p className="text-gray-600 text-sm">
-                  Enterprise-grade security with Zero-Trust architecture.
-                </p>
-              </div>
-            </div>
+            <h1 className="mt-5 text-4xl font-extrabold text-[#1A1A1A] sm:text-5xl md:text-6xl" style={{ letterSpacing: "-0.03em", lineHeight: 1.05 }}>
+              Modernize your cloud to{" "}
+              <span className="bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">scale faster</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-600">
+              Cloud adoption driven by measurable performance and cost outcomes. Scale fast, spend smart, stay secure.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Eastern Partners Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-12 text-center">
-            POWERED BY EASTERN TECHNOLOGY
-          </h2>
+      {/* Why cloud adoption on EasternStack */}
+      <section className="border-y border-gray-200 bg-gray-50 py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="text-center">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#E31E24]">Benefits</p>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight text-[#1A1A1A]">
+              Why cloud adoption on EasternStack?
+            </h2>
+          </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 max-w-5xl mx-auto">
-            <div className="flex items-center justify-center p-4">
-              <img src="/partner/Alibaba_Cloud_Logo.png" alt="Alibaba Cloud" className="h-24 w-auto object-contain" />
-            </div>
-
-            <div className="flex items-center justify-center p-4">
-              <img src="/partner/huawei.jpg" alt="Huawei Cloud" className="h-16 w-auto object-contain" />
-            </div>
-
-            <div className="flex items-center justify-center p-4">
-              <img src="/partner/tencent.png" alt="Tencent Cloud" className="h-16 w-auto object-contain" />
-            </div>
-
-            <div className="flex items-center justify-center p-4">
-              <img src="/partner/onepro.png" alt="OnePro" className="h-16 w-auto object-contain" />
-            </div>
-
-            <div className="flex items-center justify-center p-4">
-              <img src="/partner/ahnlab.jpg" alt="AhnLab" className="h-16 w-auto object-contain" />
-            </div>
-
-            <div className="flex items-center justify-center p-4">
-              <img src="/partner/true_watch_logo.svg" alt="TrueWatch" className="h-16 w-auto object-contain" />
-            </div>
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {WHY_ITEMS.map((item) => (
+              <div key={item.title} className="rounded-xl border border-gray-200 bg-white p-6 text-center">
+                <p className="text-4xl font-extrabold bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">
+                  {item.label}
+                </p>
+                <h3 className="mt-3 text-lg font-semibold text-[#1A1A1A]">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-gray-600">{item.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      {/* <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            READY TO TRANSFORM YOUR ENTERPRISE?
-          </h2>
-          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            Join industry leaders leveraging cloud and AI to achieve unprecedented operational efficiency and competitive advantage.
-          </p>
-          <Link href="/contact" className="btn-primary bg-white text-[#E31E24] hover:bg-white">
-            Start Your AI Journey
-          </Link>
-        </div>
-      </section> */}
+      {/* How it works */}
+      <section className="bg-white py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="text-center">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#E31E24]">Process</p>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight text-[#1A1A1A]">
+              Here is how it works
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
+              Scale fast. Spend smart. Stay secure.
+            </p>
+          </div>
 
-      <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            READY TO TRANSFORM YOUR ENTERPRISE?
-          </h2>
-          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            Join industry leaders leveraging cloud and AI to achieve unprecedented operational efficiency and competitive advantage.
-          </p>
-          <Link href="/contact" className="btn-primary bg-white text-[#E31E24] hover:bg-white">
-            Start Your AI Journey
-          </Link>
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {HOW_ITEMS.map((item) => (
+              <div key={item.step} className="rounded-xl border border-gray-200 bg-white p-6">
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-br from-[#E31E24] to-[#C4181E] text-white">
+                  <span className="text-sm font-bold">{item.step}</span>
+                </div>
+                <h3 className="mt-4 text-lg font-semibold text-[#1A1A1A]">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-gray-600">{item.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </section>       
+      </section>
+
+      {/* Partners */}
+      <section className="border-y border-gray-200 bg-gray-50 py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="text-center">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#E31E24]">Ecosystem</p>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight text-[#1A1A1A]">
+              Powered by Eastern technology
+            </h2>
+          </div>
+
+          <div className="mt-12 grid grid-cols-2 items-center gap-8 sm:grid-cols-3 lg:grid-cols-6">
+            {PARTNERS.map((p) => (
+              <div key={p.name} className="flex items-center justify-center">
+                <img src={p.logo} alt={p.name} className={`${p.h} w-auto object-contain`} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <WeastCta tourHref="/#demo-ide" brand="our platform" />
     </div>
   );
 }

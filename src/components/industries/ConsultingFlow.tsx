@@ -12,7 +12,7 @@ const FUNNEL_PATHS = [
 
 const RAIL_PATHS = [
   { id: "k1", d: "M150,396 C 95,310 100,205 178,146", begin: "0.5s", dur: "3s" },
-  { id: "k2", d: "M280,428 C 330,405 348,345 378,296", begin: "1.4s", dur: "2.4s" },
+  { id: "k2", d: "M290,430 C 340,405 350,345 395,296", begin: "1.4s", dur: "2.4s" },
 ];
 
 const MOBILE_STEPS = [
@@ -122,20 +122,20 @@ export default function ConsultingFlow() {
           {/* knowledge management agent, the firm's oracle */}
           <g>
             <rect
-              x={20}
+              x={10}
               y={396}
-              width={260}
+              width={280}
               height={68}
               rx={14}
               fill="#1A1215"
               stroke="rgba(227,30,36,0.7)"
               strokeWidth={2}
             />
-            <circle cx={42} cy={422} r={5} fill="#E31E24" />
-            <text x={58} y={427} fill="#ffffff" fontSize={14} fontWeight={800}>
+            <circle cx={32} cy={422} r={5} fill="#E31E24" />
+            <text x={48} y={427} fill="#ffffff" fontSize={14} fontWeight={800}>
               Knowledge Management Agent
             </text>
-            <text x={42} y={448} fill="#9ca3af" fontSize={10.5}>
+            <text x={32} y={448} fill="#9ca3af" fontSize={10.5}>
               the firm&apos;s oracle
             </text>
           </g>

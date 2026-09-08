@@ -6,10 +6,10 @@ const NODES = [
 ];
 
 const LOOP_PATHS = [
-  { id: "l1", d: "M170,230 C 240,120 380,70 500,70", begin: "0s" },
-  { id: "l2", d: "M500,70 C 640,70 770,130 830,230", begin: "0.8s" },
-  { id: "l3", d: "M830,230 C 770,330 640,390 500,390", begin: "1.6s" },
-  { id: "l4", d: "M500,390 C 360,390 230,330 170,230", begin: "2.4s" },
+  { id: "l1", d: "M290,230 C 320,140 350,70 380,70", begin: "0s" },
+  { id: "l2", d: "M620,70 C 660,70 680,140 710,230", begin: "0.8s" },
+  { id: "l3", d: "M710,230 C 680,320 660,390 620,390", begin: "1.6s" },
+  { id: "l4", d: "M380,390 C 350,390 320,320 290,230", begin: "2.4s" },
 ];
 
 const MEMORY_PATHS = [
@@ -29,20 +29,20 @@ function LoopNode({ cx, cy, title, sub, accent }: (typeof NODES)[number]) {
   return (
     <g>
       <rect
-        x={cx - 105}
+        x={cx - 120}
         y={cy - 34}
-        width={210}
+        width={240}
         height={68}
         rx={14}
         fill="#15151B"
         stroke={accent ? "rgba(227,30,36,0.6)" : "rgba(255,255,255,0.14)"}
         strokeWidth={1.5}
       />
-      <circle cx={cx - 85} cy={cy} r={4} fill="#E31E24" />
-      <text x={cx - 69} y={cy - 3} fill="#ffffff" fontSize={13} fontWeight={700}>
+      <circle cx={cx - 100} cy={cy} r={4} fill="#E31E24" />
+      <text x={cx - 84} y={cy - 3} fill="#ffffff" fontSize={13} fontWeight={700}>
         {title}
       </text>
-      <text x={cx - 69} y={cy + 15} fill="#9ca3af" fontSize={10.5}>
+      <text x={cx - 84} y={cy + 15} fill="#9ca3af" fontSize={10.5}>
         {sub}
       </text>
     </g>

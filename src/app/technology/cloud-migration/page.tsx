@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import WeastCta from "@/components/WeastCta";
 
 export const metadata: Metadata = {
   title: "Cloud Migration to Alibaba, Huawei & Tencent Cloud | EasternStack",
@@ -27,66 +28,79 @@ export const metadata: Metadata = {
 
 export default function CloudMigrationPage() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-bg-light via-white to-bg-light">
-        <div className="container-custom text-center">
-          <div className="inline-block mb-6 px-4 py-2 bg-white border border-gray-700 rounded-full shadow-sm">
-            <span className="text-[#E31E24] text-sm font-semibold">
-              Cloud Migration
-            </span>
+    <div className="min-h-screen overflow-x-clip bg-white">
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-white pt-20 pb-16 sm:pt-24 sm:pb-20">
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage: "radial-gradient(circle, #e5e7eb 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+            maskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent)",
+            WebkitMaskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent)",
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <img src="/logo.png" alt="EasternStack.AI" className="mx-auto h-12 w-auto md:h-14" />
+            <p className="mt-4 text-xs font-bold uppercase tracking-widest text-gray-500">
+              Technology · Cloud Migration
+            </p>
+            <h1 className="mt-5 text-4xl font-extrabold text-[#1A1A1A] sm:text-5xl md:text-6xl" style={{ letterSpacing: "-0.03em", lineHeight: 1.05 }}>
+              Move to <span className="bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">affordable cloud</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-600">
+              Seamless migration to powerful Eastern cloud infrastructure with zero downtime and maximum cost savings on Alibaba, Huawei, and Tencent Cloud.
+            </p>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-[#1A1A1A] mb-6">
-            MOVE TO{" "}
-            <span className="gradient-text">AFFORDABLE CLOUD</span>
-          </h1>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-            Seamless migration to powerful Eastern cloud infrastructure with zero downtime and maximum cost savings.
-          </p>
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-12 text-center">
-            WHY MIGRATE TO EASTERN CLOUD?
-          </h2>
+      {/* Why Migrate */}
+      <section className="border-y border-gray-200 bg-gray-50 py-20">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="text-center">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#E31E24]">Benefits</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#1A1A1A]">
+              Why migrate to Eastern cloud?
+            </h2>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="card">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+            <div className="rounded-xl border border-gray-200 bg-white p-6">
+              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-br from-[#E31E24] to-[#C4181E] text-white">
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-[#1A1A1A] mb-3">Meaningful Cost Reduction</h3>
-              <p className="text-gray-600">
+              <h3 className="mt-4 text-lg font-semibold text-[#1A1A1A]">Meaningful cost reduction</h3>
+              <p className="mt-2 text-gray-600">
                 Meaningfully reduce cloud infrastructure costs compared to Western providers with no compromise on performance.
               </p>
             </div>
 
-            <div className="card">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="rounded-xl border border-gray-200 bg-white p-6">
+              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-br from-[#E31E24] to-[#C4181E] text-white">
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-[#1A1A1A] mb-3">Zero Downtime</h3>
-              <p className="text-gray-600">
+              <h3 className="mt-4 text-lg font-semibold text-[#1A1A1A]">Zero downtime</h3>
+              <p className="mt-2 text-gray-600">
                 Phased migration approach ensures your business operations continue uninterrupted throughout the transition.
               </p>
             </div>
 
-            <div className="card">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="rounded-xl border border-gray-200 bg-white p-6">
+              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-br from-[#E31E24] to-[#C4181E] text-white">
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-[#1A1A1A] mb-3">Enhanced Performance</h3>
-              <p className="text-gray-600">
-                Eastern cloud providers offer superior performance in Asia-Pacific region with lower latency.
+              <h3 className="mt-4 text-lg font-semibold text-[#1A1A1A]">Enhanced performance</h3>
+              <p className="mt-2 text-gray-600">
+                Eastern cloud providers offer superior performance in the Asia-Pacific region with lower latency.
               </p>
             </div>
           </div>
@@ -94,123 +108,152 @@ export default function CloudMigrationPage() {
       </section>
 
       {/* Migration Process */}
-      <section className="section-padding bg-whiteer">
-        <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-12 text-center">
-            OUR MIGRATION PROCESS
-          </h2>
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="text-center">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#E31E24]">Process</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#1A1A1A]">
+              Our migration process
+            </h2>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-5">
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">1</span>
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#E31E24] to-[#C4181E]">
+                <span className="text-lg font-bold text-white">1</span>
               </div>
-              <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Assessment</h3>
-              <p className="text-gray-600 text-sm">Analyze current infrastructure and identify migration candidates.</p>
+              <h3 className="mt-4 text-base font-semibold text-[#1A1A1A]">Assessment</h3>
+              <p className="mt-2 text-sm text-gray-600">Analyze current infrastructure and identify migration candidates.</p>
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">2</span>
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#E31E24] to-[#C4181E]">
+                <span className="text-lg font-bold text-white">2</span>
               </div>
-              <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Planning</h3>
-              <p className="text-gray-600 text-sm">Create detailed migration plan with timeline and risk mitigation.</p>
+              <h3 className="mt-4 text-base font-semibold text-[#1A1A1A]">Planning</h3>
+              <p className="mt-2 text-sm text-gray-600">Create detailed migration plan with timeline and risk mitigation.</p>
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">3</span>
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#E31E24] to-[#C4181E]">
+                <span className="text-lg font-bold text-white">3</span>
               </div>
-              <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Testing</h3>
-              <p className="text-gray-600 text-sm">Validate migration in staging environment before production move.</p>
+              <h3 className="mt-4 text-base font-semibold text-[#1A1A1A]">Testing</h3>
+              <p className="mt-2 text-sm text-gray-600">Validate migration in staging environment before production move.</p>
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">4</span>
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#E31E24] to-[#C4181E]">
+                <span className="text-lg font-bold text-white">4</span>
               </div>
-              <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Migration</h3>
-              <p className="text-gray-600 text-sm">Execute phased migration with real-time monitoring and rollback capability.</p>
+              <h3 className="mt-4 text-base font-semibold text-[#1A1A1A]">Migration</h3>
+              <p className="mt-2 text-sm text-gray-600">Execute phased migration with real-time monitoring and rollback capability.</p>
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#E31E24] to-[#C4181E] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">5</span>
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#E31E24] to-[#C4181E]">
+                <span className="text-lg font-bold text-white">5</span>
               </div>
-              <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Optimization</h3>
-              <p className="text-gray-600 text-sm">Fine-tune performance and costs post-migration for maximum ROI.</p>
+              <h3 className="mt-4 text-base font-semibold text-[#1A1A1A]">Optimization</h3>
+              <p className="mt-2 text-sm text-gray-600">Fine-tune performance and costs post-migration for maximum ROI.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Technology Partners */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-12 text-center">
-            POWERED BY EASTERN CLOUD
-          </h2>
+      <section className="border-y border-gray-200 bg-gray-50 py-20">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="text-center">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#E31E24]">Partners</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#1A1A1A]">
+              Powered by Eastern cloud
+            </h2>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="card text-center">
-              <div className="h-20 mb-4 flex items-center justify-center">
+          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+            <div className="rounded-xl border border-gray-200 bg-white p-6 text-center">
+              <div className="mb-4 flex h-20 items-center justify-center">
                 <img src="/partner/Alibaba_Cloud_Logo.png" alt="Alibaba Cloud" className="h-16 w-auto object-contain" />
               </div>
-              <h3 className="text-xl font-semibold text-[#1A1A1A] mb-2">Alibaba Cloud</h3>
-              <p className="text-gray-600 text-sm mb-4">Leading cloud provider in Asia with comprehensive AI and data services.</p>
-              <ul className="text-left text-sm text-gray-600 space-y-2">
-                <li>✓ Elastic Compute Service</li>
-                <li>✓ ApsaraDB</li>
-                <li>✓ Object Storage Service</li>
-                <li>✓ CDN & Networking</li>
+              <h3 className="text-lg font-semibold text-[#1A1A1A]">Alibaba Cloud</h3>
+              <p className="mt-2 text-sm text-gray-600">Leading cloud provider in Asia with comprehensive AI and data services.</p>
+              <ul className="mt-4 space-y-2 text-left text-sm text-gray-600">
+                <li className="flex items-center gap-2">
+                  <svg className="h-4 w-4 flex-shrink-0 text-[#E31E24]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" /></svg>
+                  Elastic Compute Service
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="h-4 w-4 flex-shrink-0 text-[#E31E24]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" /></svg>
+                  ApsaraDB
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="h-4 w-4 flex-shrink-0 text-[#E31E24]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" /></svg>
+                  Object Storage Service
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="h-4 w-4 flex-shrink-0 text-[#E31E24]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" /></svg>
+                  CDN &amp; Networking
+                </li>
               </ul>
             </div>
 
-            <div className="card text-center">
-              <div className="h-20 mb-4 flex items-center justify-center">
+            <div className="rounded-xl border border-gray-200 bg-white p-6 text-center">
+              <div className="mb-4 flex h-20 items-center justify-center">
                 <img src="/partner/huawei.jpg" alt="Huawei Cloud" className="h-16 w-auto object-contain" />
               </div>
-              <h3 className="text-xl font-semibold text-[#1A1A1A] mb-2">Huawei Cloud</h3>
-              <p className="text-gray-600 text-sm mb-4">Enterprise-grade cloud with strong focus on security and compliance.</p>
-              <ul className="text-left text-sm text-gray-600 space-y-2">
-                <li>✓ Elastic Cloud Server</li>
-                <li>✓ GaussDB</li>
-                <li>✓ Cloud Container Engine</li>
-                <li>✓ AI Development Platform</li>
+              <h3 className="text-lg font-semibold text-[#1A1A1A]">Huawei Cloud</h3>
+              <p className="mt-2 text-sm text-gray-600">Enterprise-grade cloud with strong focus on security and compliance.</p>
+              <ul className="mt-4 space-y-2 text-left text-sm text-gray-600">
+                <li className="flex items-center gap-2">
+                  <svg className="h-4 w-4 flex-shrink-0 text-[#E31E24]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" /></svg>
+                  Elastic Cloud Server
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="h-4 w-4 flex-shrink-0 text-[#E31E24]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" /></svg>
+                  GaussDB
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="h-4 w-4 flex-shrink-0 text-[#E31E24]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" /></svg>
+                  Cloud Container Engine
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="h-4 w-4 flex-shrink-0 text-[#E31E24]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" /></svg>
+                  AI Development Platform
+                </li>
               </ul>
             </div>
 
-            <div className="card text-center">
-              <div className="h-20 mb-4 flex items-center justify-center">
+            <div className="rounded-xl border border-gray-200 bg-white p-6 text-center">
+              <div className="mb-4 flex h-20 items-center justify-center">
                 <img src="/partner/tencent.png" alt="Tencent Cloud" className="h-16 w-auto object-contain" />
               </div>
-              <h3 className="text-xl font-semibold text-[#1A1A1A] mb-2">Tencent Cloud</h3>
-              <p className="text-gray-600 text-sm mb-4">Gaming and media optimized cloud with global CDN coverage.</p>
-              <ul className="text-left text-sm text-gray-600 space-y-2">
-                <li>✓ Cloud Virtual Machine</li>
-                <li>✓ TencentDB</li>
-                <li>✓ Media Processing</li>
-                <li>✓ Gaming Solutions</li>
+              <h3 className="text-lg font-semibold text-[#1A1A1A]">Tencent Cloud</h3>
+              <p className="mt-2 text-sm text-gray-600">Gaming and media optimized cloud with global CDN coverage.</p>
+              <ul className="mt-4 space-y-2 text-left text-sm text-gray-600">
+                <li className="flex items-center gap-2">
+                  <svg className="h-4 w-4 flex-shrink-0 text-[#E31E24]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" /></svg>
+                  Cloud Virtual Machine
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="h-4 w-4 flex-shrink-0 text-[#E31E24]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" /></svg>
+                  TencentDB
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="h-4 w-4 flex-shrink-0 text-[#E31E24]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" /></svg>
+                  Media Processing
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="h-4 w-4 flex-shrink-0 text-[#E31E24]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" /></svg>
+                  Gaming Solutions
+                </li>
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            READY TO MIGRATE TO EASTERN CLOUD?
-          </h2>
-          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            Start your cloud modernization journey with meaningful cost savings and zero downtime.
-          </p>
-          <Link href="/contact" className="btn-primary bg-white text-[#E31E24] hover:bg-white">
-            Get Free Migration Assessment
-          </Link>
-        </div>
-      </section>
+      <WeastCta tourHref="/#demo-ide" brand="our platform" />
     </div>
   );
 }

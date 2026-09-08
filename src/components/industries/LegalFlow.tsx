@@ -1,25 +1,25 @@
 const NODES = [
-  { id: "intake", cx: 110, cy: 250, title: "Client intake", sub: "profile + case assessment", accent: false },
-  { id: "review", cx: 330, cy: 250, title: "Contract Review Agent", sub: "clause-by-clause, risk flags", accent: true },
-  { id: "auto", cx: 570, cy: 250, title: "Document Automation", sub: "smart clause insertion", accent: false },
-  { id: "draft", cx: 810, cy: 250, title: "Draft to review", sub: "versioned, lawyer-approved", accent: false },
+  { id: "intake", cx: 120, cy: 250, title: "Client intake", sub: "profile + case assessment", accent: false },
+  { id: "review", cx: 370, cy: 250, title: "Contract Review Agent", sub: "clause-by-clause, risk flags", accent: true },
+  { id: "auto", cx: 620, cy: 250, title: "Document Automation", sub: "smart clause insertion", accent: false },
+  { id: "draft", cx: 860, cy: 250, title: "Draft to review", sub: "versioned, lawyer-approved", accent: false },
 ];
 
 const CONVEYOR_PATHS = [
-  { id: "c1", d: "M200,250 L240,250", begin: "0s" },
-  { id: "c2", d: "M420,250 L480,250", begin: "0.35s" },
-  { id: "c3", d: "M660,250 L720,250", begin: "0.7s" },
+  { id: "c1", d: "M230,250 L260,250", begin: "0s" },
+  { id: "c2", d: "M480,250 L510,250", begin: "0.35s" },
+  { id: "c3", d: "M730,250 L750,250", begin: "0.7s" },
 ];
 
 const RESEARCH_PATH = {
   id: "r1",
-  d: "M450,114 C 440,165 350,185 330,216",
+  d: "M450,114 C 440,165 390,185 370,216",
   begin: "0.5s",
 };
 
 const FLAGS_PATH = {
   id: "f1",
-  d: "M330,284 C 460,355 680,355 810,284",
+  d: "M370,284 C 500,355 730,355 860,284",
   begin: "1.05s",
 };
 
@@ -35,20 +35,20 @@ function FlowNode({ cx, cy, title, sub, accent }: (typeof NODES)[number]) {
   return (
     <g>
       <rect
-        x={cx - 90}
+        x={cx - 110}
         y={cy - 34}
-        width={180}
+        width={220}
         height={68}
         rx={14}
         fill="#15151B"
         stroke={accent ? "rgba(227,30,36,0.6)" : "rgba(255,255,255,0.14)"}
         strokeWidth={1.5}
       />
-      <circle cx={cx - 70} cy={cy} r={4} fill="#E31E24" />
-      <text x={cx - 54} y={cy - 3} fill="#ffffff" fontSize={13} fontWeight={700}>
+      <circle cx={cx - 90} cy={cy} r={4} fill="#E31E24" />
+      <text x={cx - 74} y={cy - 3} fill="#ffffff" fontSize={13} fontWeight={700}>
         {title}
       </text>
-      <text x={cx - 54} y={cy + 15} fill="#9ca3af" fontSize={10.5}>
+      <text x={cx - 74} y={cy + 15} fill="#9ca3af" fontSize={10.5}>
         {sub}
       </text>
     </g>

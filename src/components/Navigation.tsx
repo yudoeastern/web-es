@@ -144,11 +144,6 @@ export default function Navigation() {
                       </div>
                       <ul className="space-y-3">
                         <li>
-                          <Link href="/industries/saas-software" className="group flex items-center gap-2 text-[#1A1A1A] hover:text-[#E31E24] transition-colors">
-                            <span className="text-sm">SaaS & Software</span>
-                          </Link>
-                        </li>
-                        <li>
                           <Link href="/industries/manufacturing" className="group flex items-center gap-2 text-[#1A1A1A] hover:text-[#E31E24] transition-colors">
                             <span className="text-sm">Manufacturing</span>
                           </Link>
@@ -204,7 +199,7 @@ export default function Navigation() {
                         </Link>
                         <button
                           onClick={openAskWeast}
-                          className="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-bold text-[#E31E24] shadow-sm transition-all hover:shadow-lg"
+                          className="flex items-center gap-2 rounded-lg border border-[#E31E24]/30 bg-white px-5 py-2.5 text-sm font-bold text-[#E31E24] shadow-sm transition-all hover:border-[#E31E24] hover:bg-[#E31E24]/5 hover:shadow-lg"
                         >
                           Ask
                           <img src="/weast/weast-logo-black.png" alt="WEAST" className="h-4 w-auto" />
@@ -320,12 +315,21 @@ export default function Navigation() {
                         <span className="text-gray-400">·</span>
                         <span>Alibaba Cloud · Huawei Cloud · Tencent Cloud</span>
                       </div>
-                      <Link href="/contact" className="text-orange-600 hover:text-orange-700 text-sm font-semibold flex items-center gap-1">
-                        Talk to Our Team
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </Link>
+                      <div className="flex items-center gap-4">
+                        <Link href="/technology" className="text-[#E31E24] hover:text-[#C4181E] text-sm font-semibold flex items-center gap-1">
+                          View All Technology
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </Link>
+                        <button
+                          onClick={openAskWeast}
+                          className="flex items-center gap-2 rounded-lg border border-[#E31E24]/30 bg-white px-5 py-2.5 text-sm font-bold text-[#E31E24] shadow-sm transition-all hover:border-[#E31E24] hover:bg-[#E31E24]/5 hover:shadow-lg"
+                        >
+                          Ask
+                          <img src="/weast/weast-logo-black.png" alt="WEAST" className="h-4 w-auto" />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -346,7 +350,7 @@ export default function Navigation() {
 
             <button
               onClick={openAskWeast}
-              className="ml-4 flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-5 py-2.5 font-bold text-[#E31E24] shadow-sm transition-all hover:shadow-lg"
+              className="ml-4 flex items-center gap-2 rounded-lg border border-[#E31E24]/30 bg-white px-5 py-2.5 font-bold text-[#E31E24] shadow-sm transition-all hover:border-[#E31E24] hover:bg-[#E31E24]/5 hover:shadow-lg"
             >
               Ask
               <img src="/weast/weast-logo-black.png" alt="WEAST" className="h-4 w-auto" />
@@ -356,7 +360,7 @@ export default function Navigation() {
           {/* Mobile Ask Weast */}
           <button
             onClick={openAskWeast}
-            className="mr-1 flex items-center rounded-lg border border-gray-200 bg-white px-2.5 py-2 shadow-sm lg:hidden"
+            className="mr-1 flex items-center rounded-lg border border-[#E31E24]/30 bg-white px-2.5 py-2 shadow-sm transition-all hover:border-[#E31E24] hover:bg-[#E31E24]/5 lg:hidden"
             aria-label="Ask Weast"
           >
             <img src="/weast/weast-logo-black.png" alt="WEAST" className="h-4 w-auto" />
@@ -437,7 +441,6 @@ export default function Navigation() {
                     </div>
                     <div>
                       <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Technology & Industrial</div>
-                      <Link href="/industries/saas-software" className="block py-2 text-gray-600" onClick={handleLinkClick}>SaaS & Software</Link>
                       <Link href="/industries/manufacturing" className="block py-2 text-gray-600" onClick={handleLinkClick}>Manufacturing</Link>
                       <Link href="/industries/logistics" className="block py-2 text-gray-600" onClick={handleLinkClick}>Logistics & Supply Chain</Link>
                       <Link href="/industries/energy-utilities" className="block py-2 text-gray-600" onClick={handleLinkClick}>Energy & Utilities</Link>
@@ -508,7 +511,7 @@ export default function Navigation() {
 
               <button
                 onClick={openAskWeast}
-                className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white py-3 font-bold text-[#E31E24] shadow-sm"
+                className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg border border-[#E31E24]/30 bg-white py-3 font-bold text-[#E31E24] shadow-sm transition-all hover:border-[#E31E24] hover:bg-[#E31E24]/5"
               >
                 Ask
                 <img src="/weast/weast-logo-black.png" alt="WEAST" className="h-4 w-auto" />
