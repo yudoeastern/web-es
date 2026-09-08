@@ -5,7 +5,7 @@ import WeastCta from "@/components/WeastCta";
 export const metadata: Metadata = {
   title: "Real-Time Streaming & Event-Driven Architecture | EasternStack",
   description:
-    "Process millions of events per second — Flink stream processing, real-time analytics, anomaly detection, and event sourcing for responsive AI applications.",
+    "Process high-volume event streams with Flink stream processing, real-time analytics, anomaly detection, and event sourcing for responsive AI applications.",
   alternates: { canonical: "/technology/streaming" },
   openGraph: {
     title: "Real-Time Streaming & Event-Driven Architecture | EasternStack",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 const CAPABILITIES = [
   {
     title: "High-throughput ingestion",
-    body: "Ingest millions of events per second from multiple sources with guaranteed delivery.",
+    body: "Ingest high-volume event streams from multiple sources with reliable delivery.",
     items: ["IoT sensor data streaming", "Clickstream and user behavior", "Financial transactions"],
     icon: (
       <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -136,7 +136,7 @@ export default function StreamingPage() {
               </span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-600">
-              Process millions of events per second with real-time streaming for instant insights and responsive AI applications.
+              Process high-volume event streams in real time for instant insights and responsive AI applications.
             </p>
           </div>
         </div>

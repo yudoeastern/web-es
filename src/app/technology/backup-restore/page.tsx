@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Enterprise Backup & Restore for Critical Data | EasternStack",
     description:
-      "Guaranteed data availability with automated database backup, file and object storage, and full server imaging with bare-metal restore.",
+      "Reliable data protection with automated database backup, file and object storage, and full server imaging with bare-metal restore.",
     url: "https://easternstack.ai/technology/backup-restore",
     siteName: "EasternStack",
     locale: "en_US",
@@ -48,7 +48,7 @@ export default function BackupRestorePage() {
               Technology · Backup &amp; Restore
             </p>
             <h1 className="mt-5 text-4xl font-extrabold text-[#1A1A1A] sm:text-5xl md:text-6xl" style={{ letterSpacing: "-0.03em", lineHeight: 1.05 }}>
-              Data availability <span className="bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">guaranteed</span>
+              Data protection, <span className="bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">automated</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-600">
               Automated backup and restore solutions ensuring your critical data is always protected and recoverable.

@@ -104,13 +104,13 @@ export default function AIAssistantPage() {
                     <svg className="w-5 h-5 text-primary-orange mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
                     </svg>
-                    Instant responses with zero waiting time
+                    Near-instant responses for common inquiries
                   </li>
                   <li className="flex items-start text-gray-600">
                     <svg className="w-5 h-5 text-primary-orange mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
                     </svg>
-                    Handles thousands of concurrent users simultaneously
+                    Handles high volumes of concurrent users
                   </li>
                 </ul>
               </div>
@@ -120,8 +120,8 @@ export default function AIAssistantPage() {
                   <div className="text-gray-600 mb-6">Support Coverage</div>
                   <div className="text-5xl font-bold gradient-text mb-2">Substantial</div>
                   <div className="text-gray-600 mb-6">Workload Reduction</div>
-                  <div className="text-5xl font-bold gradient-text">1000+</div>
-                  <div className="text-gray-600">Concurrent Users</div>
+                  <div className="text-5xl font-bold gradient-text">High</div>
+                  <div className="text-gray-600">Concurrency</div>
                 </div>
               </div>
             </div>

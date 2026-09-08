@@ -94,7 +94,7 @@ const LOCAL = [
   },
   {
     title: "Human dispatchers in the loop",
-    body: "Agents propose, dispatchers approve: costly reroutes and escalations always have a human checkpoint.",
+    body: "Agents propose, dispatchers approve: costly reroutes and escalations have a human checkpoint at every step.",
   },
 ];
 
@@ -174,7 +174,7 @@ export default function LogisticsPage() {
               Real-time orchestration
             </p>
             <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">
-              A control tower that never blinks
+              A control tower that stays alert
             </h2>
             <p className="mt-4 text-zinc-400">
               Events stream in from fleets, warehouses, and partners. The control tower agent

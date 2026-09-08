@@ -5,12 +5,12 @@ import WeastCta from "@/components/WeastCta";
 export const metadata: Metadata = {
   title: "Disaster Recovery for Enterprise AI | EasternStack",
   description:
-    "Enterprise disaster recovery built for continuous availability: pilot light, warm standby, and multi-site active failover with under one-hour recovery times.",
+    "Enterprise disaster recovery built for continuous availability: pilot light, warm standby, and multi-site active failover with rapid recovery times.",
   alternates: { canonical: "/technology/disaster-recovery" },
   openGraph: {
     title: "Disaster Recovery for Enterprise AI | EasternStack",
     description:
-      "Business continuity assured with enterprise-grade availability, under 5-minute recovery points, and 24/7 monitoring for mission-critical workloads.",
+      "Business continuity assured with enterprise-grade availability, frequent recovery points, and 24/7 monitoring for mission-critical workloads.",
     url: "https://easternstack.ai/technology/disaster-recovery",
     siteName: "EasternStack",
     locale: "en_US",
@@ -69,19 +69,19 @@ export default function DisasterRecoveryPage() {
 
           <div className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-4">
             <div className="rounded-xl border border-gray-200 bg-white p-6 text-center">
-              <p className="text-3xl font-extrabold bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">Continuous</p>
+              <p className="text-3xl font-extrabold bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">High</p>
               <h3 className="mt-2 text-base font-semibold text-[#1A1A1A]">Availability</h3>
               <p className="mt-2 text-sm text-gray-600">Enterprise-grade availability with multi-region redundancy.</p>
             </div>
 
             <div className="rounded-xl border border-gray-200 bg-white p-6 text-center">
-              <p className="text-3xl font-extrabold bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">&lt;1hr</p>
+              <p className="text-3xl font-extrabold bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">Rapid</p>
               <h3 className="mt-2 text-base font-semibold text-[#1A1A1A]">Recovery time</h3>
               <p className="mt-2 text-sm text-gray-600">Rapid failover to minimize business disruption.</p>
             </div>
 
             <div className="rounded-xl border border-gray-200 bg-white p-6 text-center">
-              <p className="text-3xl font-extrabold bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">&lt;5min</p>
+              <p className="text-3xl font-extrabold bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">Frequent</p>
               <h3 className="mt-2 text-base font-semibold text-[#1A1A1A]">Recovery point</h3>
               <p className="mt-2 text-sm text-gray-600">Minimal data loss with continuous replication.</p>
             </div>
@@ -175,7 +175,7 @@ export default function DisasterRecoveryPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#E31E24]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" /></svg>
-                  Near-zero downtime failover
+                  Fast failover
                 </li>
                 <li className="flex items-start gap-2">
                   <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#E31E24]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" /></svg>

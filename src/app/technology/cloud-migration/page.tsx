@@ -5,12 +5,12 @@ import WeastCta from "@/components/WeastCta";
 export const metadata: Metadata = {
   title: "Cloud Migration to Alibaba, Huawei & Tencent Cloud | EasternStack",
   description:
-    "Zero-downtime cloud migration for enterprises in Indonesia with meaningful cost reduction and lower Asia-Pacific latency on Alibaba, Huawei, and Tencent Cloud.",
+    "Minimal-downtime cloud migration for enterprises in Indonesia with meaningful cost reduction and lower Asia-Pacific latency on Alibaba, Huawei, and Tencent Cloud.",
   alternates: { canonical: "/technology/cloud-migration" },
   openGraph: {
     title: "Cloud Migration to Alibaba, Huawei & Tencent Cloud | EasternStack",
     description:
-      "Move to affordable Eastern cloud infrastructure with zero downtime, meaningful cost savings, and a proven five-step migration process.",
+      "Move to affordable Eastern cloud infrastructure with minimal downtime, meaningful cost savings, and a proven five-step migration process.",
     url: "https://easternstack.ai/technology/cloud-migration",
     siteName: "EasternStack",
     locale: "en_US",
@@ -51,7 +51,7 @@ export default function CloudMigrationPage() {
               Move to <span className="bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">affordable cloud</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-600">
-              Seamless migration to powerful Eastern cloud infrastructure with zero downtime and maximum cost savings on Alibaba, Huawei, and Tencent Cloud.
+              Seamless migration to powerful Eastern cloud infrastructure with minimal downtime and maximum cost savings on Alibaba, Huawei, and Tencent Cloud.
             </p>
           </div>
         </div>
@@ -86,7 +86,7 @@ export default function CloudMigrationPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-[#1A1A1A]">Zero downtime</h3>
+              <h3 className="mt-4 text-lg font-semibold text-[#1A1A1A]">Minimal downtime</h3>
               <p className="mt-2 text-gray-600">
                 Phased migration approach ensures your business operations continue uninterrupted throughout the transition.
               </p>

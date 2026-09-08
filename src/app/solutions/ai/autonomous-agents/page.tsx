@@ -370,14 +370,14 @@ export default function AutonomousAgentsPage() {
             </div>
 
             <div className="card text-center">
-              <div className="text-4xl font-bold gradient-text mb-2">10x Faster</div>
+              <div className="text-4xl font-bold gradient-text mb-2">Significantly Faster</div>
               <p className="text-gray-600 text-sm">
                 Decision-making and task execution speed.
               </p>
             </div>
 
             <div className="card text-center">
-              <div className="text-4xl font-bold gradient-text mb-2">Major Cost Reduction</div>
+              <div className="text-4xl font-bold gradient-text mb-2">Significant Cost Reduction</div>
               <p className="text-gray-600 text-sm">
                 Operational costs through intelligent automation.
               </p>

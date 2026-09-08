@@ -99,7 +99,7 @@ const GOVERNANCE = [
 ];
 
 const OUTCOMES = [
-  { stat: "Guests answered instantly", label: "context carried across the stay" },
+  { stat: "Guests answered promptly", label: "context carried across the stay" },
   { stat: "Every review counted", label: "sentiment loops into standards" },
   { stat: "One platform", label: "pricing, concierge, booking, and reputation under one governed WEAST" },
 ];

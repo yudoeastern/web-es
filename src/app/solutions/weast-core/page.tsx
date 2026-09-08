@@ -61,7 +61,7 @@ const FEATURES: SolutionFeature[] = [
   {
     eyebrow: "03 · Document Intelligence",
     title: "Turn documents into indexed, searchable knowledge",
-    body: "Upload PDFs and spreadsheets into a governed registry. Weast chunks, indexes and tracks cost per document, so agents retrieve evidence, not hallucinations.",
+    body: "Upload PDFs and spreadsheets into a governed registry. Weast chunks, indexes and tracks cost per document, so agents retrieve evidence-backed answers.",
     points: [
       "PDF & XLSX ingestion with chunk-level indexing",
       "Folder-scoped document registries per workspace",

@@ -4,12 +4,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "AI Forecasting for Sales, Inventory & Finance | EasternStack",
   description:
-    "AI forecasting for sales, inventory, and finance with high-accuracy forecasts, proactive stockout alerts, and cashflow predictions up to 60 days ahead.",
+    "AI forecasting for sales, inventory, and finance with high-accuracy forecasts, proactive stockout alerts, and cashflow predictions well in advance.",
   alternates: { canonical: "/solutions/forecasting" },
   openGraph: {
     title: "AI Forecasting for Sales, Inventory & Finance | EasternStack",
     description:
-      "AI forecasting for sales, inventory, and finance with high-accuracy forecasts, proactive stockout alerts, and cashflow predictions up to 60 days ahead.",
+      "AI forecasting for sales, inventory, and finance with high-accuracy forecasts, proactive stockout alerts, and cashflow predictions well in advance.",
     url: "https://easternstack.ai/solutions/forecasting",
     siteName: "EasternStack",
     locale: "en_US",
@@ -253,8 +253,8 @@ export default function ForecastingPage() {
                 <div className="text-center py-8">
                   <div className="text-5xl font-bold gradient-text mb-2">High accuracy</div>
                   <div className="text-gray-600 mb-6">Cashflow</div>
-                  <div className="text-5xl font-bold gradient-text mb-2">60</div>
-                  <div className="text-gray-600 mb-6">Days Ahead</div>
+                  <div className="text-5xl font-bold gradient-text mb-2">Extended</div>
+                  <div className="text-gray-600 mb-6">Forecast Horizon</div>
                   <div className="text-5xl font-bold gradient-text">24/7</div>
                   <div className="text-gray-600">Financial Monitoring</div>
                 </div>

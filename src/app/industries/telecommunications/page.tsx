@@ -135,7 +135,7 @@ export default function TelecommunicationsPage() {
             >
               Networks that{" "}
               <span className="bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">
-                heal themselves
+                recover faster
               </span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-600">
@@ -175,7 +175,7 @@ export default function TelecommunicationsPage() {
               What you can build on WEAST
             </p>
             <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">
-              An ops room that never blinks
+              An ops room that stays sharp
             </h2>
             <p className="mt-4 text-zinc-400">
               Incident tickets and network logs feed the network agent, churn scores hand

@@ -53,7 +53,7 @@ const DIFFERENTIATORS = [
       </svg>
     ),
     title: "Full Run Traceability",
-    body: "Every agent run, every approval, every decision: fully traced and auditable. See exactly what happened, why, and how much it cost.",
+    body: "Agent runs, approvals, and decisions: traced and auditable. See exactly what happened, why, and how much it cost.",
   },
   {
     icon: (
@@ -103,7 +103,7 @@ const VALUES = [
   {
     label: "04",
     title: "Radical Transparency",
-    body: "Full cost visibility, full run traces, full audit trails. No black boxes, no hidden fees, no surprises.",
+    body: "Full cost visibility, full run traces, full audit trails. No black boxes, no hidden fees, full transparency.",
   },
 ];
 
@@ -188,13 +188,13 @@ export default function AboutPage() {
                 AI should work for your business, not the other way around
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-gray-600">
-                Most enterprise AI projects stall between demo and production. The models are
+                Many enterprise AI projects stall between demo and production. The models are
                 impressive, but the integration, governance, and cost control are missing.
                 EasternStack exists to close that gap.
               </p>
               <p className="mt-4 text-lg leading-relaxed text-gray-600">
                 We built WEAST, our enterprise agentic AI platform, so organizations can move
-                from AI experiments to AI operations. Every agent run is traced, every cost is
+                from AI experiments to AI operations. Agent runs are traced and costs are
                 visible, and every deployment runs on your terms.
               </p>
             </div>

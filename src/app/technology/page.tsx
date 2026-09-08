@@ -79,7 +79,7 @@ const CLOUD_MODERN = [
   {
     n: "03",
     title: "FinOps Optimisation",
-    body: "Cloud cost optimization that meaningfully reduces spend with no performance impact.",
+    body: "Cloud cost optimization that meaningfully reduces spend without compromising performance.",
     href: "/technology/cost-optimization",
   },
   {

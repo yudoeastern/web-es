@@ -90,7 +90,7 @@ const INDONESIA = [
   },
   {
     title: "Mobile-first delivery",
-    body: "Built for a mobile-first population, with seamless handoffs into WhatsApp and other messaging channels.",
+    body: "Built for a mobile-first population, with smooth handoffs into WhatsApp and other messaging channels.",
   },
   {
     title: "Enterprise security & audit",

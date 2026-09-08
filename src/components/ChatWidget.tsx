@@ -789,10 +789,10 @@ export default function ChatWidget() {
           lowerText.includes("timeline implementasi") || lowerText.includes("berapa lama")) {
         
         const content = "<strong>Durasi Implementasi AI</strong><br><br>" +
-          "Implementasi AI di EasternStack sangat cepat berkat framework yang sudah proven:<br><br>" +
-          "⚡ <strong>Quick Win:</strong> 3-7 hari untuk use case sederhana<br>" +
-          "🚀 <strong>Standard Implementation:</strong> 2-4 minggu untuk integrasi medium<br>" +
-          "🏢 <strong>Enterprise Scale:</strong> 1-3 bulan untuk deployment kompleks<br><br>" +
+          "Implementasi AI di EasternStack cepat berkat framework yang sudah teruji:<br><br>" +
+          "⚡ <strong>Quick Win:</strong> typically 3-7 hari untuk use case sederhana<br>" +
+          "🚀 <strong>Standard Implementation:</strong> typically 2-4 minggu untuk integrasi medium<br>" +
+          "🏢 <strong>Enterprise Scale:</strong> typically 1-3 bulan untuk deployment kompleks<br><br>" +
           "Faktor yang mempengaruhi:<br>" +
           "• Kompleksitas integrasi sistem<br>" +
           "• Ketersediaan data dan akses<br>" +

@@ -103,9 +103,9 @@ export default function OCRSolutionsPage() {
                 <div className="text-center py-8">
                   <div className="text-5xl font-bold gradient-text mb-2">High accuracy</div>
                   <div className="text-gray-600 mb-6">Extraction</div>
-                  <div className="text-5xl font-bold gradient-text mb-2">10x</div>
+                  <div className="text-5xl font-bold gradient-text mb-2">Faster</div>
                   <div className="text-gray-600 mb-6">Faster Processing</div>
-                  <div className="text-5xl font-bold gradient-text">0</div>
+                  <div className="text-5xl font-bold gradient-text">Minimal</div>
                   <div className="text-gray-600">Manual Entry</div>
                 </div>
               </div>
@@ -238,12 +238,12 @@ export default function OCRSolutionsPage() {
               </div>
               <div className="card">
                 <div className="text-center py-8">
-                  <div className="text-5xl font-bold gradient-text mb-2">3sec</div>
+                  <div className="text-5xl font-bold gradient-text mb-2">Fast</div>
                   <div className="text-gray-600 mb-6">Scan Time</div>
                   <div className="text-5xl font-bold gradient-text mb-2">High accuracy</div>
                   <div className="text-gray-600 mb-6">Scanning</div>
-                  <div className="text-5xl font-bold gradient-text">∞</div>
-                  <div className="text-gray-600">Receipts Storage</div>
+                  <div className="text-5xl font-bold gradient-text">Unlimited</div>
+                  <div className="text-gray-600">Receipt Storage</div>
                 </div>
               </div>
             </div>

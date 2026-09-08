@@ -264,7 +264,7 @@ export default function AISolutionsPage() {
             <div className="card">
               <h3 className="text-lg font-bold text-[#1A1A1A] mb-3">Secure and Controlled Deployment</h3>
               <p className="text-gray-600">
-                Ensure compliance, data privacy, and governance across all environments.
+                Support compliance, data privacy, and governance across environments.
               </p>
             </div>
           </div>

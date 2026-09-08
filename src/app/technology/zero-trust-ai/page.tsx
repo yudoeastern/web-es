@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Zero-Trust AI Security Architecture | EasternStack",
     description:
-      "Enterprise AI security built on never trust, always verify — compliance-ready for GDPR, HIPAA, and SOC 2 with complete audit trails.",
+      "Enterprise AI security built on never trust, always verify, designed for GDPR, HIPAA, and SOC 2 compliance with complete audit trails.",
     url: "https://easternstack.ai/technology/zero-trust-ai",
     siteName: "EasternStack",
     locale: "en_US",

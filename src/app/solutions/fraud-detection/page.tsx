@@ -4,12 +4,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Agentic Fraud Detection AI Solutions | EasternStack",
   description:
-    "Autonomous AI agents that detect, investigate, and prevent fraud in real time with reliable detection, sub-100ms response, and far fewer false positives.",
+    "Autonomous AI agents that detect, investigate, and prevent fraud in real time with reliable detection, low-latency response, and far fewer false positives.",
   alternates: { canonical: "/solutions/fraud-detection" },
   openGraph: {
     title: "Agentic Fraud Detection AI Solutions | EasternStack",
     description:
-      "Autonomous AI agents that detect, investigate, and prevent fraud in real time with reliable detection, sub-100ms response, and far fewer false positives.",
+      "Autonomous AI agents that detect, investigate, and prevent fraud in real time with reliable detection, low-latency response, and far fewer false positives.",
     url: "https://easternstack.ai/solutions/fraud-detection",
     siteName: "EasternStack",
     locale: "en_US",
@@ -73,8 +73,8 @@ export default function FraudDetectionPage() {
                 <div className="text-gray-600 text-sm">Fraud caught in real time</div>
               </div>
               <div className="card text-center">
-                <div className="text-4xl font-bold gradient-text mb-2">&lt;100ms</div>
-                <div className="text-gray-600 text-sm">Real-time response</div>
+                <div className="text-4xl font-bold gradient-text mb-2">Low-latency</div>
+                <div className="text-gray-600 text-sm">Response Time</div>
               </div>
               <div className="card text-center">
                 <div className="text-4xl font-bold gradient-text mb-2">Far fewer</div>

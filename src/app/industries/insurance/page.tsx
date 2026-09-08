@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI for Insurance: Claims, Underwriting & Fraud | EasternStack",
     description:
-      "Claims that read themselves: claims processing, fraud detection, underwriting, and customer service agents grounded in your policy documents, on one governed WEAST platform.",
+      "Claims processed with AI precision: claims processing, fraud detection, underwriting, and customer service agents grounded in your policy documents, on one governed WEAST platform.",
     url: "https://easternstack.ai/industries/insurance",
     siteName: "EasternStack",
     locale: "en_US",
@@ -133,9 +133,9 @@ export default function InsurancePage() {
               className="mt-5 text-4xl font-extrabold text-[#1A1A1A] sm:text-5xl md:text-6xl"
               style={{ letterSpacing: "-0.03em", lineHeight: 1.05 }}
             >
-              Claims that{" "}
+              Claims processed with{" "}
               <span className="bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">
-                read themselves
+                AI precision
               </span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-600">

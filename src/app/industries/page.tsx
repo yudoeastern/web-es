@@ -233,7 +233,7 @@ export default function IndustriesPage() {
               </div>
               <h3 className="text-xl font-semibold text-text-dark mb-3">Rapid Deployment</h3>
               <p className="text-text-secondary">
-                Go from concept to production in days, not months, with our proven AI implementation framework.
+                Accelerate your path from concept to production with our structured AI implementation framework.
               </p>
             </div>
 
@@ -245,7 +245,7 @@ export default function IndustriesPage() {
               </div>
               <h3 className="text-xl font-semibold text-text-dark mb-3">Local Support</h3>
               <p className="text-text-secondary">
-                Jakarta-based team providing 24/7 support with understanding of local business culture and needs.
+                Jakarta-based team providing dedicated support with understanding of local business culture and needs.
               </p>
             </div>
           </div>

@@ -6,12 +6,12 @@ import WeastCta from "@/components/WeastCta";
 export const metadata: Metadata = {
   title: "AI for Manufacturing: Supply Chain & Document Automation | EasternStack",
   description:
-    "Supply chain optimization and document-heavy operations, automated end to end on the WEAST platform: supplier documents, planning, confirmations, and audit-ready traceability.",
+    "Supply chain optimization and document-heavy operations, automated across the chain on the WEAST platform: supplier documents, planning, confirmations, and audit-ready traceability.",
   alternates: { canonical: "/industries/manufacturing" },
   openGraph: {
     title: "AI for Manufacturing: Supply Chain & Document Automation | EasternStack",
     description:
-      "Supply chain optimization and document-heavy operations, automated end to end on one governed WEAST platform, from supplier docs to the QC audit pack.",
+      "Supply chain optimization and document-heavy operations, automated across the chain on one governed WEAST platform, from supplier docs to the QC audit pack.",
     url: "https://easternstack.ai/industries/manufacturing",
     siteName: "EasternStack",
     locale: "en_US",
@@ -67,7 +67,7 @@ const USE_CASES = [
   },
   {
     title: "Quality Traceability",
-    body: "Every batch stays linked to its certificates, inspections, and decisions, ready as an audit pack in minutes.",
+    body: "Every batch stays linked to its certificates, inspections, and decisions, ready as an audit pack quickly.",
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -136,11 +136,11 @@ export default function ManufacturingPage() {
             >
               Supply chains that{" "}
               <span className="bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">
-                run themselves
+                think ahead
               </span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-600">
-              Supply chain optimization and document-heavy operations, automated end to end on
+              Supply chain optimization and document-heavy operations, automated across the chain on
               one WEAST platform: supplier documents, planning, confirmations, and audit-ready
               traceability.
             </p>

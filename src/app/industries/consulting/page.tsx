@@ -179,8 +179,8 @@ export default function ConsultingPage() {
             </h2>
             <p className="mt-4 text-zinc-400">
               Market research and due diligence feed the report agent, which synthesizes and
-              cites everything, while the knowledge management agent makes every past
-              engagement instantly searchable for the next one.
+              cites everything, while the knowledge management agent makes past engagements
+              readily searchable for the next one.
             </p>
           </div>
           <div className="mt-12">

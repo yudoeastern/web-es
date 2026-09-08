@@ -336,7 +336,7 @@ export default function SolutionsPage() {
                 Customer Support Automation
               </h3>
               <p className="text-text-secondary mb-4">
-                24/7 AI-powered frontline support for order tracking, refunds, complaints, and FAQs.
+                Always-on AI-powered frontline support for order tracking, refunds, complaints, and FAQs.
               </p>
             </Link>
 

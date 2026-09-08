@@ -71,7 +71,7 @@ const CAPABILITIES = [
   },
   {
     title: "Secure and Controlled Deployment",
-    body: "Ensure compliance, data privacy, and governance across all environments.",
+    body: "Support compliance, data privacy, and governance across environments.",
   },
 ];
 

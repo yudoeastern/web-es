@@ -91,7 +91,7 @@ export default function AhnLabPage() {
                 </svg>
               </div>
               <p className="text-2xl font-bold text-[#1A1A1A]">Award-winning</p>
-              <p className="mt-1 text-sm text-gray-600">Industry-leading threat detection rates</p>
+              <p className="mt-1 text-sm text-gray-600">High threat detection rates</p>
             </div>
           </div>
         </div>
