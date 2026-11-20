@@ -128,8 +128,8 @@ export default function AboutPage() {
         <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <img
-              src="/weast/weast-logo-black.png"
-              alt="WEAST by EasternStack.AI"
+              src="/logo.png"
+              alt="EasternStack"
               className="mx-auto h-10 w-auto md:h-12"
             />
 
