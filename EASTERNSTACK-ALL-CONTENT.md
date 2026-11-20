@@ -1,8 +1,8 @@
 # EASTERNSTACK WEBSITE - COMPLETE CONTENT COMPILATION
 
-**Generated:** April 29, 2026  
-**Website:** easternstack.ai  
-**Company:** PT EASTERNSTACK AI
+**Generated:** April 29, 2026
+**Website:** easternstack.ai
+**Company:** EasternStack AI Pte. Ltd. (Singapore HQ) / PT Easternstack Global Indonesia (Indonesia)
 
 ---
 
@@ -111,12 +111,15 @@
 - Message (required)
 
 ### Contact Information
-**Office Address:**  
-PT EASTERNSTACK AI  
-Menara Carako, 3rd Floor  
-Jl. Dr. Ide Anak Agung Gde Agung  
-Lot E4-7 No. 1, Kuningan Timur  
-Jakarta 12950, Indonesia
+**Office Address:**
+
+**Singapore**
+EasternStack AI Pte. Ltd.
+18 Cross Street, #02-101, Singapore 048423
+
+**Indonesia**
+PT Easternstack Global Indonesia
+Menara Caraka Lantai 3, Jl. Mega Kuningan Barat Blok E.4.7 No. 1, Kawasan Mega Kuningan, Kuningan Timur, Setiabudi, Jakarta Selatan, 12950, Indonesia
 
 **Contact Details:**
 - Email: sales@easternstack.ai
@@ -679,13 +682,19 @@ Zero-trust security architecture for AI.
 
 ## COMPANY INFORMATION
 
-**Legal Entity:** PT EASTERNSTACK AI
+**Legal Entities:**
+- EasternStack AI Pte. Ltd. (Singapore HQ)
+- PT Easternstack Global Indonesia (Indonesia)
 
-**Office Address:**  
-Menara Carako, 3rd Floor  
-Jl. Dr. Ide Anak Agung Gde Agung  
-Lot E4-7 No. 1, Kuningan Timur  
-Jakarta 12950, Indonesia
+**Office Address:**
+
+**Singapore**
+EasternStack AI Pte. Ltd.
+18 Cross Street, #02-101, Singapore 048423
+
+**Indonesia**
+PT Easternstack Global Indonesia
+Menara Caraka Lantai 3, Jl. Mega Kuningan Barat Blok E.4.7 No. 1, Kawasan Mega Kuningan, Kuningan Timur, Setiabudi, Jakarta Selatan, 12950, Indonesia
 
 **Contact:**
 - Email: sales@easternstack.ai

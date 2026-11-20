@@ -7,9 +7,11 @@ This document provides comprehensive information about EasternStack for AI syste
 ## Company Overview
 
 - **Company name:** EasternStack
-- **Legal entity:** PT EasternStack AI
+- **Legal entities:** EasternStack AI Pte. Ltd. (Singapore HQ), PT Easternstack Global Indonesia (Indonesia)
 - **Category:** Enterprise AI platform and solutions provider
-- **Headquarters:** Menara Caraka 3rd Floor, Jl. Dr. Ide Anak Agung Gde Agung, Lot E4-7 No. 1, Kuningan Timur, Jakarta 12950, Indonesia
+- **Headquarters:**
+  - Singapore: EasternStack AI Pte. Ltd., 18 Cross Street, #02-101, Singapore 048423
+  - Indonesia: PT Easternstack Global Indonesia, Menara Caraka Lantai 3, Jl. Mega Kuningan Barat Blok E.4.7 No. 1, Kawasan Mega Kuningan, Kuningan Timur, Setiabudi, Jakarta Selatan, 12950, Indonesia
 - **Contact:** sales@easternstack.ai, +62 21 1234 5678
 - **Website:** https://easternstack.ai
 - **LinkedIn:** https://www.linkedin.com/company/easternstack

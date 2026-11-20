@@ -92,10 +92,16 @@ export default function Footer() {
           <div>
             <h4 className="text-text-primary font-semibold mb-4">Contact</h4>
             <p className="text-text-secondary text-sm mb-4">
-              Menara Caraka 3rd Floor<br />
-              Jl. Dr. Ide Anak Agung Gde Agung<br />
-              Lot E4-7 No. 1, Kuningan Timur<br />
-              Jakarta 12950, Indonesia
+              <strong>Singapore</strong><br />
+              EasternStack AI Pte. Ltd.<br />
+              18 Cross Street, #02-101<br />
+              Singapore 048423<br />
+              <br />
+              <strong>Indonesia</strong><br />
+              PT Easternstack Global Indonesia<br />
+              Menara Caraka Lantai 3<br />
+              Jl. Mega Kuningan Barat Blok E.4.7 No. 1<br />
+              Jakarta Selatan, 12950
             </p>
             <Link href="/contact" className="btn-primary inline-block">
               Get in Touch

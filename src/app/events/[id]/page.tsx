@@ -6,6 +6,7 @@ import Link from "next/link";
 import RegisterForm from "./RegisterForm";
 import { DescriptionMarkdown, stripMarkdown } from "@/lib/markdown";
 import type { Metadata } from "next";
+import WeastCta from "@/components/WeastCta";
 
 const baseUrl = "https://easternstack.ai";
 
@@ -396,19 +397,7 @@ export default async function WebinarDetailPage({ params }: PageProps) {
       )}
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            DISCOVER MORE AI SOLUTIONS
-          </h2>
-          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            Explore our full range of enterprise AI solutions and find the right fit for your business.
-          </p>
-          <Link href="/solutions/ai" className="btn-primary bg-white text-[#E31E24] hover:bg-gray-100">
-            Explore Solutions
-          </Link>
-        </div>
-      </section>
+      <WeastCta tourHref="/#demo-ide" />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import WeastCta from "@/components/WeastCta";
 
 export const metadata: Metadata = {
   title: "About EasternStack | Enterprise AI Platform Company in Indonesia",
@@ -360,31 +361,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="border-t border-gray-200 bg-gradient-to-br from-[#E31E24] to-[#1A1A1A] py-20">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white md:text-5xl">
-            Ready to put AI to work?
-          </h2>
-          <p className="mx-auto mt-6 max-w-xl text-lg text-white/80">
-            Talk to our team about deploying WEAST on your infrastructure. Any cloud, any VPC,
-            any on-premise setup. We will help you find the right starting point.
-          </p>
-          <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-3.5 text-base font-semibold text-[#E31E24] shadow-lg transition-all hover:bg-gray-100 hover:-translate-y-0.5 hover:shadow-xl"
-            >
-              Contact Sales
-            </Link>
-            <Link
-              href="/solutions"
-              className="inline-flex items-center gap-2 rounded-lg border border-white/30 bg-white/10 px-8 py-3.5 text-base font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20"
-            >
-              Explore Solutions
-            </Link>
-          </div>
-        </div>
-      </section>
+      <WeastCta tourHref="/#demo-ide" />
     </div>
   );
 }

@@ -4,8 +4,8 @@ This knowledge base describes EasternStack, the company, and WEAST, its enterpri
 
 ## About EasternStack
 
-- EasternStack is an enterprise AI platform company based in Jakarta, Indonesia. It designs, deploys, and operates agentic AI systems that understand context, reason, and execute business workflows end to end.
-- Legal entity: PT EasternStack AI.
+- EasternStack is an enterprise AI platform company with headquarters in Singapore (EasternStack AI Pte. Ltd.) and operations in Indonesia (PT Easternstack Global Indonesia). It designs, deploys, and operates agentic AI systems that understand context, reason, and execute business workflows end to end.
+- Legal entities: EasternStack AI Pte. Ltd. (Singapore), PT Easternstack Global Indonesia (Indonesia).
 - Mission: AI should work for your business, not the other way around. Most enterprise AI projects stall between demo and production because integration, governance, and cost control are missing. EasternStack built WEAST so organizations can move from AI experiments to AI operations, with every agent run traced, every cost visible, and every deployment running on the customer's terms.
 - Website: https://easternstack.ai
 
@@ -361,12 +361,14 @@ EasternStack regularly hosts events, webinars, and workshops in Indonesia on ent
 - Contact form: https://easternstack.ai/contact
 - Email: sales@easternstack.ai
 - Phone: +62 21 1234 5678
-- Office: PT EasternStack AI, Menara Caraka, 3rd Floor, Jl. Dr. Ide Anak Agung Gde Agung, Lot E4-7 No. 1, Kuningan Timur, Jakarta 12950, Indonesia
+- Office:
+  - Singapore: EasternStack AI Pte. Ltd., 18 Cross Street, #02-101, Singapore 048423
+  - Indonesia: PT Easternstack Global Indonesia, Menara Caraka Lantai 3, Jl. Mega Kuningan Barat Blok E.4.7 No. 1, Kawasan Mega Kuningan, Kuningan Timur, Setiabudi, Jakarta Selatan, 12950, Indonesia
 - LinkedIn: https://www.linkedin.com/company/easternstack
 
 ### Quick facts
 
-- Company: EasternStack, legal name PT EasternStack AI.
+- Company: EasternStack. Legal entities: EasternStack AI Pte. Ltd. (Singapore HQ) and PT Easternstack Global Indonesia (Indonesian subsidiary).
 - Domain and website: easternstack.ai (https://easternstack.ai).
 - Flagship product: WEAST, the enterprise agentic AI platform ("Where Enterprise AI Becomes Real Work"). ABI and omnichannel are capabilities of WEAST, not separate products.
 - Headquarters: Jakarta, Indonesia.

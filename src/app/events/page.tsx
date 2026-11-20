@@ -4,6 +4,7 @@ import { webinars } from "@/db/schema";
 import { desc, count } from "drizzle-orm";
 import { stripMarkdown } from "@/lib/markdown";
 import type { Metadata } from "next";
+import WeastCta from "@/components/WeastCta";
 
 export const metadata: Metadata = {
   title: "AI Events & Webinars in Indonesia | EasternStack",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://easternstack.ai/logo_head.png",
+        url: "https://easternstack.ai/logo.png",
         width: 1200,
         height: 1200,
         alt: "EasternStack — AI Events & Webinars",
@@ -56,21 +57,42 @@ export default async function WebinarPage({ searchParams }: PageProps) {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-dark-bg via-dark-bg-light to-dark-bg">
-        <div className="container-custom text-center">
-          <div className="inline-block mb-6 px-4 py-2 bg-bg-light-card border border-border-color rounded-full">
-            <span className="text-primary-orange text-sm font-semibold">
-              Events & Webinars
-            </span>
+      <section className="relative overflow-hidden bg-white pt-20 pb-16 sm:pt-24 sm:pb-20">
+        {/* Dot pattern */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage: "radial-gradient(circle, #e5e7eb 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+            maskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent)",
+            WebkitMaskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent)",
+          }}
+          aria-hidden="true"
+        />
+
+        <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <img
+              src="/logo.png"
+              alt="EasternStack.AI"
+              className="mx-auto h-10 w-auto md:h-12"
+            />
+
+            <h1
+              className="mt-6 text-4xl font-extrabold text-[#1A1A1A] sm:text-5xl md:text-6xl"
+              style={{ letterSpacing: "-0.03em", lineHeight: 1.05 }}
+            >
+              Events &{" "}
+              <span className="bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">
+                Webinars
+              </span>
+            </h1>
+
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-600">
+              Stay updated with upcoming events, webinars, and workshops from EasternStack.
+              Learn from industry experts and discover the latest in AI technology.
+            </p>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-text-dark mb-6">
-            EVENTS &{" "}
-            <span className="gradient-text">WEBINARS</span>
-          </h1>
-          <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            Stay updated with upcoming events, webinars, and workshops from EasternStack.
-            Learn from industry experts and discover the latest in AI technology.
-          </p>
         </div>
       </section>
 
@@ -228,19 +250,7 @@ export default async function WebinarPage({ searchParams }: PageProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-[#E31E24] to-[#1A1A1A]">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            DON&apos;T MISS OUR NEXT EVENTS & WEBINARS!
-          </h2>
-          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            Register now to stay updated with the latest AI insights and industry trends.
-          </p>
-          <Link href="/contact" className="btn-primary bg-white text-[#E31E24] hover:bg-gray-100">
-            Book Consultation
-          </Link>
-        </div>
-      </section>
+      <WeastCta tourHref="/#demo-ide" />
     </div>
   );
 }

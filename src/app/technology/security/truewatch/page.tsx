@@ -42,7 +42,7 @@ export default function TrueWatchPage() {
         />
         <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <img src="/logo.png" alt="EasternStack.AI" className="mx-auto h-12 w-auto md:h-14" />
+            <img src="https://assets.hicloud.sg/truewatch/true_watch_logo_bb0fecce8d.svg" alt="TrueWatch" className="mx-auto h-18 w-auto md:h-22" />
             <p className="mt-4 text-xs font-bold uppercase tracking-widest text-gray-500">
               Technology · Security Monitoring
             </p>

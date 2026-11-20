@@ -121,6 +121,11 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-dark-bg via-dark-bg-light to-dark-bg">
         <div className="container-custom text-center">
+          <img
+            src="/logo.png"
+            alt="EasternStack.AI"
+            className="mx-auto h-10 w-auto md:h-12 mb-6"
+          />
           <h1 className="text-4xl md:text-6xl font-bold text-text-dark mb-6">
             GET IN{" "}
             <span className="bg-gradient-to-r from-[#E31E24] to-[#C4181E] bg-clip-text text-transparent">
@@ -306,11 +311,13 @@ export default function ContactPage() {
                 <div className="card">
                   <h3 className="text-lg font-semibold text-text-dark mb-4">Office Address</h3>
                   <p className="text-text-secondary">
-                    <strong>PT EASTERNSTACK AI</strong><br />
-                    Menara Caraka, 3rd Floor<br />
-                    Jl. Dr. Ide Anak Agung Gde Agung<br />
-                    Lot E4-7 No. 1, Kuningan Timur<br />
-                    Jakarta 12950, Indonesia
+                    <strong>Singapore</strong><br />
+                    EasternStack AI Pte. Ltd.<br />
+                    18 Cross Street, #02-101, Singapore 048423<br />
+                    <br />
+                    <strong>Indonesia</strong><br />
+                    PT Easternstack Global Indonesia<br />
+                    Menara Caraka Lantai 3, Jl. Mega Kuningan Barat Blok E.4.7 No. 1, Kawasan Mega Kuningan, Kuningan Timur, Setiabudi, Jakarta Selatan, 12950, Indonesia
                   </p>
                 </div>
 

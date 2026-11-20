@@ -278,7 +278,7 @@ export default function Navigation() {
                       <ul className="space-y-2">
                         <li><Link href="/technology/zero-trust-ai" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Zero-Trust AI</Link></li>
                         <li><Link href="/technology/security/ahnlab" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Cybersecurity (AhnLab)</Link></li>
-                        <li><Link href="/technology/security/truewatch" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Security Monitoring</Link></li>
+                        <li><Link href="/technology/security/truewatch" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Security Monitoring (TrueWatch)</Link></li>
                         <li><Link href="/technology/compliance" className="text-[#1A1A1A] hover:text-[#E31E24] text-sm block">Compliance</Link></li>
                       </ul>
                     </div>

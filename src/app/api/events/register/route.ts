@@ -290,13 +290,20 @@ export async function POST(request: NextRequest) {
                           <tr>
                             <td style="text-align: center;">
                               <p style="margin: 0 0 8px 0; color: #999999; font-size: 12px;">
-                                <strong>PT EASTERNSTACK AI</strong>
+                                <strong>Singapore</strong>
                               </p>
                               <p style="margin: 0 0 8px 0; color: #999999; font-size: 12px; line-height: 1.5;">
-                                Menara Caraka, 3rd Floor<br>
-                                Jl. Dr. Ide Anak Agung Gde Agung<br>
-                                Lot E4-7 No. 1, Kuningan Timur<br>
-                                Jakarta 12950, Indonesia
+                                EasternStack AI Pte. Ltd.<br>
+                                18 Cross Street, #02-101, Singapore 048423
+                              </p>
+                              <p style="margin: 0 0 8px 0; color: #999999; font-size: 12px;">
+                                <strong>Indonesia</strong>
+                              </p>
+                              <p style="margin: 0 0 8px 0; color: #999999; font-size: 12px; line-height: 1.5;">
+                                PT Easternstack Global Indonesia<br>
+                                Menara Caraka Lantai 3, Jl. Mega Kuningan Barat Blok E.4.7 No. 1<br>
+                                Kawasan Mega Kuningan, Jakarta Selatan, 12950<br>
+                                Indonesia
                               </p>
                               <p style="margin: 0; color: #999999; font-size: 12px;">
                                 <a href="https://www.easternstack.ai" style="color: #E31E24; text-decoration: none;">www.easternstack.ai</a>
